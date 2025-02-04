@@ -841,7 +841,7 @@ components:
               name: name
               secretGroupId: secretGroupId
           type: type
-          isCloudHub: isCloudHub
+          isCloudHub: true
           uri: uri
           proxyRegistrationUri: proxyRegistrationUri
           responseTimeout: responseTimeout
@@ -926,7 +926,7 @@ components:
               updated:
                 date: date
             outbound: "{}"
-          isCloudHub: isCloudHub
+          isCloudHub: true
           proxyRegistrationUri: proxyRegistrationUri
           responseTimeout: responseTimeout
           validation: validation
@@ -1055,7 +1055,7 @@ components:
               updated:
                 date: date
             outbound: "{}"
-          isCloudHub: isCloudHub
+          isCloudHub: true
           proxyRegistrationUri: proxyRegistrationUri
           responseTimeout: responseTimeout
           validation: validation
@@ -1224,7 +1224,7 @@ components:
               updated:
                 date: date
             outbound: "{}"
-          isCloudHub: isCloudHub
+          isCloudHub: true
           proxyRegistrationUri: proxyRegistrationUri
           responseTimeout: responseTimeout
           validation: validation
@@ -1374,7 +1374,7 @@ components:
             updated:
               date: date
           outbound: "{}"
-        isCloudHub: isCloudHub
+        isCloudHub: true
         proxyRegistrationUri: proxyRegistrationUri
         responseTimeout: responseTimeout
         validation: validation
@@ -1403,7 +1403,7 @@ components:
           type: string
         isCloudHub:
           nullable: true
-          type: string
+          type: boolean
         deploymentType:
           type: string
         policiesVersion:
@@ -1445,7 +1445,7 @@ components:
             name: name
             secretGroupId: secretGroupId
         type: type
-        isCloudHub: isCloudHub
+        isCloudHub: true
         uri: uri
         proxyRegistrationUri: proxyRegistrationUri
         responseTimeout: responseTimeout
@@ -1461,7 +1461,7 @@ components:
           type: string
         isCloudHub:
           nullable: true
-          type: string
+          type: boolean
         proxyUri:
           nullable: true
           type: string
