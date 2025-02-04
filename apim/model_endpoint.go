@@ -27,7 +27,7 @@ type Endpoint struct {
 	ProxyUri NullableString `json:"proxyUri,omitempty"`
 	ProxyRegistrationUri NullableString `json:"proxyRegistrationUri,omitempty"`
 	LastActiveDate NullableString `json:"lastActiveDate,omitempty"`
-	IsCloudHub NullableString `json:"isCloudHub,omitempty"`
+	IsCloudHub NullableBool `json:"isCloudHub,omitempty"`
 	DeploymentType *string `json:"deploymentType,omitempty"`
 	PoliciesVersion NullableString `json:"policiesVersion,omitempty"`
 	ReferencesUserDomain NullableString `json:"referencesUserDomain,omitempty"`
@@ -374,9 +374,9 @@ func (o *Endpoint) UnsetLastActiveDate() {
 }
 
 // GetIsCloudHub returns the IsCloudHub field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Endpoint) GetIsCloudHub() string {
+func (o *Endpoint) GetIsCloudHub() bool {
 	if o == nil || IsNil(o.IsCloudHub.Get()) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.IsCloudHub.Get()
@@ -385,7 +385,7 @@ func (o *Endpoint) GetIsCloudHub() string {
 // GetIsCloudHubOk returns a tuple with the IsCloudHub field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Endpoint) GetIsCloudHubOk() (*string, bool) {
+func (o *Endpoint) GetIsCloudHubOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -401,8 +401,8 @@ func (o *Endpoint) HasIsCloudHub() bool {
 	return false
 }
 
-// SetIsCloudHub gets a reference to the given NullableString and assigns it to the IsCloudHub field.
-func (o *Endpoint) SetIsCloudHub(v string) {
+// SetIsCloudHub gets a reference to the given NullableBool and assigns it to the IsCloudHub field.
+func (o *Endpoint) SetIsCloudHub(v bool) {
 	o.IsCloudHub.Set(&v)
 }
 // SetIsCloudHubNil sets the value for IsCloudHub to be an explicit nil
