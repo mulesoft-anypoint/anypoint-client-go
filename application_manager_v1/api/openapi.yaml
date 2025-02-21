@@ -1,0 +1,274 @@
+openapi: 3.0.0
+info:
+  description: |
+    The Application Manager API exists to provide Mule Application management operations from Anypoint Control Planes to any Runtime Plane, with capabilities that include:
+      - Deploying a Mule Application or API to a Mule Runtime
+      - Scaling up or down a running application
+      - Managing application settings (ie: properties)
+      - Deleting a Mule Application Deployment
+      - Changing artifact version or configurations of a deployment
+      - Starting, Stopping or Restarting applications
+      - etc.
+    This API currently supports deployments to Cloudhub 1.0 targets only.
+  title: Deployment v1
+  version: 1.0.0
+servers:
+- description: Anypoint Cloudhub
+  url: https://anypoint.mulesoft.com/armui/api/v1
+- description: Anypoint Cloudhub EU
+  url: https://eu1.anypoint.mulesoft.com/armui/api/v1
+- description: Anypoint Cloudhub GOV
+  url: https://gov.anypoint.mulesoft.com/armui/api/v1
+security:
+- bearerAuth: []
+paths:
+  /applications:
+    get:
+      description: "Retrieves a list of deployments for the specified query. If the\
+        \ query returns no results, then an empty list is returned."
+      operationId: GetAllDeployments
+      parameters:
+      - description: The environment id where the applications are deployed
+        explode: false
+        in: header
+        name: x-anypnt-env-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The org id where the applications are deployed
+        explode: false
+        in: header
+        name: x-anypnt-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllDeploymentsResponse'
+          description: Response of a list of deployments
+      summary: List deployments
+components:
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    DeploymentNotFoundError:
+      description: Deployment not found
+    GetAllDeployments:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetAllDeploymentsResponse'
+      description: Response of a list of deployments
+  schemas:
+    Deployment:
+      example:
+        artifact:
+          fileName: fileName
+          createTime: 6.027456183070403
+          name: name
+          lastUpdateTime: 0.8008281904610115
+        lastReportedStatus: lastReportedStatus
+        muleVersion:
+          updateId: updateId
+          latestUpdateId: latestUpdateId
+          endOfSupportDate: 1.4658129805029452
+          version: version
+        application:
+          status: status
+        details:
+          domain: domain
+        id: id
+        target:
+          subtype: subtype
+          provider: provider
+          name: name
+          id: id
+          type: type
+          status: status
+      properties:
+        id:
+          description: A unique identifier for the deployment.
+          type: string
+        artifact:
+          $ref: '#/components/schemas/Deployment_artifact'
+        lastReportedStatus:
+          description: "The last reported status of the deployment (e.g., STARTED,\
+            \ UNDEPLOYED)."
+          type: string
+        details:
+          $ref: '#/components/schemas/Deployment_details'
+        target:
+          $ref: '#/components/schemas/Deployment_target'
+        application:
+          $ref: '#/components/schemas/Deployment_application'
+        muleVersion:
+          $ref: '#/components/schemas/Deployment_muleVersion'
+      type: object
+    DeploymentList:
+      items:
+        $ref: '#/components/schemas/Deployment'
+      type: array
+    GetAllDeploymentsResponse:
+      example:
+        total: 5
+        data:
+        - artifact:
+            fileName: fileName
+            createTime: 6.027456183070403
+            name: name
+            lastUpdateTime: 0.8008281904610115
+          lastReportedStatus: lastReportedStatus
+          muleVersion:
+            updateId: updateId
+            latestUpdateId: latestUpdateId
+            endOfSupportDate: 1.4658129805029452
+            version: version
+          application:
+            status: status
+          details:
+            domain: domain
+          id: id
+          target:
+            subtype: subtype
+            provider: provider
+            name: name
+            id: id
+            type: type
+            status: status
+        - artifact:
+            fileName: fileName
+            createTime: 6.027456183070403
+            name: name
+            lastUpdateTime: 0.8008281904610115
+          lastReportedStatus: lastReportedStatus
+          muleVersion:
+            updateId: updateId
+            latestUpdateId: latestUpdateId
+            endOfSupportDate: 1.4658129805029452
+            version: version
+          application:
+            status: status
+          details:
+            domain: domain
+          id: id
+          target:
+            subtype: subtype
+            provider: provider
+            name: name
+            id: id
+            type: type
+            status: status
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Deployment'
+          type: array
+        total:
+          type: integer
+      type: object
+    Deployment_artifact:
+      description: Details about the artifact associated with the deployment.
+      example:
+        fileName: fileName
+        createTime: 6.027456183070403
+        name: name
+        lastUpdateTime: 0.8008281904610115
+      properties:
+        lastUpdateTime:
+          description: The timestamp (in milliseconds) when the artifact was last
+            updated.
+          type: number
+        createTime:
+          description: The creation timestamp (in milliseconds); may be null.
+          nullable: true
+          type: number
+        name:
+          description: The name of the artifact.
+          type: string
+        fileName:
+          description: The file name of the artifact.
+          type: string
+      type: object
+    Deployment_details:
+      additionalProperties: true
+      description: Additional details about the deployment.
+      example:
+        domain: domain
+      properties:
+        domain:
+          description: The domain name associated with the deployment.
+          type: string
+      type: object
+    Deployment_target:
+      description: Information about the target environment where the deployment is
+        hosted.
+      example:
+        subtype: subtype
+        provider: provider
+        name: name
+        id: id
+        type: type
+        status: status
+      properties:
+        type:
+          description: "The target type (e.g., CLOUDHUB, MC)."
+          type: string
+        subtype:
+          description: The target subtype (if applicable).
+          type: string
+        provider:
+          description: The provider of the target platform.
+          type: string
+        id:
+          description: The identifier of the target.
+          type: string
+        name:
+          description: The name of the target.
+          type: string
+        status:
+          description: The current status of the target.
+          type: string
+      type: object
+    Deployment_application:
+      description: Application-specific information for the deployment.
+      example:
+        status: status
+      properties:
+        status:
+          description: The status of the application.
+          type: string
+      type: object
+    Deployment_muleVersion:
+      description: Details regarding the Mule runtime version.
+      example:
+        updateId: updateId
+        latestUpdateId: latestUpdateId
+        endOfSupportDate: 1.4658129805029452
+        version: version
+      properties:
+        version:
+          description: The Mule runtime version.
+          type: string
+        updateId:
+          description: The identifier for the runtime update.
+          type: string
+        latestUpdateId:
+          description: The identifier for the latest runtime update.
+          type: string
+        endOfSupportDate:
+          description: The timestamp (in milliseconds) representing the end-of-support
+            date.
+          type: number
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
