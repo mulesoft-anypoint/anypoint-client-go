@@ -19,12 +19,11 @@ var _ MappedNullable = &DeploymentDetails{}
 
 // DeploymentDetails Additional details about the deployment.
 type DeploymentDetails struct {
-	// The domain name associated with the deployment.
+	// The domain name associated with the deployment. only present for CH1.
 	Domain *string `json:"domain,omitempty"`
-	AdditionalProperties map[string]interface{}
+	// The deployment update status, only present for CH1.
+	DeploymentUpdateStatus *string `json:"deploymentUpdateStatus,omitempty"`
 }
-
-type _DeploymentDetails DeploymentDetails
 
 // NewDeploymentDetails instantiates a new DeploymentDetails object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +74,38 @@ func (o *DeploymentDetails) SetDomain(v string) {
 	o.Domain = &v
 }
 
+// GetDeploymentUpdateStatus returns the DeploymentUpdateStatus field value if set, zero value otherwise.
+func (o *DeploymentDetails) GetDeploymentUpdateStatus() string {
+	if o == nil || IsNil(o.DeploymentUpdateStatus) {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentUpdateStatus
+}
+
+// GetDeploymentUpdateStatusOk returns a tuple with the DeploymentUpdateStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentDetails) GetDeploymentUpdateStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.DeploymentUpdateStatus) {
+		return nil, false
+	}
+	return o.DeploymentUpdateStatus, true
+}
+
+// HasDeploymentUpdateStatus returns a boolean if a field has been set.
+func (o *DeploymentDetails) HasDeploymentUpdateStatus() bool {
+	if o != nil && !IsNil(o.DeploymentUpdateStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentUpdateStatus gets a reference to the given string and assigns it to the DeploymentUpdateStatus field.
+func (o *DeploymentDetails) SetDeploymentUpdateStatus(v string) {
+	o.DeploymentUpdateStatus = &v
+}
+
 func (o DeploymentDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -88,29 +119,10 @@ func (o DeploymentDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if !IsNil(o.DeploymentUpdateStatus) {
+		toSerialize["deploymentUpdateStatus"] = o.DeploymentUpdateStatus
 	}
-
 	return toSerialize, nil
-}
-
-func (o *DeploymentDetails) UnmarshalJSON(bytes []byte) (err error) {
-	varDeploymentDetails := _DeploymentDetails{}
-
-	if err = json.Unmarshal(bytes, &varDeploymentDetails); err == nil {
-		*o = DeploymentDetails(varDeploymentDetails)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "domain")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeploymentDetails struct {

@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Domain** | Pointer to **string** | The domain name associated with the deployment. | [optional] 
+**Domain** | Pointer to **string** | The domain name associated with the deployment. only present for CH1. | [optional] 
+**DeploymentUpdateStatus** | Pointer to **string** | The deployment update status, only present for CH1. | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetDomain sets Domain field to given value.
 `func (o *DeploymentDetails) HasDomain() bool`
 
 HasDomain returns a boolean if a field has been set.
+
+### GetDeploymentUpdateStatus
+
+`func (o *DeploymentDetails) GetDeploymentUpdateStatus() string`
+
+GetDeploymentUpdateStatus returns the DeploymentUpdateStatus field if non-nil, zero value otherwise.
+
+### GetDeploymentUpdateStatusOk
+
+`func (o *DeploymentDetails) GetDeploymentUpdateStatusOk() (*string, bool)`
+
+GetDeploymentUpdateStatusOk returns a tuple with the DeploymentUpdateStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentUpdateStatus
+
+`func (o *DeploymentDetails) SetDeploymentUpdateStatus(v string)`
+
+SetDeploymentUpdateStatus sets DeploymentUpdateStatus field to given value.
+
+### HasDeploymentUpdateStatus
+
+`func (o *DeploymentDetails) HasDeploymentUpdateStatus() bool`
+
+HasDeploymentUpdateStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
