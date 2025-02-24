@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -25,5 +24,4 @@ model_deployment_mule_version.go
 model_deployment_target.go
 model_get_all_deployments_response.go
 response.go
-test/api_default_test.go
 utils.go
