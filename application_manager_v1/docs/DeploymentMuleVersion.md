@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Version** | Pointer to **string** | The Mule runtime version. | [optional] 
 **UpdateId** | Pointer to **string** | The identifier for the runtime update. | [optional] 
 **LatestUpdateId** | Pointer to **string** | The identifier for the latest runtime update. | [optional] 
-**EndOfSupportDate** | Pointer to **float32** | The timestamp (in milliseconds) representing the end-of-support date. | [optional] 
+**EndOfSupportDate** | Pointer to **int32** | The timestamp (in milliseconds) representing the end-of-support date. | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasLatestUpdateId returns a boolean if a field has been set.
 
 ### GetEndOfSupportDate
 
-`func (o *DeploymentMuleVersion) GetEndOfSupportDate() float32`
+`func (o *DeploymentMuleVersion) GetEndOfSupportDate() int32`
 
 GetEndOfSupportDate returns the EndOfSupportDate field if non-nil, zero value otherwise.
 
 ### GetEndOfSupportDateOk
 
-`func (o *DeploymentMuleVersion) GetEndOfSupportDateOk() (*float32, bool)`
+`func (o *DeploymentMuleVersion) GetEndOfSupportDateOk() (*int32, bool)`
 
 GetEndOfSupportDateOk returns a tuple with the EndOfSupportDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndOfSupportDate
 
-`func (o *DeploymentMuleVersion) SetEndOfSupportDate(v float32)`
+`func (o *DeploymentMuleVersion) SetEndOfSupportDate(v int32)`
 
 SetEndOfSupportDate sets EndOfSupportDate field to given value.
 

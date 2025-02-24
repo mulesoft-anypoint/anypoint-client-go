@@ -26,7 +26,7 @@ type DeploymentMuleVersion struct {
 	// The identifier for the latest runtime update.
 	LatestUpdateId *string `json:"latestUpdateId,omitempty"`
 	// The timestamp (in milliseconds) representing the end-of-support date.
-	EndOfSupportDate *float32 `json:"endOfSupportDate,omitempty"`
+	EndOfSupportDate *int32 `json:"endOfSupportDate,omitempty"`
 }
 
 // NewDeploymentMuleVersion instantiates a new DeploymentMuleVersion object
@@ -143,9 +143,9 @@ func (o *DeploymentMuleVersion) SetLatestUpdateId(v string) {
 }
 
 // GetEndOfSupportDate returns the EndOfSupportDate field value if set, zero value otherwise.
-func (o *DeploymentMuleVersion) GetEndOfSupportDate() float32 {
+func (o *DeploymentMuleVersion) GetEndOfSupportDate() int32 {
 	if o == nil || IsNil(o.EndOfSupportDate) {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.EndOfSupportDate
@@ -153,7 +153,7 @@ func (o *DeploymentMuleVersion) GetEndOfSupportDate() float32 {
 
 // GetEndOfSupportDateOk returns a tuple with the EndOfSupportDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentMuleVersion) GetEndOfSupportDateOk() (*float32, bool) {
+func (o *DeploymentMuleVersion) GetEndOfSupportDateOk() (*int32, bool) {
 	if o == nil || IsNil(o.EndOfSupportDate) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *DeploymentMuleVersion) HasEndOfSupportDate() bool {
 	return false
 }
 
-// SetEndOfSupportDate gets a reference to the given float32 and assigns it to the EndOfSupportDate field.
-func (o *DeploymentMuleVersion) SetEndOfSupportDate(v float32) {
+// SetEndOfSupportDate gets a reference to the given int32 and assigns it to the EndOfSupportDate field.
+func (o *DeploymentMuleVersion) SetEndOfSupportDate(v int32) {
 	o.EndOfSupportDate = &v
 }
 
