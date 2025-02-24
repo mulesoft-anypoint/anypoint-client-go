@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LastUpdateTime** | Pointer to **float32** | The timestamp (in milliseconds) when the artifact was last updated. | [optional] 
-**CreateTime** | Pointer to **NullableFloat32** | The creation timestamp (in milliseconds); may be null. | [optional] 
+**LastUpdateTime** | Pointer to **int32** | The timestamp (in milliseconds) when the artifact was last updated. | [optional] 
+**CreateTime** | Pointer to **NullableInt32** | The creation timestamp (in milliseconds); may be null. | [optional] 
 **Name** | Pointer to **string** | The name of the artifact. | [optional] 
 **FileName** | Pointer to **string** | The file name of the artifact. | [optional] 
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLastUpdateTime
 
-`func (o *DeploymentArtifact) GetLastUpdateTime() float32`
+`func (o *DeploymentArtifact) GetLastUpdateTime() int32`
 
 GetLastUpdateTime returns the LastUpdateTime field if non-nil, zero value otherwise.
 
 ### GetLastUpdateTimeOk
 
-`func (o *DeploymentArtifact) GetLastUpdateTimeOk() (*float32, bool)`
+`func (o *DeploymentArtifact) GetLastUpdateTimeOk() (*int32, bool)`
 
 GetLastUpdateTimeOk returns a tuple with the LastUpdateTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUpdateTime
 
-`func (o *DeploymentArtifact) SetLastUpdateTime(v float32)`
+`func (o *DeploymentArtifact) SetLastUpdateTime(v int32)`
 
 SetLastUpdateTime sets LastUpdateTime field to given value.
 
@@ -55,20 +55,20 @@ HasLastUpdateTime returns a boolean if a field has been set.
 
 ### GetCreateTime
 
-`func (o *DeploymentArtifact) GetCreateTime() float32`
+`func (o *DeploymentArtifact) GetCreateTime() int32`
 
 GetCreateTime returns the CreateTime field if non-nil, zero value otherwise.
 
 ### GetCreateTimeOk
 
-`func (o *DeploymentArtifact) GetCreateTimeOk() (*float32, bool)`
+`func (o *DeploymentArtifact) GetCreateTimeOk() (*int32, bool)`
 
 GetCreateTimeOk returns a tuple with the CreateTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreateTime
 
-`func (o *DeploymentArtifact) SetCreateTime(v float32)`
+`func (o *DeploymentArtifact) SetCreateTime(v int32)`
 
 SetCreateTime sets CreateTime field to given value.
 

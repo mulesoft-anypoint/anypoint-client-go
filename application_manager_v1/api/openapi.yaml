@@ -71,14 +71,14 @@ components:
       example:
         artifact:
           fileName: fileName
-          createTime: 6.027456183070403
+          createTime: 6
           name: name
-          lastUpdateTime: 0.8008281904610115
+          lastUpdateTime: 0
         lastReportedStatus: lastReportedStatus
         muleVersion:
           updateId: updateId
           latestUpdateId: latestUpdateId
-          endOfSupportDate: 1.4658129805029452
+          endOfSupportDate: 1
           version: version
         application:
           status: status
@@ -122,14 +122,14 @@ components:
         data:
         - artifact:
             fileName: fileName
-            createTime: 6.027456183070403
+            createTime: 6
             name: name
-            lastUpdateTime: 0.8008281904610115
+            lastUpdateTime: 0
           lastReportedStatus: lastReportedStatus
           muleVersion:
             updateId: updateId
             latestUpdateId: latestUpdateId
-            endOfSupportDate: 1.4658129805029452
+            endOfSupportDate: 1
             version: version
           application:
             status: status
@@ -146,14 +146,14 @@ components:
             status: status
         - artifact:
             fileName: fileName
-            createTime: 6.027456183070403
+            createTime: 6
             name: name
-            lastUpdateTime: 0.8008281904610115
+            lastUpdateTime: 0
           lastReportedStatus: lastReportedStatus
           muleVersion:
             updateId: updateId
             latestUpdateId: latestUpdateId
-            endOfSupportDate: 1.4658129805029452
+            endOfSupportDate: 1
             version: version
           application:
             status: status
@@ -180,18 +180,18 @@ components:
       description: Details about the artifact associated with the deployment.
       example:
         fileName: fileName
-        createTime: 6.027456183070403
+        createTime: 6
         name: name
-        lastUpdateTime: 0.8008281904610115
+        lastUpdateTime: 0
       properties:
         lastUpdateTime:
           description: The timestamp (in milliseconds) when the artifact was last
             updated.
-          type: number
+          type: integer
         createTime:
           description: The creation timestamp (in milliseconds); may be null.
           nullable: true
-          type: number
+          type: integer
         name:
           description: The name of the artifact.
           type: string
@@ -257,7 +257,7 @@ components:
       example:
         updateId: updateId
         latestUpdateId: latestUpdateId
-        endOfSupportDate: 1.4658129805029452
+        endOfSupportDate: 1
         version: version
       properties:
         version:
@@ -272,7 +272,7 @@ components:
         endOfSupportDate:
           description: The timestamp (in milliseconds) representing the end-of-support
             date.
-          type: number
+          type: integer
       type: object
   securitySchemes:
     bearerAuth:

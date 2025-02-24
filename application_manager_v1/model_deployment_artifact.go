@@ -20,9 +20,9 @@ var _ MappedNullable = &DeploymentArtifact{}
 // DeploymentArtifact Details about the artifact associated with the deployment.
 type DeploymentArtifact struct {
 	// The timestamp (in milliseconds) when the artifact was last updated.
-	LastUpdateTime *float32 `json:"lastUpdateTime,omitempty"`
+	LastUpdateTime *int32 `json:"lastUpdateTime,omitempty"`
 	// The creation timestamp (in milliseconds); may be null.
-	CreateTime NullableFloat32 `json:"createTime,omitempty"`
+	CreateTime NullableInt32 `json:"createTime,omitempty"`
 	// The name of the artifact.
 	Name *string `json:"name,omitempty"`
 	// The file name of the artifact.
@@ -47,9 +47,9 @@ func NewDeploymentArtifactWithDefaults() *DeploymentArtifact {
 }
 
 // GetLastUpdateTime returns the LastUpdateTime field value if set, zero value otherwise.
-func (o *DeploymentArtifact) GetLastUpdateTime() float32 {
+func (o *DeploymentArtifact) GetLastUpdateTime() int32 {
 	if o == nil || IsNil(o.LastUpdateTime) {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.LastUpdateTime
@@ -57,7 +57,7 @@ func (o *DeploymentArtifact) GetLastUpdateTime() float32 {
 
 // GetLastUpdateTimeOk returns a tuple with the LastUpdateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentArtifact) GetLastUpdateTimeOk() (*float32, bool) {
+func (o *DeploymentArtifact) GetLastUpdateTimeOk() (*int32, bool) {
 	if o == nil || IsNil(o.LastUpdateTime) {
 		return nil, false
 	}
@@ -73,15 +73,15 @@ func (o *DeploymentArtifact) HasLastUpdateTime() bool {
 	return false
 }
 
-// SetLastUpdateTime gets a reference to the given float32 and assigns it to the LastUpdateTime field.
-func (o *DeploymentArtifact) SetLastUpdateTime(v float32) {
+// SetLastUpdateTime gets a reference to the given int32 and assigns it to the LastUpdateTime field.
+func (o *DeploymentArtifact) SetLastUpdateTime(v int32) {
 	o.LastUpdateTime = &v
 }
 
 // GetCreateTime returns the CreateTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeploymentArtifact) GetCreateTime() float32 {
+func (o *DeploymentArtifact) GetCreateTime() int32 {
 	if o == nil || IsNil(o.CreateTime.Get()) {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.CreateTime.Get()
@@ -90,7 +90,7 @@ func (o *DeploymentArtifact) GetCreateTime() float32 {
 // GetCreateTimeOk returns a tuple with the CreateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeploymentArtifact) GetCreateTimeOk() (*float32, bool) {
+func (o *DeploymentArtifact) GetCreateTimeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -106,8 +106,8 @@ func (o *DeploymentArtifact) HasCreateTime() bool {
 	return false
 }
 
-// SetCreateTime gets a reference to the given NullableFloat32 and assigns it to the CreateTime field.
-func (o *DeploymentArtifact) SetCreateTime(v float32) {
+// SetCreateTime gets a reference to the given NullableInt32 and assigns it to the CreateTime field.
+func (o *DeploymentArtifact) SetCreateTime(v int32) {
 	o.CreateTime.Set(&v)
 }
 // SetCreateTimeNil sets the value for CreateTime to be an explicit nil
