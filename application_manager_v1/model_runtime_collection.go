@@ -14,36 +14,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetAllDeploymentsResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetAllDeploymentsResponse{}
+// checks if the RuntimeCollection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RuntimeCollection{}
 
-// GetAllDeploymentsResponse struct for GetAllDeploymentsResponse
-type GetAllDeploymentsResponse struct {
-	Data []Deployment `json:"data,omitempty"`
+// RuntimeCollection struct for RuntimeCollection
+type RuntimeCollection struct {
+	Data []Runtime `json:"data,omitempty"`
 	Total *int32 `json:"total,omitempty"`
 }
 
-// NewGetAllDeploymentsResponse instantiates a new GetAllDeploymentsResponse object
+// NewRuntimeCollection instantiates a new RuntimeCollection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetAllDeploymentsResponse() *GetAllDeploymentsResponse {
-	this := GetAllDeploymentsResponse{}
+func NewRuntimeCollection() *RuntimeCollection {
+	this := RuntimeCollection{}
 	return &this
 }
 
-// NewGetAllDeploymentsResponseWithDefaults instantiates a new GetAllDeploymentsResponse object
+// NewRuntimeCollectionWithDefaults instantiates a new RuntimeCollection object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetAllDeploymentsResponseWithDefaults() *GetAllDeploymentsResponse {
-	this := GetAllDeploymentsResponse{}
+func NewRuntimeCollectionWithDefaults() *RuntimeCollection {
+	this := RuntimeCollection{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *GetAllDeploymentsResponse) GetData() []Deployment {
+func (o *RuntimeCollection) GetData() []Runtime {
 	if o == nil || IsNil(o.Data) {
-		var ret []Deployment
+		var ret []Runtime
 		return ret
 	}
 	return o.Data
@@ -51,7 +51,7 @@ func (o *GetAllDeploymentsResponse) GetData() []Deployment {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetAllDeploymentsResponse) GetDataOk() ([]Deployment, bool) {
+func (o *RuntimeCollection) GetDataOk() ([]Runtime, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *GetAllDeploymentsResponse) GetDataOk() ([]Deployment, bool) {
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *GetAllDeploymentsResponse) HasData() bool {
+func (o *RuntimeCollection) HasData() bool {
 	if o != nil && !IsNil(o.Data) {
 		return true
 	}
@@ -67,13 +67,13 @@ func (o *GetAllDeploymentsResponse) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []Deployment and assigns it to the Data field.
-func (o *GetAllDeploymentsResponse) SetData(v []Deployment) {
+// SetData gets a reference to the given []Runtime and assigns it to the Data field.
+func (o *RuntimeCollection) SetData(v []Runtime) {
 	o.Data = v
 }
 
 // GetTotal returns the Total field value if set, zero value otherwise.
-func (o *GetAllDeploymentsResponse) GetTotal() int32 {
+func (o *RuntimeCollection) GetTotal() int32 {
 	if o == nil || IsNil(o.Total) {
 		var ret int32
 		return ret
@@ -83,7 +83,7 @@ func (o *GetAllDeploymentsResponse) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetAllDeploymentsResponse) GetTotalOk() (*int32, bool) {
+func (o *RuntimeCollection) GetTotalOk() (*int32, bool) {
 	if o == nil || IsNil(o.Total) {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *GetAllDeploymentsResponse) GetTotalOk() (*int32, bool) {
 }
 
 // HasTotal returns a boolean if a field has been set.
-func (o *GetAllDeploymentsResponse) HasTotal() bool {
+func (o *RuntimeCollection) HasTotal() bool {
 	if o != nil && !IsNil(o.Total) {
 		return true
 	}
@@ -100,11 +100,11 @@ func (o *GetAllDeploymentsResponse) HasTotal() bool {
 }
 
 // SetTotal gets a reference to the given int32 and assigns it to the Total field.
-func (o *GetAllDeploymentsResponse) SetTotal(v int32) {
+func (o *RuntimeCollection) SetTotal(v int32) {
 	o.Total = &v
 }
 
-func (o GetAllDeploymentsResponse) MarshalJSON() ([]byte, error) {
+func (o RuntimeCollection) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -112,7 +112,7 @@ func (o GetAllDeploymentsResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetAllDeploymentsResponse) ToMap() (map[string]interface{}, error) {
+func (o RuntimeCollection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
@@ -123,38 +123,38 @@ func (o GetAllDeploymentsResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableGetAllDeploymentsResponse struct {
-	value *GetAllDeploymentsResponse
+type NullableRuntimeCollection struct {
+	value *RuntimeCollection
 	isSet bool
 }
 
-func (v NullableGetAllDeploymentsResponse) Get() *GetAllDeploymentsResponse {
+func (v NullableRuntimeCollection) Get() *RuntimeCollection {
 	return v.value
 }
 
-func (v *NullableGetAllDeploymentsResponse) Set(val *GetAllDeploymentsResponse) {
+func (v *NullableRuntimeCollection) Set(val *RuntimeCollection) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetAllDeploymentsResponse) IsSet() bool {
+func (v NullableRuntimeCollection) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetAllDeploymentsResponse) Unset() {
+func (v *NullableRuntimeCollection) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetAllDeploymentsResponse(val *GetAllDeploymentsResponse) *NullableGetAllDeploymentsResponse {
-	return &NullableGetAllDeploymentsResponse{value: val, isSet: true}
+func NewNullableRuntimeCollection(val *RuntimeCollection) *NullableRuntimeCollection {
+	return &NullableRuntimeCollection{value: val, isSet: true}
 }
 
-func (v NullableGetAllDeploymentsResponse) MarshalJSON() ([]byte, error) {
+func (v NullableRuntimeCollection) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetAllDeploymentsResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableRuntimeCollection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
