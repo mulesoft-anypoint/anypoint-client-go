@@ -1,4 +1,4 @@
-# ApimPolicyCollection
+# ApimPolicyFullData
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewApimPolicyCollection
+### NewApimPolicyFullData
 
-`func NewApimPolicyCollection() *ApimPolicyCollection`
+`func NewApimPolicyFullData() *ApimPolicyFullData`
 
-NewApimPolicyCollection instantiates a new ApimPolicyCollection object
+NewApimPolicyFullData instantiates a new ApimPolicyFullData object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewApimPolicyCollectionWithDefaults
+### NewApimPolicyFullDataWithDefaults
 
-`func NewApimPolicyCollectionWithDefaults() *ApimPolicyCollection`
+`func NewApimPolicyFullDataWithDefaults() *ApimPolicyFullData`
 
-NewApimPolicyCollectionWithDefaults instantiates a new ApimPolicyCollection object
+NewApimPolicyFullDataWithDefaults instantiates a new ApimPolicyFullData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPolicies
 
-`func (o *ApimPolicyCollection) GetPolicies() []ApimPolicyFull`
+`func (o *ApimPolicyFullData) GetPolicies() []ApimPolicyFull`
 
 GetPolicies returns the Policies field if non-nil, zero value otherwise.
 
 ### GetPoliciesOk
 
-`func (o *ApimPolicyCollection) GetPoliciesOk() (*[]ApimPolicyFull, bool)`
+`func (o *ApimPolicyFullData) GetPoliciesOk() (*[]ApimPolicyFull, bool)`
 
 GetPoliciesOk returns a tuple with the Policies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicies
 
-`func (o *ApimPolicyCollection) SetPolicies(v []ApimPolicyFull)`
+`func (o *ApimPolicyFullData) SetPolicies(v []ApimPolicyFull)`
 
 SetPolicies sets Policies field to given value.
 
 ### HasPolicies
 
-`func (o *ApimPolicyCollection) HasPolicies() bool`
+`func (o *ApimPolicyFullData) HasPolicies() bool`
 
 HasPolicies returns a boolean if a field has been set.
 
 ### GetTiers
 
-`func (o *ApimPolicyCollection) GetTiers() ApimPolicyFullDataTiers`
+`func (o *ApimPolicyFullData) GetTiers() ApimPolicyFullDataTiers`
 
 GetTiers returns the Tiers field if non-nil, zero value otherwise.
 
 ### GetTiersOk
 
-`func (o *ApimPolicyCollection) GetTiersOk() (*ApimPolicyFullDataTiers, bool)`
+`func (o *ApimPolicyFullData) GetTiersOk() (*ApimPolicyFullDataTiers, bool)`
 
 GetTiersOk returns a tuple with the Tiers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTiers
 
-`func (o *ApimPolicyCollection) SetTiers(v ApimPolicyFullDataTiers)`
+`func (o *ApimPolicyFullData) SetTiers(v ApimPolicyFullDataTiers)`
 
 SetTiers sets Tiers field to given value.
 
 ### HasTiers
 
-`func (o *ApimPolicyCollection) HasTiers() bool`
+`func (o *ApimPolicyFullData) HasTiers() bool`
 
 HasTiers returns a boolean if a field has been set.
 

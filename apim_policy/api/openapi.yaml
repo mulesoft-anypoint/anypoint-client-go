@@ -1034,9 +1034,19 @@ components:
       oneOf:
       - items:
           $ref: '#/components/schemas/ApimPolicy'
-        title: ApimPolicyCollecion
+        title: ApimPolicyCollection
         type: array
-      - $ref: '#/components/schemas/ApimPolicyFullCollecion'
+      - $ref: '#/components/schemas/ApimPolicyFullData'
+    ApimPolicyFullData:
+      properties:
+        policies:
+          items:
+            $ref: '#/components/schemas/ApimPolicyFull'
+          type: array
+        tiers:
+          $ref: '#/components/schemas/ApimPolicyFullData_tiers'
+      title: ApimPolicyFullData
+      type: object
     ApimPolicy:
       example:
         configurationData: "{}"
@@ -1297,13 +1307,34 @@ components:
         version:
           type: string
       type: object
-    ApimPolicyFullCollecion:
+    ApimPolicyFullData_tiers_values_inner_limits_inner:
       properties:
-        policies:
+        maximumRequests:
+          type: integer
+        timePeriodInMilliseconds:
+          format: int64
+          type: integer
+        visible:
+          type: boolean
+      type: object
+    ApimPolicyFullData_tiers_values_inner:
+      properties:
+        id:
+          type: integer
+        limits:
           items:
-            $ref: '#/components/schemas/ApimPolicyFull'
+            $ref: '#/components/schemas/ApimPolicyFullData_tiers_values_inner_limits_inner'
           type: array
-      title: ApimPolicyFullCollecion
+      type: object
+    ApimPolicyFullData_tiers:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/ApimPolicyFullData_tiers_values_inner'
+          type: array
+        version:
+          format: int64
+          type: integer
       type: object
     ApimPolicyFull_template:
       properties:
