@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **MuleVersion4OrAbove** | Pointer to **NullableBool** |  | [optional] 
 **ApiVersionId** | Pointer to **int32** |  | [optional] 
 **Validation** | Pointer to **NullableString** |  | [optional] 
-**Console** | Pointer to **NullableString** |  | [optional] 
+**Console** | Pointer to [**NullableConsole**](Console.md) |  | [optional] 
 **TlsContexts** | Pointer to [**EndpointTlsContexts**](EndpointTlsContexts.md) |  | [optional] 
 
 ## Methods
@@ -600,20 +600,20 @@ HasValidation returns a boolean if a field has been set.
 UnsetValidation ensures that no value is present for Validation, not even an explicit nil
 ### GetConsole
 
-`func (o *Endpoint) GetConsole() string`
+`func (o *Endpoint) GetConsole() Console`
 
 GetConsole returns the Console field if non-nil, zero value otherwise.
 
 ### GetConsoleOk
 
-`func (o *Endpoint) GetConsoleOk() (*string, bool)`
+`func (o *Endpoint) GetConsoleOk() (*Console, bool)`
 
 GetConsoleOk returns a tuple with the Console field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConsole
 
-`func (o *Endpoint) SetConsole(v string)`
+`func (o *Endpoint) SetConsole(v Console)`
 
 SetConsole sets Console field to given value.
 

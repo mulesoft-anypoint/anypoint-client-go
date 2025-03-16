@@ -36,7 +36,7 @@ type Endpoint struct {
 	MuleVersion4OrAbove NullableBool `json:"muleVersion4OrAbove,omitempty"`
 	ApiVersionId *int32 `json:"apiVersionId,omitempty"`
 	Validation NullableString `json:"validation,omitempty"`
-	Console NullableString `json:"console,omitempty"`
+	Console NullableConsole `json:"console,omitempty"`
 	TlsContexts *EndpointTlsContexts `json:"tlsContexts,omitempty"`
 }
 
@@ -732,9 +732,9 @@ func (o *Endpoint) UnsetValidation() {
 }
 
 // GetConsole returns the Console field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Endpoint) GetConsole() string {
+func (o *Endpoint) GetConsole() Console {
 	if o == nil || IsNil(o.Console.Get()) {
-		var ret string
+		var ret Console
 		return ret
 	}
 	return *o.Console.Get()
@@ -743,7 +743,7 @@ func (o *Endpoint) GetConsole() string {
 // GetConsoleOk returns a tuple with the Console field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Endpoint) GetConsoleOk() (*string, bool) {
+func (o *Endpoint) GetConsoleOk() (*Console, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -759,8 +759,8 @@ func (o *Endpoint) HasConsole() bool {
 	return false
 }
 
-// SetConsole gets a reference to the given NullableString and assigns it to the Console field.
-func (o *Endpoint) SetConsole(v string) {
+// SetConsole gets a reference to the given NullableConsole and assigns it to the Console field.
+func (o *Endpoint) SetConsole(v Console) {
 	o.Console.Set(&v)
 }
 // SetConsoleNil sets the value for Console to be an explicit nil

@@ -896,7 +896,9 @@ components:
         organizationId: organizationId
         productVersion: productVersion
         endpoint:
-          console: console
+          console:
+            path: path
+            enabled: true
           referencesUserDomain: referencesUserDomain
           lastActiveDate: lastActiveDate
           apiVersionId: 5
@@ -1025,7 +1027,9 @@ components:
           label: label
         productVersion: productVersion
         endpoint:
-          console: console
+          console:
+            path: path
+            enabled: true
           referencesUserDomain: referencesUserDomain
           lastActiveDate: lastActiveDate
           apiVersionId: 5
@@ -1194,7 +1198,9 @@ components:
             host: host
           label: label
         endpoint:
-          console: console
+          console:
+            path: path
+            enabled: true
           referencesUserDomain: referencesUserDomain
           lastActiveDate: lastActiveDate
           apiVersionId: 5
@@ -1344,7 +1350,9 @@ components:
       type: object
     Endpoint:
       example:
-        console: console
+        console:
+          path: path
+          enabled: true
         referencesUserDomain: referencesUserDomain
         lastActiveDate: lastActiveDate
         apiVersionId: 5
@@ -1427,8 +1435,7 @@ components:
           nullable: true
           type: string
         console:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/Console'
         tlsContexts:
           $ref: '#/components/schemas/Endpoint_tlsContexts'
       title: Endpoint
@@ -1561,6 +1568,18 @@ components:
         apiId:
           type: integer
       title: Deployment
+      type: object
+    Console:
+      example:
+        path: path
+        enabled: true
+      nullable: true
+      properties:
+        enabled:
+          type: boolean
+        path:
+          type: string
+      title: Console
       type: object
     DeploymentPostBody:
       example:

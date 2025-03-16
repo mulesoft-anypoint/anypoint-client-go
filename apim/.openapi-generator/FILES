@@ -14,6 +14,7 @@ docs/ApimInstancePostBody.md
 docs/ApimInstancePostResponse.md
 docs/Audit.md
 docs/AuditCreated.md
+docs/Console.md
 docs/DefaultApi.md
 docs/Deployment.md
 docs/DeploymentPostBody.md
@@ -44,6 +45,7 @@ model_apim_instance_post_body.go
 model_apim_instance_post_response.go
 model_audit.go
 model_audit_created.go
+model_console.go
 model_deployment.go
 model_deployment_post_body.go
 model_endpoint.go
