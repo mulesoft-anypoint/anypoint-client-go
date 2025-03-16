@@ -1024,9 +1024,12 @@ components:
         lastUpdateTime:
           description: The timestamp (in milliseconds) when the artifact was last
             updated.
+          format: int64
+          nullable: true
           type: integer
         createTime:
           description: The creation timestamp (in milliseconds); may be null.
+          format: int64
           nullable: true
           type: integer
         name:
@@ -1109,6 +1112,7 @@ components:
         endOfSupportDate:
           description: The timestamp (in milliseconds) representing the end-of-support
             date.
+          format: int64
           type: integer
       type: object
     DeploymentInfo_muleVersion:
