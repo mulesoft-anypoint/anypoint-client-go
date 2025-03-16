@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
  - [ApimInstancePostResponse](docs/ApimInstancePostResponse.md)
  - [Audit](docs/Audit.md)
  - [AuditCreated](docs/AuditCreated.md)
+ - [Console](docs/Console.md)
  - [Deployment](docs/Deployment.md)
  - [DeploymentPostBody](docs/DeploymentPostBody.md)
  - [Endpoint](docs/Endpoint.md)
