@@ -5,6 +5,7 @@ All URIs are relative to *https://anypoint.mulesoft.com/apimanager*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteApimInstance**](DefaultApi.md#DeleteApimInstance) | **Delete** /api/v1/organizations/{orgId}/environments/{envId}/apis/{envApiId} | Delete a specific API Manager Instance
+[**GetApiAsset**](DefaultApi.md#GetApiAsset) | **Get** /xapi/v1/organizations/{orgId}/environments/{envId}/apis/{apiId}/apiAsset | Get API Asset
 [**GetApimInstanceDetails**](DefaultApi.md#GetApimInstanceDetails) | **Get** /api/v1/organizations/{orgId}/environments/{envId}/apis/{envApiId} | Retrieves a specific API Manager Instance
 [**GetEnvApimInstances**](DefaultApi.md#GetEnvApimInstances) | **Get** /api/v1/organizations/{orgId}/environments/{envId}/apis | Retrieves a collection of API Manager Instances
 [**PatchApimInstance**](DefaultApi.md#PatchApimInstance) | **Patch** /xapi/v1/organizations/{orgId}/environments/{envId}/apis/{envApiId} | Patches a specific API Manager Instance
@@ -71,6 +72,82 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetApiAsset
+
+> ApimAsset GetApiAsset(ctx, orgId, envId, apiId).Execute()
+
+Get API Asset
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/apim"
+)
+
+func main() {
+    orgId := "orgId_example" // string | The organization Id
+    envId := "envId_example" // string | The environment id
+    apiId := "apiId_example" // string | The API id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetApiAsset(context.Background(), orgId, envId, apiId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetApiAsset``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetApiAsset`: ApimAsset
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetApiAsset`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The organization Id | 
+**envId** | **string** | The environment id | 
+**apiId** | **string** | The API id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetApiAssetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**ApimAsset**](ApimAsset.md)
 
 ### Authorization
 

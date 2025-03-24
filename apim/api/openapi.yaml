@@ -394,6 +394,51 @@ paths:
                 $ref: '#/components/schemas/ApimInstancePatchResponse'
           description: API Instance Patch
       summary: Patches a specific API Manager Instance
+  /xapi/v1/organizations/{orgId}/environments/{envId}/apis/{apiId}/apiAsset:
+    get:
+      description: Get API Asset
+      operationId: GetApiAsset
+      parameters:
+      - description: The organization Id
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The environment id
+        explode: false
+        in: path
+        name: envId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The API id
+        explode: false
+        in: path
+        name: apiId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorsResponse'
+          description: Bad request response
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApimAsset'
+          description: API Asset
+      summary: Get API Asset
 components:
   responses:
     UnauthorizedError:
@@ -436,6 +481,12 @@ components:
       description: API Instance Patch
     SuccessDeleteApimInstance:
       description: API Instance Delete
+    SuccessGetApiAsset:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApimAsset'
+      description: API Asset
   schemas:
     errorsResponse:
       properties:
@@ -1347,6 +1398,38 @@ components:
           }
         }
       title: ApimInstancePatchBody
+      type: object
+    ApimAsset:
+      example:
+        organizationId: organizationId
+        audit:
+          created:
+            date: date
+          updated:
+            date: date
+        assetId: assetId
+        groupId: groupId
+        name: name
+        id: 0
+        exchangeAssetName: exchangeAssetName
+        masterOrganizationId: masterOrganizationId
+      properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
+        masterOrganizationId:
+          type: string
+        organizationId:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        exchangeAssetName:
+          type: string
+        groupId:
+          type: string
+        assetId:
+          type: string
       type: object
     Endpoint:
       example:
