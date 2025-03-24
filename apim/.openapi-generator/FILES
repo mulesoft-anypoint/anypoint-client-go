@@ -5,6 +5,7 @@ api/openapi.yaml
 api_default.go
 client.go
 configuration.go
+docs/ApimAsset.md
 docs/ApimInstanceCollection.md
 docs/ApimInstanceCollectionAssetsInner.md
 docs/ApimInstanceCollectionAssetsInnerApisInner.md
@@ -36,6 +37,7 @@ docs/Spec.md
 git_push.sh
 go.mod
 go.sum
+model_apim_asset.go
 model_apim_instance_collection.go
 model_apim_instance_collection_assets_inner.go
 model_apim_instance_collection_assets_inner_apis_inner.go

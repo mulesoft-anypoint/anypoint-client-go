@@ -78,6 +78,7 @@ All URIs are relative to *https://anypoint.mulesoft.com/apimanager*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**DeleteApimInstance**](docs/DefaultApi.md#deleteapiminstance) | **Delete** /api/v1/organizations/{orgId}/environments/{envId}/apis/{envApiId} | Delete a specific API Manager Instance
+*DefaultApi* | [**GetApiAsset**](docs/DefaultApi.md#getapiasset) | **Get** /xapi/v1/organizations/{orgId}/environments/{envId}/apis/{apiId}/apiAsset | Get API Asset
 *DefaultApi* | [**GetApimInstanceDetails**](docs/DefaultApi.md#getapiminstancedetails) | **Get** /api/v1/organizations/{orgId}/environments/{envId}/apis/{envApiId} | Retrieves a specific API Manager Instance
 *DefaultApi* | [**GetEnvApimInstances**](docs/DefaultApi.md#getenvapiminstances) | **Get** /api/v1/organizations/{orgId}/environments/{envId}/apis | Retrieves a collection of API Manager Instances
 *DefaultApi* | [**PatchApimInstance**](docs/DefaultApi.md#patchapiminstance) | **Patch** /xapi/v1/organizations/{orgId}/environments/{envId}/apis/{envApiId} | Patches a specific API Manager Instance
@@ -86,6 +87,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ApimAsset](docs/ApimAsset.md)
  - [ApimInstanceCollection](docs/ApimInstanceCollection.md)
  - [ApimInstanceCollectionAssetsInner](docs/ApimInstanceCollectionAssetsInner.md)
  - [ApimInstanceCollectionAssetsInnerApisInner](docs/ApimInstanceCollectionAssetsInnerApisInner.md)
