@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
  - [UsageBasedPricing](docs/UsageBasedPricing.md)
  - [UsageBasedPricingEntitlement](docs/UsageBasedPricingEntitlement.md)
  - [UsageBasedPricingLimitsEntitlement](docs/UsageBasedPricingLimitsEntitlement.md)
+ - [UsageBasedPricingLimitsEntitlementCpu](docs/UsageBasedPricingLimitsEntitlementCpu.md)
  - [User](docs/User.md)
  - [VCoresDesignEntitlement](docs/VCoresDesignEntitlement.md)
  - [VCoresProductionEntitlement](docs/VCoresProductionEntitlement.md)

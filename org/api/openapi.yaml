@@ -308,8 +308,12 @@ components:
           highAvailability:
             clustering: false
           usageBasedPricingLimits:
-            memory: 0
-            cpu: 7
+            memory:
+              extra: 0
+              base: 7
+            cpu:
+              extra: 0
+              base: 7
           apiManager:
             usageBasedPricing:
               api:
@@ -771,8 +775,12 @@ components:
         highAvailability:
           clustering: false
         usageBasedPricingLimits:
-          memory: 0
-          cpu: 7
+          memory:
+            extra: 0
+            base: 7
+          cpu:
+            extra: 0
+            base: 7
         apiManager:
           usageBasedPricing:
             api:
@@ -1461,19 +1469,17 @@ components:
       type: object
     UsageBasedPricingLimitsEntitlement:
       example:
-        memory: 0
-        cpu: 7
+        memory:
+          extra: 0
+          base: 7
+        cpu:
+          extra: 0
+          base: 7
       properties:
         cpu:
-          default: 0
-          description: CPU
-          title: cpu
-          type: integer
+          $ref: '#/components/schemas/UsageBasedPricingLimitsEntitlement_cpu'
         memory:
-          default: 0
-          description: Memory
-          title: memory
-          type: integer
+          $ref: '#/components/schemas/UsageBasedPricingLimitsEntitlement_cpu'
       type: object
     Usage:
       example:
@@ -1790,6 +1796,22 @@ components:
           title: throughput
           type: integer
       title: muleRuntimeIntegration
+      type: object
+    UsageBasedPricingLimitsEntitlement_cpu:
+      example:
+        extra: 0
+        base: 7
+      properties:
+        base:
+          default: 0
+          description: Base
+          title: base
+          type: integer
+        extra:
+          default: 0
+          description: Extra
+          title: extra
+          type: integer
       type: object
   securitySchemes:
     bearerAuth:

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cpu** | Pointer to **int32** | CPU | [optional] [default to 0]
-**Memory** | Pointer to **int32** | Memory | [optional] [default to 0]
+**Cpu** | Pointer to [**UsageBasedPricingLimitsEntitlementCpu**](UsageBasedPricingLimitsEntitlementCpu.md) |  | [optional] 
+**Memory** | Pointer to [**UsageBasedPricingLimitsEntitlementCpu**](UsageBasedPricingLimitsEntitlementCpu.md) |  | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCpu
 
-`func (o *UsageBasedPricingLimitsEntitlement) GetCpu() int32`
+`func (o *UsageBasedPricingLimitsEntitlement) GetCpu() UsageBasedPricingLimitsEntitlementCpu`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *UsageBasedPricingLimitsEntitlement) GetCpuOk() (*int32, bool)`
+`func (o *UsageBasedPricingLimitsEntitlement) GetCpuOk() (*UsageBasedPricingLimitsEntitlementCpu, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *UsageBasedPricingLimitsEntitlement) SetCpu(v int32)`
+`func (o *UsageBasedPricingLimitsEntitlement) SetCpu(v UsageBasedPricingLimitsEntitlementCpu)`
 
 SetCpu sets Cpu field to given value.
 
@@ -53,20 +53,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *UsageBasedPricingLimitsEntitlement) GetMemory() int32`
+`func (o *UsageBasedPricingLimitsEntitlement) GetMemory() UsageBasedPricingLimitsEntitlementCpu`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *UsageBasedPricingLimitsEntitlement) GetMemoryOk() (*int32, bool)`
+`func (o *UsageBasedPricingLimitsEntitlement) GetMemoryOk() (*UsageBasedPricingLimitsEntitlementCpu, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *UsageBasedPricingLimitsEntitlement) SetMemory(v int32)`
+`func (o *UsageBasedPricingLimitsEntitlement) SetMemory(v UsageBasedPricingLimitsEntitlementCpu)`
 
 SetMemory sets Memory field to given value.
 

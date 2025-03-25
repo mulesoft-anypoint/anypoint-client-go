@@ -46,6 +46,7 @@ docs/Usage.md
 docs/UsageBasedPricing.md
 docs/UsageBasedPricingEntitlement.md
 docs/UsageBasedPricingLimitsEntitlement.md
+docs/UsageBasedPricingLimitsEntitlementCpu.md
 docs/User.md
 docs/VCoresDesignEntitlement.md
 docs/VCoresProductionEntitlement.md
@@ -96,6 +97,7 @@ model_usage.go
 model_usage_based_pricing.go
 model_usage_based_pricing_entitlement.go
 model_usage_based_pricing_limits_entitlement.go
+model_usage_based_pricing_limits_entitlement_cpu.go
 model_user.go
 model_v_cores_design_entitlement.go
 model_v_cores_production_entitlement.go
