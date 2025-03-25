@@ -36,6 +36,8 @@ type BGCore struct {
 	IsAutomaticAdminPromotionExempt *bool `json:"isAutomaticAdminPromotionExempt,omitempty"`
 	// Whether the organization is federated.
 	IsFederated *bool `json:"isFederated,omitempty"`
+	// Whether the organization is a root organization.
+	IsRoot *bool `json:"isRoot,omitempty"`
 	// Whether the organization is a master organization.
 	IsMaster *bool `json:"isMaster,omitempty"`
 	// Whether multi-factor authentication is required for the organization.
@@ -77,6 +79,8 @@ func NewBGCore() *BGCore {
 	this.IsAutomaticAdminPromotionExempt = &isAutomaticAdminPromotionExempt
 	var isFederated bool = false
 	this.IsFederated = &isFederated
+	var isRoot bool = false
+	this.IsRoot = &isRoot
 	var isMaster bool = false
 	this.IsMaster = &isMaster
 	var mfaRequired string = ""
@@ -109,6 +113,8 @@ func NewBGCoreWithDefaults() *BGCore {
 	this.IsAutomaticAdminPromotionExempt = &isAutomaticAdminPromotionExempt
 	var isFederated bool = false
 	this.IsFederated = &isFederated
+	var isRoot bool = false
+	this.IsRoot = &isRoot
 	var isMaster bool = false
 	this.IsMaster = &isMaster
 	var mfaRequired string = ""
@@ -408,6 +414,38 @@ func (o *BGCore) HasIsFederated() bool {
 // SetIsFederated gets a reference to the given bool and assigns it to the IsFederated field.
 func (o *BGCore) SetIsFederated(v bool) {
 	o.IsFederated = &v
+}
+
+// GetIsRoot returns the IsRoot field value if set, zero value otherwise.
+func (o *BGCore) GetIsRoot() bool {
+	if o == nil || IsNil(o.IsRoot) {
+		var ret bool
+		return ret
+	}
+	return *o.IsRoot
+}
+
+// GetIsRootOk returns a tuple with the IsRoot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BGCore) GetIsRootOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsRoot) {
+		return nil, false
+	}
+	return o.IsRoot, true
+}
+
+// HasIsRoot returns a boolean if a field has been set.
+func (o *BGCore) HasIsRoot() bool {
+	if o != nil && !IsNil(o.IsRoot) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsRoot gets a reference to the given bool and assigns it to the IsRoot field.
+func (o *BGCore) SetIsRoot(v bool) {
+	o.IsRoot = &v
 }
 
 // GetIsMaster returns the IsMaster field value if set, zero value otherwise.
@@ -766,6 +804,9 @@ func (o BGCore) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsFederated) {
 		toSerialize["isFederated"] = o.IsFederated
+	}
+	if !IsNil(o.IsRoot) {
+		toSerialize["isRoot"] = o.IsRoot
 	}
 	if !IsNil(o.IsMaster) {
 		toSerialize["isMaster"] = o.IsMaster

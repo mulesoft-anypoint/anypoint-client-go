@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **IdproviderId** | Pointer to **string** | The id of the idprovider of the organization. | [optional] [default to ""]
 **IsAutomaticAdminPromotionExempt** | Pointer to **bool** | Whether the organization is exempt from automatic admin promotion. | [optional] [default to false]
 **IsFederated** | Pointer to **bool** | Whether the organization is federated. | [optional] [default to false]
+**IsRoot** | Pointer to **bool** | Whether the organization is a root organization. | [optional] [default to false]
 **IsMaster** | Pointer to **bool** | Whether the organization is a master organization. | [optional] [default to false]
 **MfaRequired** | Pointer to **string** | Whether multi-factor authentication is required for the organization. | [optional] [default to ""]
 **Name** | Pointer to **string** | The name of the organization. | [optional] [default to ""]
@@ -25,6 +26,9 @@ Name | Type | Description | Notes
 **Owner** | Pointer to [**User**](User.md) |  | [optional] 
 **SessionTimeout** | Pointer to **int32** | The session timeout in minutes. | [optional] [default to 0]
 **Subscription** | Pointer to [**Subscription**](Subscription.md) |  | [optional] 
+**GdotId** | Pointer to **string** | The gdot id of the organization | [optional] [default to ""]
+**DeletedAt** | Pointer to **NullableString** | The deleted date of the organization | [optional] 
+**OrgType** | Pointer to **string** | The type of the organization | [optional] [default to ""]
 
 ## Methods
 
@@ -269,6 +273,31 @@ SetIsFederated sets IsFederated field to given value.
 `func (o *MasterBGDetail) HasIsFederated() bool`
 
 HasIsFederated returns a boolean if a field has been set.
+
+### GetIsRoot
+
+`func (o *MasterBGDetail) GetIsRoot() bool`
+
+GetIsRoot returns the IsRoot field if non-nil, zero value otherwise.
+
+### GetIsRootOk
+
+`func (o *MasterBGDetail) GetIsRootOk() (*bool, bool)`
+
+GetIsRootOk returns a tuple with the IsRoot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsRoot
+
+`func (o *MasterBGDetail) SetIsRoot(v bool)`
+
+SetIsRoot sets IsRoot field to given value.
+
+### HasIsRoot
+
+`func (o *MasterBGDetail) HasIsRoot() bool`
+
+HasIsRoot returns a boolean if a field has been set.
 
 ### GetIsMaster
 
@@ -569,6 +598,91 @@ SetSubscription sets Subscription field to given value.
 `func (o *MasterBGDetail) HasSubscription() bool`
 
 HasSubscription returns a boolean if a field has been set.
+
+### GetGdotId
+
+`func (o *MasterBGDetail) GetGdotId() string`
+
+GetGdotId returns the GdotId field if non-nil, zero value otherwise.
+
+### GetGdotIdOk
+
+`func (o *MasterBGDetail) GetGdotIdOk() (*string, bool)`
+
+GetGdotIdOk returns a tuple with the GdotId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGdotId
+
+`func (o *MasterBGDetail) SetGdotId(v string)`
+
+SetGdotId sets GdotId field to given value.
+
+### HasGdotId
+
+`func (o *MasterBGDetail) HasGdotId() bool`
+
+HasGdotId returns a boolean if a field has been set.
+
+### GetDeletedAt
+
+`func (o *MasterBGDetail) GetDeletedAt() string`
+
+GetDeletedAt returns the DeletedAt field if non-nil, zero value otherwise.
+
+### GetDeletedAtOk
+
+`func (o *MasterBGDetail) GetDeletedAtOk() (*string, bool)`
+
+GetDeletedAtOk returns a tuple with the DeletedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeletedAt
+
+`func (o *MasterBGDetail) SetDeletedAt(v string)`
+
+SetDeletedAt sets DeletedAt field to given value.
+
+### HasDeletedAt
+
+`func (o *MasterBGDetail) HasDeletedAt() bool`
+
+HasDeletedAt returns a boolean if a field has been set.
+
+### SetDeletedAtNil
+
+`func (o *MasterBGDetail) SetDeletedAtNil(b bool)`
+
+ SetDeletedAtNil sets the value for DeletedAt to be an explicit nil
+
+### UnsetDeletedAt
+`func (o *MasterBGDetail) UnsetDeletedAt()`
+
+UnsetDeletedAt ensures that no value is present for DeletedAt, not even an explicit nil
+### GetOrgType
+
+`func (o *MasterBGDetail) GetOrgType() string`
+
+GetOrgType returns the OrgType field if non-nil, zero value otherwise.
+
+### GetOrgTypeOk
+
+`func (o *MasterBGDetail) GetOrgTypeOk() (*string, bool)`
+
+GetOrgTypeOk returns a tuple with the OrgType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrgType
+
+`func (o *MasterBGDetail) SetOrgType(v string)`
+
+SetOrgType sets OrgType field to given value.
+
+### HasOrgType
+
+`func (o *MasterBGDetail) HasOrgType() bool`
+
+HasOrgType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

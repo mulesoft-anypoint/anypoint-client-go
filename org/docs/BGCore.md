@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **IdproviderId** | Pointer to **string** | The id of the idprovider of the organization. | [optional] [default to ""]
 **IsAutomaticAdminPromotionExempt** | Pointer to **bool** | Whether the organization is exempt from automatic admin promotion. | [optional] [default to false]
 **IsFederated** | Pointer to **bool** | Whether the organization is federated. | [optional] [default to false]
+**IsRoot** | Pointer to **bool** | Whether the organization is a root organization. | [optional] [default to false]
 **IsMaster** | Pointer to **bool** | Whether the organization is a master organization. | [optional] [default to false]
 **MfaRequired** | Pointer to **string** | Whether multi-factor authentication is required for the organization. | [optional] [default to ""]
 **Name** | Pointer to **string** | The name of the organization. | [optional] [default to ""]
@@ -267,6 +268,31 @@ SetIsFederated sets IsFederated field to given value.
 `func (o *BGCore) HasIsFederated() bool`
 
 HasIsFederated returns a boolean if a field has been set.
+
+### GetIsRoot
+
+`func (o *BGCore) GetIsRoot() bool`
+
+GetIsRoot returns the IsRoot field if non-nil, zero value otherwise.
+
+### GetIsRootOk
+
+`func (o *BGCore) GetIsRootOk() (*bool, bool)`
+
+GetIsRootOk returns a tuple with the IsRoot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsRoot
+
+`func (o *BGCore) SetIsRoot(v bool)`
+
+SetIsRoot sets IsRoot field to given value.
+
+### HasIsRoot
+
+`func (o *BGCore) HasIsRoot() bool`
+
+HasIsRoot returns a boolean if a field has been set.
 
 ### GetIsMaster
 
