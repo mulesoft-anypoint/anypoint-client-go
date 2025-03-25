@@ -19,10 +19,8 @@ var _ MappedNullable = &UsageBasedPricingLimitsEntitlement{}
 
 // UsageBasedPricingLimitsEntitlement struct for UsageBasedPricingLimitsEntitlement
 type UsageBasedPricingLimitsEntitlement struct {
-	// CPU
-	Cpu *int32 `json:"cpu,omitempty"`
-	// Memory
-	Memory *int32 `json:"memory,omitempty"`
+	Cpu *UsageBasedPricingLimitsEntitlementCpu `json:"cpu,omitempty"`
+	Memory *UsageBasedPricingLimitsEntitlementCpu `json:"memory,omitempty"`
 }
 
 // NewUsageBasedPricingLimitsEntitlement instantiates a new UsageBasedPricingLimitsEntitlement object
@@ -31,10 +29,6 @@ type UsageBasedPricingLimitsEntitlement struct {
 // will change when the set of required properties is changed
 func NewUsageBasedPricingLimitsEntitlement() *UsageBasedPricingLimitsEntitlement {
 	this := UsageBasedPricingLimitsEntitlement{}
-	var cpu int32 = 0
-	this.Cpu = &cpu
-	var memory int32 = 0
-	this.Memory = &memory
 	return &this
 }
 
@@ -43,17 +37,13 @@ func NewUsageBasedPricingLimitsEntitlement() *UsageBasedPricingLimitsEntitlement
 // but it doesn't guarantee that properties required by API are set
 func NewUsageBasedPricingLimitsEntitlementWithDefaults() *UsageBasedPricingLimitsEntitlement {
 	this := UsageBasedPricingLimitsEntitlement{}
-	var cpu int32 = 0
-	this.Cpu = &cpu
-	var memory int32 = 0
-	this.Memory = &memory
 	return &this
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *UsageBasedPricingLimitsEntitlement) GetCpu() int32 {
+func (o *UsageBasedPricingLimitsEntitlement) GetCpu() UsageBasedPricingLimitsEntitlementCpu {
 	if o == nil || IsNil(o.Cpu) {
-		var ret int32
+		var ret UsageBasedPricingLimitsEntitlementCpu
 		return ret
 	}
 	return *o.Cpu
@@ -61,7 +51,7 @@ func (o *UsageBasedPricingLimitsEntitlement) GetCpu() int32 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UsageBasedPricingLimitsEntitlement) GetCpuOk() (*int32, bool) {
+func (o *UsageBasedPricingLimitsEntitlement) GetCpuOk() (*UsageBasedPricingLimitsEntitlementCpu, bool) {
 	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
@@ -77,15 +67,15 @@ func (o *UsageBasedPricingLimitsEntitlement) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
-func (o *UsageBasedPricingLimitsEntitlement) SetCpu(v int32) {
+// SetCpu gets a reference to the given UsageBasedPricingLimitsEntitlementCpu and assigns it to the Cpu field.
+func (o *UsageBasedPricingLimitsEntitlement) SetCpu(v UsageBasedPricingLimitsEntitlementCpu) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *UsageBasedPricingLimitsEntitlement) GetMemory() int32 {
+func (o *UsageBasedPricingLimitsEntitlement) GetMemory() UsageBasedPricingLimitsEntitlementCpu {
 	if o == nil || IsNil(o.Memory) {
-		var ret int32
+		var ret UsageBasedPricingLimitsEntitlementCpu
 		return ret
 	}
 	return *o.Memory
@@ -93,7 +83,7 @@ func (o *UsageBasedPricingLimitsEntitlement) GetMemory() int32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UsageBasedPricingLimitsEntitlement) GetMemoryOk() (*int32, bool) {
+func (o *UsageBasedPricingLimitsEntitlement) GetMemoryOk() (*UsageBasedPricingLimitsEntitlementCpu, bool) {
 	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
@@ -109,8 +99,8 @@ func (o *UsageBasedPricingLimitsEntitlement) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
-func (o *UsageBasedPricingLimitsEntitlement) SetMemory(v int32) {
+// SetMemory gets a reference to the given UsageBasedPricingLimitsEntitlementCpu and assigns it to the Memory field.
+func (o *UsageBasedPricingLimitsEntitlement) SetMemory(v UsageBasedPricingLimitsEntitlementCpu) {
 	o.Memory = &v
 }
 
