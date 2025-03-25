@@ -468,6 +468,7 @@ components:
         - subOrganizationIds
         - subOrganizationIds
         clientId: "[\"1ab4bb7db66448be902379d1fcfb1a43\"]"
+        isRoot: false
         environments:
         - organizationId: organizationId
           clientId: clientId
@@ -545,6 +546,11 @@ components:
           default: false
           description: Whether the organization is federated.
           title: isFederated
+          type: boolean
+        isRoot:
+          default: false
+          description: Whether the organization is a root organization.
+          title: isRoot
           type: boolean
         isMaster:
           default: false
@@ -1569,6 +1575,21 @@ components:
           type: integer
         subscription:
           $ref: '#/components/schemas/subscription'
+        gdotId:
+          default: ""
+          description: The gdot id of the organization
+          title: gdotId
+          type: string
+        deletedAt:
+          description: The deleted date of the organization
+          nullable: true
+          title: deletedAt
+          type: string
+        orgType:
+          default: ""
+          description: The type of the organization
+          title: orgType
+          type: string
       title: masterBGSpecificDetails
       type: object
       example: null

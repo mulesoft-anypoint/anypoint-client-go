@@ -36,6 +36,8 @@ type MasterBGDetail struct {
 	IsAutomaticAdminPromotionExempt *bool `json:"isAutomaticAdminPromotionExempt,omitempty"`
 	// Whether the organization is federated.
 	IsFederated *bool `json:"isFederated,omitempty"`
+	// Whether the organization is a root organization.
+	IsRoot *bool `json:"isRoot,omitempty"`
 	// Whether the organization is a master organization.
 	IsMaster *bool `json:"isMaster,omitempty"`
 	// Whether multi-factor authentication is required for the organization.
@@ -58,6 +60,12 @@ type MasterBGDetail struct {
 	// The session timeout in minutes.
 	SessionTimeout *int32 `json:"sessionTimeout,omitempty"`
 	Subscription *Subscription `json:"subscription,omitempty"`
+	// The gdot id of the organization
+	GdotId *string `json:"gdotId,omitempty"`
+	// The deleted date of the organization
+	DeletedAt NullableString `json:"deletedAt,omitempty"`
+	// The type of the organization
+	OrgType *string `json:"orgType,omitempty"`
 }
 
 // NewMasterBGDetail instantiates a new MasterBGDetail object
@@ -80,6 +88,8 @@ func NewMasterBGDetail() *MasterBGDetail {
 	this.IsAutomaticAdminPromotionExempt = &isAutomaticAdminPromotionExempt
 	var isFederated bool = false
 	this.IsFederated = &isFederated
+	var isRoot bool = false
+	this.IsRoot = &isRoot
 	var isMaster bool = false
 	this.IsMaster = &isMaster
 	var mfaRequired string = ""
@@ -92,6 +102,10 @@ func NewMasterBGDetail() *MasterBGDetail {
 	this.UpdatedAt = &updatedAt
 	var sessionTimeout int32 = 0
 	this.SessionTimeout = &sessionTimeout
+	var gdotId string = ""
+	this.GdotId = &gdotId
+	var orgType string = ""
+	this.OrgType = &orgType
 	return &this
 }
 
@@ -114,6 +128,8 @@ func NewMasterBGDetailWithDefaults() *MasterBGDetail {
 	this.IsAutomaticAdminPromotionExempt = &isAutomaticAdminPromotionExempt
 	var isFederated bool = false
 	this.IsFederated = &isFederated
+	var isRoot bool = false
+	this.IsRoot = &isRoot
 	var isMaster bool = false
 	this.IsMaster = &isMaster
 	var mfaRequired string = ""
@@ -126,6 +142,10 @@ func NewMasterBGDetailWithDefaults() *MasterBGDetail {
 	this.UpdatedAt = &updatedAt
 	var sessionTimeout int32 = 0
 	this.SessionTimeout = &sessionTimeout
+	var gdotId string = ""
+	this.GdotId = &gdotId
+	var orgType string = ""
+	this.OrgType = &orgType
 	return &this
 }
 
@@ -415,6 +435,38 @@ func (o *MasterBGDetail) HasIsFederated() bool {
 // SetIsFederated gets a reference to the given bool and assigns it to the IsFederated field.
 func (o *MasterBGDetail) SetIsFederated(v bool) {
 	o.IsFederated = &v
+}
+
+// GetIsRoot returns the IsRoot field value if set, zero value otherwise.
+func (o *MasterBGDetail) GetIsRoot() bool {
+	if o == nil || IsNil(o.IsRoot) {
+		var ret bool
+		return ret
+	}
+	return *o.IsRoot
+}
+
+// GetIsRootOk returns a tuple with the IsRoot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MasterBGDetail) GetIsRootOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsRoot) {
+		return nil, false
+	}
+	return o.IsRoot, true
+}
+
+// HasIsRoot returns a boolean if a field has been set.
+func (o *MasterBGDetail) HasIsRoot() bool {
+	if o != nil && !IsNil(o.IsRoot) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsRoot gets a reference to the given bool and assigns it to the IsRoot field.
+func (o *MasterBGDetail) SetIsRoot(v bool) {
+	o.IsRoot = &v
 }
 
 // GetIsMaster returns the IsMaster field value if set, zero value otherwise.
@@ -801,6 +853,112 @@ func (o *MasterBGDetail) SetSubscription(v Subscription) {
 	o.Subscription = &v
 }
 
+// GetGdotId returns the GdotId field value if set, zero value otherwise.
+func (o *MasterBGDetail) GetGdotId() string {
+	if o == nil || IsNil(o.GdotId) {
+		var ret string
+		return ret
+	}
+	return *o.GdotId
+}
+
+// GetGdotIdOk returns a tuple with the GdotId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MasterBGDetail) GetGdotIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GdotId) {
+		return nil, false
+	}
+	return o.GdotId, true
+}
+
+// HasGdotId returns a boolean if a field has been set.
+func (o *MasterBGDetail) HasGdotId() bool {
+	if o != nil && !IsNil(o.GdotId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGdotId gets a reference to the given string and assigns it to the GdotId field.
+func (o *MasterBGDetail) SetGdotId(v string) {
+	o.GdotId = &v
+}
+
+// GetDeletedAt returns the DeletedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MasterBGDetail) GetDeletedAt() string {
+	if o == nil || IsNil(o.DeletedAt.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DeletedAt.Get()
+}
+
+// GetDeletedAtOk returns a tuple with the DeletedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MasterBGDetail) GetDeletedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DeletedAt.Get(), o.DeletedAt.IsSet()
+}
+
+// HasDeletedAt returns a boolean if a field has been set.
+func (o *MasterBGDetail) HasDeletedAt() bool {
+	if o != nil && o.DeletedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDeletedAt gets a reference to the given NullableString and assigns it to the DeletedAt field.
+func (o *MasterBGDetail) SetDeletedAt(v string) {
+	o.DeletedAt.Set(&v)
+}
+// SetDeletedAtNil sets the value for DeletedAt to be an explicit nil
+func (o *MasterBGDetail) SetDeletedAtNil() {
+	o.DeletedAt.Set(nil)
+}
+
+// UnsetDeletedAt ensures that no value is present for DeletedAt, not even an explicit nil
+func (o *MasterBGDetail) UnsetDeletedAt() {
+	o.DeletedAt.Unset()
+}
+
+// GetOrgType returns the OrgType field value if set, zero value otherwise.
+func (o *MasterBGDetail) GetOrgType() string {
+	if o == nil || IsNil(o.OrgType) {
+		var ret string
+		return ret
+	}
+	return *o.OrgType
+}
+
+// GetOrgTypeOk returns a tuple with the OrgType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MasterBGDetail) GetOrgTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.OrgType) {
+		return nil, false
+	}
+	return o.OrgType, true
+}
+
+// HasOrgType returns a boolean if a field has been set.
+func (o *MasterBGDetail) HasOrgType() bool {
+	if o != nil && !IsNil(o.OrgType) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrgType gets a reference to the given string and assigns it to the OrgType field.
+func (o *MasterBGDetail) SetOrgType(v string) {
+	o.OrgType = &v
+}
+
 func (o MasterBGDetail) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -838,6 +996,9 @@ func (o MasterBGDetail) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsFederated) {
 		toSerialize["isFederated"] = o.IsFederated
 	}
+	if !IsNil(o.IsRoot) {
+		toSerialize["isRoot"] = o.IsRoot
+	}
 	if !IsNil(o.IsMaster) {
 		toSerialize["isMaster"] = o.IsMaster
 	}
@@ -873,6 +1034,15 @@ func (o MasterBGDetail) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Subscription) {
 		toSerialize["subscription"] = o.Subscription
+	}
+	if !IsNil(o.GdotId) {
+		toSerialize["gdotId"] = o.GdotId
+	}
+	if o.DeletedAt.IsSet() {
+		toSerialize["deletedAt"] = o.DeletedAt.Get()
+	}
+	if !IsNil(o.OrgType) {
+		toSerialize["orgType"] = o.OrgType
 	}
 	return toSerialize, nil
 }
