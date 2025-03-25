@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Description of the Organization API
   title: Organization API
-  version: 1.1.0
+  version: 1.1.1
 servers:
 - description: Anypoint Cloudhub
   url: https://anypoint.mulesoft.com/accounts/api/
@@ -63,7 +63,6 @@ paths:
           content:
             application/json:
               schema:
-                default: {}
                 type: object
           description: Success response
       summary: Delete a Business Group by its id.
@@ -169,7 +168,6 @@ components:
       content:
         application/json:
           schema:
-            default: {}
             type: object
       description: Success response
     SuccessUpdateBG:
@@ -521,7 +519,6 @@ components:
         entitlements:
           $ref: '#/components/schemas/Entitlements'
         environments:
-          default: []
           description: List of environments.
           items:
             $ref: '#/components/schemas/Environment'
@@ -573,7 +570,6 @@ components:
           title: ownerId
           type: string
         parentOrganizationIds:
-          default: []
           description: The ids of the parent organizations.
           items:
             title: parentOrganizationId
@@ -581,12 +577,10 @@ components:
           title: parentOrganizationIds
           type: array
         properties:
-          default: {}
           description: The properties of the organization.
           title: properties
           type: object
         subOrganizationIds:
-          default: []
           description: The ids of the sub organizations.
           items:
             default: ""
@@ -596,7 +590,6 @@ components:
           title: subOrganizationIds
           type: array
         tenantOrganizationIds:
-          default: []
           description: The ids of the tenant organizations.
           items:
             title: tenantOrganizationId
@@ -618,7 +611,6 @@ components:
       - $ref: '#/components/schemas/masterBGSpecificDetails'
       title: masterBGDetail
     Environment:
-      default: {}
       description: an instance of an environment.
       example:
         organizationId: organizationId
@@ -1295,7 +1287,6 @@ components:
       title: workerClouds
       type: object
     MessagingEntitlement:
-      default: {}
       description: Messaging entitlements
       example:
         assigned: 7
@@ -1308,7 +1299,6 @@ components:
       title: messaging
       type: object
     MonitoringCenterEntitlement:
-      default: {}
       description: Monitoring Center entitlements
       example:
         productSKU: 9
@@ -1321,7 +1311,6 @@ components:
       title: monitoringCenter
       type: object
     PartnersSandboxEntitlement:
-      default: {}
       description: Partners Sandbox entitlements
       example:
         assigned: 7
@@ -1334,7 +1323,6 @@ components:
       title: partnersSandbox
       type: object
     GatewaysEntitlement:
-      default: {}
       description: Gateway entitlements
       example:
         assigned: 5
@@ -1347,7 +1335,6 @@ components:
       title: gateways
       type: object
     PartnersProductionEntitlement:
-      default: {}
       description: Partners Production entitlements
       example:
         assigned: 4
@@ -1594,7 +1581,6 @@ components:
       type: object
       example: null
     angGovernance:
-      default: {}
       description: Ang Governance entitlements
       example:
         level: 0
@@ -1607,7 +1593,6 @@ components:
       title: angGovernance
       type: object
     apiMonitoring:
-      default: {}
       description: API Monitoring entitlements
       example:
         schedules: 6
@@ -1620,7 +1605,6 @@ components:
       title: apiMonitoring
       type: object
     apiQuery:
-      default: {}
       description: API Query entitlements
       example:
         productSKU: 1
@@ -1639,7 +1623,6 @@ components:
       title: apiQuery
       type: object
     crowd:
-      default: {}
       description: Crowd entitlements
       example:
         environments: false
@@ -1664,7 +1647,6 @@ components:
       title: crowd
       type: object
     designCenter:
-      default: {}
       description: Design Center entitlements
       example:
         api: false
