@@ -4,16 +4,83 @@ All URIs are relative to *https://anypoint.mulesoft.com/accounts/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OrganizationsOrgIdDelete**](DefaultApi.md#OrganizationsOrgIdDelete) | **Delete** /organizations/{orgId} | Delete a Business Group by its id.
-[**OrganizationsOrgIdGet**](DefaultApi.md#OrganizationsOrgIdGet) | **Get** /organizations/{orgId} | Returns the business Group instance with the given id.
-[**OrganizationsOrgIdPut**](DefaultApi.md#OrganizationsOrgIdPut) | **Put** /organizations/{orgId} | Put a Business Group by its id.
-[**OrganizationsPost**](DefaultApi.md#OrganizationsPost) | **Post** /organizations | Creates a new Business Group within an organization.
+[**CreateBG**](DefaultApi.md#CreateBG) | **Post** /organizations | Creates a new Business Group.
+[**DeleteBG**](DefaultApi.md#DeleteBG) | **Delete** /organizations/{orgId} | Delete a Business Group by its id.
+[**GetBG**](DefaultApi.md#GetBG) | **Get** /organizations/{orgId} | Returns the Business Group instance with the given id.
+[**GetBGUsage**](DefaultApi.md#GetBGUsage) | **Get** /cs/organizations/{orgId}/usage | Returns the usage for a given Business Group.
+[**UpdateBG**](DefaultApi.md#UpdateBG) | **Put** /organizations/{orgId} | Update a Business Group by its id.
 
 
 
-## OrganizationsOrgIdDelete
+## CreateBG
 
-> map[string]interface{} OrganizationsOrgIdDelete(ctx, orgId).Execute()
+> BGCore CreateBG(ctx).BGPostReqBody(bGPostReqBody).Execute()
+
+Creates a new Business Group.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/org"
+)
+
+func main() {
+    bGPostReqBody := *openapiclient.NewBGPostReqBody(*openapiclient.NewEntitlementsCore(), "Name_example", "OwnerId_example", "ParentOrganizationId_example") // BGPostReqBody | Business Group Request Body Object
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.CreateBG(context.Background()).BGPostReqBody(bGPostReqBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.CreateBG``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateBG`: BGCore
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.CreateBG`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateBGRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bGPostReqBody** | [**BGPostReqBody**](BGPostReqBody.md) | Business Group Request Body Object | 
+
+### Return type
+
+[**BGCore**](BGCore.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: text/html, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteBG
+
+> map[string]interface{} DeleteBG(ctx, orgId).Execute()
 
 Delete a Business Group by its id.
 
@@ -36,13 +103,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdDelete(context.Background(), orgId).Execute()
+    resp, r, err := apiClient.DefaultApi.DeleteBG(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.DeleteBG``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsOrgIdDelete`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdDelete`: %v\n", resp)
+    // response from `DeleteBG`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.DeleteBG`: %v\n", resp)
 }
 ```
 
@@ -56,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteBGRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,11 +148,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OrganizationsOrgIdGet
+## GetBG
 
-> MasterBGDetail OrganizationsOrgIdGet(ctx, orgId).Execute()
+> MasterBGDetail GetBG(ctx, orgId).Execute()
 
-Returns the business Group instance with the given id.
+Returns the Business Group instance with the given id.
 
 
 
@@ -106,13 +173,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdGet(context.Background(), orgId).Execute()
+    resp, r, err := apiClient.DefaultApi.GetBG(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetBG``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsOrgIdGet`: MasterBGDetail
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdGet`: %v\n", resp)
+    // response from `GetBG`: MasterBGDetail
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetBG`: %v\n", resp)
 }
 ```
 
@@ -126,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetBGRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -151,11 +218,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OrganizationsOrgIdPut
+## GetBGUsage
 
-> BGCore OrganizationsOrgIdPut(ctx, orgId).BGPutReqBody(bGPutReqBody).Execute()
+> Usage GetBGUsage(ctx, orgId).Execute()
 
-Put a Business Group by its id.
+Returns the usage for a given Business Group.
 
 
 
@@ -173,17 +240,16 @@ import (
 
 func main() {
     orgId := "orgId_example" // string | The organization Id
-    bGPutReqBody := *openapiclient.NewBGPutReqBody() // BGPutReqBody | Business Group Request Body Object
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdPut(context.Background(), orgId).BGPutReqBody(bGPutReqBody).Execute()
+    resp, r, err := apiClient.DefaultApi.GetBGUsage(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetBGUsage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsOrgIdPut`: BGCore
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdPut`: %v\n", resp)
+    // response from `GetBGUsage`: Usage
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetBGUsage`: %v\n", resp)
 }
 ```
 
@@ -197,17 +263,16 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetBGUsageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **bGPutReqBody** | [**BGPutReqBody**](BGPutReqBody.md) | Business Group Request Body Object | 
 
 ### Return type
 
-[**BGCore**](BGCore.md)
+[**Usage**](Usage.md)
 
 ### Authorization
 
@@ -215,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -223,11 +288,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OrganizationsPost
+## UpdateBG
 
-> BGCore OrganizationsPost(ctx).BGPostReqBody(bGPostReqBody).Execute()
+> BGCore UpdateBG(ctx, orgId).BGUpdateReqBody(bGUpdateReqBody).Execute()
 
-Creates a new Business Group within an organization.
+Update a Business Group by its id.
 
 
 
@@ -244,32 +309,38 @@ import (
 )
 
 func main() {
-    bGPostReqBody := *openapiclient.NewBGPostReqBody(*openapiclient.NewEntitlementsCore(false, false, false, *openapiclient.NewLoadBalancer(int32(123)), *openapiclient.NewStaticIps(int32(123)), *openapiclient.NewVCoresDesign(float32(123)), *openapiclient.NewVCoresProduction(float32(123)), *openapiclient.NewVCoresSandbox(float32(123)), *openapiclient.NewVpcs(int32(123)), *openapiclient.NewVpns(int32(123))), "Name_example", "OwnerId_example", "ParentOrganizationId_example") // BGPostReqBody | Business Group Request Body Object
+    orgId := "orgId_example" // string | The organization Id
+    bGUpdateReqBody := *openapiclient.NewBGUpdateReqBody() // BGUpdateReqBody | Business Group Request Body Object
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsPost(context.Background()).BGPostReqBody(bGPostReqBody).Execute()
+    resp, r, err := apiClient.DefaultApi.UpdateBG(context.Background(), orgId).BGUpdateReqBody(bGUpdateReqBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.UpdateBG``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsPost`: BGCore
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsPost`: %v\n", resp)
+    // response from `UpdateBG`: BGCore
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.UpdateBG`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The organization Id | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateBGRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bGPostReqBody** | [**BGPostReqBody**](BGPostReqBody.md) | Business Group Request Body Object | 
+
+ **bGUpdateReqBody** | [**BGUpdateReqBody**](BGUpdateReqBody.md) | Business Group Request Body Object | 
 
 ### Return type
 
@@ -282,7 +353,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: text/html, application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -51,5 +50,4 @@ model_tier.go
 model_tier_contract_response.go
 model_tier_contract_response_limits_inner.go
 response.go
-test/api_default_test.go
 utils.go

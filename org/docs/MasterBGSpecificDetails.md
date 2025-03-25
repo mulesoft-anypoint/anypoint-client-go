@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SessionTimeout** | Pointer to **int32** | An explanation about the purpose of this instance. | [optional] [default to 0]
+**SessionTimeout** | Pointer to **int32** | The session timeout in minutes. | [optional] [default to 0]
 **Subscription** | Pointer to [**Subscription**](Subscription.md) |  | [optional] 
 
 ## Methods
