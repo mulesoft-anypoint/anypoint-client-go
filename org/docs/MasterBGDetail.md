@@ -4,26 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClientId** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
-**CreatedAt** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
-**Domain** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
+**ClientId** | Pointer to **string** | The client id of the organization | [optional] [default to ""]
+**CreatedAt** | Pointer to **string** | The creation date of the organization | [optional] [default to ""]
+**Domain** | Pointer to **string** | The domain of the organization | [optional] [default to ""]
 **Entitlements** | Pointer to [**Entitlements**](Entitlements.md) |  | [optional] 
-**Environments** | Pointer to [**[]Environment**](Environment.md) | An explanation about the purpose of this instance. | [optional] [default to []]
-**Id** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
-**IdproviderId** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
-**IsAutomaticAdminPromotionExempt** | Pointer to **bool** | An explanation about the purpose of this instance. | [optional] [default to false]
-**IsFederated** | Pointer to **bool** | An explanation about the purpose of this instance. | [optional] [default to false]
-**IsMaster** | Pointer to **bool** | An explanation about the purpose of this instance. | [optional] [default to false]
-**MfaRequired** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
-**Name** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
-**OwnerId** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
-**ParentOrganizationIds** | Pointer to **[]string** | An explanation about the purpose of this instance. | [optional] [default to []]
-**Properties** | Pointer to **map[string]interface{}** | An explanation about the purpose of this instance. | [optional] [default to {}]
-**SubOrganizationIds** | Pointer to **[]string** | An explanation about the purpose of this instance. | [optional] [default to []]
-**TenantOrganizationIds** | Pointer to **[]string** | An explanation about the purpose of this instance. | [optional] [default to []]
-**UpdatedAt** | Pointer to **string** | An explanation about the purpose of this instance. | [optional] [default to ""]
-**Owner** | Pointer to [**Owner**](Owner.md) |  | [optional] 
-**SessionTimeout** | Pointer to **int32** | An explanation about the purpose of this instance. | [optional] [default to 0]
+**Environments** | Pointer to [**[]Environment**](Environment.md) | List of environments. | [optional] [default to []]
+**Id** | Pointer to **string** | The id of the organization | [optional] [default to ""]
+**IdproviderId** | Pointer to **string** | The id of the idprovider of the organization. | [optional] [default to ""]
+**IsAutomaticAdminPromotionExempt** | Pointer to **bool** | Whether the organization is exempt from automatic admin promotion. | [optional] [default to false]
+**IsFederated** | Pointer to **bool** | Whether the organization is federated. | [optional] [default to false]
+**IsMaster** | Pointer to **bool** | Whether the organization is a master organization. | [optional] [default to false]
+**MfaRequired** | Pointer to **string** | Whether multi-factor authentication is required for the organization. | [optional] [default to ""]
+**Name** | Pointer to **string** | The name of the organization. | [optional] [default to ""]
+**OwnerId** | Pointer to **string** | The id of the owner of the organization. | [optional] [default to ""]
+**ParentOrganizationIds** | Pointer to **[]string** | The ids of the parent organizations. | [optional] [default to []]
+**Properties** | Pointer to **map[string]interface{}** | The properties of the organization. | [optional] [default to {}]
+**SubOrganizationIds** | Pointer to **[]string** | The ids of the sub organizations. | [optional] [default to []]
+**TenantOrganizationIds** | Pointer to **[]string** | The ids of the tenant organizations. | [optional] [default to []]
+**UpdatedAt** | Pointer to **string** | The last update date of the organization. | [optional] [default to ""]
+**Owner** | Pointer to [**User**](User.md) |  | [optional] 
+**SessionTimeout** | Pointer to **int32** | The session timeout in minutes. | [optional] [default to 0]
 **Subscription** | Pointer to [**Subscription**](Subscription.md) |  | [optional] 
 
 ## Methods
@@ -497,20 +497,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *MasterBGDetail) GetOwner() Owner`
+`func (o *MasterBGDetail) GetOwner() User`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *MasterBGDetail) GetOwnerOk() (*Owner, bool)`
+`func (o *MasterBGDetail) GetOwnerOk() (*User, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *MasterBGDetail) SetOwner(v Owner)`
+`func (o *MasterBGDetail) SetOwner(v User)`
 
 SetOwner sets Owner field to given value.
 
