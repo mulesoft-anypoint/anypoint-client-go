@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **Exchange2** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **ExternalIdentity** | Pointer to **bool** | External Identity entitlements | [optional] [default to false]
 **Gateways** | Pointer to [**GatewaysEntitlement**](GatewaysEntitlement.md) |  | [optional] 
-**GlobalDeployment** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
+**GlobalDeployment** | Pointer to **bool** | Global Deployment entitlements | [optional] [default to false]
 **Hybrid** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **HybridAutoDiscoverProperties** | Pointer to **bool** | Hybrid auto-discover properties | [optional] [default to false]
 **HybridInsight** | Pointer to **bool** | Hybrid Insight entitlements | [optional] [default to false]
@@ -590,20 +590,20 @@ HasGateways returns a boolean if a field has been set.
 
 ### GetGlobalDeployment
 
-`func (o *Entitlements) GetGlobalDeployment() EnablementResourceEntitlement`
+`func (o *Entitlements) GetGlobalDeployment() bool`
 
 GetGlobalDeployment returns the GlobalDeployment field if non-nil, zero value otherwise.
 
 ### GetGlobalDeploymentOk
 
-`func (o *Entitlements) GetGlobalDeploymentOk() (*EnablementResourceEntitlement, bool)`
+`func (o *Entitlements) GetGlobalDeploymentOk() (*bool, bool)`
 
 GetGlobalDeploymentOk returns a tuple with the GlobalDeployment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGlobalDeployment
 
-`func (o *Entitlements) SetGlobalDeployment(v EnablementResourceEntitlement)`
+`func (o *Entitlements) SetGlobalDeployment(v bool)`
 
 SetGlobalDeployment sets GlobalDeployment field to given value.
 

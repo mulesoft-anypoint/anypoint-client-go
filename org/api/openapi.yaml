@@ -293,8 +293,7 @@ components:
         entitlements:
           workerLoggingOverride:
             enabled: false
-          globalDeployment:
-            enabled: false
+          globalDeployment: false
           crowd:
             environments: false
             hideApiManagerDesigner: false
@@ -757,8 +756,7 @@ components:
       example:
         workerLoggingOverride:
           enabled: false
-        globalDeployment:
-          enabled: false
+        globalDeployment: false
         crowd:
           environments: false
           hideApiManagerDesigner: false
@@ -968,7 +966,10 @@ components:
         gateways:
           $ref: '#/components/schemas/GatewaysEntitlement'
         globalDeployment:
-          $ref: '#/components/schemas/EnablementResourceEntitlement'
+          default: false
+          description: Global Deployment entitlements
+          title: globalDeployment
+          type: boolean
         hybrid:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         hybridAutoDiscoverProperties:

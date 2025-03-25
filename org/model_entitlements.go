@@ -45,7 +45,8 @@ type Entitlements struct {
 	// External Identity entitlements
 	ExternalIdentity *bool `json:"externalIdentity,omitempty"`
 	Gateways *GatewaysEntitlement `json:"gateways,omitempty"`
-	GlobalDeployment *EnablementResourceEntitlement `json:"globalDeployment,omitempty"`
+	// Global Deployment entitlements
+	GlobalDeployment *bool `json:"globalDeployment,omitempty"`
 	Hybrid *EnablementResourceEntitlement `json:"hybrid,omitempty"`
 	// Hybrid auto-discover properties
 	HybridAutoDiscoverProperties *bool `json:"hybridAutoDiscoverProperties,omitempty"`
@@ -113,6 +114,8 @@ func NewEntitlements() *Entitlements {
 	this.CreateSubOrgs = &createSubOrgs
 	var externalIdentity bool = false
 	this.ExternalIdentity = &externalIdentity
+	var globalDeployment bool = false
+	this.GlobalDeployment = &globalDeployment
 	var hybridAutoDiscoverProperties bool = false
 	this.HybridAutoDiscoverProperties = &hybridAutoDiscoverProperties
 	var hybridInsight bool = false
@@ -141,6 +144,8 @@ func NewEntitlementsWithDefaults() *Entitlements {
 	this.CreateSubOrgs = &createSubOrgs
 	var externalIdentity bool = false
 	this.ExternalIdentity = &externalIdentity
+	var globalDeployment bool = false
+	this.GlobalDeployment = &globalDeployment
 	var hybridAutoDiscoverProperties bool = false
 	this.HybridAutoDiscoverProperties = &hybridAutoDiscoverProperties
 	var hybridInsight bool = false
@@ -793,9 +798,9 @@ func (o *Entitlements) SetGateways(v GatewaysEntitlement) {
 }
 
 // GetGlobalDeployment returns the GlobalDeployment field value if set, zero value otherwise.
-func (o *Entitlements) GetGlobalDeployment() EnablementResourceEntitlement {
+func (o *Entitlements) GetGlobalDeployment() bool {
 	if o == nil || IsNil(o.GlobalDeployment) {
-		var ret EnablementResourceEntitlement
+		var ret bool
 		return ret
 	}
 	return *o.GlobalDeployment
@@ -803,7 +808,7 @@ func (o *Entitlements) GetGlobalDeployment() EnablementResourceEntitlement {
 
 // GetGlobalDeploymentOk returns a tuple with the GlobalDeployment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetGlobalDeploymentOk() (*EnablementResourceEntitlement, bool) {
+func (o *Entitlements) GetGlobalDeploymentOk() (*bool, bool) {
 	if o == nil || IsNil(o.GlobalDeployment) {
 		return nil, false
 	}
@@ -819,8 +824,8 @@ func (o *Entitlements) HasGlobalDeployment() bool {
 	return false
 }
 
-// SetGlobalDeployment gets a reference to the given EnablementResourceEntitlement and assigns it to the GlobalDeployment field.
-func (o *Entitlements) SetGlobalDeployment(v EnablementResourceEntitlement) {
+// SetGlobalDeployment gets a reference to the given bool and assigns it to the GlobalDeployment field.
+func (o *Entitlements) SetGlobalDeployment(v bool) {
 	o.GlobalDeployment = &v
 }
 
