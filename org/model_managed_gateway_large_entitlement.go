@@ -14,44 +14,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the StaticIpsEntitlement type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &StaticIpsEntitlement{}
+// checks if the ManagedGatewayLargeEntitlement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedGatewayLargeEntitlement{}
 
-// StaticIpsEntitlement Static IPs entitlements
-type StaticIpsEntitlement struct {
-	// Static IPs assigned
+// ManagedGatewayLargeEntitlement Managed Gateway Large entitlements
+type ManagedGatewayLargeEntitlement struct {
+	// Managed Gateway Large assigned
 	Assigned *int32 `json:"assigned,omitempty"`
-	// Static IPs reassigned
+	// Managed Gateway Large reassigned
 	Reassigned *int32 `json:"reassigned,omitempty"`
 }
 
-// NewStaticIpsEntitlement instantiates a new StaticIpsEntitlement object
+// NewManagedGatewayLargeEntitlement instantiates a new ManagedGatewayLargeEntitlement object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStaticIpsEntitlement() *StaticIpsEntitlement {
-	this := StaticIpsEntitlement{}
-	var assigned int32 = 0
-	this.Assigned = &assigned
-	var reassigned int32 = 0
-	this.Reassigned = &reassigned
+func NewManagedGatewayLargeEntitlement() *ManagedGatewayLargeEntitlement {
+	this := ManagedGatewayLargeEntitlement{}
 	return &this
 }
 
-// NewStaticIpsEntitlementWithDefaults instantiates a new StaticIpsEntitlement object
+// NewManagedGatewayLargeEntitlementWithDefaults instantiates a new ManagedGatewayLargeEntitlement object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStaticIpsEntitlementWithDefaults() *StaticIpsEntitlement {
-	this := StaticIpsEntitlement{}
-	var assigned int32 = 0
-	this.Assigned = &assigned
-	var reassigned int32 = 0
-	this.Reassigned = &reassigned
+func NewManagedGatewayLargeEntitlementWithDefaults() *ManagedGatewayLargeEntitlement {
+	this := ManagedGatewayLargeEntitlement{}
 	return &this
 }
 
 // GetAssigned returns the Assigned field value if set, zero value otherwise.
-func (o *StaticIpsEntitlement) GetAssigned() int32 {
+func (o *ManagedGatewayLargeEntitlement) GetAssigned() int32 {
 	if o == nil || IsNil(o.Assigned) {
 		var ret int32
 		return ret
@@ -61,7 +53,7 @@ func (o *StaticIpsEntitlement) GetAssigned() int32 {
 
 // GetAssignedOk returns a tuple with the Assigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StaticIpsEntitlement) GetAssignedOk() (*int32, bool) {
+func (o *ManagedGatewayLargeEntitlement) GetAssignedOk() (*int32, bool) {
 	if o == nil || IsNil(o.Assigned) {
 		return nil, false
 	}
@@ -69,7 +61,7 @@ func (o *StaticIpsEntitlement) GetAssignedOk() (*int32, bool) {
 }
 
 // HasAssigned returns a boolean if a field has been set.
-func (o *StaticIpsEntitlement) HasAssigned() bool {
+func (o *ManagedGatewayLargeEntitlement) HasAssigned() bool {
 	if o != nil && !IsNil(o.Assigned) {
 		return true
 	}
@@ -78,12 +70,12 @@ func (o *StaticIpsEntitlement) HasAssigned() bool {
 }
 
 // SetAssigned gets a reference to the given int32 and assigns it to the Assigned field.
-func (o *StaticIpsEntitlement) SetAssigned(v int32) {
+func (o *ManagedGatewayLargeEntitlement) SetAssigned(v int32) {
 	o.Assigned = &v
 }
 
 // GetReassigned returns the Reassigned field value if set, zero value otherwise.
-func (o *StaticIpsEntitlement) GetReassigned() int32 {
+func (o *ManagedGatewayLargeEntitlement) GetReassigned() int32 {
 	if o == nil || IsNil(o.Reassigned) {
 		var ret int32
 		return ret
@@ -93,7 +85,7 @@ func (o *StaticIpsEntitlement) GetReassigned() int32 {
 
 // GetReassignedOk returns a tuple with the Reassigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StaticIpsEntitlement) GetReassignedOk() (*int32, bool) {
+func (o *ManagedGatewayLargeEntitlement) GetReassignedOk() (*int32, bool) {
 	if o == nil || IsNil(o.Reassigned) {
 		return nil, false
 	}
@@ -101,7 +93,7 @@ func (o *StaticIpsEntitlement) GetReassignedOk() (*int32, bool) {
 }
 
 // HasReassigned returns a boolean if a field has been set.
-func (o *StaticIpsEntitlement) HasReassigned() bool {
+func (o *ManagedGatewayLargeEntitlement) HasReassigned() bool {
 	if o != nil && !IsNil(o.Reassigned) {
 		return true
 	}
@@ -110,11 +102,11 @@ func (o *StaticIpsEntitlement) HasReassigned() bool {
 }
 
 // SetReassigned gets a reference to the given int32 and assigns it to the Reassigned field.
-func (o *StaticIpsEntitlement) SetReassigned(v int32) {
+func (o *ManagedGatewayLargeEntitlement) SetReassigned(v int32) {
 	o.Reassigned = &v
 }
 
-func (o StaticIpsEntitlement) MarshalJSON() ([]byte, error) {
+func (o ManagedGatewayLargeEntitlement) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -122,7 +114,7 @@ func (o StaticIpsEntitlement) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o StaticIpsEntitlement) ToMap() (map[string]interface{}, error) {
+func (o ManagedGatewayLargeEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Assigned) {
 		toSerialize["assigned"] = o.Assigned
@@ -133,38 +125,38 @@ func (o StaticIpsEntitlement) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableStaticIpsEntitlement struct {
-	value *StaticIpsEntitlement
+type NullableManagedGatewayLargeEntitlement struct {
+	value *ManagedGatewayLargeEntitlement
 	isSet bool
 }
 
-func (v NullableStaticIpsEntitlement) Get() *StaticIpsEntitlement {
+func (v NullableManagedGatewayLargeEntitlement) Get() *ManagedGatewayLargeEntitlement {
 	return v.value
 }
 
-func (v *NullableStaticIpsEntitlement) Set(val *StaticIpsEntitlement) {
+func (v *NullableManagedGatewayLargeEntitlement) Set(val *ManagedGatewayLargeEntitlement) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableStaticIpsEntitlement) IsSet() bool {
+func (v NullableManagedGatewayLargeEntitlement) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableStaticIpsEntitlement) Unset() {
+func (v *NullableManagedGatewayLargeEntitlement) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableStaticIpsEntitlement(val *StaticIpsEntitlement) *NullableStaticIpsEntitlement {
-	return &NullableStaticIpsEntitlement{value: val, isSet: true}
+func NewNullableManagedGatewayLargeEntitlement(val *ManagedGatewayLargeEntitlement) *NullableManagedGatewayLargeEntitlement {
+	return &NullableManagedGatewayLargeEntitlement{value: val, isSet: true}
 }
 
-func (v NullableStaticIpsEntitlement) MarshalJSON() ([]byte, error) {
+func (v NullableManagedGatewayLargeEntitlement) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableStaticIpsEntitlement) UnmarshalJSON(src []byte) error {
+func (v *NullableManagedGatewayLargeEntitlement) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

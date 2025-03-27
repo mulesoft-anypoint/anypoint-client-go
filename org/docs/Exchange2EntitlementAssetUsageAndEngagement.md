@@ -1,52 +1,52 @@
-# EnablementResourceEntitlement
+# Exchange2EntitlementAssetUsageAndEngagement
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Whether entitlement resource is enabled | [optional] [default to false]
+**Enabled** | Pointer to **bool** | Asset usage and engagement enabled | [optional] 
 
 ## Methods
 
-### NewEnablementResourceEntitlement
+### NewExchange2EntitlementAssetUsageAndEngagement
 
-`func NewEnablementResourceEntitlement() *EnablementResourceEntitlement`
+`func NewExchange2EntitlementAssetUsageAndEngagement() *Exchange2EntitlementAssetUsageAndEngagement`
 
-NewEnablementResourceEntitlement instantiates a new EnablementResourceEntitlement object
+NewExchange2EntitlementAssetUsageAndEngagement instantiates a new Exchange2EntitlementAssetUsageAndEngagement object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewEnablementResourceEntitlementWithDefaults
+### NewExchange2EntitlementAssetUsageAndEngagementWithDefaults
 
-`func NewEnablementResourceEntitlementWithDefaults() *EnablementResourceEntitlement`
+`func NewExchange2EntitlementAssetUsageAndEngagementWithDefaults() *Exchange2EntitlementAssetUsageAndEngagement`
 
-NewEnablementResourceEntitlementWithDefaults instantiates a new EnablementResourceEntitlement object
+NewExchange2EntitlementAssetUsageAndEngagementWithDefaults instantiates a new Exchange2EntitlementAssetUsageAndEngagement object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetEnabled
 
-`func (o *EnablementResourceEntitlement) GetEnabled() bool`
+`func (o *Exchange2EntitlementAssetUsageAndEngagement) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *EnablementResourceEntitlement) GetEnabledOk() (*bool, bool)`
+`func (o *Exchange2EntitlementAssetUsageAndEngagement) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *EnablementResourceEntitlement) SetEnabled(v bool)`
+`func (o *Exchange2EntitlementAssetUsageAndEngagement) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
 ### HasEnabled
 
-`func (o *EnablementResourceEntitlement) HasEnabled() bool`
+`func (o *Exchange2EntitlementAssetUsageAndEngagement) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
 

@@ -188,27 +188,27 @@ components:
         entitlements:
           globalDeployment: false
           staticIps:
-            reassigned: 1
+            reassigned: 4
             assigned: 1
           createSubOrgs: false
           loadBalancer:
-            reassigned: 2
-            assigned: 5
+            reassigned: 7
+            assigned: 2
           vpns:
             reassigned: 6
-            assigned: 9
+            assigned: 2
           vCoresSandbox:
-            reassigned: 9.369310271410669
-            assigned: 9.965781217890562
+            reassigned: 3.5571952270680973
+            assigned: 6.438423552598547
           vCoresProduction:
-            reassigned: 5.025004791520295
-            assigned: 4.965218492984954
+            reassigned: 9.018348186070783
+            assigned: 8.762042012749001
           createEnvironments: false
           vCoresDesign:
-            reassigned: 1.1730742509559433
-            assigned: 7.457744773683766
+            reassigned: 6.683562403749608
+            assigned: 9.369310271410669
           vpcs:
-            reassigned: 8
+            reassigned: 1
             assigned: 6
         name: name
         ownerId: ownerId
@@ -243,27 +243,27 @@ components:
         entitlements:
           globalDeployment: false
           staticIps:
-            reassigned: 1
+            reassigned: 4
             assigned: 1
           createSubOrgs: false
           loadBalancer:
-            reassigned: 2
-            assigned: 5
+            reassigned: 7
+            assigned: 2
           vpns:
             reassigned: 6
-            assigned: 9
+            assigned: 2
           vCoresSandbox:
-            reassigned: 9.369310271410669
-            assigned: 9.965781217890562
+            reassigned: 3.5571952270680973
+            assigned: 6.438423552598547
           vCoresProduction:
-            reassigned: 5.025004791520295
-            assigned: 4.965218492984954
+            reassigned: 9.018348186070783
+            assigned: 8.762042012749001
           createEnvironments: false
           vCoresDesign:
-            reassigned: 1.1730742509559433
-            assigned: 7.457744773683766
+            reassigned: 6.683562403749608
+            assigned: 9.369310271410669
           vpcs:
-            reassigned: 8
+            reassigned: 1
             assigned: 6
         name: name
         sessionTimeout: 0
@@ -293,68 +293,81 @@ components:
         entitlements:
           workerLoggingOverride:
             enabled: false
-          globalDeployment: false
+          globalDeployment: true
+          managedGatewaySmall:
+            reassigned: 3
+            assigned: 7
+          networkConnections:
+            reassigned: 3
+            assigned: 5
           crowd:
             environments: false
             hideApiManagerDesigner: false
             hideFormerApiPlatform: false
           apiGovernance:
-            apisPerMonth: 1
-            enabled: false
+            apisPerMonth: 6
+            enabled: true
           telemetryExporter:
             enabled: false
           monitoringCenter:
-            productSKU: 9
+            preProductionUnits: 1.2315135367772556
+            productSKU: 3
+            storageAddOn: 4.145608029883936
+            storageBase: 2.027123023002322
+            productionUnits: 7.386281948385884
+            dataRegion: dataRegion
           highAvailability:
-            clustering: false
+            clustering: true
           usageBasedPricingLimits:
             memory:
-              extra: 0
-              base: 7
+              extra: 8
+              base: 4
             cpu:
-              extra: 0
-              base: 7
+              extra: 8
+              base: 4
           apiManager:
             usageBasedPricing:
               api:
                 production:
-                  amount: 2
+                  amount: 3
                 sandbox:
-                  amount: 6
+                  amount: 3
             governance:
               enabled: false
           objectStoreKeys:
-            addOn: 3
-            base: 2
+            addOn: 1
+            base: 1
           workerClouds:
-            reassigned: 6
-            assigned: 3
+            reassigned: 5
+            assigned: 6
           vCoresDesign:
-            reassigned: 1.1730742509559433
-            assigned: 7.457744773683766
+            reassigned: 6.683562403749608
+            assigned: 9.369310271410669
           vpcs:
-            reassigned: 8
+            reassigned: 1
             assigned: 6
           gateways:
             assigned: 5
-          appViz: false
+          appViz: true
           apiCommunityManager:
             enabled: false
-          hybridInsight: false
+          hybridInsight: true
           apiQuery:
-            productSKU: 1
+            productSKU: 6
+            production: 5
+            sandbox: 1
             enabled: false
           objectStoreRequestUnits:
-            addOn: 3
-            base: 2
+            addOn: 1
+            base: 1
           messaging:
-            assigned: 7
+            assigned: 9
           tradingPartnersProduction:
-            assigned: 1
+            assigned: 5
           muleDxEDA:
             enabled: false
           angGovernance:
-            level: 0
+            level: -1
           anypointSecurityTokenization:
             enabled: false
           hybrid:
@@ -364,7 +377,7 @@ components:
           apis:
             enabled: false
           staticIps:
-            reassigned: 1
+            reassigned: 4
             assigned: 1
           idp:
             enabled: false
@@ -374,79 +387,86 @@ components:
             enabled: false
           kpiDashboard:
             enabled: false
-          autoscaling: false
+          autoscaling: true
           partnersSandbox:
             assigned: 7
-          externalIdentity: false
+          externalIdentity: true
           usageBasedPricing:
             muleRuntimeIntegration:
-              flows: 6
-              messages: 3
-              throughput: 3
+              flows: 7
+              messages: 6
+              throughput: 0
               enabled: false
-          hybridAutoDiscoverProperties: false
+          hybridAutoDiscoverProperties: true
           vpns:
             reassigned: 6
-            assigned: 9
+            assigned: 2
           muleDxGenAI:
             enabled: false
-          runtimeFabric: false
+          runtimeFabric: true
           serviceMesh:
             enabled: false
           cam:
             enabled: false
           anypointSecurityEdgePolicies:
             enabled: false
-          pcf: false
-          armAlerts: false
-          createSubOrgs: false
+          pcf: true
+          armAlerts: true
+          createSubOrgs: true
           loadBalancer:
-            reassigned: 2
-            assigned: 5
+            reassigned: 7
+            assigned: 2
           mqMessages:
-            addOn: 3
-            base: 2
+            addOn: 1
+            base: 1
           vCoresSandbox:
-            reassigned: 9.369310271410669
-            assigned: 9.965781217890562
-          createEnvironments: false
+            reassigned: 3.5571952270680973
+            assigned: 6.438423552598547
+          createEnvironments: true
           rpa:
-            active: false
+            active: true
             composerVersion: composerVersion
-            enabled: false
+            enabled: true
           apiMonitoring:
-            schedules: 6
+            schedules: 0
           composer:
-            unlimitedConnectors: false
-            tasksPerMonth: 6
-            maxConnectors: 5
-            isHyperAutomation: false
-            enabled: false
+            unlimitedConnectors: true
+            tasksPerMonth: 7
+            maxConnectors: 0
+            isHyperAutomation: true
+            enabled: true
           tradingPartnersSandbox:
-            assigned: 6
+            assigned: 9
           apiCatalog:
             enabled: false
+          managedGatewayLarge:
+            reassigned: 7
+            assigned: 3
           mqRequests:
-            addOn: 3
-            base: 2
+            addOn: 1
+            base: 1
           apiQueryC360:
             enabled: false
           apiGovernanceDomain:
-            domain: ASSET
+            domain: domain
           partnersProduction:
-            assigned: 4
+            assigned: 6
           exchange2:
-            enabled: false
+            enabled: true
+            assetUsageAndEngagement:
+              enabled: true
           mqAdvancedFeatures:
             enabled: false
           vCoresProduction:
-            reassigned: 5.025004791520295
-            assigned: 4.965218492984954
+            reassigned: 9.018348186070783
+            assigned: 8.762042012749001
           crowdSelfServiceMigration:
             enabled: false
           designCenter:
-            api: false
-            mozart: false
+            apiVisual: true
+            api: true
+            apiExample: true
+            mozart: true
         isAutomaticAdminPromotionExempt: false
         owner:
           lastLogin: lastLogin
@@ -760,68 +780,81 @@ components:
       example:
         workerLoggingOverride:
           enabled: false
-        globalDeployment: false
+        globalDeployment: true
+        managedGatewaySmall:
+          reassigned: 3
+          assigned: 7
+        networkConnections:
+          reassigned: 3
+          assigned: 5
         crowd:
           environments: false
           hideApiManagerDesigner: false
           hideFormerApiPlatform: false
         apiGovernance:
-          apisPerMonth: 1
-          enabled: false
+          apisPerMonth: 6
+          enabled: true
         telemetryExporter:
           enabled: false
         monitoringCenter:
-          productSKU: 9
+          preProductionUnits: 1.2315135367772556
+          productSKU: 3
+          storageAddOn: 4.145608029883936
+          storageBase: 2.027123023002322
+          productionUnits: 7.386281948385884
+          dataRegion: dataRegion
         highAvailability:
-          clustering: false
+          clustering: true
         usageBasedPricingLimits:
           memory:
-            extra: 0
-            base: 7
+            extra: 8
+            base: 4
           cpu:
-            extra: 0
-            base: 7
+            extra: 8
+            base: 4
         apiManager:
           usageBasedPricing:
             api:
               production:
-                amount: 2
+                amount: 3
               sandbox:
-                amount: 6
+                amount: 3
           governance:
             enabled: false
         objectStoreKeys:
-          addOn: 3
-          base: 2
+          addOn: 1
+          base: 1
         workerClouds:
-          reassigned: 6
-          assigned: 3
+          reassigned: 5
+          assigned: 6
         vCoresDesign:
-          reassigned: 1.1730742509559433
-          assigned: 7.457744773683766
+          reassigned: 6.683562403749608
+          assigned: 9.369310271410669
         vpcs:
-          reassigned: 8
+          reassigned: 1
           assigned: 6
         gateways:
           assigned: 5
-        appViz: false
+        appViz: true
         apiCommunityManager:
           enabled: false
-        hybridInsight: false
+        hybridInsight: true
         apiQuery:
-          productSKU: 1
+          productSKU: 6
+          production: 5
+          sandbox: 1
           enabled: false
         objectStoreRequestUnits:
-          addOn: 3
-          base: 2
+          addOn: 1
+          base: 1
         messaging:
-          assigned: 7
+          assigned: 9
         tradingPartnersProduction:
-          assigned: 1
+          assigned: 5
         muleDxEDA:
           enabled: false
         angGovernance:
-          level: 0
+          level: -1
         anypointSecurityTokenization:
           enabled: false
         hybrid:
@@ -831,7 +864,7 @@ components:
         apis:
           enabled: false
         staticIps:
-          reassigned: 1
+          reassigned: 4
           assigned: 1
         idp:
           enabled: false
@@ -841,82 +874,89 @@ components:
           enabled: false
         kpiDashboard:
           enabled: false
-        autoscaling: false
+        autoscaling: true
         partnersSandbox:
           assigned: 7
-        externalIdentity: false
+        externalIdentity: true
         usageBasedPricing:
           muleRuntimeIntegration:
-            flows: 6
-            messages: 3
-            throughput: 3
+            flows: 7
+            messages: 6
+            throughput: 0
             enabled: false
-        hybridAutoDiscoverProperties: false
+        hybridAutoDiscoverProperties: true
         vpns:
           reassigned: 6
-          assigned: 9
+          assigned: 2
         muleDxGenAI:
           enabled: false
-        runtimeFabric: false
+        runtimeFabric: true
         serviceMesh:
           enabled: false
         cam:
           enabled: false
         anypointSecurityEdgePolicies:
           enabled: false
-        pcf: false
-        armAlerts: false
-        createSubOrgs: false
+        pcf: true
+        armAlerts: true
+        createSubOrgs: true
         loadBalancer:
-          reassigned: 2
-          assigned: 5
+          reassigned: 7
+          assigned: 2
         mqMessages:
-          addOn: 3
-          base: 2
+          addOn: 1
+          base: 1
         vCoresSandbox:
-          reassigned: 9.369310271410669
-          assigned: 9.965781217890562
-        createEnvironments: false
+          reassigned: 3.5571952270680973
+          assigned: 6.438423552598547
+        createEnvironments: true
         rpa:
-          active: false
+          active: true
           composerVersion: composerVersion
-          enabled: false
+          enabled: true
         apiMonitoring:
-          schedules: 6
+          schedules: 0
         composer:
-          unlimitedConnectors: false
-          tasksPerMonth: 6
-          maxConnectors: 5
-          isHyperAutomation: false
-          enabled: false
+          unlimitedConnectors: true
+          tasksPerMonth: 7
+          maxConnectors: 0
+          isHyperAutomation: true
+          enabled: true
         tradingPartnersSandbox:
-          assigned: 6
+          assigned: 9
         apiCatalog:
           enabled: false
+        managedGatewayLarge:
+          reassigned: 7
+          assigned: 3
         mqRequests:
-          addOn: 3
-          base: 2
+          addOn: 1
+          base: 1
         apiQueryC360:
           enabled: false
         apiGovernanceDomain:
-          domain: ASSET
+          domain: domain
         partnersProduction:
-          assigned: 4
+          assigned: 6
         exchange2:
-          enabled: false
+          enabled: true
+          assetUsageAndEngagement:
+            enabled: true
         mqAdvancedFeatures:
           enabled: false
         vCoresProduction:
-          reassigned: 5.025004791520295
-          assigned: 4.965218492984954
+          reassigned: 9.018348186070783
+          assigned: 8.762042012749001
         crowdSelfServiceMigration:
           enabled: false
         designCenter:
-          api: false
-          mozart: false
+          apiVisual: true
+          api: true
+          apiExample: true
+          mozart: true
       properties:
         angGovernance:
-          $ref: '#/components/schemas/angGovernance'
+          $ref: '#/components/schemas/AngGovernanceEntitlement'
         anypointSecurityEdgePolicies:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         anypointSecurityTokenization:
@@ -924,69 +964,60 @@ components:
         apiCommunityManager:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         apiMonitoring:
-          $ref: '#/components/schemas/apiMonitoring'
+          $ref: '#/components/schemas/ApiMonitoringEntitlement'
         apiQuery:
-          $ref: '#/components/schemas/apiQuery'
+          $ref: '#/components/schemas/ApiQueryEntitlement'
         apiQueryC360:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         apis:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         appViz:
-          default: false
           description: AppViz entitlements
           title: appViz
           type: boolean
         armAlerts:
-          default: false
           description: ARM Alerts entitlements
           title: armAlerts
           type: boolean
         autoscaling:
-          default: false
           description: Autoscaling entitlements
           title: autoscaling
           type: boolean
         cam:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         createEnvironments:
-          default: false
           description: Create Environments entitlements
           title: createEnvironments
           type: boolean
         createSubOrgs:
-          default: false
           description: Create Sub Orgs entitlements
           title: createSubOrgs
           type: boolean
         crowd:
-          $ref: '#/components/schemas/crowd'
+          $ref: '#/components/schemas/CrowdEntitlement'
         crowdSelfServiceMigration:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         designCenter:
-          $ref: '#/components/schemas/designCenter'
+          $ref: '#/components/schemas/DesignCenterEntitlement'
         exchange2:
-          $ref: '#/components/schemas/EnablementResourceEntitlement'
+          $ref: '#/components/schemas/Exchange2Entitlement'
         externalIdentity:
-          default: false
           description: External Identity entitlements
           title: externalIdentity
           type: boolean
         gateways:
           $ref: '#/components/schemas/GatewaysEntitlement'
         globalDeployment:
-          default: false
           description: Global Deployment entitlements
           title: globalDeployment
           type: boolean
         hybrid:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         hybridAutoDiscoverProperties:
-          default: false
           description: Hybrid auto-discover properties
           title: hybridAutoDiscoverProperties
           type: boolean
         hybridInsight:
-          default: false
           description: Hybrid Insight entitlements
           title: hybridInsight
           type: boolean
@@ -1013,12 +1044,10 @@ components:
         partnersSandbox:
           $ref: '#/components/schemas/PartnersSandboxEntitlement'
         pcf:
-          default: false
           description: PCF entitlements
           title: pcf
           type: boolean
         runtimeFabric:
-          default: false
           description: Runtime Fabric entitlements
           title: runtimeFabric
           type: boolean
@@ -1053,13 +1082,13 @@ components:
         muleDxEDA:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         highAvailability:
-          $ref: '#/components/schemas/highAvailability'
+          $ref: '#/components/schemas/HighAvailabilityEntitlement'
         cloudhub1:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         apiGovernance:
-          $ref: '#/components/schemas/apiGovernance'
+          $ref: '#/components/schemas/ApiGovernanceEntitlement'
         apiGovernanceDomain:
-          $ref: '#/components/schemas/apiGovernanceDomain'
+          $ref: '#/components/schemas/ApiGovernanceDomainEntitlement'
         apiCatalog:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
         apiManager:
@@ -1076,6 +1105,12 @@ components:
           $ref: '#/components/schemas/UsageBasedPricingLimitsEntitlement'
         telemetryExporter:
           $ref: '#/components/schemas/EnablementResourceEntitlement'
+        managedGatewaySmall:
+          $ref: '#/components/schemas/ManagedGatewaySmallEntitlement'
+        managedGatewayLarge:
+          $ref: '#/components/schemas/ManagedGatewayLargeEntitlement'
+        networkConnections:
+          $ref: '#/components/schemas/NetworkConnectionsEntitlement'
       title: entitlements
       type: object
     EntitlementsCore:
@@ -1083,27 +1118,27 @@ components:
       example:
         globalDeployment: false
         staticIps:
-          reassigned: 1
+          reassigned: 4
           assigned: 1
         createSubOrgs: false
         loadBalancer:
-          reassigned: 2
-          assigned: 5
+          reassigned: 7
+          assigned: 2
         vpns:
           reassigned: 6
-          assigned: 9
+          assigned: 2
         vCoresSandbox:
-          reassigned: 9.369310271410669
-          assigned: 9.965781217890562
+          reassigned: 3.5571952270680973
+          assigned: 6.438423552598547
         vCoresProduction:
-          reassigned: 5.025004791520295
-          assigned: 4.965218492984954
+          reassigned: 9.018348186070783
+          assigned: 8.762042012749001
         createEnvironments: false
         vCoresDesign:
-          reassigned: 1.1730742509559433
-          assigned: 7.457744773683766
+          reassigned: 6.683562403749608
+          assigned: 9.369310271410669
         vpcs:
-          reassigned: 8
+          reassigned: 1
           assigned: 6
       properties:
         globalDeployment:
@@ -1137,9 +1172,28 @@ components:
           $ref: '#/components/schemas/VpnsEntitlement'
       title: entitlementsCore
       type: object
+    AngGovernanceEntitlement:
+      example:
+        level: -1
+      properties:
+        level:
+          description: Ang Governance level
+          example: -1
+          title: level
+          type: integer
+      type: object
+    ApiMonitoringEntitlement:
+      example:
+        schedules: 0
+      properties:
+        schedules:
+          description: Schedules
+          title: schedules
+          type: integer
+      type: object
     TradingPartnersProductionEntitlement:
       example:
-        assigned: 1
+        assigned: 5
       properties:
         assigned:
           default: 0
@@ -1150,7 +1204,7 @@ components:
       type: object
     TradingPartnersSandboxEntitlement:
       example:
-        assigned: 6
+        assigned: 9
       properties:
         assigned:
           default: 0
@@ -1161,8 +1215,8 @@ components:
       type: object
     LoadBalancerEntitlement:
       example:
-        reassigned: 2
-        assigned: 5
+        reassigned: 7
+        assigned: 2
       properties:
         assigned:
           default: 0
@@ -1177,8 +1231,9 @@ components:
       title: loadBalancer
       type: object
     StaticIpsEntitlement:
+      description: Static IPs entitlements
       example:
-        reassigned: 1
+        reassigned: 4
         assigned: 1
       properties:
         assigned:
@@ -1191,12 +1246,11 @@ components:
           description: Static IPs reassigned
           title: reassigned
           type: integer
-      title: staticIps
       type: object
     VpnsEntitlement:
       example:
         reassigned: 6
-        assigned: 9
+        assigned: 2
       properties:
         assigned:
           default: 0
@@ -1212,7 +1266,7 @@ components:
       type: object
     VpcsEntitlement:
       example:
-        reassigned: 8
+        reassigned: 1
         assigned: 6
       properties:
         assigned:
@@ -1229,8 +1283,8 @@ components:
       type: object
     vCoresProductionEntitlement:
       example:
-        reassigned: 5.025004791520295
-        assigned: 4.965218492984954
+        reassigned: 9.018348186070783
+        assigned: 8.762042012749001
       properties:
         assigned:
           default: 0
@@ -1246,8 +1300,8 @@ components:
       type: object
     vCoresDesignEntitlement:
       example:
-        reassigned: 1.1730742509559433
-        assigned: 7.457744773683766
+        reassigned: 6.683562403749608
+        assigned: 9.369310271410669
       properties:
         assigned:
           default: 0
@@ -1263,8 +1317,8 @@ components:
       type: object
     vCoresSandboxEntitlement:
       example:
-        reassigned: 9.369310271410669
-        assigned: 9.965781217890562
+        reassigned: 3.5571952270680973
+        assigned: 6.438423552598547
       properties:
         assigned:
           default: 0
@@ -1280,8 +1334,8 @@ components:
       type: object
     WorkerCloudsEntitlement:
       example:
-        reassigned: 6
-        assigned: 3
+        reassigned: 5
+        assigned: 6
       properties:
         assigned:
           default: 0
@@ -1298,7 +1352,7 @@ components:
     MessagingEntitlement:
       description: Messaging entitlements
       example:
-        assigned: 7
+        assigned: 9
       properties:
         assigned:
           default: 0
@@ -1310,13 +1364,37 @@ components:
     MonitoringCenterEntitlement:
       description: Monitoring Center entitlements
       example:
-        productSKU: 9
+        preProductionUnits: 1.2315135367772556
+        productSKU: 3
+        storageAddOn: 4.145608029883936
+        storageBase: 2.027123023002322
+        productionUnits: 7.386281948385884
+        dataRegion: dataRegion
       properties:
         productSKU:
-          default: 0
           description: Product SKU
           title: productSKU
           type: integer
+        dataRegion:
+          description: Data region
+          title: dataRegion
+          type: string
+        storageBase:
+          description: Storage base
+          title: storageBase
+          type: number
+        storageAddOn:
+          description: Storage add-on
+          title: storageAddOn
+          type: number
+        productionUnits:
+          description: Production units
+          title: productionUnits
+          type: number
+        preProductionUnits:
+          description: Pre-production units
+          title: preProductionUnits
+          type: number
       title: monitoringCenter
       type: object
     PartnersSandboxEntitlement:
@@ -1325,7 +1403,6 @@ components:
         assigned: 7
       properties:
         assigned:
-          default: 0
           description: Partners Sandbox assigned
           title: assigned
           type: integer
@@ -1346,7 +1423,7 @@ components:
     PartnersProductionEntitlement:
       description: Partners Production entitlements
       example:
-        assigned: 4
+        assigned: 6
       properties:
         assigned:
           default: 0
@@ -1364,14 +1441,12 @@ components:
           description: Whether entitlement resource is enabled
           title: enabled
           type: boolean
-      required:
-      - enabled
       title: enablementResource
       type: object
     AddOnEntitlement:
       example:
-        addOn: 3
-        base: 2
+        addOn: 1
+        base: 1
       properties:
         addOn:
           default: 0
@@ -1389,9 +1464,9 @@ components:
         usageBasedPricing:
           api:
             production:
-              amount: 2
+              amount: 3
             sandbox:
-              amount: 6
+              amount: 3
         governance:
           enabled: false
       properties:
@@ -1402,56 +1477,48 @@ components:
       type: object
     ComposerEntitlement:
       example:
-        unlimitedConnectors: false
-        tasksPerMonth: 6
-        maxConnectors: 5
-        isHyperAutomation: false
-        enabled: false
+        unlimitedConnectors: true
+        tasksPerMonth: 7
+        maxConnectors: 0
+        isHyperAutomation: true
+        enabled: true
       properties:
         enabled:
-          default: false
           description: Composer enabled
           title: enabled
           type: boolean
         tasksPerMonth:
-          default: 0
           description: Tasks per month
           title: tasksPerMonth
           type: integer
         maxConnectors:
-          default: 0
           description: Max connectors
           title: maxConnectors
           type: integer
         unlimitedConnectors:
-          default: false
           description: Unlimited connectors
           title: unlimitedConnectors
           type: boolean
         isHyperAutomation:
-          default: false
           description: Hyper Automation
           title: hyperAutomation
           type: boolean
       type: object
     RpaEntitlement:
       example:
-        active: false
+        active: true
         composerVersion: composerVersion
-        enabled: false
+        enabled: true
       properties:
         enabled:
-          default: false
           description: RPA enabled
           title: enabled
           type: boolean
         active:
-          default: false
           description: RPA active
           title: active
           type: boolean
         composerVersion:
-          default: ""
           description: Composer version
           title: composerVersion
           type: string
@@ -1459,9 +1526,9 @@ components:
     UsageBasedPricingEntitlement:
       example:
         muleRuntimeIntegration:
-          flows: 6
-          messages: 3
-          throughput: 3
+          flows: 7
+          messages: 6
+          throughput: 0
           enabled: false
       properties:
         muleRuntimeIntegration:
@@ -1470,16 +1537,182 @@ components:
     UsageBasedPricingLimitsEntitlement:
       example:
         memory:
-          extra: 0
-          base: 7
+          extra: 8
+          base: 4
         cpu:
-          extra: 0
-          base: 7
+          extra: 8
+          base: 4
       properties:
         cpu:
           $ref: '#/components/schemas/UsageBasedPricingLimitsEntitlement_cpu'
         memory:
           $ref: '#/components/schemas/UsageBasedPricingLimitsEntitlement_cpu'
+      type: object
+    ApiQueryEntitlement:
+      description: API Query entitlements
+      example:
+        productSKU: 6
+        production: 5
+        sandbox: 1
+        enabled: false
+      properties:
+        enabled:
+          default: false
+          description: API Query enabled
+          title: enabled
+          type: boolean
+        productSKU:
+          default: 0
+          description: Product SKU
+          title: productSKU
+          type: integer
+        sandbox:
+          description: Product SKU
+          title: productSKU
+          type: integer
+        production:
+          description: Product SKU
+          title: productSKU
+          type: integer
+      type: object
+    CrowdEntitlement:
+      description: Crowd entitlements
+      example:
+        environments: false
+        hideApiManagerDesigner: false
+        hideFormerApiPlatform: false
+      properties:
+        environments:
+          default: false
+          description: Crowd environments
+          title: environments
+          type: boolean
+        hideApiManagerDesigner:
+          default: false
+          description: Crowd Hide API Manager Designer
+          title: hideApiManagerDesigner
+          type: boolean
+        hideFormerApiPlatform:
+          default: false
+          description: Crowd Hide Former API Platform
+          title: hideFormerApiPlatform
+          type: boolean
+      type: object
+    Exchange2Entitlement:
+      description: Exchange 2 entitlements
+      example:
+        enabled: true
+        assetUsageAndEngagement:
+          enabled: true
+      properties:
+        enabled:
+          description: Exchange 2 enabled
+          title: enabled
+          type: boolean
+        assetUsageAndEngagement:
+          $ref: '#/components/schemas/Exchange2Entitlement_assetUsageAndEngagement'
+      type: object
+    DesignCenterEntitlement:
+      description: Design Center entitlements
+      example:
+        apiVisual: true
+        api: true
+        apiExample: true
+        mozart: true
+      properties:
+        api:
+          description: API entitlements
+          title: api
+          type: boolean
+        mozart:
+          description: Mozart entitlements
+          title: mozart
+          type: boolean
+        apiVisual:
+          description: API Visual entitlements
+          title: apiVisual
+          type: boolean
+        apiExample:
+          description: API Example entitlements
+          title: apiExample
+          type: boolean
+      type: object
+    ManagedGatewaySmallEntitlement:
+      description: Managed Gateway Small entitlements
+      example:
+        reassigned: 3
+        assigned: 7
+      properties:
+        assigned:
+          description: Managed Gateway Small assigned
+          title: assigned
+          type: integer
+        reassigned:
+          description: Managed Gateway Small reassigned
+          title: reassigned
+          type: integer
+      type: object
+    ManagedGatewayLargeEntitlement:
+      description: Managed Gateway Large entitlements
+      example:
+        reassigned: 7
+        assigned: 3
+      properties:
+        assigned:
+          description: Managed Gateway Large assigned
+          title: assigned
+          type: integer
+        reassigned:
+          description: Managed Gateway Large reassigned
+          title: reassigned
+          type: integer
+      type: object
+    NetworkConnectionsEntitlement:
+      description: Network connections entitlements
+      example:
+        reassigned: 3
+        assigned: 5
+      properties:
+        assigned:
+          description: Network connections assigned
+          title: assigned
+          type: integer
+        reassigned:
+          description: Network connections reassigned
+          title: reassigned
+          type: integer
+      type: object
+    ApiGovernanceEntitlement:
+      example:
+        apisPerMonth: 6
+        enabled: true
+      properties:
+        enabled:
+          description: API Governance enabled
+          title: enabled
+          type: boolean
+        apisPerMonth:
+          description: APIs per month
+          title: apisPerMonth
+          type: integer
+      type: object
+    ApiGovernanceDomainEntitlement:
+      example:
+        domain: domain
+      properties:
+        domain:
+          description: API Governance domain
+          title: domain
+          type: string
+      type: object
+    HighAvailabilityEntitlement:
+      example:
+        clustering: true
+      properties:
+        clustering:
+          description: Clustering
+          title: clustering
+          type: boolean
       type: object
     Usage:
       example:
@@ -1587,129 +1820,6 @@ components:
       title: masterBGSpecificDetails
       type: object
       example: null
-    angGovernance:
-      description: Ang Governance entitlements
-      example:
-        level: 0
-      properties:
-        level:
-          default: 0
-          description: Ang Governance level
-          title: level
-          type: integer
-      title: angGovernance
-      type: object
-    apiMonitoring:
-      description: API Monitoring entitlements
-      example:
-        schedules: 6
-      properties:
-        schedules:
-          default: 0
-          description: Schedules
-          title: schedules
-          type: integer
-      title: apiMonitoring
-      type: object
-    apiQuery:
-      description: API Query entitlements
-      example:
-        productSKU: 1
-        enabled: false
-      properties:
-        enabled:
-          default: false
-          description: API Query enabled
-          title: enabled
-          type: boolean
-        productSKU:
-          default: 0
-          description: Product SKU
-          title: productSKU
-          type: integer
-      title: apiQuery
-      type: object
-    crowd:
-      description: Crowd entitlements
-      example:
-        environments: false
-        hideApiManagerDesigner: false
-        hideFormerApiPlatform: false
-      properties:
-        environments:
-          default: false
-          description: Crowd environments
-          title: environments
-          type: boolean
-        hideApiManagerDesigner:
-          default: false
-          description: Crowd Hide API Manager Designer
-          title: hideApiManagerDesigner
-          type: boolean
-        hideFormerApiPlatform:
-          default: false
-          description: Crowd Hide Former API Platform
-          title: hideFormerApiPlatform
-          type: boolean
-      title: crowd
-      type: object
-    designCenter:
-      description: Design Center entitlements
-      example:
-        api: false
-        mozart: false
-      properties:
-        api:
-          default: false
-          description: API entitlements
-          title: api
-          type: boolean
-        mozart:
-          default: false
-          description: Mozart entitlements
-          title: mozart
-          type: boolean
-      title: designCenter
-      type: object
-    highAvailability:
-      example:
-        clustering: false
-      properties:
-        clustering:
-          default: false
-          description: Clustering
-          title: clustering
-          type: boolean
-      title: highAvailability
-      type: object
-    apiGovernance:
-      example:
-        apisPerMonth: 1
-        enabled: false
-      properties:
-        enabled:
-          default: false
-          description: API Governance enabled
-          title: enabled
-          type: boolean
-        apisPerMonth:
-          default: 20
-          description: APIs per month
-          title: apisPerMonth
-          type: integer
-      title: apiGovernance
-      type: object
-    apiGovernanceDomain:
-      example:
-        domain: ASSET
-      properties:
-        domain:
-          default: ASSET
-          description: API Governance domain
-          title: domain
-          type: string
-      title: apiGovernanceDomain
-      type: object
     governance:
       example:
         enabled: false
@@ -1723,7 +1833,7 @@ components:
       type: object
     production:
       example:
-        amount: 2
+        amount: 3
       properties:
         amount:
           default: 0
@@ -1734,7 +1844,7 @@ components:
       type: object
     sandbox:
       example:
-        amount: 6
+        amount: 3
       properties:
         amount:
           default: 0
@@ -1746,9 +1856,9 @@ components:
     api:
       example:
         production:
-          amount: 2
+          amount: 3
         sandbox:
-          amount: 6
+          amount: 3
       properties:
         production:
           $ref: '#/components/schemas/production'
@@ -1760,9 +1870,9 @@ components:
       example:
         api:
           production:
-            amount: 2
+            amount: 3
           sandbox:
-            amount: 6
+            amount: 3
       properties:
         api:
           $ref: '#/components/schemas/api'
@@ -1770,9 +1880,9 @@ components:
       type: object
     muleRuntimeIntegration:
       example:
-        flows: 6
-        messages: 3
-        throughput: 3
+        flows: 7
+        messages: 6
+        throughput: 0
         enabled: false
       properties:
         enabled:
@@ -1799,8 +1909,8 @@ components:
       type: object
     UsageBasedPricingLimitsEntitlement_cpu:
       example:
-        extra: 0
-        base: 7
+        extra: 8
+        base: 4
       properties:
         base:
           default: 0
@@ -1812,6 +1922,15 @@ components:
           description: Extra
           title: extra
           type: integer
+      type: object
+    Exchange2Entitlement_assetUsageAndEngagement:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          description: Asset usage and engagement enabled
+          title: enabled
+          type: boolean
       type: object
   securitySchemes:
     bearerAuth:
