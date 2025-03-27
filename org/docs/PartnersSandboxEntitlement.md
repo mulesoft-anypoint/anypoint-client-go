@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Assigned** | Pointer to **int32** | Partners Sandbox assigned | [optional] [default to 0]
+**Assigned** | Pointer to **int32** | Partners Sandbox assigned | [optional] 
 
 ## Methods
 

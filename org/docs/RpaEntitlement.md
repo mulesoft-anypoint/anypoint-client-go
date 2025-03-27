@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | RPA enabled | [optional] [default to false]
-**Active** | Pointer to **bool** | RPA active | [optional] [default to false]
-**ComposerVersion** | Pointer to **string** | Composer version | [optional] [default to ""]
+**Enabled** | Pointer to **bool** | RPA enabled | [optional] 
+**Active** | Pointer to **bool** | RPA active | [optional] 
+**ComposerVersion** | Pointer to **string** | Composer version | [optional] 
 
 ## Methods
 

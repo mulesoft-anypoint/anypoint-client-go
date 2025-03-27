@@ -33,12 +33,6 @@ type RpaEntitlement struct {
 // will change when the set of required properties is changed
 func NewRpaEntitlement() *RpaEntitlement {
 	this := RpaEntitlement{}
-	var enabled bool = false
-	this.Enabled = &enabled
-	var active bool = false
-	this.Active = &active
-	var composerVersion string = ""
-	this.ComposerVersion = &composerVersion
 	return &this
 }
 
@@ -47,12 +41,6 @@ func NewRpaEntitlement() *RpaEntitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewRpaEntitlementWithDefaults() *RpaEntitlement {
 	this := RpaEntitlement{}
-	var enabled bool = false
-	this.Enabled = &enabled
-	var active bool = false
-	this.Active = &active
-	var composerVersion string = ""
-	this.ComposerVersion = &composerVersion
 	return &this
 }
 

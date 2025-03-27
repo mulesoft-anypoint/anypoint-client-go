@@ -29,8 +29,6 @@ type PartnersSandboxEntitlement struct {
 // will change when the set of required properties is changed
 func NewPartnersSandboxEntitlement() *PartnersSandboxEntitlement {
 	this := PartnersSandboxEntitlement{}
-	var assigned int32 = 0
-	this.Assigned = &assigned
 	return &this
 }
 
@@ -39,8 +37,6 @@ func NewPartnersSandboxEntitlement() *PartnersSandboxEntitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewPartnersSandboxEntitlementWithDefaults() *PartnersSandboxEntitlement {
 	this := PartnersSandboxEntitlement{}
-	var assigned int32 = 0
-	this.Assigned = &assigned
 	return &this
 }
 

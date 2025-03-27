@@ -19,12 +19,12 @@ var _ MappedNullable = &Entitlements{}
 
 // Entitlements Business Group entitlements
 type Entitlements struct {
-	AngGovernance *AngGovernance `json:"angGovernance,omitempty"`
+	AngGovernance *AngGovernanceEntitlement `json:"angGovernance,omitempty"`
 	AnypointSecurityEdgePolicies *EnablementResourceEntitlement `json:"anypointSecurityEdgePolicies,omitempty"`
 	AnypointSecurityTokenization *EnablementResourceEntitlement `json:"anypointSecurityTokenization,omitempty"`
 	ApiCommunityManager *EnablementResourceEntitlement `json:"apiCommunityManager,omitempty"`
-	ApiMonitoring *ApiMonitoring `json:"apiMonitoring,omitempty"`
-	ApiQuery *ApiQuery `json:"apiQuery,omitempty"`
+	ApiMonitoring *ApiMonitoringEntitlement `json:"apiMonitoring,omitempty"`
+	ApiQuery *ApiQueryEntitlement `json:"apiQuery,omitempty"`
 	ApiQueryC360 *EnablementResourceEntitlement `json:"apiQueryC360,omitempty"`
 	Apis *EnablementResourceEntitlement `json:"apis,omitempty"`
 	// AppViz entitlements
@@ -38,10 +38,10 @@ type Entitlements struct {
 	CreateEnvironments *bool `json:"createEnvironments,omitempty"`
 	// Create Sub Orgs entitlements
 	CreateSubOrgs *bool `json:"createSubOrgs,omitempty"`
-	Crowd *Crowd `json:"crowd,omitempty"`
+	Crowd *CrowdEntitlement `json:"crowd,omitempty"`
 	CrowdSelfServiceMigration *EnablementResourceEntitlement `json:"crowdSelfServiceMigration,omitempty"`
-	DesignCenter *DesignCenter `json:"designCenter,omitempty"`
-	Exchange2 *EnablementResourceEntitlement `json:"exchange2,omitempty"`
+	DesignCenter *DesignCenterEntitlement `json:"designCenter,omitempty"`
+	Exchange2 *Exchange2Entitlement `json:"exchange2,omitempty"`
 	// External Identity entitlements
 	ExternalIdentity *bool `json:"externalIdentity,omitempty"`
 	Gateways *GatewaysEntitlement `json:"gateways,omitempty"`
@@ -82,10 +82,10 @@ type Entitlements struct {
 	MuleDxWebIde *EnablementResourceEntitlement `json:"muleDxWebIde,omitempty"`
 	MuleDxGenAI *EnablementResourceEntitlement `json:"muleDxGenAI,omitempty"`
 	MuleDxEDA *EnablementResourceEntitlement `json:"muleDxEDA,omitempty"`
-	HighAvailability *HighAvailability `json:"highAvailability,omitempty"`
+	HighAvailability *HighAvailabilityEntitlement `json:"highAvailability,omitempty"`
 	Cloudhub1 *EnablementResourceEntitlement `json:"cloudhub1,omitempty"`
-	ApiGovernance *ApiGovernance `json:"apiGovernance,omitempty"`
-	ApiGovernanceDomain *ApiGovernanceDomain `json:"apiGovernanceDomain,omitempty"`
+	ApiGovernance *ApiGovernanceEntitlement `json:"apiGovernance,omitempty"`
+	ApiGovernanceDomain *ApiGovernanceDomainEntitlement `json:"apiGovernanceDomain,omitempty"`
 	ApiCatalog *EnablementResourceEntitlement `json:"apiCatalog,omitempty"`
 	ApiManager *ApiManagerEntitlement `json:"apiManager,omitempty"`
 	Composer *ComposerEntitlement `json:"composer,omitempty"`
@@ -94,6 +94,9 @@ type Entitlements struct {
 	UsageBasedPricing *UsageBasedPricingEntitlement `json:"usageBasedPricing,omitempty"`
 	UsageBasedPricingLimits *UsageBasedPricingLimitsEntitlement `json:"usageBasedPricingLimits,omitempty"`
 	TelemetryExporter *EnablementResourceEntitlement `json:"telemetryExporter,omitempty"`
+	ManagedGatewaySmall *ManagedGatewaySmallEntitlement `json:"managedGatewaySmall,omitempty"`
+	ManagedGatewayLarge *ManagedGatewayLargeEntitlement `json:"managedGatewayLarge,omitempty"`
+	NetworkConnections *NetworkConnectionsEntitlement `json:"networkConnections,omitempty"`
 }
 
 // NewEntitlements instantiates a new Entitlements object
@@ -102,28 +105,6 @@ type Entitlements struct {
 // will change when the set of required properties is changed
 func NewEntitlements() *Entitlements {
 	this := Entitlements{}
-	var appViz bool = false
-	this.AppViz = &appViz
-	var armAlerts bool = false
-	this.ArmAlerts = &armAlerts
-	var autoscaling bool = false
-	this.Autoscaling = &autoscaling
-	var createEnvironments bool = false
-	this.CreateEnvironments = &createEnvironments
-	var createSubOrgs bool = false
-	this.CreateSubOrgs = &createSubOrgs
-	var externalIdentity bool = false
-	this.ExternalIdentity = &externalIdentity
-	var globalDeployment bool = false
-	this.GlobalDeployment = &globalDeployment
-	var hybridAutoDiscoverProperties bool = false
-	this.HybridAutoDiscoverProperties = &hybridAutoDiscoverProperties
-	var hybridInsight bool = false
-	this.HybridInsight = &hybridInsight
-	var pcf bool = false
-	this.Pcf = &pcf
-	var runtimeFabric bool = false
-	this.RuntimeFabric = &runtimeFabric
 	return &this
 }
 
@@ -132,35 +113,13 @@ func NewEntitlements() *Entitlements {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementsWithDefaults() *Entitlements {
 	this := Entitlements{}
-	var appViz bool = false
-	this.AppViz = &appViz
-	var armAlerts bool = false
-	this.ArmAlerts = &armAlerts
-	var autoscaling bool = false
-	this.Autoscaling = &autoscaling
-	var createEnvironments bool = false
-	this.CreateEnvironments = &createEnvironments
-	var createSubOrgs bool = false
-	this.CreateSubOrgs = &createSubOrgs
-	var externalIdentity bool = false
-	this.ExternalIdentity = &externalIdentity
-	var globalDeployment bool = false
-	this.GlobalDeployment = &globalDeployment
-	var hybridAutoDiscoverProperties bool = false
-	this.HybridAutoDiscoverProperties = &hybridAutoDiscoverProperties
-	var hybridInsight bool = false
-	this.HybridInsight = &hybridInsight
-	var pcf bool = false
-	this.Pcf = &pcf
-	var runtimeFabric bool = false
-	this.RuntimeFabric = &runtimeFabric
 	return &this
 }
 
 // GetAngGovernance returns the AngGovernance field value if set, zero value otherwise.
-func (o *Entitlements) GetAngGovernance() AngGovernance {
+func (o *Entitlements) GetAngGovernance() AngGovernanceEntitlement {
 	if o == nil || IsNil(o.AngGovernance) {
-		var ret AngGovernance
+		var ret AngGovernanceEntitlement
 		return ret
 	}
 	return *o.AngGovernance
@@ -168,7 +127,7 @@ func (o *Entitlements) GetAngGovernance() AngGovernance {
 
 // GetAngGovernanceOk returns a tuple with the AngGovernance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetAngGovernanceOk() (*AngGovernance, bool) {
+func (o *Entitlements) GetAngGovernanceOk() (*AngGovernanceEntitlement, bool) {
 	if o == nil || IsNil(o.AngGovernance) {
 		return nil, false
 	}
@@ -184,8 +143,8 @@ func (o *Entitlements) HasAngGovernance() bool {
 	return false
 }
 
-// SetAngGovernance gets a reference to the given AngGovernance and assigns it to the AngGovernance field.
-func (o *Entitlements) SetAngGovernance(v AngGovernance) {
+// SetAngGovernance gets a reference to the given AngGovernanceEntitlement and assigns it to the AngGovernance field.
+func (o *Entitlements) SetAngGovernance(v AngGovernanceEntitlement) {
 	o.AngGovernance = &v
 }
 
@@ -286,9 +245,9 @@ func (o *Entitlements) SetApiCommunityManager(v EnablementResourceEntitlement) {
 }
 
 // GetApiMonitoring returns the ApiMonitoring field value if set, zero value otherwise.
-func (o *Entitlements) GetApiMonitoring() ApiMonitoring {
+func (o *Entitlements) GetApiMonitoring() ApiMonitoringEntitlement {
 	if o == nil || IsNil(o.ApiMonitoring) {
-		var ret ApiMonitoring
+		var ret ApiMonitoringEntitlement
 		return ret
 	}
 	return *o.ApiMonitoring
@@ -296,7 +255,7 @@ func (o *Entitlements) GetApiMonitoring() ApiMonitoring {
 
 // GetApiMonitoringOk returns a tuple with the ApiMonitoring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetApiMonitoringOk() (*ApiMonitoring, bool) {
+func (o *Entitlements) GetApiMonitoringOk() (*ApiMonitoringEntitlement, bool) {
 	if o == nil || IsNil(o.ApiMonitoring) {
 		return nil, false
 	}
@@ -312,15 +271,15 @@ func (o *Entitlements) HasApiMonitoring() bool {
 	return false
 }
 
-// SetApiMonitoring gets a reference to the given ApiMonitoring and assigns it to the ApiMonitoring field.
-func (o *Entitlements) SetApiMonitoring(v ApiMonitoring) {
+// SetApiMonitoring gets a reference to the given ApiMonitoringEntitlement and assigns it to the ApiMonitoring field.
+func (o *Entitlements) SetApiMonitoring(v ApiMonitoringEntitlement) {
 	o.ApiMonitoring = &v
 }
 
 // GetApiQuery returns the ApiQuery field value if set, zero value otherwise.
-func (o *Entitlements) GetApiQuery() ApiQuery {
+func (o *Entitlements) GetApiQuery() ApiQueryEntitlement {
 	if o == nil || IsNil(o.ApiQuery) {
-		var ret ApiQuery
+		var ret ApiQueryEntitlement
 		return ret
 	}
 	return *o.ApiQuery
@@ -328,7 +287,7 @@ func (o *Entitlements) GetApiQuery() ApiQuery {
 
 // GetApiQueryOk returns a tuple with the ApiQuery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetApiQueryOk() (*ApiQuery, bool) {
+func (o *Entitlements) GetApiQueryOk() (*ApiQueryEntitlement, bool) {
 	if o == nil || IsNil(o.ApiQuery) {
 		return nil, false
 	}
@@ -344,8 +303,8 @@ func (o *Entitlements) HasApiQuery() bool {
 	return false
 }
 
-// SetApiQuery gets a reference to the given ApiQuery and assigns it to the ApiQuery field.
-func (o *Entitlements) SetApiQuery(v ApiQuery) {
+// SetApiQuery gets a reference to the given ApiQueryEntitlement and assigns it to the ApiQuery field.
+func (o *Entitlements) SetApiQuery(v ApiQueryEntitlement) {
 	o.ApiQuery = &v
 }
 
@@ -606,9 +565,9 @@ func (o *Entitlements) SetCreateSubOrgs(v bool) {
 }
 
 // GetCrowd returns the Crowd field value if set, zero value otherwise.
-func (o *Entitlements) GetCrowd() Crowd {
+func (o *Entitlements) GetCrowd() CrowdEntitlement {
 	if o == nil || IsNil(o.Crowd) {
-		var ret Crowd
+		var ret CrowdEntitlement
 		return ret
 	}
 	return *o.Crowd
@@ -616,7 +575,7 @@ func (o *Entitlements) GetCrowd() Crowd {
 
 // GetCrowdOk returns a tuple with the Crowd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetCrowdOk() (*Crowd, bool) {
+func (o *Entitlements) GetCrowdOk() (*CrowdEntitlement, bool) {
 	if o == nil || IsNil(o.Crowd) {
 		return nil, false
 	}
@@ -632,8 +591,8 @@ func (o *Entitlements) HasCrowd() bool {
 	return false
 }
 
-// SetCrowd gets a reference to the given Crowd and assigns it to the Crowd field.
-func (o *Entitlements) SetCrowd(v Crowd) {
+// SetCrowd gets a reference to the given CrowdEntitlement and assigns it to the Crowd field.
+func (o *Entitlements) SetCrowd(v CrowdEntitlement) {
 	o.Crowd = &v
 }
 
@@ -670,9 +629,9 @@ func (o *Entitlements) SetCrowdSelfServiceMigration(v EnablementResourceEntitlem
 }
 
 // GetDesignCenter returns the DesignCenter field value if set, zero value otherwise.
-func (o *Entitlements) GetDesignCenter() DesignCenter {
+func (o *Entitlements) GetDesignCenter() DesignCenterEntitlement {
 	if o == nil || IsNil(o.DesignCenter) {
-		var ret DesignCenter
+		var ret DesignCenterEntitlement
 		return ret
 	}
 	return *o.DesignCenter
@@ -680,7 +639,7 @@ func (o *Entitlements) GetDesignCenter() DesignCenter {
 
 // GetDesignCenterOk returns a tuple with the DesignCenter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetDesignCenterOk() (*DesignCenter, bool) {
+func (o *Entitlements) GetDesignCenterOk() (*DesignCenterEntitlement, bool) {
 	if o == nil || IsNil(o.DesignCenter) {
 		return nil, false
 	}
@@ -696,15 +655,15 @@ func (o *Entitlements) HasDesignCenter() bool {
 	return false
 }
 
-// SetDesignCenter gets a reference to the given DesignCenter and assigns it to the DesignCenter field.
-func (o *Entitlements) SetDesignCenter(v DesignCenter) {
+// SetDesignCenter gets a reference to the given DesignCenterEntitlement and assigns it to the DesignCenter field.
+func (o *Entitlements) SetDesignCenter(v DesignCenterEntitlement) {
 	o.DesignCenter = &v
 }
 
 // GetExchange2 returns the Exchange2 field value if set, zero value otherwise.
-func (o *Entitlements) GetExchange2() EnablementResourceEntitlement {
+func (o *Entitlements) GetExchange2() Exchange2Entitlement {
 	if o == nil || IsNil(o.Exchange2) {
-		var ret EnablementResourceEntitlement
+		var ret Exchange2Entitlement
 		return ret
 	}
 	return *o.Exchange2
@@ -712,7 +671,7 @@ func (o *Entitlements) GetExchange2() EnablementResourceEntitlement {
 
 // GetExchange2Ok returns a tuple with the Exchange2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetExchange2Ok() (*EnablementResourceEntitlement, bool) {
+func (o *Entitlements) GetExchange2Ok() (*Exchange2Entitlement, bool) {
 	if o == nil || IsNil(o.Exchange2) {
 		return nil, false
 	}
@@ -728,8 +687,8 @@ func (o *Entitlements) HasExchange2() bool {
 	return false
 }
 
-// SetExchange2 gets a reference to the given EnablementResourceEntitlement and assigns it to the Exchange2 field.
-func (o *Entitlements) SetExchange2(v EnablementResourceEntitlement) {
+// SetExchange2 gets a reference to the given Exchange2Entitlement and assigns it to the Exchange2 field.
+func (o *Entitlements) SetExchange2(v Exchange2Entitlement) {
 	o.Exchange2 = &v
 }
 
@@ -1822,9 +1781,9 @@ func (o *Entitlements) SetMuleDxEDA(v EnablementResourceEntitlement) {
 }
 
 // GetHighAvailability returns the HighAvailability field value if set, zero value otherwise.
-func (o *Entitlements) GetHighAvailability() HighAvailability {
+func (o *Entitlements) GetHighAvailability() HighAvailabilityEntitlement {
 	if o == nil || IsNil(o.HighAvailability) {
-		var ret HighAvailability
+		var ret HighAvailabilityEntitlement
 		return ret
 	}
 	return *o.HighAvailability
@@ -1832,7 +1791,7 @@ func (o *Entitlements) GetHighAvailability() HighAvailability {
 
 // GetHighAvailabilityOk returns a tuple with the HighAvailability field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetHighAvailabilityOk() (*HighAvailability, bool) {
+func (o *Entitlements) GetHighAvailabilityOk() (*HighAvailabilityEntitlement, bool) {
 	if o == nil || IsNil(o.HighAvailability) {
 		return nil, false
 	}
@@ -1848,8 +1807,8 @@ func (o *Entitlements) HasHighAvailability() bool {
 	return false
 }
 
-// SetHighAvailability gets a reference to the given HighAvailability and assigns it to the HighAvailability field.
-func (o *Entitlements) SetHighAvailability(v HighAvailability) {
+// SetHighAvailability gets a reference to the given HighAvailabilityEntitlement and assigns it to the HighAvailability field.
+func (o *Entitlements) SetHighAvailability(v HighAvailabilityEntitlement) {
 	o.HighAvailability = &v
 }
 
@@ -1886,9 +1845,9 @@ func (o *Entitlements) SetCloudhub1(v EnablementResourceEntitlement) {
 }
 
 // GetApiGovernance returns the ApiGovernance field value if set, zero value otherwise.
-func (o *Entitlements) GetApiGovernance() ApiGovernance {
+func (o *Entitlements) GetApiGovernance() ApiGovernanceEntitlement {
 	if o == nil || IsNil(o.ApiGovernance) {
-		var ret ApiGovernance
+		var ret ApiGovernanceEntitlement
 		return ret
 	}
 	return *o.ApiGovernance
@@ -1896,7 +1855,7 @@ func (o *Entitlements) GetApiGovernance() ApiGovernance {
 
 // GetApiGovernanceOk returns a tuple with the ApiGovernance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetApiGovernanceOk() (*ApiGovernance, bool) {
+func (o *Entitlements) GetApiGovernanceOk() (*ApiGovernanceEntitlement, bool) {
 	if o == nil || IsNil(o.ApiGovernance) {
 		return nil, false
 	}
@@ -1912,15 +1871,15 @@ func (o *Entitlements) HasApiGovernance() bool {
 	return false
 }
 
-// SetApiGovernance gets a reference to the given ApiGovernance and assigns it to the ApiGovernance field.
-func (o *Entitlements) SetApiGovernance(v ApiGovernance) {
+// SetApiGovernance gets a reference to the given ApiGovernanceEntitlement and assigns it to the ApiGovernance field.
+func (o *Entitlements) SetApiGovernance(v ApiGovernanceEntitlement) {
 	o.ApiGovernance = &v
 }
 
 // GetApiGovernanceDomain returns the ApiGovernanceDomain field value if set, zero value otherwise.
-func (o *Entitlements) GetApiGovernanceDomain() ApiGovernanceDomain {
+func (o *Entitlements) GetApiGovernanceDomain() ApiGovernanceDomainEntitlement {
 	if o == nil || IsNil(o.ApiGovernanceDomain) {
-		var ret ApiGovernanceDomain
+		var ret ApiGovernanceDomainEntitlement
 		return ret
 	}
 	return *o.ApiGovernanceDomain
@@ -1928,7 +1887,7 @@ func (o *Entitlements) GetApiGovernanceDomain() ApiGovernanceDomain {
 
 // GetApiGovernanceDomainOk returns a tuple with the ApiGovernanceDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlements) GetApiGovernanceDomainOk() (*ApiGovernanceDomain, bool) {
+func (o *Entitlements) GetApiGovernanceDomainOk() (*ApiGovernanceDomainEntitlement, bool) {
 	if o == nil || IsNil(o.ApiGovernanceDomain) {
 		return nil, false
 	}
@@ -1944,8 +1903,8 @@ func (o *Entitlements) HasApiGovernanceDomain() bool {
 	return false
 }
 
-// SetApiGovernanceDomain gets a reference to the given ApiGovernanceDomain and assigns it to the ApiGovernanceDomain field.
-func (o *Entitlements) SetApiGovernanceDomain(v ApiGovernanceDomain) {
+// SetApiGovernanceDomain gets a reference to the given ApiGovernanceDomainEntitlement and assigns it to the ApiGovernanceDomain field.
+func (o *Entitlements) SetApiGovernanceDomain(v ApiGovernanceDomainEntitlement) {
 	o.ApiGovernanceDomain = &v
 }
 
@@ -2205,6 +2164,102 @@ func (o *Entitlements) SetTelemetryExporter(v EnablementResourceEntitlement) {
 	o.TelemetryExporter = &v
 }
 
+// GetManagedGatewaySmall returns the ManagedGatewaySmall field value if set, zero value otherwise.
+func (o *Entitlements) GetManagedGatewaySmall() ManagedGatewaySmallEntitlement {
+	if o == nil || IsNil(o.ManagedGatewaySmall) {
+		var ret ManagedGatewaySmallEntitlement
+		return ret
+	}
+	return *o.ManagedGatewaySmall
+}
+
+// GetManagedGatewaySmallOk returns a tuple with the ManagedGatewaySmall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlements) GetManagedGatewaySmallOk() (*ManagedGatewaySmallEntitlement, bool) {
+	if o == nil || IsNil(o.ManagedGatewaySmall) {
+		return nil, false
+	}
+	return o.ManagedGatewaySmall, true
+}
+
+// HasManagedGatewaySmall returns a boolean if a field has been set.
+func (o *Entitlements) HasManagedGatewaySmall() bool {
+	if o != nil && !IsNil(o.ManagedGatewaySmall) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagedGatewaySmall gets a reference to the given ManagedGatewaySmallEntitlement and assigns it to the ManagedGatewaySmall field.
+func (o *Entitlements) SetManagedGatewaySmall(v ManagedGatewaySmallEntitlement) {
+	o.ManagedGatewaySmall = &v
+}
+
+// GetManagedGatewayLarge returns the ManagedGatewayLarge field value if set, zero value otherwise.
+func (o *Entitlements) GetManagedGatewayLarge() ManagedGatewayLargeEntitlement {
+	if o == nil || IsNil(o.ManagedGatewayLarge) {
+		var ret ManagedGatewayLargeEntitlement
+		return ret
+	}
+	return *o.ManagedGatewayLarge
+}
+
+// GetManagedGatewayLargeOk returns a tuple with the ManagedGatewayLarge field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlements) GetManagedGatewayLargeOk() (*ManagedGatewayLargeEntitlement, bool) {
+	if o == nil || IsNil(o.ManagedGatewayLarge) {
+		return nil, false
+	}
+	return o.ManagedGatewayLarge, true
+}
+
+// HasManagedGatewayLarge returns a boolean if a field has been set.
+func (o *Entitlements) HasManagedGatewayLarge() bool {
+	if o != nil && !IsNil(o.ManagedGatewayLarge) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagedGatewayLarge gets a reference to the given ManagedGatewayLargeEntitlement and assigns it to the ManagedGatewayLarge field.
+func (o *Entitlements) SetManagedGatewayLarge(v ManagedGatewayLargeEntitlement) {
+	o.ManagedGatewayLarge = &v
+}
+
+// GetNetworkConnections returns the NetworkConnections field value if set, zero value otherwise.
+func (o *Entitlements) GetNetworkConnections() NetworkConnectionsEntitlement {
+	if o == nil || IsNil(o.NetworkConnections) {
+		var ret NetworkConnectionsEntitlement
+		return ret
+	}
+	return *o.NetworkConnections
+}
+
+// GetNetworkConnectionsOk returns a tuple with the NetworkConnections field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlements) GetNetworkConnectionsOk() (*NetworkConnectionsEntitlement, bool) {
+	if o == nil || IsNil(o.NetworkConnections) {
+		return nil, false
+	}
+	return o.NetworkConnections, true
+}
+
+// HasNetworkConnections returns a boolean if a field has been set.
+func (o *Entitlements) HasNetworkConnections() bool {
+	if o != nil && !IsNil(o.NetworkConnections) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkConnections gets a reference to the given NetworkConnectionsEntitlement and assigns it to the NetworkConnections field.
+func (o *Entitlements) SetNetworkConnections(v NetworkConnectionsEntitlement) {
+	o.NetworkConnections = &v
+}
+
 func (o Entitlements) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -2406,6 +2461,15 @@ func (o Entitlements) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TelemetryExporter) {
 		toSerialize["telemetryExporter"] = o.TelemetryExporter
+	}
+	if !IsNil(o.ManagedGatewaySmall) {
+		toSerialize["managedGatewaySmall"] = o.ManagedGatewaySmall
+	}
+	if !IsNil(o.ManagedGatewayLarge) {
+		toSerialize["managedGatewayLarge"] = o.ManagedGatewayLarge
+	}
+	if !IsNil(o.NetworkConnections) {
+		toSerialize["networkConnections"] = o.NetworkConnections
 	}
 	return toSerialize, nil
 }

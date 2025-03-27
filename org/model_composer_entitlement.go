@@ -37,16 +37,6 @@ type ComposerEntitlement struct {
 // will change when the set of required properties is changed
 func NewComposerEntitlement() *ComposerEntitlement {
 	this := ComposerEntitlement{}
-	var enabled bool = false
-	this.Enabled = &enabled
-	var tasksPerMonth int32 = 0
-	this.TasksPerMonth = &tasksPerMonth
-	var maxConnectors int32 = 0
-	this.MaxConnectors = &maxConnectors
-	var unlimitedConnectors bool = false
-	this.UnlimitedConnectors = &unlimitedConnectors
-	var isHyperAutomation bool = false
-	this.IsHyperAutomation = &isHyperAutomation
 	return &this
 }
 
@@ -55,16 +45,6 @@ func NewComposerEntitlement() *ComposerEntitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewComposerEntitlementWithDefaults() *ComposerEntitlement {
 	this := ComposerEntitlement{}
-	var enabled bool = false
-	this.Enabled = &enabled
-	var tasksPerMonth int32 = 0
-	this.TasksPerMonth = &tasksPerMonth
-	var maxConnectors int32 = 0
-	this.MaxConnectors = &maxConnectors
-	var unlimitedConnectors bool = false
-	this.UnlimitedConnectors = &unlimitedConnectors
-	var isHyperAutomation bool = false
-	this.IsHyperAutomation = &isHyperAutomation
 	return &this
 }
 

@@ -4,30 +4,30 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AngGovernance** | Pointer to [**AngGovernance**](AngGovernance.md) |  | [optional] 
+**AngGovernance** | Pointer to [**AngGovernanceEntitlement**](AngGovernanceEntitlement.md) |  | [optional] 
 **AnypointSecurityEdgePolicies** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **AnypointSecurityTokenization** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **ApiCommunityManager** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
-**ApiMonitoring** | Pointer to [**ApiMonitoring**](ApiMonitoring.md) |  | [optional] 
-**ApiQuery** | Pointer to [**ApiQuery**](ApiQuery.md) |  | [optional] 
+**ApiMonitoring** | Pointer to [**ApiMonitoringEntitlement**](ApiMonitoringEntitlement.md) |  | [optional] 
+**ApiQuery** | Pointer to [**ApiQueryEntitlement**](ApiQueryEntitlement.md) |  | [optional] 
 **ApiQueryC360** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **Apis** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
-**AppViz** | Pointer to **bool** | AppViz entitlements | [optional] [default to false]
-**ArmAlerts** | Pointer to **bool** | ARM Alerts entitlements | [optional] [default to false]
-**Autoscaling** | Pointer to **bool** | Autoscaling entitlements | [optional] [default to false]
+**AppViz** | Pointer to **bool** | AppViz entitlements | [optional] 
+**ArmAlerts** | Pointer to **bool** | ARM Alerts entitlements | [optional] 
+**Autoscaling** | Pointer to **bool** | Autoscaling entitlements | [optional] 
 **Cam** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
-**CreateEnvironments** | Pointer to **bool** | Create Environments entitlements | [optional] [default to false]
-**CreateSubOrgs** | Pointer to **bool** | Create Sub Orgs entitlements | [optional] [default to false]
-**Crowd** | Pointer to [**Crowd**](Crowd.md) |  | [optional] 
+**CreateEnvironments** | Pointer to **bool** | Create Environments entitlements | [optional] 
+**CreateSubOrgs** | Pointer to **bool** | Create Sub Orgs entitlements | [optional] 
+**Crowd** | Pointer to [**CrowdEntitlement**](CrowdEntitlement.md) |  | [optional] 
 **CrowdSelfServiceMigration** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
-**DesignCenter** | Pointer to [**DesignCenter**](DesignCenter.md) |  | [optional] 
-**Exchange2** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
-**ExternalIdentity** | Pointer to **bool** | External Identity entitlements | [optional] [default to false]
+**DesignCenter** | Pointer to [**DesignCenterEntitlement**](DesignCenterEntitlement.md) |  | [optional] 
+**Exchange2** | Pointer to [**Exchange2Entitlement**](Exchange2Entitlement.md) |  | [optional] 
+**ExternalIdentity** | Pointer to **bool** | External Identity entitlements | [optional] 
 **Gateways** | Pointer to [**GatewaysEntitlement**](GatewaysEntitlement.md) |  | [optional] 
-**GlobalDeployment** | Pointer to **bool** | Global Deployment entitlements | [optional] [default to false]
+**GlobalDeployment** | Pointer to **bool** | Global Deployment entitlements | [optional] 
 **Hybrid** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
-**HybridAutoDiscoverProperties** | Pointer to **bool** | Hybrid auto-discover properties | [optional] [default to false]
-**HybridInsight** | Pointer to **bool** | Hybrid Insight entitlements | [optional] [default to false]
+**HybridAutoDiscoverProperties** | Pointer to **bool** | Hybrid auto-discover properties | [optional] 
+**HybridInsight** | Pointer to **bool** | Hybrid Insight entitlements | [optional] 
 **KpiDashboard** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **LoadBalancer** | Pointer to [**LoadBalancerEntitlement**](LoadBalancerEntitlement.md) |  | [optional] 
 **Messaging** | Pointer to [**MessagingEntitlement**](MessagingEntitlement.md) |  | [optional] 
@@ -39,8 +39,8 @@ Name | Type | Description | Notes
 **ObjectStoreRequestUnits** | Pointer to [**AddOnEntitlement**](AddOnEntitlement.md) |  | [optional] 
 **PartnersProduction** | Pointer to [**PartnersProductionEntitlement**](PartnersProductionEntitlement.md) |  | [optional] 
 **PartnersSandbox** | Pointer to [**PartnersSandboxEntitlement**](PartnersSandboxEntitlement.md) |  | [optional] 
-**Pcf** | Pointer to **bool** | PCF entitlements | [optional] [default to false]
-**RuntimeFabric** | Pointer to **bool** | Runtime Fabric entitlements | [optional] [default to false]
+**Pcf** | Pointer to **bool** | PCF entitlements | [optional] 
+**RuntimeFabric** | Pointer to **bool** | Runtime Fabric entitlements | [optional] 
 **RuntimeFabricCloud** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **ServiceMesh** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **StaticIps** | Pointer to [**StaticIpsEntitlement**](StaticIpsEntitlement.md) |  | [optional] 
@@ -56,10 +56,10 @@ Name | Type | Description | Notes
 **MuleDxWebIde** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **MuleDxGenAI** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **MuleDxEDA** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
-**HighAvailability** | Pointer to [**HighAvailability**](HighAvailability.md) |  | [optional] 
+**HighAvailability** | Pointer to [**HighAvailabilityEntitlement**](HighAvailabilityEntitlement.md) |  | [optional] 
 **Cloudhub1** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
-**ApiGovernance** | Pointer to [**ApiGovernance**](ApiGovernance.md) |  | [optional] 
-**ApiGovernanceDomain** | Pointer to [**ApiGovernanceDomain**](ApiGovernanceDomain.md) |  | [optional] 
+**ApiGovernance** | Pointer to [**ApiGovernanceEntitlement**](ApiGovernanceEntitlement.md) |  | [optional] 
+**ApiGovernanceDomain** | Pointer to [**ApiGovernanceDomainEntitlement**](ApiGovernanceDomainEntitlement.md) |  | [optional] 
 **ApiCatalog** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
 **ApiManager** | Pointer to [**ApiManagerEntitlement**](ApiManagerEntitlement.md) |  | [optional] 
 **Composer** | Pointer to [**ComposerEntitlement**](ComposerEntitlement.md) |  | [optional] 
@@ -68,6 +68,9 @@ Name | Type | Description | Notes
 **UsageBasedPricing** | Pointer to [**UsageBasedPricingEntitlement**](UsageBasedPricingEntitlement.md) |  | [optional] 
 **UsageBasedPricingLimits** | Pointer to [**UsageBasedPricingLimitsEntitlement**](UsageBasedPricingLimitsEntitlement.md) |  | [optional] 
 **TelemetryExporter** | Pointer to [**EnablementResourceEntitlement**](EnablementResourceEntitlement.md) |  | [optional] 
+**ManagedGatewaySmall** | Pointer to [**ManagedGatewaySmallEntitlement**](ManagedGatewaySmallEntitlement.md) |  | [optional] 
+**ManagedGatewayLarge** | Pointer to [**ManagedGatewayLargeEntitlement**](ManagedGatewayLargeEntitlement.md) |  | [optional] 
+**NetworkConnections** | Pointer to [**NetworkConnectionsEntitlement**](NetworkConnectionsEntitlement.md) |  | [optional] 
 
 ## Methods
 
@@ -90,20 +93,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAngGovernance
 
-`func (o *Entitlements) GetAngGovernance() AngGovernance`
+`func (o *Entitlements) GetAngGovernance() AngGovernanceEntitlement`
 
 GetAngGovernance returns the AngGovernance field if non-nil, zero value otherwise.
 
 ### GetAngGovernanceOk
 
-`func (o *Entitlements) GetAngGovernanceOk() (*AngGovernance, bool)`
+`func (o *Entitlements) GetAngGovernanceOk() (*AngGovernanceEntitlement, bool)`
 
 GetAngGovernanceOk returns a tuple with the AngGovernance field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAngGovernance
 
-`func (o *Entitlements) SetAngGovernance(v AngGovernance)`
+`func (o *Entitlements) SetAngGovernance(v AngGovernanceEntitlement)`
 
 SetAngGovernance sets AngGovernance field to given value.
 
@@ -190,20 +193,20 @@ HasApiCommunityManager returns a boolean if a field has been set.
 
 ### GetApiMonitoring
 
-`func (o *Entitlements) GetApiMonitoring() ApiMonitoring`
+`func (o *Entitlements) GetApiMonitoring() ApiMonitoringEntitlement`
 
 GetApiMonitoring returns the ApiMonitoring field if non-nil, zero value otherwise.
 
 ### GetApiMonitoringOk
 
-`func (o *Entitlements) GetApiMonitoringOk() (*ApiMonitoring, bool)`
+`func (o *Entitlements) GetApiMonitoringOk() (*ApiMonitoringEntitlement, bool)`
 
 GetApiMonitoringOk returns a tuple with the ApiMonitoring field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiMonitoring
 
-`func (o *Entitlements) SetApiMonitoring(v ApiMonitoring)`
+`func (o *Entitlements) SetApiMonitoring(v ApiMonitoringEntitlement)`
 
 SetApiMonitoring sets ApiMonitoring field to given value.
 
@@ -215,20 +218,20 @@ HasApiMonitoring returns a boolean if a field has been set.
 
 ### GetApiQuery
 
-`func (o *Entitlements) GetApiQuery() ApiQuery`
+`func (o *Entitlements) GetApiQuery() ApiQueryEntitlement`
 
 GetApiQuery returns the ApiQuery field if non-nil, zero value otherwise.
 
 ### GetApiQueryOk
 
-`func (o *Entitlements) GetApiQueryOk() (*ApiQuery, bool)`
+`func (o *Entitlements) GetApiQueryOk() (*ApiQueryEntitlement, bool)`
 
 GetApiQueryOk returns a tuple with the ApiQuery field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiQuery
 
-`func (o *Entitlements) SetApiQuery(v ApiQuery)`
+`func (o *Entitlements) SetApiQuery(v ApiQueryEntitlement)`
 
 SetApiQuery sets ApiQuery field to given value.
 
@@ -440,20 +443,20 @@ HasCreateSubOrgs returns a boolean if a field has been set.
 
 ### GetCrowd
 
-`func (o *Entitlements) GetCrowd() Crowd`
+`func (o *Entitlements) GetCrowd() CrowdEntitlement`
 
 GetCrowd returns the Crowd field if non-nil, zero value otherwise.
 
 ### GetCrowdOk
 
-`func (o *Entitlements) GetCrowdOk() (*Crowd, bool)`
+`func (o *Entitlements) GetCrowdOk() (*CrowdEntitlement, bool)`
 
 GetCrowdOk returns a tuple with the Crowd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCrowd
 
-`func (o *Entitlements) SetCrowd(v Crowd)`
+`func (o *Entitlements) SetCrowd(v CrowdEntitlement)`
 
 SetCrowd sets Crowd field to given value.
 
@@ -490,20 +493,20 @@ HasCrowdSelfServiceMigration returns a boolean if a field has been set.
 
 ### GetDesignCenter
 
-`func (o *Entitlements) GetDesignCenter() DesignCenter`
+`func (o *Entitlements) GetDesignCenter() DesignCenterEntitlement`
 
 GetDesignCenter returns the DesignCenter field if non-nil, zero value otherwise.
 
 ### GetDesignCenterOk
 
-`func (o *Entitlements) GetDesignCenterOk() (*DesignCenter, bool)`
+`func (o *Entitlements) GetDesignCenterOk() (*DesignCenterEntitlement, bool)`
 
 GetDesignCenterOk returns a tuple with the DesignCenter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesignCenter
 
-`func (o *Entitlements) SetDesignCenter(v DesignCenter)`
+`func (o *Entitlements) SetDesignCenter(v DesignCenterEntitlement)`
 
 SetDesignCenter sets DesignCenter field to given value.
 
@@ -515,20 +518,20 @@ HasDesignCenter returns a boolean if a field has been set.
 
 ### GetExchange2
 
-`func (o *Entitlements) GetExchange2() EnablementResourceEntitlement`
+`func (o *Entitlements) GetExchange2() Exchange2Entitlement`
 
 GetExchange2 returns the Exchange2 field if non-nil, zero value otherwise.
 
 ### GetExchange2Ok
 
-`func (o *Entitlements) GetExchange2Ok() (*EnablementResourceEntitlement, bool)`
+`func (o *Entitlements) GetExchange2Ok() (*Exchange2Entitlement, bool)`
 
 GetExchange2Ok returns a tuple with the Exchange2 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExchange2
 
-`func (o *Entitlements) SetExchange2(v EnablementResourceEntitlement)`
+`func (o *Entitlements) SetExchange2(v Exchange2Entitlement)`
 
 SetExchange2 sets Exchange2 field to given value.
 
@@ -1390,20 +1393,20 @@ HasMuleDxEDA returns a boolean if a field has been set.
 
 ### GetHighAvailability
 
-`func (o *Entitlements) GetHighAvailability() HighAvailability`
+`func (o *Entitlements) GetHighAvailability() HighAvailabilityEntitlement`
 
 GetHighAvailability returns the HighAvailability field if non-nil, zero value otherwise.
 
 ### GetHighAvailabilityOk
 
-`func (o *Entitlements) GetHighAvailabilityOk() (*HighAvailability, bool)`
+`func (o *Entitlements) GetHighAvailabilityOk() (*HighAvailabilityEntitlement, bool)`
 
 GetHighAvailabilityOk returns a tuple with the HighAvailability field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHighAvailability
 
-`func (o *Entitlements) SetHighAvailability(v HighAvailability)`
+`func (o *Entitlements) SetHighAvailability(v HighAvailabilityEntitlement)`
 
 SetHighAvailability sets HighAvailability field to given value.
 
@@ -1440,20 +1443,20 @@ HasCloudhub1 returns a boolean if a field has been set.
 
 ### GetApiGovernance
 
-`func (o *Entitlements) GetApiGovernance() ApiGovernance`
+`func (o *Entitlements) GetApiGovernance() ApiGovernanceEntitlement`
 
 GetApiGovernance returns the ApiGovernance field if non-nil, zero value otherwise.
 
 ### GetApiGovernanceOk
 
-`func (o *Entitlements) GetApiGovernanceOk() (*ApiGovernance, bool)`
+`func (o *Entitlements) GetApiGovernanceOk() (*ApiGovernanceEntitlement, bool)`
 
 GetApiGovernanceOk returns a tuple with the ApiGovernance field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiGovernance
 
-`func (o *Entitlements) SetApiGovernance(v ApiGovernance)`
+`func (o *Entitlements) SetApiGovernance(v ApiGovernanceEntitlement)`
 
 SetApiGovernance sets ApiGovernance field to given value.
 
@@ -1465,20 +1468,20 @@ HasApiGovernance returns a boolean if a field has been set.
 
 ### GetApiGovernanceDomain
 
-`func (o *Entitlements) GetApiGovernanceDomain() ApiGovernanceDomain`
+`func (o *Entitlements) GetApiGovernanceDomain() ApiGovernanceDomainEntitlement`
 
 GetApiGovernanceDomain returns the ApiGovernanceDomain field if non-nil, zero value otherwise.
 
 ### GetApiGovernanceDomainOk
 
-`func (o *Entitlements) GetApiGovernanceDomainOk() (*ApiGovernanceDomain, bool)`
+`func (o *Entitlements) GetApiGovernanceDomainOk() (*ApiGovernanceDomainEntitlement, bool)`
 
 GetApiGovernanceDomainOk returns a tuple with the ApiGovernanceDomain field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiGovernanceDomain
 
-`func (o *Entitlements) SetApiGovernanceDomain(v ApiGovernanceDomain)`
+`func (o *Entitlements) SetApiGovernanceDomain(v ApiGovernanceDomainEntitlement)`
 
 SetApiGovernanceDomain sets ApiGovernanceDomain field to given value.
 
@@ -1687,6 +1690,81 @@ SetTelemetryExporter sets TelemetryExporter field to given value.
 `func (o *Entitlements) HasTelemetryExporter() bool`
 
 HasTelemetryExporter returns a boolean if a field has been set.
+
+### GetManagedGatewaySmall
+
+`func (o *Entitlements) GetManagedGatewaySmall() ManagedGatewaySmallEntitlement`
+
+GetManagedGatewaySmall returns the ManagedGatewaySmall field if non-nil, zero value otherwise.
+
+### GetManagedGatewaySmallOk
+
+`func (o *Entitlements) GetManagedGatewaySmallOk() (*ManagedGatewaySmallEntitlement, bool)`
+
+GetManagedGatewaySmallOk returns a tuple with the ManagedGatewaySmall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedGatewaySmall
+
+`func (o *Entitlements) SetManagedGatewaySmall(v ManagedGatewaySmallEntitlement)`
+
+SetManagedGatewaySmall sets ManagedGatewaySmall field to given value.
+
+### HasManagedGatewaySmall
+
+`func (o *Entitlements) HasManagedGatewaySmall() bool`
+
+HasManagedGatewaySmall returns a boolean if a field has been set.
+
+### GetManagedGatewayLarge
+
+`func (o *Entitlements) GetManagedGatewayLarge() ManagedGatewayLargeEntitlement`
+
+GetManagedGatewayLarge returns the ManagedGatewayLarge field if non-nil, zero value otherwise.
+
+### GetManagedGatewayLargeOk
+
+`func (o *Entitlements) GetManagedGatewayLargeOk() (*ManagedGatewayLargeEntitlement, bool)`
+
+GetManagedGatewayLargeOk returns a tuple with the ManagedGatewayLarge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedGatewayLarge
+
+`func (o *Entitlements) SetManagedGatewayLarge(v ManagedGatewayLargeEntitlement)`
+
+SetManagedGatewayLarge sets ManagedGatewayLarge field to given value.
+
+### HasManagedGatewayLarge
+
+`func (o *Entitlements) HasManagedGatewayLarge() bool`
+
+HasManagedGatewayLarge returns a boolean if a field has been set.
+
+### GetNetworkConnections
+
+`func (o *Entitlements) GetNetworkConnections() NetworkConnectionsEntitlement`
+
+GetNetworkConnections returns the NetworkConnections field if non-nil, zero value otherwise.
+
+### GetNetworkConnectionsOk
+
+`func (o *Entitlements) GetNetworkConnectionsOk() (*NetworkConnectionsEntitlement, bool)`
+
+GetNetworkConnectionsOk returns a tuple with the NetworkConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkConnections
+
+`func (o *Entitlements) SetNetworkConnections(v NetworkConnectionsEntitlement)`
+
+SetNetworkConnections sets NetworkConnections field to given value.
+
+### HasNetworkConnections
+
+`func (o *Entitlements) HasNetworkConnections() bool`
+
+HasNetworkConnections returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

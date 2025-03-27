@@ -20,16 +20,17 @@ var _ MappedNullable = &EnablementResourceEntitlement{}
 // EnablementResourceEntitlement struct for EnablementResourceEntitlement
 type EnablementResourceEntitlement struct {
 	// Whether entitlement resource is enabled
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // NewEnablementResourceEntitlement instantiates a new EnablementResourceEntitlement object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnablementResourceEntitlement(enabled bool) *EnablementResourceEntitlement {
+func NewEnablementResourceEntitlement() *EnablementResourceEntitlement {
 	this := EnablementResourceEntitlement{}
-	this.Enabled = enabled
+	var enabled bool = false
+	this.Enabled = &enabled
 	return &this
 }
 
@@ -39,32 +40,40 @@ func NewEnablementResourceEntitlement(enabled bool) *EnablementResourceEntitleme
 func NewEnablementResourceEntitlementWithDefaults() *EnablementResourceEntitlement {
 	this := EnablementResourceEntitlement{}
 	var enabled bool = false
-	this.Enabled = enabled
+	this.Enabled = &enabled
 	return &this
 }
 
-// GetEnabled returns the Enabled field value
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *EnablementResourceEntitlement) GetEnabled() bool {
-	if o == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
-
-	return o.Enabled
+	return *o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnablementResourceEntitlement) GetEnabledOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
-	return &o.Enabled, true
+	return o.Enabled, true
 }
 
-// SetEnabled sets field value
+// HasEnabled returns a boolean if a field has been set.
+func (o *EnablementResourceEntitlement) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *EnablementResourceEntitlement) SetEnabled(v bool) {
-	o.Enabled = v
+	o.Enabled = &v
 }
 
 func (o EnablementResourceEntitlement) MarshalJSON() ([]byte, error) {
@@ -77,7 +86,9 @@ func (o EnablementResourceEntitlement) MarshalJSON() ([]byte, error) {
 
 func (o EnablementResourceEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	return toSerialize, nil
 }
 

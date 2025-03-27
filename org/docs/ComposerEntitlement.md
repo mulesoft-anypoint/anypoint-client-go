@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Composer enabled | [optional] [default to false]
-**TasksPerMonth** | Pointer to **int32** | Tasks per month | [optional] [default to 0]
-**MaxConnectors** | Pointer to **int32** | Max connectors | [optional] [default to 0]
-**UnlimitedConnectors** | Pointer to **bool** | Unlimited connectors | [optional] [default to false]
-**IsHyperAutomation** | Pointer to **bool** | Hyper Automation | [optional] [default to false]
+**Enabled** | Pointer to **bool** | Composer enabled | [optional] 
+**TasksPerMonth** | Pointer to **int32** | Tasks per month | [optional] 
+**MaxConnectors** | Pointer to **int32** | Max connectors | [optional] 
+**UnlimitedConnectors** | Pointer to **bool** | Unlimited connectors | [optional] 
+**IsHyperAutomation** | Pointer to **bool** | Hyper Automation | [optional] 
 
 ## Methods
 
