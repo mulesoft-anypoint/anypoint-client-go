@@ -6,7 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteDeployment**](DefaultApi.md#DeleteDeployment) | **Delete** /cloudhub/api/v2/applications/{domain} | Delete a single application
 [**GetAllDeployments**](DefaultApi.md#GetAllDeployments) | **Get** /armui/api/v1/applications | List deployments
-[**GetDeploymentDetails**](DefaultApi.md#GetDeploymentDetails) | **Get** /cloudhub/api/v2/applications/{domain} | Read deployment details
+[**GetCH1Deployments**](DefaultApi.md#GetCH1Deployments) | **Get** /cloudhub/api/v2/applications | List Cloudhub1 deployments
+[**GetDeploymentCH1Details**](DefaultApi.md#GetDeploymentCH1Details) | **Get** /cloudhub/api/v2/applications/{domain} | Read deployment details
 [**GetMuleVersions**](DefaultApi.md#GetMuleVersions) | **Get** /cloudhub/api/mule-versions | Read available mule versions
 [**PostDeployment**](DefaultApi.md#PostDeployment) | **Post** /cloudhub/api/v2/applications | Create a new deployment
 [**PutDeployment**](DefaultApi.md#PutDeployment) | **Put** /cloudhub/api/v2/applications/{domain} | Update a single application.
@@ -154,9 +155,87 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetDeploymentDetails
+## GetCH1Deployments
 
-> DeploymentDetails GetDeploymentDetails(ctx, domain).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).Execute()
+> []DeploymentCH1Summary GetCH1Deployments(ctx).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).RetrieveStatistics(retrieveStatistics).Period(period).RetrieveLogLevels(retrieveLogLevels).RetrieveTrackingSettings(retrieveTrackingSettings).RetrieveIpAddresses(retrieveIpAddresses).Execute()
+
+List Cloudhub1 deployments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/application_manager_v1"
+)
+
+func main() {
+    xAnypntEnvId := "xAnypntEnvId_example" // string | The environment id where the application is deployed
+    xAnypntOrgId := "xAnypntOrgId_example" // string | The org id where the application is deployed
+    retrieveStatistics := true // bool | Include statistics for each application in the response. (optional)
+    period := int64(789) // int64 | Number of milliseconds of statistics to gather. (optional)
+    retrieveLogLevels := true // bool | Include log levels for each application in the response. (optional)
+    retrieveTrackingSettings := true // bool | Include tracking settings for each application in the response. (optional)
+    retrieveIpAddresses := true // bool | Include ip address allocations for each application in the response. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetCH1Deployments(context.Background()).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).RetrieveStatistics(retrieveStatistics).Period(period).RetrieveLogLevels(retrieveLogLevels).RetrieveTrackingSettings(retrieveTrackingSettings).RetrieveIpAddresses(retrieveIpAddresses).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetCH1Deployments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCH1Deployments`: []DeploymentCH1Summary
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetCH1Deployments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCH1DeploymentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xAnypntEnvId** | **string** | The environment id where the application is deployed | 
+ **xAnypntOrgId** | **string** | The org id where the application is deployed | 
+ **retrieveStatistics** | **bool** | Include statistics for each application in the response. | 
+ **period** | **int64** | Number of milliseconds of statistics to gather. | 
+ **retrieveLogLevels** | **bool** | Include log levels for each application in the response. | 
+ **retrieveTrackingSettings** | **bool** | Include tracking settings for each application in the response. | 
+ **retrieveIpAddresses** | **bool** | Include ip address allocations for each application in the response. | 
+
+### Return type
+
+[**[]DeploymentCH1Summary**](DeploymentCH1Summary.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDeploymentCH1Details
+
+> DeploymentCH1Details GetDeploymentCH1Details(ctx, domain).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).Execute()
 
 Read deployment details
 
@@ -181,13 +260,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.GetDeploymentDetails(context.Background(), domain).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).Execute()
+    resp, r, err := apiClient.DefaultApi.GetDeploymentCH1Details(context.Background(), domain).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetDeploymentDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetDeploymentCH1Details``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDeploymentDetails`: DeploymentDetails
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetDeploymentDetails`: %v\n", resp)
+    // response from `GetDeploymentCH1Details`: DeploymentCH1Details
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetDeploymentCH1Details`: %v\n", resp)
 }
 ```
 
@@ -201,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetDeploymentDetailsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetDeploymentCH1DetailsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -212,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeploymentDetails**](DeploymentDetails.md)
+[**DeploymentCH1Details**](DeploymentCH1Details.md)
 
 ### Authorization
 
@@ -291,7 +370,7 @@ Other parameters are passed through a pointer to a apiGetMuleVersionsRequest str
 
 ## PostDeployment
 
-> DeploymentDetails PostDeployment(ctx).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).AppInfoJson(appInfoJson).File(file).AutoStart(autoStart).Execute()
+> DeploymentCH1Details PostDeployment(ctx).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).AppInfoJson(appInfoJson).File(file).AutoStart(autoStart).Execute()
 
 Create a new deployment
 
@@ -312,7 +391,7 @@ import (
 func main() {
     xAnypntEnvId := "xAnypntEnvId_example" // string | The environment id where the application is deployed
     xAnypntOrgId := "xAnypntOrgId_example" // string | The org id where the application is deployed
-    appInfoJson := "appInfoJson_example" // string | A JSON string representing the deployment configuration. Look at \\\"DeploymentInfo\\\" for structure.  (optional)
+    appInfoJson := "appInfoJson_example" // string | A JSON string representing the deployment configuration. Look at \\\"NewDeploymentStruct\\\" for structure.  (optional)
     file := os.NewFile(1234, "some_file") // *os.File | The Mule application artifact to be deployed. (optional)
     autoStart := true // bool | Indicates whether the application should be automatically started after deployment. (optional)
 
@@ -323,7 +402,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PostDeployment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PostDeployment`: DeploymentDetails
+    // response from `PostDeployment`: DeploymentCH1Details
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.PostDeployment`: %v\n", resp)
 }
 ```
@@ -341,13 +420,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAnypntEnvId** | **string** | The environment id where the application is deployed | 
  **xAnypntOrgId** | **string** | The org id where the application is deployed | 
- **appInfoJson** | **string** | A JSON string representing the deployment configuration. Look at \\\&quot;DeploymentInfo\\\&quot; for structure.  | 
+ **appInfoJson** | **string** | A JSON string representing the deployment configuration. Look at \\\&quot;NewDeploymentStruct\\\&quot; for structure.  | 
  **file** | ***os.File** | The Mule application artifact to be deployed. | 
  **autoStart** | **bool** | Indicates whether the application should be automatically started after deployment. | 
 
 ### Return type
 
-[**DeploymentDetails**](DeploymentDetails.md)
+[**DeploymentCH1Details**](DeploymentCH1Details.md)
 
 ### Authorization
 
@@ -365,7 +444,7 @@ Name | Type | Description  | Notes
 
 ## PutDeployment
 
-> DeploymentDetails PutDeployment(ctx, domain).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).AppInfoJson(appInfoJson).File(file).Execute()
+> DeploymentCH1Details PutDeployment(ctx, domain).XAnypntEnvId(xAnypntEnvId).XAnypntOrgId(xAnypntOrgId).AppInfoJson(appInfoJson).File(file).Execute()
 
 Update a single application.
 
@@ -387,7 +466,7 @@ func main() {
     xAnypntEnvId := "xAnypntEnvId_example" // string | The environment id where the application is deployed
     xAnypntOrgId := "xAnypntOrgId_example" // string | The org id where the application is deployed
     domain := "domain_example" // string | The application domain in the path
-    appInfoJson := "appInfoJson_example" // string | A JSON string representing the deployment configuration. Look at \\\"DeploymentInfo\\\" for structure.  (optional)
+    appInfoJson := "appInfoJson_example" // string | A JSON string representing the deployment configuration. Look at \\\"NewDeploymentStruct\\\" for structure.  (optional)
     file := os.NewFile(1234, "some_file") // *os.File | The Mule application artifact to be deployed. (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -397,7 +476,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PutDeployment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutDeployment`: DeploymentDetails
+    // response from `PutDeployment`: DeploymentCH1Details
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.PutDeployment`: %v\n", resp)
 }
 ```
@@ -420,12 +499,12 @@ Name | Type | Description  | Notes
  **xAnypntEnvId** | **string** | The environment id where the application is deployed | 
  **xAnypntOrgId** | **string** | The org id where the application is deployed | 
 
- **appInfoJson** | **string** | A JSON string representing the deployment configuration. Look at \\\&quot;DeploymentInfo\\\&quot; for structure.  | 
+ **appInfoJson** | **string** | A JSON string representing the deployment configuration. Look at \\\&quot;NewDeploymentStruct\\\&quot; for structure.  | 
  **file** | ***os.File** | The Mule application artifact to be deployed. | 
 
 ### Return type
 
-[**DeploymentDetails**](DeploymentDetails.md)
+[**DeploymentCH1Details**](DeploymentCH1Details.md)
 
 ### Authorization
 
