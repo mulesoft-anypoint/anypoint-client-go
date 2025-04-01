@@ -38,8 +38,8 @@ type User struct {
 	IsFederated *bool `json:"isFederated,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Organization *Organization `json:"organization,omitempty"`
-	MemberOfOrganizations []Org `json:"memberOfOrganizations,omitempty"`
-	ContributorOfOrganizations []Org `json:"contributorOfOrganizations,omitempty"`
+	MemberOfOrganizations []Organization `json:"memberOfOrganizations,omitempty"`
+	ContributorOfOrganizations []Organization `json:"contributorOfOrganizations,omitempty"`
 	Properties *Properties `json:"properties,omitempty"`
 	OrganizationPreferences map[string]interface{} `json:"organizationPreferences,omitempty"`
 	PrimaryOrganization *PrimaryOrganization `json:"primaryOrganization,omitempty"`
@@ -636,9 +636,9 @@ func (o *User) SetOrganization(v Organization) {
 }
 
 // GetMemberOfOrganizations returns the MemberOfOrganizations field value if set, zero value otherwise.
-func (o *User) GetMemberOfOrganizations() []Org {
+func (o *User) GetMemberOfOrganizations() []Organization {
 	if o == nil || IsNil(o.MemberOfOrganizations) {
-		var ret []Org
+		var ret []Organization
 		return ret
 	}
 	return o.MemberOfOrganizations
@@ -646,7 +646,7 @@ func (o *User) GetMemberOfOrganizations() []Org {
 
 // GetMemberOfOrganizationsOk returns a tuple with the MemberOfOrganizations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetMemberOfOrganizationsOk() ([]Org, bool) {
+func (o *User) GetMemberOfOrganizationsOk() ([]Organization, bool) {
 	if o == nil || IsNil(o.MemberOfOrganizations) {
 		return nil, false
 	}
@@ -662,15 +662,15 @@ func (o *User) HasMemberOfOrganizations() bool {
 	return false
 }
 
-// SetMemberOfOrganizations gets a reference to the given []Org and assigns it to the MemberOfOrganizations field.
-func (o *User) SetMemberOfOrganizations(v []Org) {
+// SetMemberOfOrganizations gets a reference to the given []Organization and assigns it to the MemberOfOrganizations field.
+func (o *User) SetMemberOfOrganizations(v []Organization) {
 	o.MemberOfOrganizations = v
 }
 
 // GetContributorOfOrganizations returns the ContributorOfOrganizations field value if set, zero value otherwise.
-func (o *User) GetContributorOfOrganizations() []Org {
+func (o *User) GetContributorOfOrganizations() []Organization {
 	if o == nil || IsNil(o.ContributorOfOrganizations) {
-		var ret []Org
+		var ret []Organization
 		return ret
 	}
 	return o.ContributorOfOrganizations
@@ -678,7 +678,7 @@ func (o *User) GetContributorOfOrganizations() []Org {
 
 // GetContributorOfOrganizationsOk returns a tuple with the ContributorOfOrganizations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetContributorOfOrganizationsOk() ([]Org, bool) {
+func (o *User) GetContributorOfOrganizationsOk() ([]Organization, bool) {
 	if o == nil || IsNil(o.ContributorOfOrganizations) {
 		return nil, false
 	}
@@ -694,8 +694,8 @@ func (o *User) HasContributorOfOrganizations() bool {
 	return false
 }
 
-// SetContributorOfOrganizations gets a reference to the given []Org and assigns it to the ContributorOfOrganizations field.
-func (o *User) SetContributorOfOrganizations(v []Org) {
+// SetContributorOfOrganizations gets a reference to the given []Organization and assigns it to the ContributorOfOrganizations field.
+func (o *User) SetContributorOfOrganizations(v []Organization) {
 	o.ContributorOfOrganizations = v
 }
 

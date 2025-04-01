@@ -375,7 +375,7 @@ func (r DefaultApiListUsersRequest) Offset(offset int32) DefaultApiListUsersRequ
 	return r
 }
 
-func (r DefaultApiListUsersRequest) Execute() (*ListUsers200Response, *http.Response, error) {
+func (r DefaultApiListUsersRequest) Execute() (*ListUsersResponse, *http.Response, error) {
 	return r.ApiService.ListUsersExecute(r)
 }
 
@@ -397,13 +397,13 @@ func (a *DefaultApiService) ListUsers(ctx context.Context, orgId string) Default
 }
 
 // Execute executes the request
-//  @return ListUsers200Response
-func (a *DefaultApiService) ListUsersExecute(r DefaultApiListUsersRequest) (*ListUsers200Response, *http.Response, error) {
+//  @return ListUsersResponse
+func (a *DefaultApiService) ListUsersExecute(r DefaultApiListUsersRequest) (*ListUsersResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListUsers200Response
+		localVarReturnValue  *ListUsersResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ListUsers")

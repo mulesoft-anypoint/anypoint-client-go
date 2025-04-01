@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## ListUsers
 
-> ListUsers200Response ListUsers(ctx, orgId).Type_(type_).Limit(limit).Offset(offset).Execute()
+> ListUsersResponse ListUsers(ctx, orgId).Type_(type_).Limit(limit).Offset(offset).Execute()
 
 
 
@@ -261,7 +261,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ListUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListUsers`: ListUsers200Response
+    // response from `ListUsers`: ListUsersResponse
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ListUsers`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListUsers200Response**](ListUsers200Response.md)
+[**ListUsersResponse**](ListUsersResponse.md)
 
 ### Authorization
 

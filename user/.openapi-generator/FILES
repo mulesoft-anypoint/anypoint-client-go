@@ -7,8 +7,7 @@ client.go
 configuration.go
 docs/CreateUser400Response.md
 docs/DefaultApi.md
-docs/ListUsers200Response.md
-docs/Org.md
+docs/ListUsersResponse.md
 docs/Organization.md
 docs/PrimaryOrganization.md
 docs/Properties.md
@@ -22,8 +21,7 @@ git_push.sh
 go.mod
 go.sum
 model_create_user_400_response.go
-model_list_users_200_response.go
-model_org.go
+model_list_users_response.go
 model_organization.go
 model_primary_organization.go
 model_properties.go
