@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: Description of the User API
   title: User API
-  version: 1.0.0
+  version: 1.1.1
 servers:
 - description: Anypoint Cloudhub
   url: https://anypoint.mulesoft.com/accounts/api/
@@ -16,6 +16,7 @@ paths:
   /organizations/{orgId}/users:
     get:
       description: Returns the group of users that belong to the specified organization.
+      operationId: listUsers
       parameters:
       - description: The ID of the organization in GUID format
         explode: false
@@ -60,10 +61,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_organizations__orgId__users_get_200_response'
+                $ref: '#/components/schemas/listUsers_200_response'
           description: Success response
     post:
       description: Creates a User
+      operationId: createUser
       parameters:
       - description: The ID of the organization in GUID format
         explode: false
@@ -85,7 +87,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_organizations__orgId__users_post_400_response'
+                $ref: '#/components/schemas/createUser_400_response'
           description: Bad request response
         "201":
           content:
@@ -96,6 +98,7 @@ paths:
   /organizations/{orgId}/users/{userId}:
     delete:
       description: Delete the user
+      operationId: deleteUser
       parameters:
       - description: The ID of the organization in GUID format
         explode: false
@@ -105,7 +108,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The ID of the user
+      - description: the ID of the user
         explode: false
         in: path
         name: userId
@@ -120,6 +123,7 @@ paths:
           description: Success response
     get:
       description: Returns a specific user that belong to the specified organization.
+      operationId: getUser
       parameters:
       - description: The ID of the organization in GUID format
         explode: false
@@ -148,6 +152,7 @@ paths:
           description: Success response
     put:
       description: Update a user
+      operationId: updateUser
       parameters:
       - description: The ID of the organization in GUID format
         explode: false
@@ -157,7 +162,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The ID of the user
+      - description: the ID of the user
         explode: false
         in: path
         name: userId
@@ -177,7 +182,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_organizations__orgId__users_post_400_response'
+                $ref: '#/components/schemas/createUser_400_response'
           description: Bad request response
         "204":
           content:
@@ -193,7 +198,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/_organizations__orgId__users_post_400_response'
+            $ref: '#/components/schemas/createUser_400_response'
       description: Bad request response
     SuccessPostUser:
       content:
@@ -213,7 +218,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/_organizations__orgId__users_get_200_response'
+            $ref: '#/components/schemas/listUsers_200_response'
       description: Success response
     SuccessGetUser:
       content:
@@ -498,7 +503,7 @@ components:
           $ref: '#/components/schemas/subscription'
       title: org
       type: object
-    _organizations__orgId__users_get_200_response:
+    listUsers_200_response:
       example:
         total: 0
         data:
@@ -514,7 +519,7 @@ components:
           title: Total number of results
           type: integer
       type: object
-    _organizations__orgId__users_post_400_response:
+    createUser_400_response:
       properties:
         status:
           default: 400
