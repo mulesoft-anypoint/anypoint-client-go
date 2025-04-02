@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the Team type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Team{}
+// checks if the PutTeamResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PutTeamResponse{}
 
-// Team struct for Team
-type Team struct {
+// PutTeamResponse struct for PutTeamResponse
+type PutTeamResponse struct {
 	OrgId *string `json:"org_id,omitempty"`
 	TeamId *string `json:"team_id,omitempty"`
 	TeamName *string `json:"team_name,omitempty"`
@@ -26,27 +26,28 @@ type Team struct {
 	AncestorTeamIds []string `json:"ancestor_team_ids,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
+	PreviousAncestorTeamIds []string `json:"previous_ancestor_team_ids,omitempty"`
 }
 
-// NewTeam instantiates a new Team object
+// NewPutTeamResponse instantiates a new PutTeamResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTeam() *Team {
-	this := Team{}
+func NewPutTeamResponse() *PutTeamResponse {
+	this := PutTeamResponse{}
 	return &this
 }
 
-// NewTeamWithDefaults instantiates a new Team object
+// NewPutTeamResponseWithDefaults instantiates a new PutTeamResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTeamWithDefaults() *Team {
-	this := Team{}
+func NewPutTeamResponseWithDefaults() *PutTeamResponse {
+	this := PutTeamResponse{}
 	return &this
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise.
-func (o *Team) GetOrgId() string {
+func (o *PutTeamResponse) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
 		return ret
@@ -56,7 +57,7 @@ func (o *Team) GetOrgId() string {
 
 // GetOrgIdOk returns a tuple with the OrgId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetOrgIdOk() (*string, bool) {
+func (o *PutTeamResponse) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
@@ -64,7 +65,7 @@ func (o *Team) GetOrgIdOk() (*string, bool) {
 }
 
 // HasOrgId returns a boolean if a field has been set.
-func (o *Team) HasOrgId() bool {
+func (o *PutTeamResponse) HasOrgId() bool {
 	if o != nil && !IsNil(o.OrgId) {
 		return true
 	}
@@ -73,12 +74,12 @@ func (o *Team) HasOrgId() bool {
 }
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
-func (o *Team) SetOrgId(v string) {
+func (o *PutTeamResponse) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
 // GetTeamId returns the TeamId field value if set, zero value otherwise.
-func (o *Team) GetTeamId() string {
+func (o *PutTeamResponse) GetTeamId() string {
 	if o == nil || IsNil(o.TeamId) {
 		var ret string
 		return ret
@@ -88,7 +89,7 @@ func (o *Team) GetTeamId() string {
 
 // GetTeamIdOk returns a tuple with the TeamId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetTeamIdOk() (*string, bool) {
+func (o *PutTeamResponse) GetTeamIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamId) {
 		return nil, false
 	}
@@ -96,7 +97,7 @@ func (o *Team) GetTeamIdOk() (*string, bool) {
 }
 
 // HasTeamId returns a boolean if a field has been set.
-func (o *Team) HasTeamId() bool {
+func (o *PutTeamResponse) HasTeamId() bool {
 	if o != nil && !IsNil(o.TeamId) {
 		return true
 	}
@@ -105,12 +106,12 @@ func (o *Team) HasTeamId() bool {
 }
 
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
-func (o *Team) SetTeamId(v string) {
+func (o *PutTeamResponse) SetTeamId(v string) {
 	o.TeamId = &v
 }
 
 // GetTeamName returns the TeamName field value if set, zero value otherwise.
-func (o *Team) GetTeamName() string {
+func (o *PutTeamResponse) GetTeamName() string {
 	if o == nil || IsNil(o.TeamName) {
 		var ret string
 		return ret
@@ -120,7 +121,7 @@ func (o *Team) GetTeamName() string {
 
 // GetTeamNameOk returns a tuple with the TeamName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetTeamNameOk() (*string, bool) {
+func (o *PutTeamResponse) GetTeamNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamName) {
 		return nil, false
 	}
@@ -128,7 +129,7 @@ func (o *Team) GetTeamNameOk() (*string, bool) {
 }
 
 // HasTeamName returns a boolean if a field has been set.
-func (o *Team) HasTeamName() bool {
+func (o *PutTeamResponse) HasTeamName() bool {
 	if o != nil && !IsNil(o.TeamName) {
 		return true
 	}
@@ -137,12 +138,12 @@ func (o *Team) HasTeamName() bool {
 }
 
 // SetTeamName gets a reference to the given string and assigns it to the TeamName field.
-func (o *Team) SetTeamName(v string) {
+func (o *PutTeamResponse) SetTeamName(v string) {
 	o.TeamName = &v
 }
 
 // GetTeamType returns the TeamType field value if set, zero value otherwise.
-func (o *Team) GetTeamType() string {
+func (o *PutTeamResponse) GetTeamType() string {
 	if o == nil || IsNil(o.TeamType) {
 		var ret string
 		return ret
@@ -152,7 +153,7 @@ func (o *Team) GetTeamType() string {
 
 // GetTeamTypeOk returns a tuple with the TeamType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetTeamTypeOk() (*string, bool) {
+func (o *PutTeamResponse) GetTeamTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamType) {
 		return nil, false
 	}
@@ -160,7 +161,7 @@ func (o *Team) GetTeamTypeOk() (*string, bool) {
 }
 
 // HasTeamType returns a boolean if a field has been set.
-func (o *Team) HasTeamType() bool {
+func (o *PutTeamResponse) HasTeamType() bool {
 	if o != nil && !IsNil(o.TeamType) {
 		return true
 	}
@@ -169,12 +170,12 @@ func (o *Team) HasTeamType() bool {
 }
 
 // SetTeamType gets a reference to the given string and assigns it to the TeamType field.
-func (o *Team) SetTeamType(v string) {
+func (o *PutTeamResponse) SetTeamType(v string) {
 	o.TeamType = &v
 }
 
 // GetAncestorTeamIds returns the AncestorTeamIds field value if set, zero value otherwise.
-func (o *Team) GetAncestorTeamIds() []string {
+func (o *PutTeamResponse) GetAncestorTeamIds() []string {
 	if o == nil || IsNil(o.AncestorTeamIds) {
 		var ret []string
 		return ret
@@ -184,7 +185,7 @@ func (o *Team) GetAncestorTeamIds() []string {
 
 // GetAncestorTeamIdsOk returns a tuple with the AncestorTeamIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetAncestorTeamIdsOk() ([]string, bool) {
+func (o *PutTeamResponse) GetAncestorTeamIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.AncestorTeamIds) {
 		return nil, false
 	}
@@ -192,7 +193,7 @@ func (o *Team) GetAncestorTeamIdsOk() ([]string, bool) {
 }
 
 // HasAncestorTeamIds returns a boolean if a field has been set.
-func (o *Team) HasAncestorTeamIds() bool {
+func (o *PutTeamResponse) HasAncestorTeamIds() bool {
 	if o != nil && !IsNil(o.AncestorTeamIds) {
 		return true
 	}
@@ -201,12 +202,12 @@ func (o *Team) HasAncestorTeamIds() bool {
 }
 
 // SetAncestorTeamIds gets a reference to the given []string and assigns it to the AncestorTeamIds field.
-func (o *Team) SetAncestorTeamIds(v []string) {
+func (o *PutTeamResponse) SetAncestorTeamIds(v []string) {
 	o.AncestorTeamIds = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Team) GetCreatedAt() string {
+func (o *PutTeamResponse) GetCreatedAt() string {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
@@ -216,7 +217,7 @@ func (o *Team) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetCreatedAtOk() (*string, bool) {
+func (o *PutTeamResponse) GetCreatedAtOk() (*string, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -224,7 +225,7 @@ func (o *Team) GetCreatedAtOk() (*string, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *Team) HasCreatedAt() bool {
+func (o *PutTeamResponse) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -233,12 +234,12 @@ func (o *Team) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *Team) SetCreatedAt(v string) {
+func (o *PutTeamResponse) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *Team) GetUpdatedAt() string {
+func (o *PutTeamResponse) GetUpdatedAt() string {
 	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
@@ -248,7 +249,7 @@ func (o *Team) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetUpdatedAtOk() (*string, bool) {
+func (o *PutTeamResponse) GetUpdatedAtOk() (*string, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -256,7 +257,7 @@ func (o *Team) GetUpdatedAtOk() (*string, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *Team) HasUpdatedAt() bool {
+func (o *PutTeamResponse) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -265,11 +266,43 @@ func (o *Team) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *Team) SetUpdatedAt(v string) {
+func (o *PutTeamResponse) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
-func (o Team) MarshalJSON() ([]byte, error) {
+// GetPreviousAncestorTeamIds returns the PreviousAncestorTeamIds field value if set, zero value otherwise.
+func (o *PutTeamResponse) GetPreviousAncestorTeamIds() []string {
+	if o == nil || IsNil(o.PreviousAncestorTeamIds) {
+		var ret []string
+		return ret
+	}
+	return o.PreviousAncestorTeamIds
+}
+
+// GetPreviousAncestorTeamIdsOk returns a tuple with the PreviousAncestorTeamIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PutTeamResponse) GetPreviousAncestorTeamIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.PreviousAncestorTeamIds) {
+		return nil, false
+	}
+	return o.PreviousAncestorTeamIds, true
+}
+
+// HasPreviousAncestorTeamIds returns a boolean if a field has been set.
+func (o *PutTeamResponse) HasPreviousAncestorTeamIds() bool {
+	if o != nil && !IsNil(o.PreviousAncestorTeamIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreviousAncestorTeamIds gets a reference to the given []string and assigns it to the PreviousAncestorTeamIds field.
+func (o *PutTeamResponse) SetPreviousAncestorTeamIds(v []string) {
+	o.PreviousAncestorTeamIds = v
+}
+
+func (o PutTeamResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -277,7 +310,7 @@ func (o Team) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Team) ToMap() (map[string]interface{}, error) {
+func (o PutTeamResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.OrgId) {
 		toSerialize["org_id"] = o.OrgId
@@ -300,41 +333,44 @@ func (o Team) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+	if !IsNil(o.PreviousAncestorTeamIds) {
+		toSerialize["previous_ancestor_team_ids"] = o.PreviousAncestorTeamIds
+	}
 	return toSerialize, nil
 }
 
-type NullableTeam struct {
-	value *Team
+type NullablePutTeamResponse struct {
+	value *PutTeamResponse
 	isSet bool
 }
 
-func (v NullableTeam) Get() *Team {
+func (v NullablePutTeamResponse) Get() *PutTeamResponse {
 	return v.value
 }
 
-func (v *NullableTeam) Set(val *Team) {
+func (v *NullablePutTeamResponse) Set(val *PutTeamResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTeam) IsSet() bool {
+func (v NullablePutTeamResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTeam) Unset() {
+func (v *NullablePutTeamResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTeam(val *Team) *NullableTeam {
-	return &NullableTeam{value: val, isSet: true}
+func NewNullablePutTeamResponse(val *PutTeamResponse) *NullablePutTeamResponse {
+	return &NullablePutTeamResponse{value: val, isSet: true}
 }
 
-func (v NullableTeam) MarshalJSON() ([]byte, error) {
+func (v NullablePutTeamResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTeam) UnmarshalJSON(src []byte) error {
+func (v *NullablePutTeamResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
