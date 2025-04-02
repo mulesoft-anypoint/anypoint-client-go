@@ -4,15 +4,89 @@ All URIs are relative to *https://anypoint.mulesoft.com/accounts/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OrganizationsOrgIdTeamsTeamIdMembersGet**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdMembersGet) | **Get** /organizations/{orgId}/teams/{teamId}/members | 
-[**OrganizationsOrgIdTeamsTeamIdMembersUserIdDelete**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdMembersUserIdDelete) | **Delete** /organizations/{orgId}/teams/{teamId}/members/{userId} | 
-[**OrganizationsOrgIdTeamsTeamIdMembersUserIdPut**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdMembersUserIdPut) | **Put** /organizations/{orgId}/teams/{teamId}/members/{userId} | 
+[**DeleteTeamMember**](DefaultApi.md#DeleteTeamMember) | **Delete** /organizations/{orgId}/teams/{teamId}/members/{userId} | 
+[**GetTeamMembers**](DefaultApi.md#GetTeamMembers) | **Get** /organizations/{orgId}/teams/{teamId}/members | 
+[**PutTeamMember**](DefaultApi.md#PutTeamMember) | **Put** /organizations/{orgId}/teams/{teamId}/members/{userId} | 
 
 
 
-## OrganizationsOrgIdTeamsTeamIdMembersGet
+## DeleteTeamMember
 
-> TeamMemberCollection OrganizationsOrgIdTeamsTeamIdMembersGet(ctx, orgId, teamId).MembershipType(membershipType).IdentityType(identityType).MemberIds(memberIds).Search(search).Limit(limit).Offset(offset).Sort(sort).Ascending(ascending).Execute()
+> DeleteTeamMember(ctx, orgId, teamId, userId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/team_members"
+)
+
+func main() {
+    orgId := "orgId_example" // string | The ID of the organization in GUID format
+    teamId := "teamId_example" // string | The ID of the team in GUID format
+    userId := "userId_example" // string | The ID of the user in GUID format
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.DefaultApi.DeleteTeamMember(context.Background(), orgId, teamId, userId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.DeleteTeamMember``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**teamId** | **string** | The ID of the team in GUID format | 
+**userId** | **string** | The ID of the user in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteTeamMemberRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTeamMembers
+
+> TeamMemberCollection GetTeamMembers(ctx, orgId, teamId).MembershipType(membershipType).IdentityType(identityType).MemberIds(memberIds).Search(search).Limit(limit).Offset(offset).Sort(sort).Ascending(ascending).Execute()
 
 
 
@@ -44,13 +118,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdMembersGet(context.Background(), orgId, teamId).MembershipType(membershipType).IdentityType(identityType).MemberIds(memberIds).Search(search).Limit(limit).Offset(offset).Sort(sort).Ascending(ascending).Execute()
+    resp, r, err := apiClient.DefaultApi.GetTeamMembers(context.Background(), orgId, teamId).MembershipType(membershipType).IdentityType(identityType).MemberIds(memberIds).Search(search).Limit(limit).Offset(offset).Sort(sort).Ascending(ascending).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdMembersGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetTeamMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsOrgIdTeamsTeamIdMembersGet`: TeamMemberCollection
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdTeamsTeamIdMembersGet`: %v\n", resp)
+    // response from `GetTeamMembers`: TeamMemberCollection
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetTeamMembers`: %v\n", resp)
 }
 ```
 
@@ -65,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdMembersGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTeamMembersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -99,83 +173,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OrganizationsOrgIdTeamsTeamIdMembersUserIdDelete
+## PutTeamMember
 
-> OrganizationsOrgIdTeamsTeamIdMembersUserIdDelete(ctx, orgId, teamId, userId).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/team_members"
-)
-
-func main() {
-    orgId := "orgId_example" // string | The ID of the organization in GUID format
-    teamId := "teamId_example" // string | The ID of the team in GUID format
-    userId := "userId_example" // string | The ID of the user in GUID format
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdMembersUserIdDelete(context.Background(), orgId, teamId, userId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdMembersUserIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | The ID of the organization in GUID format | 
-**teamId** | **string** | The ID of the team in GUID format | 
-**userId** | **string** | The ID of the user in GUID format | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdMembersUserIdDeleteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## OrganizationsOrgIdTeamsTeamIdMembersUserIdPut
-
-> OrganizationsOrgIdTeamsTeamIdMembersUserIdPut(ctx, orgId, teamId, userId).TeamMemberPutBody(teamMemberPutBody).Execute()
+> PutTeamMember(ctx, orgId, teamId, userId).TeamMemberPutBody(teamMemberPutBody).Execute()
 
 
 
@@ -201,9 +201,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdMembersUserIdPut(context.Background(), orgId, teamId, userId).TeamMemberPutBody(teamMemberPutBody).Execute()
+    r, err := apiClient.DefaultApi.PutTeamMember(context.Background(), orgId, teamId, userId).TeamMemberPutBody(teamMemberPutBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdMembersUserIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PutTeamMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdMembersUserIdPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutTeamMemberRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

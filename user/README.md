@@ -87,8 +87,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CreateUser400Response](docs/CreateUser400Response.md)
- - [ListUsers200Response](docs/ListUsers200Response.md)
- - [Org](docs/Org.md)
+ - [ListUsersResponse](docs/ListUsersResponse.md)
  - [Organization](docs/Organization.md)
  - [PrimaryOrganization](docs/PrimaryOrganization.md)
  - [Properties](docs/Properties.md)

@@ -61,7 +61,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listUsers_200_response'
+                $ref: '#/components/schemas/ListUsersResponse'
           description: Success response
     post:
       description: Creates a User
@@ -79,7 +79,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/userPostBody'
+              $ref: '#/components/schemas/UserPostBody'
       responses:
         "401":
           description: Access token is missing or invalid
@@ -93,7 +93,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/user'
+                $ref: '#/components/schemas/User'
           description: Success response
   /organizations/{orgId}/users/{userId}:
     delete:
@@ -148,7 +148,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/user'
+                $ref: '#/components/schemas/User'
           description: Success response
     put:
       description: Update a user
@@ -174,7 +174,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/userPutBody'
+              $ref: '#/components/schemas/UserPutBody'
       responses:
         "401":
           description: Access token is missing or invalid
@@ -188,7 +188,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/user'
+                $ref: '#/components/schemas/User'
           description: Success response
 components:
   responses:
@@ -204,13 +204,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/user'
+            $ref: '#/components/schemas/User'
       description: Success response
     SuccessPutUser:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/user'
+            $ref: '#/components/schemas/User'
       description: Success response
     SuccessDeleteUser:
       description: Success response
@@ -218,16 +218,45 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/listUsers_200_response'
+            $ref: '#/components/schemas/ListUsersResponse'
       description: Success response
     SuccessGetUser:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/user'
+            $ref: '#/components/schemas/User'
       description: Success response
   schemas:
-    userPostBody:
+    ListUsersResponse:
+      example:
+        total: 0
+        data:
+        - null
+        - null
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/User'
+          title: UserList
+          type: array
+        total:
+          title: Total number of results
+          type: integer
+      title: ListUsersResponse
+      type: object
+    UserList:
+      items:
+        $ref: '#/components/schemas/User'
+      title: UserList
+      type: array
+    UserPostBody:
+      example:
+        firstName: firstName
+        lastName: lastName
+        password: password
+        phoneNumber: phoneNumber
+        email: email
+        username: username
       properties:
         username:
           title: username
@@ -247,9 +276,17 @@ components:
         password:
           title: password
           type: string
-      title: userPostBody
+      title: UserPostBody
       type: object
-    userPutBody:
+    UserPutBody:
+      example:
+        firstName: firstName
+        lastName: lastName
+        password: password
+        phoneNumber: phoneNumber
+        email: email
+        properties: "{}"
+        username: username
       properties:
         username:
           title: username
@@ -272,14 +309,14 @@ components:
         properties:
           title: properties
           type: object
-      title: userPutBody
+      title: UserPutBody
       type: object
-    user:
+    User:
       allOf:
       - $ref: '#/components/schemas/userId'
-      - $ref: '#/components/schemas/userCore'
+      - $ref: '#/components/schemas/UserCore'
       title: user
-    userCore:
+    UserCore:
       properties:
         username:
           example: UzerMule.test
@@ -345,16 +382,16 @@ components:
           title: type
           type: string
         organization:
-          $ref: '#/components/schemas/organization'
+          $ref: '#/components/schemas/Organization'
         memberOfOrganizations:
           items:
-            $ref: '#/components/schemas/org'
-          title: memberOfOrganizations
+            $ref: '#/components/schemas/Organization'
+          title: MemberOfOrganizations
           type: array
         contributorOfOrganizations:
           items:
-            $ref: '#/components/schemas/org'
-          title: contributorOfOrganizations
+            $ref: '#/components/schemas/Organization'
+          title: ContributorOfOrganizations
           type: array
         properties:
           $ref: '#/components/schemas/properties'
@@ -363,9 +400,9 @@ components:
           type: object
         primaryOrganization:
           $ref: '#/components/schemas/primaryOrganization'
-      title: userCore
+      title: UserCore
       type: object
-    organization:
+    Organization:
       properties:
         name:
           title: name
@@ -426,99 +463,18 @@ components:
         entitlements:
           title: entitlements
           type: object
-      title: organization
+      title: Organization
       type: object
-    memberOfOrganizations:
+    MemberOfOrganizations:
       items:
-        $ref: '#/components/schemas/org'
-      title: memberOfOrganizations
+        $ref: '#/components/schemas/Organization'
+      title: MemberOfOrganizations
       type: array
-    contributorOfOrganizations:
+    ContributorOfOrganizations:
       items:
-        $ref: '#/components/schemas/org'
-      title: contributorOfOrganizations
+        $ref: '#/components/schemas/Organization'
+      title: ContributorOfOrganizations
       type: array
-    org:
-      properties:
-        parentName:
-          nullable: true
-          title: parentName
-          type: string
-        parentId:
-          nullable: true
-          title: parentId
-          type: string
-        domain:
-          title: domain
-          type: string
-        name:
-          title: name
-          type: string
-        id:
-          title: id
-          type: string
-        createdAt:
-          title: createdAt
-          type: string
-        updatedAt:
-          title: updatedAt
-          type: string
-        ownerId:
-          title: ownerId
-          type: string
-        clientId:
-          title: clientId
-          type: string
-        idprovider_id:
-          title: idprovider_id
-          type: string
-        isFederated:
-          title: isFederated
-          type: boolean
-        parentOrganizationIds:
-          items:
-            type: string
-          title: parentOrganizationIds
-          type: array
-        subOrganizationIds:
-          items:
-            type: string
-          title: subOrganizationIds
-          type: array
-        tenantOrganizationIds:
-          items:
-            type: string
-          title: tenantOrganizationIds
-          type: array
-        mfaRequired:
-          title: mfaRequired
-          type: string
-        isAutomaticAdminPromotionExempt:
-          title: isAutomaticAdminPromotionExempt
-          type: boolean
-        isMaster:
-          title: isMaster
-          type: boolean
-        subscription:
-          $ref: '#/components/schemas/subscription'
-      title: org
-      type: object
-    listUsers_200_response:
-      example:
-        total: 0
-        data:
-        - null
-        - null
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/user'
-          title: List of users
-          type: array
-        total:
-          title: Total number of results
-          type: integer
-      type: object
     createUser_400_response:
       properties:
         status:

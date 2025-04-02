@@ -4,20 +4,236 @@ All URIs are relative to *https://anypoint.mulesoft.com/accounts/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OrganizationsOrgIdTeamsGet**](DefaultApi.md#OrganizationsOrgIdTeamsGet) | **Get** /organizations/{orgId}/teams | 
-[**OrganizationsOrgIdTeamsPost**](DefaultApi.md#OrganizationsOrgIdTeamsPost) | **Post** /organizations/{orgId}/teams | 
-[**OrganizationsOrgIdTeamsTeamIdDelete**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdDelete) | **Delete** /organizations/{orgId}/teams/{teamId} | 
-[**OrganizationsOrgIdTeamsTeamIdGet**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdGet) | **Get** /organizations/{orgId}/teams/{teamId} | 
-[**OrganizationsOrgIdTeamsTeamIdParentPut**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdParentPut) | **Put** /organizations/{orgId}/teams/{teamId}/parent | 
-[**OrganizationsOrgIdTeamsTeamIdPatch**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdPatch) | **Patch** /organizations/{orgId}/teams/{teamId} | 
+[**CreateTeam**](DefaultApi.md#CreateTeam) | **Post** /organizations/{orgId}/teams | Create a new team
+[**DeleteTeam**](DefaultApi.md#DeleteTeam) | **Delete** /organizations/{orgId}/teams/{teamId} | Delete a team by id
+[**GetTeam**](DefaultApi.md#GetTeam) | **Get** /organizations/{orgId}/teams/{teamId} | Read a team by id
+[**GetTeams**](DefaultApi.md#GetTeams) | **Get** /organizations/{orgId}/teams | Read all Teams for a given org
+[**MoveTeam**](DefaultApi.md#MoveTeam) | **Put** /organizations/{orgId}/teams/{teamId}/parent | Move a team
+[**UpdateTeam**](DefaultApi.md#UpdateTeam) | **Patch** /organizations/{orgId}/teams/{teamId} | Update a team by id
 
 
 
-## OrganizationsOrgIdTeamsGet
+## CreateTeam
 
-> TeamCollection OrganizationsOrgIdTeamsGet(ctx, orgId).AncestorTeamId(ancestorTeamId).ParentTeamId(parentTeamId).TeamId(teamId).TeamType(teamType).Search(search).Limit(limit).Offset(offset).Sort(sort).Ascending(ascending).Execute()
+> Team CreateTeam(ctx, orgId).TeamPostBody(teamPostBody).Execute()
+
+Create a new team
 
 
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/team"
+)
+
+func main() {
+    orgId := "orgId_example" // string | The ID of the organization in GUID format
+    teamPostBody := *openapiclient.NewTeamPostBody() // TeamPostBody |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.CreateTeam(context.Background(), orgId).TeamPostBody(teamPostBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.CreateTeam``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateTeam`: Team
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.CreateTeam`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateTeamRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **teamPostBody** | [**TeamPostBody**](TeamPostBody.md) |  | 
+
+### Return type
+
+[**Team**](Team.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteTeam
+
+> DeleteTeam(ctx, orgId, teamId).Execute()
+
+Delete a team by id
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/team"
+)
+
+func main() {
+    orgId := "orgId_example" // string | The ID of the organization in GUID format
+    teamId := "teamId_example" // string | The ID of the team in GUID format
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.DefaultApi.DeleteTeam(context.Background(), orgId, teamId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.DeleteTeam``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**teamId** | **string** | The ID of the team in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteTeamRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTeam
+
+> Team GetTeam(ctx, orgId, teamId).Execute()
+
+Read a team by id
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/team"
+)
+
+func main() {
+    orgId := "orgId_example" // string | The ID of the organization in GUID format
+    teamId := "teamId_example" // string | The ID of the team in GUID format
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetTeam(context.Background(), orgId, teamId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetTeam``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTeam`: Team
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetTeam`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**teamId** | **string** | The ID of the team in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTeamRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**Team**](Team.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTeams
+
+> TeamCollection GetTeams(ctx, orgId).AncestorTeamId(ancestorTeamId).ParentTeamId(parentTeamId).TeamId(teamId).TeamType(teamType).Search(search).Limit(limit).Offset(offset).Sort(sort).Ascending(ascending).Execute()
+
+Read all Teams for a given org
 
 
 
@@ -47,13 +263,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsGet(context.Background(), orgId).AncestorTeamId(ancestorTeamId).ParentTeamId(parentTeamId).TeamId(teamId).TeamType(teamType).Search(search).Limit(limit).Offset(offset).Sort(sort).Ascending(ascending).Execute()
+    resp, r, err := apiClient.DefaultApi.GetTeams(context.Background(), orgId).AncestorTeamId(ancestorTeamId).ParentTeamId(parentTeamId).TeamId(teamId).TeamType(teamType).Search(search).Limit(limit).Offset(offset).Sort(sort).Ascending(ascending).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetTeams``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsOrgIdTeamsGet`: TeamCollection
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdTeamsGet`: %v\n", resp)
+    // response from `GetTeams`: TeamCollection
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetTeams`: %v\n", resp)
 }
 ```
 
@@ -67,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTeamsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -101,227 +317,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OrganizationsOrgIdTeamsPost
+## MoveTeam
 
-> Team OrganizationsOrgIdTeamsPost(ctx, orgId).TeamPostBody(teamPostBody).Execute()
+> PutTeamResponse MoveTeam(ctx, orgId, teamId).TeamPutBody(teamPutBody).Execute()
 
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/team"
-)
-
-func main() {
-    orgId := "orgId_example" // string | The ID of the organization in GUID format
-    teamPostBody := *openapiclient.NewTeamPostBody() // TeamPostBody |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsPost(context.Background(), orgId).TeamPostBody(teamPostBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OrganizationsOrgIdTeamsPost`: Team
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdTeamsPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | The ID of the organization in GUID format | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **teamPostBody** | [**TeamPostBody**](TeamPostBody.md) |  | 
-
-### Return type
-
-[**Team**](Team.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## OrganizationsOrgIdTeamsTeamIdDelete
-
-> OrganizationsOrgIdTeamsTeamIdDelete(ctx, orgId, teamId).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/team"
-)
-
-func main() {
-    orgId := "orgId_example" // string | The ID of the organization in GUID format
-    teamId := "teamId_example" // string | The ID of the team in GUID format
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdDelete(context.Background(), orgId, teamId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | The ID of the organization in GUID format | 
-**teamId** | **string** | The ID of the team in GUID format | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdDeleteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## OrganizationsOrgIdTeamsTeamIdGet
-
-> Team OrganizationsOrgIdTeamsTeamIdGet(ctx, orgId, teamId).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/team"
-)
-
-func main() {
-    orgId := "orgId_example" // string | The ID of the organization in GUID format
-    teamId := "teamId_example" // string | The ID of the team in GUID format
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdGet(context.Background(), orgId, teamId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OrganizationsOrgIdTeamsTeamIdGet`: Team
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdTeamsTeamIdGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | The ID of the organization in GUID format | 
-**teamId** | **string** | The ID of the team in GUID format | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**Team**](Team.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## OrganizationsOrgIdTeamsTeamIdParentPut
-
-> OrganizationsOrgIdTeamsTeamIdParentPut201Response OrganizationsOrgIdTeamsTeamIdParentPut(ctx, orgId, teamId).TeamPutBody(teamPutBody).Execute()
-
-
+Move a team
 
 
 
@@ -344,13 +344,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdParentPut(context.Background(), orgId, teamId).TeamPutBody(teamPutBody).Execute()
+    resp, r, err := apiClient.DefaultApi.MoveTeam(context.Background(), orgId, teamId).TeamPutBody(teamPutBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdParentPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.MoveTeam``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsOrgIdTeamsTeamIdParentPut`: OrganizationsOrgIdTeamsTeamIdParentPut201Response
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdTeamsTeamIdParentPut`: %v\n", resp)
+    // response from `MoveTeam`: PutTeamResponse
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.MoveTeam`: %v\n", resp)
 }
 ```
 
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdParentPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiMoveTeamRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationsOrgIdTeamsTeamIdParentPut201Response**](OrganizationsOrgIdTeamsTeamIdParentPut201Response.md)
+[**PutTeamResponse**](PutTeamResponse.md)
 
 ### Authorization
 
@@ -392,11 +392,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OrganizationsOrgIdTeamsTeamIdPatch
+## UpdateTeam
 
-> Team OrganizationsOrgIdTeamsTeamIdPatch(ctx, orgId, teamId).TeamPatchBody(teamPatchBody).Execute()
+> Team UpdateTeam(ctx, orgId, teamId).TeamPatchBody(teamPatchBody).Execute()
 
-
+Update a team by id
 
 
 
@@ -419,13 +419,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdPatch(context.Background(), orgId, teamId).TeamPatchBody(teamPatchBody).Execute()
+    resp, r, err := apiClient.DefaultApi.UpdateTeam(context.Background(), orgId, teamId).TeamPatchBody(teamPatchBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.UpdateTeam``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsOrgIdTeamsTeamIdPatch`: Team
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdTeamsTeamIdPatch`: %v\n", resp)
+    // response from `UpdateTeam`: Team
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.UpdateTeam`: %v\n", resp)
 }
 ```
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdPatchRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateTeamRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
