@@ -4,14 +4,14 @@ All URIs are relative to *https://anypoint.mulesoft.com/accounts/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OrganizationsOrgIdTeamsTeamIdGroupmappingsGet**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdGroupmappingsGet) | **Get** /organizations/{orgId}/teams/{teamId}/groupmappings | 
-[**OrganizationsOrgIdTeamsTeamIdGroupmappingsPut**](DefaultApi.md#OrganizationsOrgIdTeamsTeamIdGroupmappingsPut) | **Put** /organizations/{orgId}/teams/{teamId}/groupmappings | 
+[**GetTeamGroupMappings**](DefaultApi.md#GetTeamGroupMappings) | **Get** /organizations/{orgId}/teams/{teamId}/groupmappings | 
+[**PutTeamGroupMappings**](DefaultApi.md#PutTeamGroupMappings) | **Put** /organizations/{orgId}/teams/{teamId}/groupmappings | 
 
 
 
-## OrganizationsOrgIdTeamsTeamIdGroupmappingsGet
+## GetTeamGroupMappings
 
-> TeamGroupMappingsCollection OrganizationsOrgIdTeamsTeamIdGroupmappingsGet(ctx, orgId, teamId).Limit(limit).Offset(offset).Execute()
+> TeamGroupMappingsCollection GetTeamGroupMappings(ctx, orgId, teamId).Limit(limit).Offset(offset).Execute()
 
 
 
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdGroupmappingsGet(context.Background(), orgId, teamId).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.DefaultApi.GetTeamGroupMappings(context.Background(), orgId, teamId).Limit(limit).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdGroupmappingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetTeamGroupMappings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OrganizationsOrgIdTeamsTeamIdGroupmappingsGet`: TeamGroupMappingsCollection
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.OrganizationsOrgIdTeamsTeamIdGroupmappingsGet`: %v\n", resp)
+    // response from `GetTeamGroupMappings`: TeamGroupMappingsCollection
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetTeamGroupMappings`: %v\n", resp)
 }
 ```
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTeamGroupMappingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OrganizationsOrgIdTeamsTeamIdGroupmappingsPut
+## PutTeamGroupMappings
 
-> OrganizationsOrgIdTeamsTeamIdGroupmappingsPut(ctx, orgId, teamId).TeamGroupMappingPutBody(teamGroupMappingPutBody).Execute()
+> PutTeamGroupMappings(ctx, orgId, teamId).TeamGroupMappingPutBody(teamGroupMappingPutBody).Execute()
 
 
 
@@ -113,9 +113,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DefaultApi.OrganizationsOrgIdTeamsTeamIdGroupmappingsPut(context.Background(), orgId, teamId).TeamGroupMappingPutBody(teamGroupMappingPutBody).Execute()
+    r, err := apiClient.DefaultApi.PutTeamGroupMappings(context.Background(), orgId, teamId).TeamGroupMappingPutBody(teamGroupMappingPutBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.OrganizationsOrgIdTeamsTeamIdGroupmappingsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PutTeamGroupMappings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutTeamGroupMappingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
