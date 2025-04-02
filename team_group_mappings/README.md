@@ -77,8 +77,8 @@ All URIs are relative to *https://anypoint.mulesoft.com/accounts/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**OrganizationsOrgIdTeamsTeamIdGroupmappingsGet**](docs/DefaultApi.md#organizationsorgidteamsteamidgroupmappingsget) | **Get** /organizations/{orgId}/teams/{teamId}/groupmappings | 
-*DefaultApi* | [**OrganizationsOrgIdTeamsTeamIdGroupmappingsPut**](docs/DefaultApi.md#organizationsorgidteamsteamidgroupmappingsput) | **Put** /organizations/{orgId}/teams/{teamId}/groupmappings | 
+*DefaultApi* | [**GetTeamGroupMappings**](docs/DefaultApi.md#getteamgroupmappings) | **Get** /organizations/{orgId}/teams/{teamId}/groupmappings | 
+*DefaultApi* | [**PutTeamGroupMappings**](docs/DefaultApi.md#putteamgroupmappings) | **Put** /organizations/{orgId}/teams/{teamId}/groupmappings | 
 
 
 ## Documentation For Models

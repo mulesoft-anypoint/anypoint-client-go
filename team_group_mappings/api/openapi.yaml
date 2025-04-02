@@ -16,6 +16,7 @@ paths:
   /organizations/{orgId}/teams/{teamId}/groupmappings:
     get:
       description: retrieves team groupmappings
+      operationId: getTeamGroupMappings
       parameters:
       - description: The ID of the organization in GUID format
         explode: false
@@ -68,6 +69,7 @@ paths:
           description: Success response
     put:
       description: adds the given group mappings to the given team
+      operationId: putTeamGroupMappings
       parameters:
       - description: The ID of the organization in GUID format
         explode: false

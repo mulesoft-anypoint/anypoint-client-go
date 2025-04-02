@@ -23,7 +23,7 @@ import (
 // DefaultApiService DefaultApi service
 type DefaultApiService service
 
-type DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest struct {
+type DefaultApiGetTeamGroupMappingsRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
 	orgId string
@@ -33,33 +33,33 @@ type DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest struct {
 }
 
 // Maximum number of rolegroups to retrieve per request.
-func (r DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest) Limit(limit int32) DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest {
+func (r DefaultApiGetTeamGroupMappingsRequest) Limit(limit int32) DefaultApiGetTeamGroupMappingsRequest {
 	r.limit = &limit
 	return r
 }
 
 // The number of records to omit from the response.
-func (r DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest) Offset(offset int32) DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest {
+func (r DefaultApiGetTeamGroupMappingsRequest) Offset(offset int32) DefaultApiGetTeamGroupMappingsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest) Execute() (*TeamGroupMappingsCollection, *http.Response, error) {
-	return r.ApiService.OrganizationsOrgIdTeamsTeamIdGroupmappingsGetExecute(r)
+func (r DefaultApiGetTeamGroupMappingsRequest) Execute() (*TeamGroupMappingsCollection, *http.Response, error) {
+	return r.ApiService.GetTeamGroupMappingsExecute(r)
 }
 
 /*
-OrganizationsOrgIdTeamsTeamIdGroupmappingsGet Method for OrganizationsOrgIdTeamsTeamIdGroupmappingsGet
+GetTeamGroupMappings Method for GetTeamGroupMappings
 
 retrieves team groupmappings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest
+ @return DefaultApiGetTeamGroupMappingsRequest
 */
-func (a *DefaultApiService) OrganizationsOrgIdTeamsTeamIdGroupmappingsGet(ctx context.Context, orgId string, teamId string) DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest {
-	return DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest{
+func (a *DefaultApiService) GetTeamGroupMappings(ctx context.Context, orgId string, teamId string) DefaultApiGetTeamGroupMappingsRequest {
+	return DefaultApiGetTeamGroupMappingsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -69,7 +69,7 @@ func (a *DefaultApiService) OrganizationsOrgIdTeamsTeamIdGroupmappingsGet(ctx co
 
 // Execute executes the request
 //  @return TeamGroupMappingsCollection
-func (a *DefaultApiService) OrganizationsOrgIdTeamsTeamIdGroupmappingsGetExecute(r DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsGetRequest) (*TeamGroupMappingsCollection, *http.Response, error) {
+func (a *DefaultApiService) GetTeamGroupMappingsExecute(r DefaultApiGetTeamGroupMappingsRequest) (*TeamGroupMappingsCollection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -77,7 +77,7 @@ func (a *DefaultApiService) OrganizationsOrgIdTeamsTeamIdGroupmappingsGetExecute
 		localVarReturnValue  *TeamGroupMappingsCollection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.OrganizationsOrgIdTeamsTeamIdGroupmappingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetTeamGroupMappings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -161,7 +161,7 @@ func (a *DefaultApiService) OrganizationsOrgIdTeamsTeamIdGroupmappingsGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest struct {
+type DefaultApiPutTeamGroupMappingsRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
 	orgId string
@@ -169,27 +169,27 @@ type DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest struct {
 	teamGroupMappingPutBody *[]TeamGroupMappingPutBody
 }
 
-func (r DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest) TeamGroupMappingPutBody(teamGroupMappingPutBody []TeamGroupMappingPutBody) DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest {
+func (r DefaultApiPutTeamGroupMappingsRequest) TeamGroupMappingPutBody(teamGroupMappingPutBody []TeamGroupMappingPutBody) DefaultApiPutTeamGroupMappingsRequest {
 	r.teamGroupMappingPutBody = &teamGroupMappingPutBody
 	return r
 }
 
-func (r DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.OrganizationsOrgIdTeamsTeamIdGroupmappingsPutExecute(r)
+func (r DefaultApiPutTeamGroupMappingsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PutTeamGroupMappingsExecute(r)
 }
 
 /*
-OrganizationsOrgIdTeamsTeamIdGroupmappingsPut Method for OrganizationsOrgIdTeamsTeamIdGroupmappingsPut
+PutTeamGroupMappings Method for PutTeamGroupMappings
 
 adds the given group mappings to the given team
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest
+ @return DefaultApiPutTeamGroupMappingsRequest
 */
-func (a *DefaultApiService) OrganizationsOrgIdTeamsTeamIdGroupmappingsPut(ctx context.Context, orgId string, teamId string) DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest {
-	return DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest{
+func (a *DefaultApiService) PutTeamGroupMappings(ctx context.Context, orgId string, teamId string) DefaultApiPutTeamGroupMappingsRequest {
+	return DefaultApiPutTeamGroupMappingsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -198,14 +198,14 @@ func (a *DefaultApiService) OrganizationsOrgIdTeamsTeamIdGroupmappingsPut(ctx co
 }
 
 // Execute executes the request
-func (a *DefaultApiService) OrganizationsOrgIdTeamsTeamIdGroupmappingsPutExecute(r DefaultApiOrganizationsOrgIdTeamsTeamIdGroupmappingsPutRequest) (*http.Response, error) {
+func (a *DefaultApiService) PutTeamGroupMappingsExecute(r DefaultApiPutTeamGroupMappingsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.OrganizationsOrgIdTeamsTeamIdGroupmappingsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PutTeamGroupMappings")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
