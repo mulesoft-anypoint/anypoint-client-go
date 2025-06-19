@@ -10,8 +10,8 @@ info:
       - Starting, Stopping or Restarting applications
       - etc.
     This API currently supports deployments to Cloudhub 1.0 targets only.
-  title: Deployment v1
-  version: 1.2.0
+  title: Application Manager v1
+  version: 2.0.0
 servers:
 - description: Anypoint Cloudhub
   url: https://anypoint.mulesoft.com
@@ -151,7 +151,10 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/DeployAppBody'
+              $ref: '#/components/schemas/DeployAppBodyFormData'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAppBodyJSON'
         description: Application deployment body containing configuration and artifact
           file.
         required: true
@@ -320,7 +323,10 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/UpdateDeploymentBody'
+              $ref: '#/components/schemas/UpdateDeploymentBodyFormData'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDeploymentBodyJSON'
         description: Application deployment body containing configuration and artifact
           file.
         required: true
@@ -465,7 +471,8 @@ components:
       items:
         $ref: '#/components/schemas/DeploymentCH1Summary'
       type: array
-    DeployAppBody:
+    DeployAppBodyFormData:
+      description: Application deployment body to deploy from file.
       properties:
         appInfoJson:
           description: |
@@ -480,7 +487,20 @@ components:
             after deployment.
           type: boolean
       type: object
-    UpdateDeploymentBody:
+    DeployAppBodyJSON:
+      description: Application deployment body to deploy from exchange.
+      properties:
+        applicationInfo:
+          $ref: '#/components/schemas/NewDeploymentStruct'
+        applicationSource:
+          $ref: '#/components/schemas/ExchangeApplicationSource'
+        autoStart:
+          description: Indicates whether the application should be automatically started
+            after deployment.
+          type: boolean
+      type: object
+    UpdateDeploymentBodyFormData:
+      description: Application deployment body to update a deployment from file.
       properties:
         appInfoJson:
           description: |
@@ -490,6 +510,14 @@ components:
           description: The Mule application artifact to be deployed.
           format: binary
           type: string
+      type: object
+    UpdateDeploymentBodyJSON:
+      description: Application deployment body to update a deployment from exchange.
+      properties:
+        applicationInfo:
+          $ref: '#/components/schemas/NewDeploymentStruct'
+        applicationSource:
+          $ref: '#/components/schemas/ExchangeApplicationSource'
       type: object
     NewDeploymentStruct:
       properties:
@@ -1407,6 +1435,27 @@ components:
           type: string
         state:
           description: "The state of the IP address (ex. available, in use)."
+          type: string
+      type: object
+    ExchangeApplicationSource:
+      description: The source of the application in Exchange.
+      properties:
+        source:
+          description: The source of the application in Exchange.
+          enum:
+          - EXCHANGE
+          type: string
+        groupId:
+          description: The group ID of the application in Exchange.
+          type: string
+        artifactId:
+          description: The artifact ID of the application in Exchange.
+          type: string
+        version:
+          description: The version of the application in Exchange.
+          type: string
+        organizationId:
+          description: The organization ID of the application in Exchange.
           type: string
       type: object
     NewDeploymentStruct_muleVersion:

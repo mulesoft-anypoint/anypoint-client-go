@@ -6,6 +6,7 @@ api_default.go
 client.go
 configuration.go
 docs/DefaultApi.md
+docs/DeployAppBodyJSON.md
 docs/Deployment.md
 docs/DeploymentApplication.md
 docs/DeploymentArtifact.md
@@ -16,6 +17,7 @@ docs/DeploymentDetails.md
 docs/DeploymentGroup.md
 docs/DeploymentMuleVersion.md
 docs/DeploymentTarget.md
+docs/ExchangeApplicationSource.md
 docs/GetAllDeploymentsResponse.md
 docs/IpAddress.md
 docs/LogLevel.md
@@ -33,6 +35,7 @@ docs/RuntimeLatestUpdate.md
 docs/RuntimeLatestUpdateFlags.md
 docs/RuntimeLatestUpdateFlagsAmiVersionData.md
 docs/TrackingSettings.md
+docs/UpdateDeploymentBodyJSON.md
 docs/UpdateDeploymentBulkBody.md
 docs/WorkerType.md
 docs/Workers.md
@@ -40,6 +43,7 @@ docs/WorkersRecentStatistics.md
 git_push.sh
 go.mod
 go.sum
+model_deploy_app_body_json.go
 model_deployment.go
 model_deployment_application.go
 model_deployment_artifact.go
@@ -50,6 +54,7 @@ model_deployment_details.go
 model_deployment_group.go
 model_deployment_mule_version.go
 model_deployment_target.go
+model_exchange_application_source.go
 model_get_all_deployments_response.go
 model_ip_address.go
 model_log_level.go
@@ -67,6 +72,7 @@ model_runtime_latest_update.go
 model_runtime_latest_update_flags.go
 model_runtime_latest_update_flags_ami_version_data.go
 model_tracking_settings.go
+model_update_deployment_body_json.go
 model_update_deployment_bulk_body.go
 model_worker_type.go
 model_workers.go

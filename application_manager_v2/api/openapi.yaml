@@ -10,7 +10,7 @@ info:
       - Starting, Stopping or Restarting applications
       - etc.
     This API currently supports deployments to Runtime Fabric and CloudHub 2.0 targets only.
-  title: Deployment
+  title: Application Manager v2
   version: 1.0.0
 servers:
 - description: Anypoint Cloudhub
