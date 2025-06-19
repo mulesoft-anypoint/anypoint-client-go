@@ -16,6 +16,7 @@ docs/ApiQueryEntitlement.md
 docs/BGCore.md
 docs/BGPostReqBody.md
 docs/BGUpdateReqBody.md
+docs/Client.md
 docs/ComposerEntitlement.md
 docs/CrowdEntitlement.md
 docs/DefaultApi.md
@@ -73,6 +74,7 @@ model_api_query_entitlement.go
 model_bg_core.go
 model_bg_post_req_body.go
 model_bg_update_req_body.go
+model_client.go
 model_composer_entitlement.go
 model_crowd_entitlement.go
 model_design_center_entitlement.go

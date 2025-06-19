@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**DeleteBG**](docs/DefaultApi.md#deletebg) | **Delete** /organizations/{orgId} | Delete a Business Group by its id.
 *DefaultApi* | [**GetBG**](docs/DefaultApi.md#getbg) | **Get** /organizations/{orgId} | Returns the Business Group instance with the given id.
 *DefaultApi* | [**GetBGUsage**](docs/DefaultApi.md#getbgusage) | **Get** /cs/organizations/{orgId}/usage | Returns the usage for a given Business Group.
+*DefaultApi* | [**GetClientCredentials**](docs/DefaultApi.md#getclientcredentials) | **Get** /organizations/{orgId}/clients/{clientId} | 
 *DefaultApi* | [**UpdateBG**](docs/DefaultApi.md#updatebg) | **Put** /organizations/{orgId} | Update a Business Group by its id.
 
 
@@ -97,6 +98,7 @@ Class | Method | HTTP request | Description
  - [BGCore](docs/BGCore.md)
  - [BGPostReqBody](docs/BGPostReqBody.md)
  - [BGUpdateReqBody](docs/BGUpdateReqBody.md)
+ - [Client](docs/Client.md)
  - [ComposerEntitlement](docs/ComposerEntitlement.md)
  - [CrowdEntitlement](docs/CrowdEntitlement.md)
  - [DesignCenterEntitlement](docs/DesignCenterEntitlement.md)

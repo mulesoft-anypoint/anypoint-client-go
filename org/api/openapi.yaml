@@ -117,6 +117,36 @@ paths:
                 $ref: '#/components/schemas/BGCore'
           description: Success response
       summary: Update a Business Group by its id.
+  /organizations/{orgId}/clients/{clientId}:
+    get:
+      description: Get client ID and client secret
+      operationId: getClientCredentials
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The client ID of the client
+        explode: false
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: Success response
   /cs/organizations/{orgId}/usage:
     get:
       description: Returns the usage for a given Business Group
@@ -175,6 +205,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/BGCore'
+      description: Success response
+    SuccessGetClient:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Client'
       description: Success response
     SuccessGetUsage:
       content:
@@ -1771,6 +1807,37 @@ components:
           description: Load balancer workers consumed
           title: loadbalancerWorkersConsumed
           type: integer
+      type: object
+    Client:
+      example:
+        grant_types:
+        - grant_types
+        - grant_types
+        user_id: user_id
+        org_id: org_id
+        name: name
+        client_secret: client_secret
+        client_id: client_id
+      properties:
+        client_id:
+          title: Client ID
+          type: string
+        client_secret:
+          title: Client Secret
+          type: string
+        name:
+          title: Credentials name
+          type: string
+        org_id:
+          title: Organization ID
+          type: string
+        user_id:
+          type: string
+        grant_types:
+          items:
+            type: string
+          title: Grants for the client credentials
+          type: array
       type: object
     subscription:
       description: The subscription details of the organization.
