@@ -1,0 +1,1014 @@
+openapi: 3.0.0
+info:
+  description: Description of the Private Space API
+  title: Private Space API
+  version: 1.0.1
+servers:
+- description: Anypoint Cloudhub
+  url: https://anypoint.mulesoft.com/runtimefabric/api
+- description: Anypoint Cloudhub EU
+  url: https://eu1.anypoint.mulesoft.com/runtimefabric/api
+- description: Anypoint Cloudhub GOV
+  url: https://gov.anypoint.mulesoft.com/runtimefabric/api
+security:
+- bearerAuth: []
+paths:
+  /organizations/{orgId}/privatespaces:
+    get:
+      description: retrieves private spaces for the given organization
+      operationId: getPrivateSpaces
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The offset specifies the offset of the first row to return
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Amount of objects retrieved in the response
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Property to sort by
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Order for sorting
+        explode: true
+        in: query
+        name: ascending
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "415":
+          description: Unsupported media type
+        "429":
+          description: Too many requests
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceSummary'
+          description: List of private spaces
+    post:
+      description: creates a private space for the given organization
+      operationId: createPrivateSpace
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivateSpacePostBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "409":
+          description: Conflict
+        "415":
+          description: Unsupported media type
+        "429":
+          description: Too many requests
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpace'
+          description: Private space created
+  /organizations/{orgId}/privatespaces/{privateSpaceId}:
+    delete:
+      description: deletes a private space for the given organization
+      operationId: deletePrivateSpace
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "204":
+          description: Private space deleted
+    get:
+      description: retrieves a private space for the given organization
+      operationId: getPrivateSpace
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpace'
+          description: Private space details
+    patch:
+      description: updates a private space for the given organization
+      operationId: updatePrivateSpace
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivateSpacePatchBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpace'
+          description: Private space updated
+components:
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    ForbiddenError:
+      description: Forbidden
+    BadRequestError:
+      description: Bad request
+    NotFoundError:
+      description: Not found
+    ConflictError:
+      description: Conflict
+    UnsupportedMediaTypeError:
+      description: Unsupported media type
+    TooManyRequestsError:
+      description: Too many requests
+    SuccessListPrivateSpaces:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpaceSummary'
+      description: List of private spaces
+    SuccessCreatePrivateSpace:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpace'
+      description: Private space created
+    SuccessGetPrivateSpace:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpace'
+      description: Private space details
+    SuccessUpdatePrivateSpace:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpace'
+      description: Private space updated
+    SuccessDeletePrivateSpace:
+      description: Private space deleted
+  schemas:
+    PrivateSpaceSummary:
+      example:
+        number: 7
+        last: true
+        size: 2
+        numberOfElements: 9
+        totalPages: 5
+        pageable:
+          paged: true
+          pageNumber: 0
+          offset: 6
+          pageSize: 1
+          unpaged: true
+          sort:
+            unsorted: true
+            sorted: true
+            empty: true
+        sort:
+          unsorted: true
+          sorted: true
+          empty: true
+        content:
+        - organizationId: organizationId
+          name: name
+          id: id
+          rootOrganizationId: rootOrganizationId
+          status: status
+        - organizationId: organizationId
+          name: name
+          id: id
+          rootOrganizationId: rootOrganizationId
+          status: status
+        first: true
+        totalElements: 5
+        empty: true
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/PrivateSpaceSummaryContentItem'
+          type: array
+        pageable:
+          $ref: '#/components/schemas/PrivateSpaceSummary_pageable'
+        last:
+          type: boolean
+        totalElements:
+          type: integer
+        totalPages:
+          type: integer
+        first:
+          type: boolean
+        size:
+          type: integer
+        number:
+          type: integer
+        sort:
+          $ref: '#/components/schemas/PrivateSpaceSummary_pageable_sort'
+        numberOfElements:
+          type: integer
+        empty:
+          type: boolean
+      type: object
+    PrivateSpace:
+      example:
+        globalSpaceStatus:
+          cluster:
+          - ingress:
+              lastSeenTimeStamp: 5
+              message: message
+              status: status
+            fabric:
+              lastSeenTimeStamp: 5
+              message: message
+              status: status
+            infra:
+              lastSeenTimeStamp: 5
+              message: message
+              status: status
+          - ingress:
+              lastSeenTimeStamp: 5
+              message: message
+              status: status
+            fabric:
+              lastSeenTimeStamp: 5
+              message: message
+              status: status
+            infra:
+              lastSeenTimeStamp: 5
+              message: message
+              status: status
+          space:
+            lastSeenTimeStamp: 5
+            message: message
+            status: status
+          network:
+            lastSeenTimeStamp: 5
+            message: message
+            status: status
+        daysLeftForRelaxedQuota: 7
+        environments:
+          type: type
+          businessGroups:
+          - businessGroups
+          - businessGroups
+        muleAppDeploymentCount: 2
+        enableNetworkIsolation: true
+        enableEgress: true
+        vpcMigrationInProgress: true
+        version: version
+        statusMessage: statusMessage
+        network:
+          inboundStaticIps:
+          - inboundStaticIps
+          - inboundStaticIps
+          reservedCidrs:
+          - reservedCidrs
+          - reservedCidrs
+          internalDns:
+            specialDomains:
+            - specialDomains
+            - specialDomains
+            dnsServers:
+            - dnsServers
+            - dnsServers
+          dnsTarget: dnsTarget
+          cidrBlock: cidrBlock
+          outboundStaticIps:
+          - outboundStaticIps
+          - outboundStaticIps
+          internalDnsTarget: internalDnsTarget
+          region: region
+        organizationId: organizationId
+        name: name
+        provisioning:
+          message: message
+          status: status
+        id: id
+        region: region
+        firewallRules:
+        - protocol: protocol
+          fromPort: 0
+          cidrBlock: cidrBlock
+          toPort: 6
+          type: type
+        - protocol: protocol
+          fromPort: 0
+          cidrBlock: cidrBlock
+          toPort: 6
+          type: type
+        rootOrganizationId: rootOrganizationId
+        ingressConfiguration:
+          protocol: protocol
+          readResponseTimeout: 1
+          logs:
+            portLogLevel: portLogLevel
+            filters:
+            - level: level
+              ip: ip
+            - level: level
+              ip: ip
+          deployment:
+            lastSeenTimestamp: 5
+            status: status
+        status: status
+        enableIAMRole: true
+      properties:
+        id:
+          description: The ID of the private space in GUID format.
+          type: string
+        name:
+          description: The name of the private space.
+          type: string
+        version:
+          description: The version of the private space.
+          type: string
+        organizationId:
+          description: The ID of the organization in GUID format.
+          type: string
+        rootOrganizationId:
+          description: The root organization ID of the private space in GUID format.
+          type: string
+        status:
+          description: The status of the private space.
+          type: string
+        statusMessage:
+          description: The last reported infra status message.
+          type: string
+        provisioning:
+          $ref: '#/components/schemas/PrivateSpace_provisioning'
+        region:
+          description: The region of the private space.
+          type: string
+        environments:
+          $ref: '#/components/schemas/PrivateSpaceAssociatedEnvironments'
+        network:
+          $ref: '#/components/schemas/PrivateSpaceNetwork'
+        firewallRules:
+          description: The list of firewall rules for the Private Space network.
+          items:
+            $ref: '#/components/schemas/FirewallRule'
+          type: array
+        ingressConfiguration:
+          $ref: '#/components/schemas/IngressConfiguration'
+        enableIAMRole:
+          description: "If true, application deployed to this space will have the\
+            \ Private Space IAM role attached to the service account."
+          type: boolean
+        enableEgress:
+          description: "If true, egress is enabled for the private space."
+          type: boolean
+        enableNetworkIsolation:
+          description: "If true, network isolation is enabled for the private space."
+          type: boolean
+        globalSpaceStatus:
+          $ref: '#/components/schemas/GlobalSpaceStatus'
+        muleAppDeploymentCount:
+          description: The number of MuleSoft applications deployed to the private
+            space.
+          type: integer
+        daysLeftForRelaxedQuota:
+          description: The number of days left for the relaxed quota.
+          type: integer
+        vpcMigrationInProgress:
+          description: "If true, a VPC migration is in progress for the private space."
+          type: boolean
+      title: PrivateSpace
+      type: object
+    PrivateSpacePostBody:
+      example:
+        environments:
+          type: type
+          businessGroups:
+          - businessGroups
+          - businessGroups
+        name: name
+        firewallRules:
+        - protocol: protocol
+          fromPort: 0
+          cidrBlock: cidrBlock
+          toPort: 6
+          type: type
+        - protocol: protocol
+          fromPort: 0
+          cidrBlock: cidrBlock
+          toPort: 6
+          type: type
+        network:
+          reservedCidrs:
+          - 192.168.0.0/16
+          - 172.16.0.0/12
+          internalDns:
+            specialDomains:
+            - specialDomains
+            - specialDomains
+            dnsServers:
+            - dnsServers
+            - dnsServers
+          cidrBlock: cidrBlock
+          region: region
+      properties:
+        name:
+          description: The name of the private space.
+          type: string
+        environments:
+          $ref: '#/components/schemas/PrivateSpaceAssociatedEnvironments'
+        network:
+          $ref: '#/components/schemas/PrivateSpaceNetworkEditable'
+        firewallRules:
+          description: The list of firewall rules for the Private Space network.
+          items:
+            $ref: '#/components/schemas/FirewallRule'
+          type: array
+      title: PrivateSpacePostBody
+      type: object
+    PrivateSpacePatchBody:
+      example:
+        environments:
+          type: type
+          businessGroups:
+          - businessGroups
+          - businessGroups
+        logForwarding:
+          anypointMonitoring: true
+        enableNetworkIsolation: true
+        enableEgress: true
+        firewallRules:
+        - protocol: protocol
+          fromPort: 0
+          cidrBlock: cidrBlock
+          toPort: 6
+          type: type
+        - protocol: protocol
+          fromPort: 0
+          cidrBlock: cidrBlock
+          toPort: 6
+          type: type
+        ingressConfiguration:
+          protocol: protocol
+          readResponseTimeout: 1
+          logs:
+            portLogLevel: portLogLevel
+            filters:
+            - level: level
+              ip: ip
+            - level: level
+              ip: ip
+          deployment:
+            lastSeenTimestamp: 5
+            status: status
+        network:
+          reservedCidrs:
+          - 192.168.0.0/16
+          - 172.16.0.0/12
+          internalDns:
+            specialDomains:
+            - specialDomains
+            - specialDomains
+            dnsServers:
+            - dnsServers
+            - dnsServers
+          cidrBlock: cidrBlock
+          region: region
+        enableIAMRole: true
+      properties:
+        environments:
+          $ref: '#/components/schemas/PrivateSpaceAssociatedEnvironments'
+        network:
+          $ref: '#/components/schemas/PrivateSpaceNetworkEditable'
+        firewallRules:
+          description: The list of firewall rules for the Private Space network.
+          items:
+            $ref: '#/components/schemas/FirewallRule'
+          type: array
+        logForwarding:
+          $ref: '#/components/schemas/PrivateSpacePatchBody_logForwarding'
+        ingressConfiguration:
+          $ref: '#/components/schemas/IngressConfiguration'
+        enableIAMRole:
+          description: "If true, application deployed to this space will have the\
+            \ Private Space IAM role attached to the service account."
+          type: boolean
+        enableEgress:
+          description: "If true, egress is enabled for the private space."
+          type: boolean
+        enableNetworkIsolation:
+          description: "If true, network isolation is enabled for the private space."
+          type: boolean
+      title: PrivateSpacePatchBody
+      type: object
+    PrivateSpaceAssociatedEnvironments:
+      description: Environment association for the Private Space.
+      example:
+        type: type
+        businessGroups:
+        - businessGroups
+        - businessGroups
+      properties:
+        type:
+          description: "The type of environments. Possible values are all, sandbox,\
+            \ production."
+          type: string
+        businessGroups:
+          items:
+            description: The business group of the environment.
+            type: string
+          type: array
+      type: object
+    PrivateSpaceNetworkEditable:
+      example:
+        reservedCidrs:
+        - 192.168.0.0/16
+        - 172.16.0.0/12
+        internalDns:
+          specialDomains:
+          - specialDomains
+          - specialDomains
+          dnsServers:
+          - dnsServers
+          - dnsServers
+        cidrBlock: cidrBlock
+        region: region
+      properties:
+        region:
+          description: The region of the Private Space. Required when create a Private
+            Space network.
+          type: string
+        cidrBlock:
+          description: The CIDR block of the VPC where the Private Space will be created.
+            Required when create a Private Space in a new VPC. Default is 10.0.0.0/16.
+          type: string
+        internalDns:
+          $ref: '#/components/schemas/PrivateSpaceNetworkEditable_internalDns'
+        reservedCidrs:
+          description: |
+            The list of reserved CIDR blocks for your private space to prevent IP address overlap. Required when you want to connect your private space to your corporate network (either on-premises or in the cloud). Use CIDR notation and commas.
+          example:
+          - 192.168.0.0/16
+          - 172.16.0.0/12
+          items:
+            description: The reserved CIDR of the Private Space network.
+            type: string
+          type: array
+      type: object
+    PrivateSpaceNetwork:
+      description: Private space network configuration
+      example:
+        inboundStaticIps:
+        - inboundStaticIps
+        - inboundStaticIps
+        reservedCidrs:
+        - reservedCidrs
+        - reservedCidrs
+        internalDns:
+          specialDomains:
+          - specialDomains
+          - specialDomains
+          dnsServers:
+          - dnsServers
+          - dnsServers
+        dnsTarget: dnsTarget
+        cidrBlock: cidrBlock
+        outboundStaticIps:
+        - outboundStaticIps
+        - outboundStaticIps
+        internalDnsTarget: internalDnsTarget
+        region: region
+      properties:
+        region:
+          description: The region of the Private Space. Required when create a Private
+            Space network.
+          type: string
+        cidrBlock:
+          description: The CIDR block of the VPC where the Private Space will be created.
+            Required when create a Private Space in a new VPC. Default is 10.0.0.0/16.
+          type: string
+        internalDns:
+          $ref: '#/components/schemas/PrivateSpaceNetworkEditable_internalDns'
+        inboundStaticIps:
+          description: The inbound static IPs of the Private Space network.
+          items:
+            description: The inbound static IP of the Private Space network.
+            type: string
+          type: array
+        outboundStaticIps:
+          description: The outbound static IPs of the Private Space network.
+          items:
+            description: The outbound static IP of the Private Space network.
+            type: string
+          type: array
+        dnsTarget:
+          description: The DNS target of the Private Space network.
+          type: string
+        internalDnsTarget:
+          description: The internal DNS target of the Private Space network.
+          type: string
+        reservedCidrs:
+          description: The list of reserved CIDR blocks for your private space to
+            prevent IP address overlap when you connect your private space to your
+            corporate network.
+          items:
+            description: The reserved CIDR of the Private Space network.
+            type: string
+          type: array
+      type: object
+    FirewallRule:
+      example:
+        protocol: protocol
+        fromPort: 0
+        cidrBlock: cidrBlock
+        toPort: 6
+        type: type
+      properties:
+        cidrBlock:
+          description: The CIDR block of the firewall rule.
+          type: string
+        protocol:
+          description: The protocol of the firewall rule.
+          type: string
+        fromPort:
+          description: The from port of the firewall rule.
+          type: integer
+        toPort:
+          description: The to port of the firewall rule.
+          type: integer
+        type:
+          description: "Type of the firewall rule. Allowed values are [inbound, outbound]."
+          type: string
+      title: FirewallRule
+      type: object
+    IngressConfiguration:
+      description: Ingress configuration for the Private Space.
+      example:
+        protocol: protocol
+        readResponseTimeout: 1
+        logs:
+          portLogLevel: portLogLevel
+          filters:
+          - level: level
+            ip: ip
+          - level: level
+            ip: ip
+        deployment:
+          lastSeenTimestamp: 5
+          status: status
+      properties:
+        readResponseTimeout:
+          description: The read response timeout of the ingress configuration.
+          type: integer
+        logs:
+          $ref: '#/components/schemas/IngressConfiguration_logs'
+        protocol:
+          description: The protocol of the ingress configuration.
+          type: string
+        deployment:
+          $ref: '#/components/schemas/IngressConfiguration_deployment'
+      type: object
+    GlobalSpaceStatus:
+      description: Global Status object for the space.
+      example:
+        cluster:
+        - ingress:
+            lastSeenTimeStamp: 5
+            message: message
+            status: status
+          fabric:
+            lastSeenTimeStamp: 5
+            message: message
+            status: status
+          infra:
+            lastSeenTimeStamp: 5
+            message: message
+            status: status
+        - ingress:
+            lastSeenTimeStamp: 5
+            message: message
+            status: status
+          fabric:
+            lastSeenTimeStamp: 5
+            message: message
+            status: status
+          infra:
+            lastSeenTimeStamp: 5
+            message: message
+            status: status
+        space:
+          lastSeenTimeStamp: 5
+          message: message
+          status: status
+        network:
+          lastSeenTimeStamp: 5
+          message: message
+          status: status
+      properties:
+        space:
+          $ref: '#/components/schemas/PrivateSpaceComponentStatus'
+        cluster:
+          description: The status of the space cluster component.
+          items:
+            $ref: '#/components/schemas/GlobalSpaceStatus_cluster_inner'
+          type: array
+        network:
+          $ref: '#/components/schemas/PrivateSpaceComponentStatus'
+      type: object
+    PrivateSpaceComponentStatus:
+      example:
+        lastSeenTimeStamp: 5
+        message: message
+        status: status
+      properties:
+        status:
+          description: The last known status.
+          type: string
+        message:
+          description: Message describing the last known status.
+          type: string
+        lastSeenTimeStamp:
+          description: Last known timestamp of the status in EPOCH.
+          format: int64
+          type: integer
+      title: PrivateSpaceComponentStatus
+      type: object
+    PrivateSpaceSummaryContentItem:
+      example:
+        organizationId: organizationId
+        name: name
+        id: id
+        rootOrganizationId: rootOrganizationId
+        status: status
+      properties:
+        id:
+          description: private space id
+          type: string
+        name:
+          description: private space name
+          type: string
+        organizationId:
+          description: private space organization id
+          type: string
+        rootOrganizationId:
+          description: private space root organization id
+          type: string
+        status:
+          description: private space status
+          type: string
+      title: PrivateSpaceSummaryContentItem
+      type: object
+    PrivateSpaceSummary_pageable_sort:
+      example:
+        unsorted: true
+        sorted: true
+        empty: true
+      properties:
+        empty:
+          type: boolean
+        sorted:
+          type: boolean
+        unsorted:
+          type: boolean
+      type: object
+    PrivateSpaceSummary_pageable:
+      example:
+        paged: true
+        pageNumber: 0
+        offset: 6
+        pageSize: 1
+        unpaged: true
+        sort:
+          unsorted: true
+          sorted: true
+          empty: true
+      properties:
+        sort:
+          $ref: '#/components/schemas/PrivateSpaceSummary_pageable_sort'
+        pageNumber:
+          type: integer
+        offset:
+          type: integer
+        pageSize:
+          type: integer
+        paged:
+          type: boolean
+        unpaged:
+          type: boolean
+      type: object
+    PrivateSpace_provisioning:
+      example:
+        message: message
+        status: status
+      properties:
+        status:
+          description: The status of the private space provisioning.
+          type: string
+        message:
+          description: Message describing the last known infra's status
+          type: string
+      type: object
+    PrivateSpacePatchBody_logForwarding:
+      example:
+        anypointMonitoring: true
+      properties:
+        anypointMonitoring:
+          description: The desired action to push logs to Anypoint monitoring.
+          type: boolean
+      type: object
+    PrivateSpaceNetworkEditable_internalDns:
+      description: The internal DNS config of the VPC that the Private Space uses.
+      example:
+        specialDomains:
+        - specialDomains
+        - specialDomains
+        dnsServers:
+        - dnsServers
+        - dnsServers
+      properties:
+        dnsServers:
+          items:
+            description: The DNS server of the VPC.
+            type: string
+          type: array
+        specialDomains:
+          items:
+            description: The special domain of the VPC.
+            type: string
+          type: array
+      type: object
+    Filter:
+      example:
+        level: level
+        ip: ip
+      properties:
+        ip:
+          description: The IP of the filter.
+          type: string
+        level:
+          description: The level of the filter.
+          type: string
+      title: Filter
+      type: object
+    IngressConfiguration_logs:
+      description: The logs configuration of the ingress configuration.
+      example:
+        portLogLevel: portLogLevel
+        filters:
+        - level: level
+          ip: ip
+        - level: level
+          ip: ip
+      properties:
+        filters:
+          description: The filters of the logs configuration.
+          items:
+            $ref: '#/components/schemas/Filter'
+          type: array
+        portLogLevel:
+          description: The port log level of the ingress configuration.
+          type: string
+      type: object
+    IngressConfiguration_deployment:
+      description: The deployment configuration of the ingress configuration.
+      example:
+        lastSeenTimestamp: 5
+        status: status
+      properties:
+        status:
+          description: The status of the deployment configuration.
+          type: string
+        lastSeenTimestamp:
+          description: The last seen timestamp of the deployment configuration.
+          format: int64
+          type: integer
+      type: object
+    GlobalSpaceStatus_cluster_inner:
+      example:
+        ingress:
+          lastSeenTimeStamp: 5
+          message: message
+          status: status
+        fabric:
+          lastSeenTimeStamp: 5
+          message: message
+          status: status
+        infra:
+          lastSeenTimeStamp: 5
+          message: message
+          status: status
+      properties:
+        infra:
+          $ref: '#/components/schemas/PrivateSpaceComponentStatus'
+        fabric:
+          $ref: '#/components/schemas/PrivateSpaceComponentStatus'
+        ingress:
+          $ref: '#/components/schemas/PrivateSpaceComponentStatus'
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
