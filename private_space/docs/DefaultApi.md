@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CreatePrivateSpace**](DefaultApi.md#CreatePrivateSpace) | **Post** /organizations/{orgId}/privatespaces | 
 [**DeletePrivateSpace**](DefaultApi.md#DeletePrivateSpace) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 [**GetPrivateSpace**](DefaultApi.md#GetPrivateSpace) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
+[**GetPrivateSpaceIamRoles**](DefaultApi.md#GetPrivateSpaceIamRoles) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/iamroles | 
 [**GetPrivateSpaces**](DefaultApi.md#GetPrivateSpaces) | **Get** /organizations/{orgId}/privatespaces | 
 [**UpdatePrivateSpace**](DefaultApi.md#UpdatePrivateSpace) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 
@@ -213,6 +214,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PrivateSpace**](PrivateSpace.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPrivateSpaceIamRoles
+
+> PrivateSpaceIamRoles GetPrivateSpaceIamRoles(ctx, orgId, privateSpaceId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+    orgId := "orgId_example" // string | The ID of the organization in GUID format
+    privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetPrivateSpaceIamRoles(context.Background(), orgId, privateSpaceId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetPrivateSpaceIamRoles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPrivateSpaceIamRoles`: PrivateSpaceIamRoles
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetPrivateSpaceIamRoles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPrivateSpaceIamRolesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**PrivateSpaceIamRoles**](PrivateSpaceIamRoles.md)
 
 ### Authorization
 

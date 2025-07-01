@@ -19,11 +19,7 @@ var _ MappedNullable = &PrivateSpaceNetworkEditable{}
 
 // PrivateSpaceNetworkEditable struct for PrivateSpaceNetworkEditable
 type PrivateSpaceNetworkEditable struct {
-	// The region of the Private Space. Required when create a Private Space network.
-	Region *string `json:"region,omitempty"`
-	// The CIDR block of the VPC where the Private Space will be created. Required when create a Private Space in a new VPC. Default is 10.0.0.0/16.
-	CidrBlock *string `json:"cidrBlock,omitempty"`
-	InternalDns *PrivateSpaceNetworkEditableInternalDns `json:"internalDns,omitempty"`
+	InternalDns *PrivateSpaceNetworkCreateInternalDns `json:"internalDns,omitempty"`
 	// The list of reserved CIDR blocks for your private space to prevent IP address overlap. Required when you want to connect your private space to your corporate network (either on-premises or in the cloud). Use CIDR notation and commas. 
 	ReservedCidrs []string `json:"reservedCidrs,omitempty"`
 }
@@ -45,74 +41,10 @@ func NewPrivateSpaceNetworkEditableWithDefaults() *PrivateSpaceNetworkEditable {
 	return &this
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
-func (o *PrivateSpaceNetworkEditable) GetRegion() string {
-	if o == nil || IsNil(o.Region) {
-		var ret string
-		return ret
-	}
-	return *o.Region
-}
-
-// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateSpaceNetworkEditable) GetRegionOk() (*string, bool) {
-	if o == nil || IsNil(o.Region) {
-		return nil, false
-	}
-	return o.Region, true
-}
-
-// HasRegion returns a boolean if a field has been set.
-func (o *PrivateSpaceNetworkEditable) HasRegion() bool {
-	if o != nil && !IsNil(o.Region) {
-		return true
-	}
-
-	return false
-}
-
-// SetRegion gets a reference to the given string and assigns it to the Region field.
-func (o *PrivateSpaceNetworkEditable) SetRegion(v string) {
-	o.Region = &v
-}
-
-// GetCidrBlock returns the CidrBlock field value if set, zero value otherwise.
-func (o *PrivateSpaceNetworkEditable) GetCidrBlock() string {
-	if o == nil || IsNil(o.CidrBlock) {
-		var ret string
-		return ret
-	}
-	return *o.CidrBlock
-}
-
-// GetCidrBlockOk returns a tuple with the CidrBlock field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateSpaceNetworkEditable) GetCidrBlockOk() (*string, bool) {
-	if o == nil || IsNil(o.CidrBlock) {
-		return nil, false
-	}
-	return o.CidrBlock, true
-}
-
-// HasCidrBlock returns a boolean if a field has been set.
-func (o *PrivateSpaceNetworkEditable) HasCidrBlock() bool {
-	if o != nil && !IsNil(o.CidrBlock) {
-		return true
-	}
-
-	return false
-}
-
-// SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
-func (o *PrivateSpaceNetworkEditable) SetCidrBlock(v string) {
-	o.CidrBlock = &v
-}
-
 // GetInternalDns returns the InternalDns field value if set, zero value otherwise.
-func (o *PrivateSpaceNetworkEditable) GetInternalDns() PrivateSpaceNetworkEditableInternalDns {
+func (o *PrivateSpaceNetworkEditable) GetInternalDns() PrivateSpaceNetworkCreateInternalDns {
 	if o == nil || IsNil(o.InternalDns) {
-		var ret PrivateSpaceNetworkEditableInternalDns
+		var ret PrivateSpaceNetworkCreateInternalDns
 		return ret
 	}
 	return *o.InternalDns
@@ -120,7 +52,7 @@ func (o *PrivateSpaceNetworkEditable) GetInternalDns() PrivateSpaceNetworkEditab
 
 // GetInternalDnsOk returns a tuple with the InternalDns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrivateSpaceNetworkEditable) GetInternalDnsOk() (*PrivateSpaceNetworkEditableInternalDns, bool) {
+func (o *PrivateSpaceNetworkEditable) GetInternalDnsOk() (*PrivateSpaceNetworkCreateInternalDns, bool) {
 	if o == nil || IsNil(o.InternalDns) {
 		return nil, false
 	}
@@ -136,8 +68,8 @@ func (o *PrivateSpaceNetworkEditable) HasInternalDns() bool {
 	return false
 }
 
-// SetInternalDns gets a reference to the given PrivateSpaceNetworkEditableInternalDns and assigns it to the InternalDns field.
-func (o *PrivateSpaceNetworkEditable) SetInternalDns(v PrivateSpaceNetworkEditableInternalDns) {
+// SetInternalDns gets a reference to the given PrivateSpaceNetworkCreateInternalDns and assigns it to the InternalDns field.
+func (o *PrivateSpaceNetworkEditable) SetInternalDns(v PrivateSpaceNetworkCreateInternalDns) {
 	o.InternalDns = &v
 }
 
@@ -183,12 +115,6 @@ func (o PrivateSpaceNetworkEditable) MarshalJSON() ([]byte, error) {
 
 func (o PrivateSpaceNetworkEditable) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	if !IsNil(o.CidrBlock) {
-		toSerialize["cidrBlock"] = o.CidrBlock
-	}
 	if !IsNil(o.InternalDns) {
 		toSerialize["internalDns"] = o.InternalDns
 	}

@@ -22,7 +22,7 @@ type PrivateSpacePostBody struct {
 	// The name of the private space.
 	Name *string `json:"name,omitempty"`
 	Environments *PrivateSpaceAssociatedEnvironments `json:"environments,omitempty"`
-	Network *PrivateSpaceNetworkEditable `json:"network,omitempty"`
+	Network *PrivateSpaceNetworkCreate `json:"network,omitempty"`
 	// The list of firewall rules for the Private Space network.
 	FirewallRules []FirewallRule `json:"firewallRules,omitempty"`
 }
@@ -109,9 +109,9 @@ func (o *PrivateSpacePostBody) SetEnvironments(v PrivateSpaceAssociatedEnvironme
 }
 
 // GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *PrivateSpacePostBody) GetNetwork() PrivateSpaceNetworkEditable {
+func (o *PrivateSpacePostBody) GetNetwork() PrivateSpaceNetworkCreate {
 	if o == nil || IsNil(o.Network) {
-		var ret PrivateSpaceNetworkEditable
+		var ret PrivateSpaceNetworkCreate
 		return ret
 	}
 	return *o.Network
@@ -119,7 +119,7 @@ func (o *PrivateSpacePostBody) GetNetwork() PrivateSpaceNetworkEditable {
 
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrivateSpacePostBody) GetNetworkOk() (*PrivateSpaceNetworkEditable, bool) {
+func (o *PrivateSpacePostBody) GetNetworkOk() (*PrivateSpaceNetworkCreate, bool) {
 	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
@@ -135,8 +135,8 @@ func (o *PrivateSpacePostBody) HasNetwork() bool {
 	return false
 }
 
-// SetNetwork gets a reference to the given PrivateSpaceNetworkEditable and assigns it to the Network field.
-func (o *PrivateSpacePostBody) SetNetwork(v PrivateSpaceNetworkEditable) {
+// SetNetwork gets a reference to the given PrivateSpaceNetworkCreate and assigns it to the Network field.
+func (o *PrivateSpacePostBody) SetNetwork(v PrivateSpaceNetworkCreate) {
 	o.Network = &v
 }
 

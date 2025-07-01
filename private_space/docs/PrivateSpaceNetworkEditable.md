@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Region** | Pointer to **string** | The region of the Private Space. Required when create a Private Space network. | [optional] 
-**CidrBlock** | Pointer to **string** | The CIDR block of the VPC where the Private Space will be created. Required when create a Private Space in a new VPC. Default is 10.0.0.0/16. | [optional] 
-**InternalDns** | Pointer to [**PrivateSpaceNetworkEditableInternalDns**](PrivateSpaceNetworkEditableInternalDns.md) |  | [optional] 
+**InternalDns** | Pointer to [**PrivateSpaceNetworkCreateInternalDns**](PrivateSpaceNetworkCreateInternalDns.md) |  | [optional] 
 **ReservedCidrs** | Pointer to **[]string** | The list of reserved CIDR blocks for your private space to prevent IP address overlap. Required when you want to connect your private space to your corporate network (either on-premises or in the cloud). Use CIDR notation and commas.  | [optional] 
 
 ## Methods
@@ -28,72 +26,22 @@ NewPrivateSpaceNetworkEditableWithDefaults instantiates a new PrivateSpaceNetwor
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetRegion
-
-`func (o *PrivateSpaceNetworkEditable) GetRegion() string`
-
-GetRegion returns the Region field if non-nil, zero value otherwise.
-
-### GetRegionOk
-
-`func (o *PrivateSpaceNetworkEditable) GetRegionOk() (*string, bool)`
-
-GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegion
-
-`func (o *PrivateSpaceNetworkEditable) SetRegion(v string)`
-
-SetRegion sets Region field to given value.
-
-### HasRegion
-
-`func (o *PrivateSpaceNetworkEditable) HasRegion() bool`
-
-HasRegion returns a boolean if a field has been set.
-
-### GetCidrBlock
-
-`func (o *PrivateSpaceNetworkEditable) GetCidrBlock() string`
-
-GetCidrBlock returns the CidrBlock field if non-nil, zero value otherwise.
-
-### GetCidrBlockOk
-
-`func (o *PrivateSpaceNetworkEditable) GetCidrBlockOk() (*string, bool)`
-
-GetCidrBlockOk returns a tuple with the CidrBlock field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCidrBlock
-
-`func (o *PrivateSpaceNetworkEditable) SetCidrBlock(v string)`
-
-SetCidrBlock sets CidrBlock field to given value.
-
-### HasCidrBlock
-
-`func (o *PrivateSpaceNetworkEditable) HasCidrBlock() bool`
-
-HasCidrBlock returns a boolean if a field has been set.
-
 ### GetInternalDns
 
-`func (o *PrivateSpaceNetworkEditable) GetInternalDns() PrivateSpaceNetworkEditableInternalDns`
+`func (o *PrivateSpaceNetworkEditable) GetInternalDns() PrivateSpaceNetworkCreateInternalDns`
 
 GetInternalDns returns the InternalDns field if non-nil, zero value otherwise.
 
 ### GetInternalDnsOk
 
-`func (o *PrivateSpaceNetworkEditable) GetInternalDnsOk() (*PrivateSpaceNetworkEditableInternalDns, bool)`
+`func (o *PrivateSpaceNetworkEditable) GetInternalDnsOk() (*PrivateSpaceNetworkCreateInternalDns, bool)`
 
 GetInternalDnsOk returns a tuple with the InternalDns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalDns
 
-`func (o *PrivateSpaceNetworkEditable) SetInternalDns(v PrivateSpaceNetworkEditableInternalDns)`
+`func (o *PrivateSpaceNetworkEditable) SetInternalDns(v PrivateSpaceNetworkCreateInternalDns)`
 
 SetInternalDns sets InternalDns field to given value.
 

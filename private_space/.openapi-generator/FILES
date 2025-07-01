@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -17,9 +16,11 @@ docs/IngressConfigurationLogs.md
 docs/PrivateSpace.md
 docs/PrivateSpaceAssociatedEnvironments.md
 docs/PrivateSpaceComponentStatus.md
+docs/PrivateSpaceIamRoles.md
 docs/PrivateSpaceNetwork.md
+docs/PrivateSpaceNetworkCreate.md
+docs/PrivateSpaceNetworkCreateInternalDns.md
 docs/PrivateSpaceNetworkEditable.md
-docs/PrivateSpaceNetworkEditableInternalDns.md
 docs/PrivateSpacePatchBody.md
 docs/PrivateSpacePatchBodyLogForwarding.md
 docs/PrivateSpacePostBody.md
@@ -41,9 +42,11 @@ model_ingress_configuration_logs.go
 model_private_space.go
 model_private_space_associated_environments.go
 model_private_space_component_status.go
+model_private_space_iam_roles.go
 model_private_space_network.go
+model_private_space_network_create.go
+model_private_space_network_create_internal_dns.go
 model_private_space_network_editable.go
-model_private_space_network_editable_internal_dns.go
 model_private_space_patch_body.go
 model_private_space_patch_body_log_forwarding.go
 model_private_space_post_body.go
@@ -53,5 +56,4 @@ model_private_space_summary_content_item.go
 model_private_space_summary_pageable.go
 model_private_space_summary_pageable_sort.go
 response.go
-test/api_default_test.go
 utils.go

@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -39,5 +38,4 @@ model_trust_store_dn_list_inner_basic_constraints.go
 model_trust_store_dn_list_inner_issuer.go
 model_trust_store_dn_list_inner_validity.go
 response.go
-test/api_default_test.go
 utils.go
