@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of the private space. | [optional] 
 **Environments** | Pointer to [**PrivateSpaceAssociatedEnvironments**](PrivateSpaceAssociatedEnvironments.md) |  | [optional] 
-**Network** | Pointer to [**PrivateSpaceNetworkEditable**](PrivateSpaceNetworkEditable.md) |  | [optional] 
+**Network** | Pointer to [**PrivateSpaceNetworkCreate**](PrivateSpaceNetworkCreate.md) |  | [optional] 
 **FirewallRules** | Pointer to [**[]FirewallRule**](FirewallRule.md) | The list of firewall rules for the Private Space network. | [optional] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasEnvironments returns a boolean if a field has been set.
 
 ### GetNetwork
 
-`func (o *PrivateSpacePostBody) GetNetwork() PrivateSpaceNetworkEditable`
+`func (o *PrivateSpacePostBody) GetNetwork() PrivateSpaceNetworkCreate`
 
 GetNetwork returns the Network field if non-nil, zero value otherwise.
 
 ### GetNetworkOk
 
-`func (o *PrivateSpacePostBody) GetNetworkOk() (*PrivateSpaceNetworkEditable, bool)`
+`func (o *PrivateSpacePostBody) GetNetworkOk() (*PrivateSpaceNetworkCreate, bool)`
 
 GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetwork
 
-`func (o *PrivateSpacePostBody) SetNetwork(v PrivateSpaceNetworkEditable)`
+`func (o *PrivateSpacePostBody) SetNetwork(v PrivateSpaceNetworkCreate)`
 
 SetNetwork sets Network field to given value.
 

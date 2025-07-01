@@ -212,6 +212,40 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrivateSpace'
           description: Private space updated
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/iamroles:
+    get:
+      description: gets the IAM roles for the given private space
+      operationId: getPrivateSpaceIamRoles
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceIamRoles'
+          description: IAM roles for the given private space
 components:
   responses:
     UnauthorizedError:
@@ -254,6 +288,12 @@ components:
       description: Private space updated
     SuccessDeletePrivateSpace:
       description: Private space deleted
+    SuccessGetPrivateSpaceIamRoles:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpaceIamRoles'
+      description: IAM roles for the given private space
   schemas:
     PrivateSpaceSummary:
       example:
@@ -481,6 +521,26 @@ components:
           type: boolean
       title: PrivateSpace
       type: object
+    PrivateSpaceIamRoles:
+      example:
+        organizationId: organizationId
+        spaceId: spaceId
+        roles:
+        - roles
+        - roles
+      properties:
+        roles:
+          items:
+            description: The IAM role.
+            type: string
+          type: array
+        organizationId:
+          description: The ID of the organization in GUID format.
+          type: string
+        spaceId:
+          description: The ID of the private space in GUID format.
+          type: string
+      type: object
     PrivateSpacePostBody:
       example:
         environments:
@@ -520,7 +580,7 @@ components:
         environments:
           $ref: '#/components/schemas/PrivateSpaceAssociatedEnvironments'
         network:
-          $ref: '#/components/schemas/PrivateSpaceNetworkEditable'
+          $ref: '#/components/schemas/PrivateSpaceNetworkCreate'
         firewallRules:
           description: The list of firewall rules for the Private Space network.
           items:
@@ -574,8 +634,6 @@ components:
             dnsServers:
             - dnsServers
             - dnsServers
-          cidrBlock: cidrBlock
-          region: region
         enableIAMRole: true
       properties:
         environments:
@@ -621,7 +679,7 @@ components:
             type: string
           type: array
       type: object
-    PrivateSpaceNetworkEditable:
+    PrivateSpaceNetworkCreate:
       example:
         reservedCidrs:
         - 192.168.0.0/16
@@ -645,7 +703,33 @@ components:
             Required when create a Private Space in a new VPC. Default is 10.0.0.0/16.
           type: string
         internalDns:
-          $ref: '#/components/schemas/PrivateSpaceNetworkEditable_internalDns'
+          $ref: '#/components/schemas/PrivateSpaceNetworkCreate_internalDns'
+        reservedCidrs:
+          description: |
+            The list of reserved CIDR blocks for your private space to prevent IP address overlap. Required when you want to connect your private space to your corporate network (either on-premises or in the cloud). Use CIDR notation and commas.
+          example:
+          - 192.168.0.0/16
+          - 172.16.0.0/12
+          items:
+            description: The reserved CIDR of the Private Space network.
+            type: string
+          type: array
+      type: object
+    PrivateSpaceNetworkEditable:
+      example:
+        reservedCidrs:
+        - 192.168.0.0/16
+        - 172.16.0.0/12
+        internalDns:
+          specialDomains:
+          - specialDomains
+          - specialDomains
+          dnsServers:
+          - dnsServers
+          - dnsServers
+      properties:
+        internalDns:
+          $ref: '#/components/schemas/PrivateSpaceNetworkCreate_internalDns'
         reservedCidrs:
           description: |
             The list of reserved CIDR blocks for your private space to prevent IP address overlap. Required when you want to connect your private space to your corporate network (either on-premises or in the cloud). Use CIDR notation and commas.
@@ -690,7 +774,7 @@ components:
             Required when create a Private Space in a new VPC. Default is 10.0.0.0/16.
           type: string
         internalDns:
-          $ref: '#/components/schemas/PrivateSpaceNetworkEditable_internalDns'
+          $ref: '#/components/schemas/PrivateSpaceNetworkCreate_internalDns'
         inboundStaticIps:
           description: The inbound static IPs of the Private Space network.
           items:
@@ -918,7 +1002,7 @@ components:
           description: The desired action to push logs to Anypoint monitoring.
           type: boolean
       type: object
-    PrivateSpaceNetworkEditable_internalDns:
+    PrivateSpaceNetworkCreate_internalDns:
       description: The internal DNS config of the VPC that the Private Space uses.
       example:
         specialDomains:

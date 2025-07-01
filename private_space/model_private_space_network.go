@@ -23,7 +23,7 @@ type PrivateSpaceNetwork struct {
 	Region *string `json:"region,omitempty"`
 	// The CIDR block of the VPC where the Private Space will be created. Required when create a Private Space in a new VPC. Default is 10.0.0.0/16.
 	CidrBlock *string `json:"cidrBlock,omitempty"`
-	InternalDns *PrivateSpaceNetworkEditableInternalDns `json:"internalDns,omitempty"`
+	InternalDns *PrivateSpaceNetworkCreateInternalDns `json:"internalDns,omitempty"`
 	// The inbound static IPs of the Private Space network.
 	InboundStaticIps []string `json:"inboundStaticIps,omitempty"`
 	// The outbound static IPs of the Private Space network.
@@ -118,9 +118,9 @@ func (o *PrivateSpaceNetwork) SetCidrBlock(v string) {
 }
 
 // GetInternalDns returns the InternalDns field value if set, zero value otherwise.
-func (o *PrivateSpaceNetwork) GetInternalDns() PrivateSpaceNetworkEditableInternalDns {
+func (o *PrivateSpaceNetwork) GetInternalDns() PrivateSpaceNetworkCreateInternalDns {
 	if o == nil || IsNil(o.InternalDns) {
-		var ret PrivateSpaceNetworkEditableInternalDns
+		var ret PrivateSpaceNetworkCreateInternalDns
 		return ret
 	}
 	return *o.InternalDns
@@ -128,7 +128,7 @@ func (o *PrivateSpaceNetwork) GetInternalDns() PrivateSpaceNetworkEditableIntern
 
 // GetInternalDnsOk returns a tuple with the InternalDns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrivateSpaceNetwork) GetInternalDnsOk() (*PrivateSpaceNetworkEditableInternalDns, bool) {
+func (o *PrivateSpaceNetwork) GetInternalDnsOk() (*PrivateSpaceNetworkCreateInternalDns, bool) {
 	if o == nil || IsNil(o.InternalDns) {
 		return nil, false
 	}
@@ -144,8 +144,8 @@ func (o *PrivateSpaceNetwork) HasInternalDns() bool {
 	return false
 }
 
-// SetInternalDns gets a reference to the given PrivateSpaceNetworkEditableInternalDns and assigns it to the InternalDns field.
-func (o *PrivateSpaceNetwork) SetInternalDns(v PrivateSpaceNetworkEditableInternalDns) {
+// SetInternalDns gets a reference to the given PrivateSpaceNetworkCreateInternalDns and assigns it to the InternalDns field.
+func (o *PrivateSpaceNetwork) SetInternalDns(v PrivateSpaceNetworkCreateInternalDns) {
 	o.InternalDns = &v
 }
 

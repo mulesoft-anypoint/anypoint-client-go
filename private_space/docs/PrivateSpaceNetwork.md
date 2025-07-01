@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Region** | Pointer to **string** | The region of the Private Space. Required when create a Private Space network. | [optional] 
 **CidrBlock** | Pointer to **string** | The CIDR block of the VPC where the Private Space will be created. Required when create a Private Space in a new VPC. Default is 10.0.0.0/16. | [optional] 
-**InternalDns** | Pointer to [**PrivateSpaceNetworkEditableInternalDns**](PrivateSpaceNetworkEditableInternalDns.md) |  | [optional] 
+**InternalDns** | Pointer to [**PrivateSpaceNetworkCreateInternalDns**](PrivateSpaceNetworkCreateInternalDns.md) |  | [optional] 
 **InboundStaticIps** | Pointer to **[]string** | The inbound static IPs of the Private Space network. | [optional] 
 **OutboundStaticIps** | Pointer to **[]string** | The outbound static IPs of the Private Space network. | [optional] 
 **DnsTarget** | Pointer to **string** | The DNS target of the Private Space network. | [optional] 
@@ -84,20 +84,20 @@ HasCidrBlock returns a boolean if a field has been set.
 
 ### GetInternalDns
 
-`func (o *PrivateSpaceNetwork) GetInternalDns() PrivateSpaceNetworkEditableInternalDns`
+`func (o *PrivateSpaceNetwork) GetInternalDns() PrivateSpaceNetworkCreateInternalDns`
 
 GetInternalDns returns the InternalDns field if non-nil, zero value otherwise.
 
 ### GetInternalDnsOk
 
-`func (o *PrivateSpaceNetwork) GetInternalDnsOk() (*PrivateSpaceNetworkEditableInternalDns, bool)`
+`func (o *PrivateSpaceNetwork) GetInternalDnsOk() (*PrivateSpaceNetworkCreateInternalDns, bool)`
 
 GetInternalDnsOk returns a tuple with the InternalDns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalDns
 
-`func (o *PrivateSpaceNetwork) SetInternalDns(v PrivateSpaceNetworkEditableInternalDns)`
+`func (o *PrivateSpaceNetwork) SetInternalDns(v PrivateSpaceNetworkCreateInternalDns)`
 
 SetInternalDns sets InternalDns field to given value.
 

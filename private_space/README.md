@@ -80,6 +80,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**CreatePrivateSpace**](docs/DefaultApi.md#createprivatespace) | **Post** /organizations/{orgId}/privatespaces | 
 *DefaultApi* | [**DeletePrivateSpace**](docs/DefaultApi.md#deleteprivatespace) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 *DefaultApi* | [**GetPrivateSpace**](docs/DefaultApi.md#getprivatespace) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
+*DefaultApi* | [**GetPrivateSpaceIamRoles**](docs/DefaultApi.md#getprivatespaceiamroles) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/iamroles | 
 *DefaultApi* | [**GetPrivateSpaces**](docs/DefaultApi.md#getprivatespaces) | **Get** /organizations/{orgId}/privatespaces | 
 *DefaultApi* | [**UpdatePrivateSpace**](docs/DefaultApi.md#updateprivatespace) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 
@@ -96,9 +97,11 @@ Class | Method | HTTP request | Description
  - [PrivateSpace](docs/PrivateSpace.md)
  - [PrivateSpaceAssociatedEnvironments](docs/PrivateSpaceAssociatedEnvironments.md)
  - [PrivateSpaceComponentStatus](docs/PrivateSpaceComponentStatus.md)
+ - [PrivateSpaceIamRoles](docs/PrivateSpaceIamRoles.md)
  - [PrivateSpaceNetwork](docs/PrivateSpaceNetwork.md)
+ - [PrivateSpaceNetworkCreate](docs/PrivateSpaceNetworkCreate.md)
+ - [PrivateSpaceNetworkCreateInternalDns](docs/PrivateSpaceNetworkCreateInternalDns.md)
  - [PrivateSpaceNetworkEditable](docs/PrivateSpaceNetworkEditable.md)
- - [PrivateSpaceNetworkEditableInternalDns](docs/PrivateSpaceNetworkEditableInternalDns.md)
  - [PrivateSpacePatchBody](docs/PrivateSpacePatchBody.md)
  - [PrivateSpacePatchBodyLogForwarding](docs/PrivateSpacePatchBodyLogForwarding.md)
  - [PrivateSpacePostBody](docs/PrivateSpacePostBody.md)
