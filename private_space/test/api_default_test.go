@@ -65,6 +65,21 @@ func Test_private_space_DefaultApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultApiService GetPrivateSpaceIamRoles", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var orgId string
+		var privateSpaceId string
+
+		resp, httpRes, err := apiClient.DefaultApi.GetPrivateSpaceIamRoles(context.Background(), orgId, privateSpaceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultApiService GetPrivateSpaces", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
