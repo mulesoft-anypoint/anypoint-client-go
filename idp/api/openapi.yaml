@@ -452,6 +452,8 @@ components:
           $ref: '#/components/schemas/openIDProviderManualPostBody_type'
         provider_id:
           type: string
+        arc_namespace:
+          type: string
       required:
       - allow_untrusted_certificates
       - name
