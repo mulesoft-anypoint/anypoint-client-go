@@ -27,6 +27,7 @@ type OpenIDProviderGet struct {
 	AllowUntrustedCertificates bool `json:"allow_untrusted_certificates"`
 	Type OpenIDProviderManualPostBodyType `json:"type"`
 	ProviderId string `json:"provider_id"`
+	ArcNamespace *string `json:"arc_namespace,omitempty"`
 }
 
 // NewOpenIDProviderGet instantiates a new OpenIDProviderGet object
@@ -253,6 +254,38 @@ func (o *OpenIDProviderGet) SetProviderId(v string) {
 	o.ProviderId = v
 }
 
+// GetArcNamespace returns the ArcNamespace field value if set, zero value otherwise.
+func (o *OpenIDProviderGet) GetArcNamespace() string {
+	if o == nil || IsNil(o.ArcNamespace) {
+		var ret string
+		return ret
+	}
+	return *o.ArcNamespace
+}
+
+// GetArcNamespaceOk returns a tuple with the ArcNamespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenIDProviderGet) GetArcNamespaceOk() (*string, bool) {
+	if o == nil || IsNil(o.ArcNamespace) {
+		return nil, false
+	}
+	return o.ArcNamespace, true
+}
+
+// HasArcNamespace returns a boolean if a field has been set.
+func (o *OpenIDProviderGet) HasArcNamespace() bool {
+	if o != nil && !IsNil(o.ArcNamespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetArcNamespace gets a reference to the given string and assigns it to the ArcNamespace field.
+func (o *OpenIDProviderGet) SetArcNamespace(v string) {
+	o.ArcNamespace = &v
+}
+
 func (o OpenIDProviderGet) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -273,6 +306,9 @@ func (o OpenIDProviderGet) ToMap() (map[string]interface{}, error) {
 	toSerialize["allow_untrusted_certificates"] = o.AllowUntrustedCertificates
 	toSerialize["type"] = o.Type
 	toSerialize["provider_id"] = o.ProviderId
+	if !IsNil(o.ArcNamespace) {
+		toSerialize["arc_namespace"] = o.ArcNamespace
+	}
 	return toSerialize, nil
 }
 

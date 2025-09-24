@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AllowUntrustedCertificates** | **bool** |  | 
 **Type** | [**OpenIDProviderManualPostBodyType**](OpenIDProviderManualPostBodyType.md) |  | 
 **ProviderId** | **string** |  | 
+**ArcNamespace** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -196,6 +197,31 @@ and a boolean to check if the value has been set.
 
 SetProviderId sets ProviderId field to given value.
 
+
+### GetArcNamespace
+
+`func (o *OpenIDProviderGet) GetArcNamespace() string`
+
+GetArcNamespace returns the ArcNamespace field if non-nil, zero value otherwise.
+
+### GetArcNamespaceOk
+
+`func (o *OpenIDProviderGet) GetArcNamespaceOk() (*string, bool)`
+
+GetArcNamespaceOk returns a tuple with the ArcNamespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArcNamespace
+
+`func (o *OpenIDProviderGet) SetArcNamespace(v string)`
+
+SetArcNamespace sets ArcNamespace field to given value.
+
+### HasArcNamespace
+
+`func (o *OpenIDProviderGet) HasArcNamespace() bool`
+
+HasArcNamespace returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
