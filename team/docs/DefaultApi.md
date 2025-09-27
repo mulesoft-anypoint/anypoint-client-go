@@ -254,7 +254,7 @@ func main() {
     ancestorTeamId := []string{"Inner_example"} // []string | team_id that must appear in the team's ancestor_team_ids. (optional)
     parentTeamId := []string{"Inner_example"} // []string | team_id of the immediate parent of the team to return. (optional)
     teamId := "teamId_example" // string | id of the team to return. (optional)
-    teamType := "teamType_example" // string | return only teams that are of this type (optional)
+    teamType := "teamType_example" // string | return only teams that are of the given type. Enum are internal, shared, private, external (optional)
     search := "search_example" // string | A search string to use for case-insensitive partial matches on team name (optional)
     limit := int32(56) // int32 | Maximum number of rolegroups to retrieve per request. (optional)
     offset := int32(56) // int32 | The number of records to omit from the response. (optional)
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
  **ancestorTeamId** | **[]string** | team_id that must appear in the team&#39;s ancestor_team_ids. | 
  **parentTeamId** | **[]string** | team_id of the immediate parent of the team to return. | 
  **teamId** | **string** | id of the team to return. | 
- **teamType** | **string** | return only teams that are of this type | 
+ **teamType** | **string** | return only teams that are of the given type. Enum are internal, shared, private, external | 
  **search** | **string** | A search string to use for case-insensitive partial matches on team name | 
  **limit** | **int32** | Maximum number of rolegroups to retrieve per request. | 
  **offset** | **int32** | The number of records to omit from the response. | 
