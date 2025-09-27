@@ -54,7 +54,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: return only teams that are of this type
+      - description: "return only teams that are of the given type. Enum are internal,\
+          \ shared, private, external"
         explode: true
         in: query
         name: team_type
@@ -93,10 +94,6 @@ paths:
         name: sort
         required: false
         schema:
-          enum:
-          - team_name
-          - created_at
-          - team_id
           type: string
         style: form
       - description: Whether to sort ascending or descending. Default true

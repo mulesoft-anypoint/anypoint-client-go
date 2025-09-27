@@ -371,7 +371,7 @@ func (r DefaultApiGetTeamsRequest) TeamId(teamId string) DefaultApiGetTeamsReque
 	return r
 }
 
-// return only teams that are of this type
+// return only teams that are of the given type. Enum are internal, shared, private, external
 func (r DefaultApiGetTeamsRequest) TeamType(teamType string) DefaultApiGetTeamsRequest {
 	r.teamType = &teamType
 	return r
