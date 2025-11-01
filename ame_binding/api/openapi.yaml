@@ -349,6 +349,7 @@ components:
       example:
         exchangeId: exchangeId
         queueId: queueId
+        fifo: true
       properties:
         queueId:
           title: queueId
@@ -356,6 +357,9 @@ components:
         exchangeId:
           title: exchangeId
           type: string
+        fifo:
+          title: fifo
+          type: boolean
       title: exchangeBinding
       type: object
     exchangeBindingWithRules:
@@ -406,7 +410,7 @@ components:
       type: object
     exchangeBindingWithRules_allOf:
       properties:
-        rules:
+        routingRules:
           items:
             title: routingRule
             type: object
