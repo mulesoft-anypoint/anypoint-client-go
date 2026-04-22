@@ -546,7 +546,7 @@ func (o *Contract) GetRequestedTierOk() (map[string]interface{}, bool) {
 
 // HasRequestedTier returns a boolean if a field has been set.
 func (o *Contract) HasRequestedTier() bool {
-	if o != nil && IsNil(o.RequestedTier) {
+	if o != nil && !IsNil(o.RequestedTier) {
 		return true
 	}
 
@@ -663,7 +663,7 @@ func (o *Contract) GetGroupInstanceOk() (map[string]interface{}, bool) {
 
 // HasGroupInstance returns a boolean if a field has been set.
 func (o *Contract) HasGroupInstance() bool {
-	if o != nil && IsNil(o.GroupInstance) {
+	if o != nil && !IsNil(o.GroupInstance) {
 		return true
 	}
 

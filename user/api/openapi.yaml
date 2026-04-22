@@ -231,8 +231,328 @@ components:
       example:
         total: 0
         data:
-        - null
-        - null
+        - lastName: Mule
+          lastLogin: 2021-07-12T09:28:43.569Z
+          mfaVerifiersConfigured: "false"
+          type: type
+          memberOfOrganizations:
+          - isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          - isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          enabled: true
+          contributorOfOrganizations:
+          - isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          - isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          isFederated: false
+          organizationId: xxxxxx-213d-4f60-845c-207286484cd1
+          mfaVerificationExcluded: false
+          firstName: Uzer
+          createdAt: Mon Feb 09 2015 17:47:26 GMT-0300 (ART)
+          phoneNumber: 111-111-1111
+          deleted: false
+          organization:
+            isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          organizationPreferences: "{}"
+          id: 4b353f44-6486-42ae-ae77-18b4032f9643
+          primaryOrganization:
+            name: name
+            id: id
+          idprovider_id: mulesoft
+          email: api.platform.qa+uzer@gmail.com
+          properties:
+            cs_auth: "{}"
+          username: UzerMule.test
+          updatedAt: Mon Feb 09 2015 17:47:26 GMT-0300 (ART)
+        - lastName: Mule
+          lastLogin: 2021-07-12T09:28:43.569Z
+          mfaVerifiersConfigured: "false"
+          type: type
+          memberOfOrganizations:
+          - isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          - isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          enabled: true
+          contributorOfOrganizations:
+          - isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          - isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          isFederated: false
+          organizationId: xxxxxx-213d-4f60-845c-207286484cd1
+          mfaVerificationExcluded: false
+          firstName: Uzer
+          createdAt: Mon Feb 09 2015 17:47:26 GMT-0300 (ART)
+          phoneNumber: 111-111-1111
+          deleted: false
+          organization:
+            isAutomaticAdminPromotionExempt: true
+            entitlements: "{}"
+            subOrganizationIds:
+            - subOrganizationIds
+            - subOrganizationIds
+            clientId: clientId
+            tenantOrganizationIds:
+            - tenantOrganizationIds
+            - tenantOrganizationIds
+            subscription:
+              expiration: expiration
+              category: category
+              type: type
+            ownerId: ownerId
+            isFederated: true
+            createdAt: createdAt
+            isMaster: true
+            domain: domain
+            name: name
+            id: id
+            mfaRequired: mfaRequired
+            idprovider_id: idprovider_id
+            properties: "{}"
+            updatedAt: updatedAt
+            parentOrganizationIds:
+            - parentOrganizationIds
+            - parentOrganizationIds
+          organizationPreferences: "{}"
+          id: 4b353f44-6486-42ae-ae77-18b4032f9643
+          primaryOrganization:
+            name: name
+            id: id
+          idprovider_id: mulesoft
+          email: api.platform.qa+uzer@gmail.com
+          properties:
+            cs_auth: "{}"
+          username: UzerMule.test
+          updatedAt: Mon Feb 09 2015 17:47:26 GMT-0300 (ART)
       properties:
         data:
           items:
@@ -313,8 +633,179 @@ components:
       type: object
     User:
       allOf:
-      - $ref: '#/components/schemas/userId'
+      - properties:
+          id:
+            description: The user Id
+            example: 4b353f44-6486-42ae-ae77-18b4032f9643
+            title: id
+            type: string
+        required:
+        - id
+        title: userId
+        type: object
       - $ref: '#/components/schemas/UserCore'
+      example:
+        lastName: Mule
+        lastLogin: 2021-07-12T09:28:43.569Z
+        mfaVerifiersConfigured: "false"
+        type: type
+        memberOfOrganizations:
+        - isAutomaticAdminPromotionExempt: true
+          entitlements: "{}"
+          subOrganizationIds:
+          - subOrganizationIds
+          - subOrganizationIds
+          clientId: clientId
+          tenantOrganizationIds:
+          - tenantOrganizationIds
+          - tenantOrganizationIds
+          subscription:
+            expiration: expiration
+            category: category
+            type: type
+          ownerId: ownerId
+          isFederated: true
+          createdAt: createdAt
+          isMaster: true
+          domain: domain
+          name: name
+          id: id
+          mfaRequired: mfaRequired
+          idprovider_id: idprovider_id
+          properties: "{}"
+          updatedAt: updatedAt
+          parentOrganizationIds:
+          - parentOrganizationIds
+          - parentOrganizationIds
+        - isAutomaticAdminPromotionExempt: true
+          entitlements: "{}"
+          subOrganizationIds:
+          - subOrganizationIds
+          - subOrganizationIds
+          clientId: clientId
+          tenantOrganizationIds:
+          - tenantOrganizationIds
+          - tenantOrganizationIds
+          subscription:
+            expiration: expiration
+            category: category
+            type: type
+          ownerId: ownerId
+          isFederated: true
+          createdAt: createdAt
+          isMaster: true
+          domain: domain
+          name: name
+          id: id
+          mfaRequired: mfaRequired
+          idprovider_id: idprovider_id
+          properties: "{}"
+          updatedAt: updatedAt
+          parentOrganizationIds:
+          - parentOrganizationIds
+          - parentOrganizationIds
+        enabled: true
+        contributorOfOrganizations:
+        - isAutomaticAdminPromotionExempt: true
+          entitlements: "{}"
+          subOrganizationIds:
+          - subOrganizationIds
+          - subOrganizationIds
+          clientId: clientId
+          tenantOrganizationIds:
+          - tenantOrganizationIds
+          - tenantOrganizationIds
+          subscription:
+            expiration: expiration
+            category: category
+            type: type
+          ownerId: ownerId
+          isFederated: true
+          createdAt: createdAt
+          isMaster: true
+          domain: domain
+          name: name
+          id: id
+          mfaRequired: mfaRequired
+          idprovider_id: idprovider_id
+          properties: "{}"
+          updatedAt: updatedAt
+          parentOrganizationIds:
+          - parentOrganizationIds
+          - parentOrganizationIds
+        - isAutomaticAdminPromotionExempt: true
+          entitlements: "{}"
+          subOrganizationIds:
+          - subOrganizationIds
+          - subOrganizationIds
+          clientId: clientId
+          tenantOrganizationIds:
+          - tenantOrganizationIds
+          - tenantOrganizationIds
+          subscription:
+            expiration: expiration
+            category: category
+            type: type
+          ownerId: ownerId
+          isFederated: true
+          createdAt: createdAt
+          isMaster: true
+          domain: domain
+          name: name
+          id: id
+          mfaRequired: mfaRequired
+          idprovider_id: idprovider_id
+          properties: "{}"
+          updatedAt: updatedAt
+          parentOrganizationIds:
+          - parentOrganizationIds
+          - parentOrganizationIds
+        isFederated: false
+        organizationId: xxxxxx-213d-4f60-845c-207286484cd1
+        mfaVerificationExcluded: false
+        firstName: Uzer
+        createdAt: Mon Feb 09 2015 17:47:26 GMT-0300 (ART)
+        phoneNumber: 111-111-1111
+        deleted: false
+        organization:
+          isAutomaticAdminPromotionExempt: true
+          entitlements: "{}"
+          subOrganizationIds:
+          - subOrganizationIds
+          - subOrganizationIds
+          clientId: clientId
+          tenantOrganizationIds:
+          - tenantOrganizationIds
+          - tenantOrganizationIds
+          subscription:
+            expiration: expiration
+            category: category
+            type: type
+          ownerId: ownerId
+          isFederated: true
+          createdAt: createdAt
+          isMaster: true
+          domain: domain
+          name: name
+          id: id
+          mfaRequired: mfaRequired
+          idprovider_id: idprovider_id
+          properties: "{}"
+          updatedAt: updatedAt
+          parentOrganizationIds:
+          - parentOrganizationIds
+          - parentOrganizationIds
+        organizationPreferences: "{}"
+        id: 4b353f44-6486-42ae-ae77-18b4032f9643
+        primaryOrganization:
+          name: name
+          id: id
+        idprovider_id: mulesoft
+        email: api.platform.qa+uzer@gmail.com
+        properties:
+          cs_auth: "{}"
+        username: UzerMule.test
+        updatedAt: Mon Feb 09 2015 17:47:26 GMT-0300 (ART)
       title: user
     UserCore:
       properties:
@@ -403,6 +894,34 @@ components:
       title: UserCore
       type: object
     Organization:
+      example:
+        isAutomaticAdminPromotionExempt: true
+        entitlements: "{}"
+        subOrganizationIds:
+        - subOrganizationIds
+        - subOrganizationIds
+        clientId: clientId
+        tenantOrganizationIds:
+        - tenantOrganizationIds
+        - tenantOrganizationIds
+        subscription:
+          expiration: expiration
+          category: category
+          type: type
+        ownerId: ownerId
+        isFederated: true
+        createdAt: createdAt
+        isMaster: true
+        domain: domain
+        name: name
+        id: id
+        mfaRequired: mfaRequired
+        idprovider_id: idprovider_id
+        properties: "{}"
+        updatedAt: updatedAt
+        parentOrganizationIds:
+        - parentOrganizationIds
+        - parentOrganizationIds
       properties:
         name:
           title: name
@@ -476,6 +995,9 @@ components:
       title: ContributorOfOrganizations
       type: array
     createUser_400_response:
+      example:
+        message: A sample message here
+        status: 0
       properties:
         status:
           default: 400
@@ -486,19 +1008,9 @@ components:
           title: the error message
           type: string
       type: object
-    userId:
-      properties:
-        id:
-          description: The user Id
-          example: 4b353f44-6486-42ae-ae77-18b4032f9643
-          title: id
-          type: string
-      required:
-      - id
-      title: userId
-      type: object
-      example: null
     properties:
+      example:
+        cs_auth: "{}"
       properties:
         cs_auth:
           title: cs_auth
@@ -506,6 +1018,9 @@ components:
       title: properties
       type: object
     primaryOrganization:
+      example:
+        name: name
+        id: id
       properties:
         id:
           title: id
@@ -516,6 +1031,10 @@ components:
       title: primaryOrganization
       type: object
     subscription:
+      example:
+        expiration: expiration
+        category: category
+        type: type
       properties:
         category:
           title: category

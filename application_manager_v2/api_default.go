@@ -20,18 +20,18 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiDeleteDeploymentRequest struct {
+type DefaultAPIDeleteDeploymentRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	deploymentId string
 }
 
-func (r DefaultApiDeleteDeploymentRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteDeploymentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDeploymentExecute(r)
 }
 
@@ -44,10 +44,10 @@ Deletes the specified deploymentId.
  @param orgId The ID of the organization in GUID format
  @param envId The ID of the environment in GUID format
  @param deploymentId The ID of the deployment in GUID format.
- @return DefaultApiDeleteDeploymentRequest
+ @return DefaultAPIDeleteDeploymentRequest
 */
-func (a *DefaultApiService) DeleteDeployment(ctx context.Context, orgId string, envId string, deploymentId string) DefaultApiDeleteDeploymentRequest {
-	return DefaultApiDeleteDeploymentRequest{
+func (a *DefaultAPIService) DeleteDeployment(ctx context.Context, orgId string, envId string, deploymentId string) DefaultAPIDeleteDeploymentRequest {
+	return DefaultAPIDeleteDeploymentRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -57,14 +57,14 @@ func (a *DefaultApiService) DeleteDeployment(ctx context.Context, orgId string, 
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteDeploymentExecute(r DefaultApiDeleteDeploymentRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteDeploymentExecute(r DefaultAPIDeleteDeploymentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteDeployment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteDeployment")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -123,9 +123,9 @@ func (a *DefaultApiService) DeleteDeploymentExecute(r DefaultApiDeleteDeployment
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetAllDeploymentsRequest struct {
+type DefaultAPIGetAllDeploymentsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	provider *string
@@ -135,30 +135,30 @@ type DefaultApiGetAllDeploymentsRequest struct {
 }
 
 // The provider of the target the deployments are deployed to.
-func (r DefaultApiGetAllDeploymentsRequest) Provider(provider string) DefaultApiGetAllDeploymentsRequest {
+func (r DefaultAPIGetAllDeploymentsRequest) Provider(provider string) DefaultAPIGetAllDeploymentsRequest {
 	r.provider = &provider
 	return r
 }
 
 // The id of the target the deployments are deployed to.
-func (r DefaultApiGetAllDeploymentsRequest) TargetId(targetId string) DefaultApiGetAllDeploymentsRequest {
+func (r DefaultAPIGetAllDeploymentsRequest) TargetId(targetId string) DefaultAPIGetAllDeploymentsRequest {
 	r.targetId = &targetId
 	return r
 }
 
 // Offset used to retrieve the results.
-func (r DefaultApiGetAllDeploymentsRequest) Offset(offset int32) DefaultApiGetAllDeploymentsRequest {
+func (r DefaultAPIGetAllDeploymentsRequest) Offset(offset int32) DefaultAPIGetAllDeploymentsRequest {
 	r.offset = &offset
 	return r
 }
 
 // Maximum records to retrieve.
-func (r DefaultApiGetAllDeploymentsRequest) Limit(limit int32) DefaultApiGetAllDeploymentsRequest {
+func (r DefaultAPIGetAllDeploymentsRequest) Limit(limit int32) DefaultAPIGetAllDeploymentsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r DefaultApiGetAllDeploymentsRequest) Execute() (*DeploymentResponsePaged, *http.Response, error) {
+func (r DefaultAPIGetAllDeploymentsRequest) Execute() (*DeploymentResponsePaged, *http.Response, error) {
 	return r.ApiService.GetAllDeploymentsExecute(r)
 }
 
@@ -170,10 +170,10 @@ Retrieves a list of deployments for the specified query. If the query returns no
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param envId The ID of the environment in GUID format
- @return DefaultApiGetAllDeploymentsRequest
+ @return DefaultAPIGetAllDeploymentsRequest
 */
-func (a *DefaultApiService) GetAllDeployments(ctx context.Context, orgId string, envId string) DefaultApiGetAllDeploymentsRequest {
-	return DefaultApiGetAllDeploymentsRequest{
+func (a *DefaultAPIService) GetAllDeployments(ctx context.Context, orgId string, envId string) DefaultAPIGetAllDeploymentsRequest {
+	return DefaultAPIGetAllDeploymentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -183,7 +183,7 @@ func (a *DefaultApiService) GetAllDeployments(ctx context.Context, orgId string,
 
 // Execute executes the request
 //  @return DeploymentResponsePaged
-func (a *DefaultApiService) GetAllDeploymentsExecute(r DefaultApiGetAllDeploymentsRequest) (*DeploymentResponsePaged, *http.Response, error) {
+func (a *DefaultAPIService) GetAllDeploymentsExecute(r DefaultAPIGetAllDeploymentsRequest) (*DeploymentResponsePaged, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -191,7 +191,7 @@ func (a *DefaultApiService) GetAllDeploymentsExecute(r DefaultApiGetAllDeploymen
 		localVarReturnValue  *DeploymentResponsePaged
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetAllDeployments")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetAllDeployments")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -205,16 +205,16 @@ func (a *DefaultApiService) GetAllDeploymentsExecute(r DefaultApiGetAllDeploymen
 	localVarFormParams := url.Values{}
 
 	if r.provider != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "form", "")
 	}
 	if r.targetId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "targetId", r.targetId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "targetId", r.targetId, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -270,15 +270,15 @@ func (a *DefaultApiService) GetAllDeploymentsExecute(r DefaultApiGetAllDeploymen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetDeploymentByIdRequest struct {
+type DefaultAPIGetDeploymentByIdRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	deploymentId string
 }
 
-func (r DefaultApiGetDeploymentByIdRequest) Execute() (*Deployment, *http.Response, error) {
+func (r DefaultAPIGetDeploymentByIdRequest) Execute() (*Deployment, *http.Response, error) {
 	return r.ApiService.GetDeploymentByIdExecute(r)
 }
 
@@ -291,10 +291,10 @@ Retrieves a specific deployment by in a given org, environment and with a specif
  @param orgId The ID of the organization in GUID format
  @param envId The ID of the environment in GUID format
  @param deploymentId The ID of the deployment in GUID format.
- @return DefaultApiGetDeploymentByIdRequest
+ @return DefaultAPIGetDeploymentByIdRequest
 */
-func (a *DefaultApiService) GetDeploymentById(ctx context.Context, orgId string, envId string, deploymentId string) DefaultApiGetDeploymentByIdRequest {
-	return DefaultApiGetDeploymentByIdRequest{
+func (a *DefaultAPIService) GetDeploymentById(ctx context.Context, orgId string, envId string, deploymentId string) DefaultAPIGetDeploymentByIdRequest {
+	return DefaultAPIGetDeploymentByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -305,7 +305,7 @@ func (a *DefaultApiService) GetDeploymentById(ctx context.Context, orgId string,
 
 // Execute executes the request
 //  @return Deployment
-func (a *DefaultApiService) GetDeploymentByIdExecute(r DefaultApiGetDeploymentByIdRequest) (*Deployment, *http.Response, error) {
+func (a *DefaultAPIService) GetDeploymentByIdExecute(r DefaultAPIGetDeploymentByIdRequest) (*Deployment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -313,7 +313,7 @@ func (a *DefaultApiService) GetDeploymentByIdExecute(r DefaultApiGetDeploymentBy
 		localVarReturnValue  *Deployment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetDeploymentById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetDeploymentById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -381,21 +381,21 @@ func (a *DefaultApiService) GetDeploymentByIdExecute(r DefaultApiGetDeploymentBy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPatchDeploymentRequest struct {
+type DefaultAPIPatchDeploymentRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	deploymentId string
 	deploymentRequestBody *DeploymentRequestBody
 }
 
-func (r DefaultApiPatchDeploymentRequest) DeploymentRequestBody(deploymentRequestBody DeploymentRequestBody) DefaultApiPatchDeploymentRequest {
+func (r DefaultAPIPatchDeploymentRequest) DeploymentRequestBody(deploymentRequestBody DeploymentRequestBody) DefaultAPIPatchDeploymentRequest {
 	r.deploymentRequestBody = &deploymentRequestBody
 	return r
 }
 
-func (r DefaultApiPatchDeploymentRequest) Execute() (*Deployment, *http.Response, error) {
+func (r DefaultAPIPatchDeploymentRequest) Execute() (*Deployment, *http.Response, error) {
 	return r.ApiService.PatchDeploymentExecute(r)
 }
 
@@ -408,10 +408,10 @@ Updates an existing deployment with the provided details.
  @param orgId The ID of the organization in GUID format
  @param envId The ID of the environment in GUID format
  @param deploymentId The ID of the deployment in GUID format.
- @return DefaultApiPatchDeploymentRequest
+ @return DefaultAPIPatchDeploymentRequest
 */
-func (a *DefaultApiService) PatchDeployment(ctx context.Context, orgId string, envId string, deploymentId string) DefaultApiPatchDeploymentRequest {
-	return DefaultApiPatchDeploymentRequest{
+func (a *DefaultAPIService) PatchDeployment(ctx context.Context, orgId string, envId string, deploymentId string) DefaultAPIPatchDeploymentRequest {
+	return DefaultAPIPatchDeploymentRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -422,7 +422,7 @@ func (a *DefaultApiService) PatchDeployment(ctx context.Context, orgId string, e
 
 // Execute executes the request
 //  @return Deployment
-func (a *DefaultApiService) PatchDeploymentExecute(r DefaultApiPatchDeploymentRequest) (*Deployment, *http.Response, error) {
+func (a *DefaultAPIService) PatchDeploymentExecute(r DefaultAPIPatchDeploymentRequest) (*Deployment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -430,7 +430,7 @@ func (a *DefaultApiService) PatchDeploymentExecute(r DefaultApiPatchDeploymentRe
 		localVarReturnValue  *Deployment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PatchDeployment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PatchDeployment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -500,20 +500,20 @@ func (a *DefaultApiService) PatchDeploymentExecute(r DefaultApiPatchDeploymentRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPostDeploymentRequest struct {
+type DefaultAPIPostDeploymentRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	deploymentRequestBody *DeploymentRequestBody
 }
 
-func (r DefaultApiPostDeploymentRequest) DeploymentRequestBody(deploymentRequestBody DeploymentRequestBody) DefaultApiPostDeploymentRequest {
+func (r DefaultAPIPostDeploymentRequest) DeploymentRequestBody(deploymentRequestBody DeploymentRequestBody) DefaultAPIPostDeploymentRequest {
 	r.deploymentRequestBody = &deploymentRequestBody
 	return r
 }
 
-func (r DefaultApiPostDeploymentRequest) Execute() (*Deployment, *http.Response, error) {
+func (r DefaultAPIPostDeploymentRequest) Execute() (*Deployment, *http.Response, error) {
 	return r.ApiService.PostDeploymentExecute(r)
 }
 
@@ -525,10 +525,10 @@ Deploys a new application with the provided data.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param envId The ID of the environment in GUID format
- @return DefaultApiPostDeploymentRequest
+ @return DefaultAPIPostDeploymentRequest
 */
-func (a *DefaultApiService) PostDeployment(ctx context.Context, orgId string, envId string) DefaultApiPostDeploymentRequest {
-	return DefaultApiPostDeploymentRequest{
+func (a *DefaultAPIService) PostDeployment(ctx context.Context, orgId string, envId string) DefaultAPIPostDeploymentRequest {
+	return DefaultAPIPostDeploymentRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -538,7 +538,7 @@ func (a *DefaultApiService) PostDeployment(ctx context.Context, orgId string, en
 
 // Execute executes the request
 //  @return Deployment
-func (a *DefaultApiService) PostDeploymentExecute(r DefaultApiPostDeploymentRequest) (*Deployment, *http.Response, error) {
+func (a *DefaultAPIService) PostDeploymentExecute(r DefaultAPIPostDeploymentRequest) (*Deployment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -546,7 +546,7 @@ func (a *DefaultApiService) PostDeploymentExecute(r DefaultApiPostDeploymentRequ
 		localVarReturnValue  *Deployment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PostDeployment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PostDeployment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

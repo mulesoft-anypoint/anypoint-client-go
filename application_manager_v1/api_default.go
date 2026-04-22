@@ -21,30 +21,30 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiDeleteDeploymentRequest struct {
+type DefaultAPIDeleteDeploymentRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	xAnypntEnvId *string
 	xAnypntOrgId *string
 	domain string
 }
 
 // The environment id where the application is deployed
-func (r DefaultApiDeleteDeploymentRequest) XAnypntEnvId(xAnypntEnvId string) DefaultApiDeleteDeploymentRequest {
+func (r DefaultAPIDeleteDeploymentRequest) XAnypntEnvId(xAnypntEnvId string) DefaultAPIDeleteDeploymentRequest {
 	r.xAnypntEnvId = &xAnypntEnvId
 	return r
 }
 
 // The org id where the application is deployed
-func (r DefaultApiDeleteDeploymentRequest) XAnypntOrgId(xAnypntOrgId string) DefaultApiDeleteDeploymentRequest {
+func (r DefaultAPIDeleteDeploymentRequest) XAnypntOrgId(xAnypntOrgId string) DefaultAPIDeleteDeploymentRequest {
 	r.xAnypntOrgId = &xAnypntOrgId
 	return r
 }
 
-func (r DefaultApiDeleteDeploymentRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteDeploymentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDeploymentExecute(r)
 }
 
@@ -55,10 +55,10 @@ Delete a single application
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param domain The application domain in the path
- @return DefaultApiDeleteDeploymentRequest
+ @return DefaultAPIDeleteDeploymentRequest
 */
-func (a *DefaultApiService) DeleteDeployment(ctx context.Context, domain string) DefaultApiDeleteDeploymentRequest {
-	return DefaultApiDeleteDeploymentRequest{
+func (a *DefaultAPIService) DeleteDeployment(ctx context.Context, domain string) DefaultAPIDeleteDeploymentRequest {
+	return DefaultAPIDeleteDeploymentRequest{
 		ApiService: a,
 		ctx: ctx,
 		domain: domain,
@@ -66,14 +66,14 @@ func (a *DefaultApiService) DeleteDeployment(ctx context.Context, domain string)
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteDeploymentExecute(r DefaultApiDeleteDeploymentRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteDeploymentExecute(r DefaultAPIDeleteDeploymentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteDeployment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteDeployment")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,8 +108,8 @@ func (a *DefaultApiService) DeleteDeploymentExecute(r DefaultApiDeleteDeployment
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "")
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "simple", "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -138,26 +138,26 @@ func (a *DefaultApiService) DeleteDeploymentExecute(r DefaultApiDeleteDeployment
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetAllDeploymentsRequest struct {
+type DefaultAPIGetAllDeploymentsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	xAnypntEnvId *string
 	xAnypntOrgId *string
 }
 
 // The environment id where the applications are deployed
-func (r DefaultApiGetAllDeploymentsRequest) XAnypntEnvId(xAnypntEnvId string) DefaultApiGetAllDeploymentsRequest {
+func (r DefaultAPIGetAllDeploymentsRequest) XAnypntEnvId(xAnypntEnvId string) DefaultAPIGetAllDeploymentsRequest {
 	r.xAnypntEnvId = &xAnypntEnvId
 	return r
 }
 
 // The org id where the applications are deployed
-func (r DefaultApiGetAllDeploymentsRequest) XAnypntOrgId(xAnypntOrgId string) DefaultApiGetAllDeploymentsRequest {
+func (r DefaultAPIGetAllDeploymentsRequest) XAnypntOrgId(xAnypntOrgId string) DefaultAPIGetAllDeploymentsRequest {
 	r.xAnypntOrgId = &xAnypntOrgId
 	return r
 }
 
-func (r DefaultApiGetAllDeploymentsRequest) Execute() (*GetAllDeploymentsResponse, *http.Response, error) {
+func (r DefaultAPIGetAllDeploymentsRequest) Execute() (*GetAllDeploymentsResponse, *http.Response, error) {
 	return r.ApiService.GetAllDeploymentsExecute(r)
 }
 
@@ -167,10 +167,10 @@ GetAllDeployments List deployments
 Retrieves a list of deployments for the specified query. If the query returns no results, then an empty list is returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return DefaultApiGetAllDeploymentsRequest
+ @return DefaultAPIGetAllDeploymentsRequest
 */
-func (a *DefaultApiService) GetAllDeployments(ctx context.Context) DefaultApiGetAllDeploymentsRequest {
-	return DefaultApiGetAllDeploymentsRequest{
+func (a *DefaultAPIService) GetAllDeployments(ctx context.Context) DefaultAPIGetAllDeploymentsRequest {
+	return DefaultAPIGetAllDeploymentsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -178,7 +178,7 @@ func (a *DefaultApiService) GetAllDeployments(ctx context.Context) DefaultApiGet
 
 // Execute executes the request
 //  @return GetAllDeploymentsResponse
-func (a *DefaultApiService) GetAllDeploymentsExecute(r DefaultApiGetAllDeploymentsRequest) (*GetAllDeploymentsResponse, *http.Response, error) {
+func (a *DefaultAPIService) GetAllDeploymentsExecute(r DefaultAPIGetAllDeploymentsRequest) (*GetAllDeploymentsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -186,7 +186,7 @@ func (a *DefaultApiService) GetAllDeploymentsExecute(r DefaultApiGetAllDeploymen
 		localVarReturnValue  *GetAllDeploymentsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetAllDeployments")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetAllDeployments")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -220,8 +220,8 @@ func (a *DefaultApiService) GetAllDeploymentsExecute(r DefaultApiGetAllDeploymen
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "")
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "simple", "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -259,9 +259,9 @@ func (a *DefaultApiService) GetAllDeploymentsExecute(r DefaultApiGetAllDeploymen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetCH1DeploymentsRequest struct {
+type DefaultAPIGetCH1DeploymentsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	xAnypntEnvId *string
 	xAnypntOrgId *string
 	retrieveStatistics *bool
@@ -272,48 +272,48 @@ type DefaultApiGetCH1DeploymentsRequest struct {
 }
 
 // The environment id where the application is deployed
-func (r DefaultApiGetCH1DeploymentsRequest) XAnypntEnvId(xAnypntEnvId string) DefaultApiGetCH1DeploymentsRequest {
+func (r DefaultAPIGetCH1DeploymentsRequest) XAnypntEnvId(xAnypntEnvId string) DefaultAPIGetCH1DeploymentsRequest {
 	r.xAnypntEnvId = &xAnypntEnvId
 	return r
 }
 
 // The org id where the application is deployed
-func (r DefaultApiGetCH1DeploymentsRequest) XAnypntOrgId(xAnypntOrgId string) DefaultApiGetCH1DeploymentsRequest {
+func (r DefaultAPIGetCH1DeploymentsRequest) XAnypntOrgId(xAnypntOrgId string) DefaultAPIGetCH1DeploymentsRequest {
 	r.xAnypntOrgId = &xAnypntOrgId
 	return r
 }
 
 // Include statistics for each application in the response.
-func (r DefaultApiGetCH1DeploymentsRequest) RetrieveStatistics(retrieveStatistics bool) DefaultApiGetCH1DeploymentsRequest {
+func (r DefaultAPIGetCH1DeploymentsRequest) RetrieveStatistics(retrieveStatistics bool) DefaultAPIGetCH1DeploymentsRequest {
 	r.retrieveStatistics = &retrieveStatistics
 	return r
 }
 
 // Number of milliseconds of statistics to gather.
-func (r DefaultApiGetCH1DeploymentsRequest) Period(period int64) DefaultApiGetCH1DeploymentsRequest {
+func (r DefaultAPIGetCH1DeploymentsRequest) Period(period int64) DefaultAPIGetCH1DeploymentsRequest {
 	r.period = &period
 	return r
 }
 
 // Include log levels for each application in the response.
-func (r DefaultApiGetCH1DeploymentsRequest) RetrieveLogLevels(retrieveLogLevels bool) DefaultApiGetCH1DeploymentsRequest {
+func (r DefaultAPIGetCH1DeploymentsRequest) RetrieveLogLevels(retrieveLogLevels bool) DefaultAPIGetCH1DeploymentsRequest {
 	r.retrieveLogLevels = &retrieveLogLevels
 	return r
 }
 
 // Include tracking settings for each application in the response.
-func (r DefaultApiGetCH1DeploymentsRequest) RetrieveTrackingSettings(retrieveTrackingSettings bool) DefaultApiGetCH1DeploymentsRequest {
+func (r DefaultAPIGetCH1DeploymentsRequest) RetrieveTrackingSettings(retrieveTrackingSettings bool) DefaultAPIGetCH1DeploymentsRequest {
 	r.retrieveTrackingSettings = &retrieveTrackingSettings
 	return r
 }
 
 // Include ip address allocations for each application in the response.
-func (r DefaultApiGetCH1DeploymentsRequest) RetrieveIpAddresses(retrieveIpAddresses bool) DefaultApiGetCH1DeploymentsRequest {
+func (r DefaultAPIGetCH1DeploymentsRequest) RetrieveIpAddresses(retrieveIpAddresses bool) DefaultAPIGetCH1DeploymentsRequest {
 	r.retrieveIpAddresses = &retrieveIpAddresses
 	return r
 }
 
-func (r DefaultApiGetCH1DeploymentsRequest) Execute() ([]DeploymentCH1Summary, *http.Response, error) {
+func (r DefaultAPIGetCH1DeploymentsRequest) Execute() ([]DeploymentCH1Summary, *http.Response, error) {
 	return r.ApiService.GetCH1DeploymentsExecute(r)
 }
 
@@ -323,10 +323,10 @@ GetCH1Deployments List Cloudhub1 deployments
 Retrieves a list of Cloudhub1 deployments for the specified query. If the query returns no results, then an empty list is returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return DefaultApiGetCH1DeploymentsRequest
+ @return DefaultAPIGetCH1DeploymentsRequest
 */
-func (a *DefaultApiService) GetCH1Deployments(ctx context.Context) DefaultApiGetCH1DeploymentsRequest {
-	return DefaultApiGetCH1DeploymentsRequest{
+func (a *DefaultAPIService) GetCH1Deployments(ctx context.Context) DefaultAPIGetCH1DeploymentsRequest {
+	return DefaultAPIGetCH1DeploymentsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -334,7 +334,7 @@ func (a *DefaultApiService) GetCH1Deployments(ctx context.Context) DefaultApiGet
 
 // Execute executes the request
 //  @return []DeploymentCH1Summary
-func (a *DefaultApiService) GetCH1DeploymentsExecute(r DefaultApiGetCH1DeploymentsRequest) ([]DeploymentCH1Summary, *http.Response, error) {
+func (a *DefaultAPIService) GetCH1DeploymentsExecute(r DefaultAPIGetCH1DeploymentsRequest) ([]DeploymentCH1Summary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -342,7 +342,7 @@ func (a *DefaultApiService) GetCH1DeploymentsExecute(r DefaultApiGetCH1Deploymen
 		localVarReturnValue  []DeploymentCH1Summary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetCH1Deployments")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetCH1Deployments")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -360,19 +360,19 @@ func (a *DefaultApiService) GetCH1DeploymentsExecute(r DefaultApiGetCH1Deploymen
 	}
 
 	if r.retrieveStatistics != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "retrieveStatistics", r.retrieveStatistics, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "retrieveStatistics", r.retrieveStatistics, "form", "")
 	}
 	if r.period != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "form", "")
 	}
 	if r.retrieveLogLevels != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "retrieveLogLevels", r.retrieveLogLevels, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "retrieveLogLevels", r.retrieveLogLevels, "form", "")
 	}
 	if r.retrieveTrackingSettings != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "retrieveTrackingSettings", r.retrieveTrackingSettings, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "retrieveTrackingSettings", r.retrieveTrackingSettings, "form", "")
 	}
 	if r.retrieveIpAddresses != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "retrieveIpAddresses", r.retrieveIpAddresses, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "retrieveIpAddresses", r.retrieveIpAddresses, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -391,8 +391,8 @@ func (a *DefaultApiService) GetCH1DeploymentsExecute(r DefaultApiGetCH1Deploymen
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "")
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "simple", "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -430,27 +430,27 @@ func (a *DefaultApiService) GetCH1DeploymentsExecute(r DefaultApiGetCH1Deploymen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetDeploymentCH1DetailsRequest struct {
+type DefaultAPIGetDeploymentCH1DetailsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	xAnypntEnvId *string
 	xAnypntOrgId *string
 	domain string
 }
 
 // The environment id where the application is deployed
-func (r DefaultApiGetDeploymentCH1DetailsRequest) XAnypntEnvId(xAnypntEnvId string) DefaultApiGetDeploymentCH1DetailsRequest {
+func (r DefaultAPIGetDeploymentCH1DetailsRequest) XAnypntEnvId(xAnypntEnvId string) DefaultAPIGetDeploymentCH1DetailsRequest {
 	r.xAnypntEnvId = &xAnypntEnvId
 	return r
 }
 
 // The org id where the application is deployed
-func (r DefaultApiGetDeploymentCH1DetailsRequest) XAnypntOrgId(xAnypntOrgId string) DefaultApiGetDeploymentCH1DetailsRequest {
+func (r DefaultAPIGetDeploymentCH1DetailsRequest) XAnypntOrgId(xAnypntOrgId string) DefaultAPIGetDeploymentCH1DetailsRequest {
 	r.xAnypntOrgId = &xAnypntOrgId
 	return r
 }
 
-func (r DefaultApiGetDeploymentCH1DetailsRequest) Execute() (*DeploymentCH1Details, *http.Response, error) {
+func (r DefaultAPIGetDeploymentCH1DetailsRequest) Execute() (*DeploymentCH1Details, *http.Response, error) {
 	return r.ApiService.GetDeploymentCH1DetailsExecute(r)
 }
 
@@ -461,10 +461,10 @@ Retrieve a single application by name. Requires 'Read Applications' role.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param domain The application domain in the path
- @return DefaultApiGetDeploymentCH1DetailsRequest
+ @return DefaultAPIGetDeploymentCH1DetailsRequest
 */
-func (a *DefaultApiService) GetDeploymentCH1Details(ctx context.Context, domain string) DefaultApiGetDeploymentCH1DetailsRequest {
-	return DefaultApiGetDeploymentCH1DetailsRequest{
+func (a *DefaultAPIService) GetDeploymentCH1Details(ctx context.Context, domain string) DefaultAPIGetDeploymentCH1DetailsRequest {
+	return DefaultAPIGetDeploymentCH1DetailsRequest{
 		ApiService: a,
 		ctx: ctx,
 		domain: domain,
@@ -473,7 +473,7 @@ func (a *DefaultApiService) GetDeploymentCH1Details(ctx context.Context, domain 
 
 // Execute executes the request
 //  @return DeploymentCH1Details
-func (a *DefaultApiService) GetDeploymentCH1DetailsExecute(r DefaultApiGetDeploymentCH1DetailsRequest) (*DeploymentCH1Details, *http.Response, error) {
+func (a *DefaultAPIService) GetDeploymentCH1DetailsExecute(r DefaultAPIGetDeploymentCH1DetailsRequest) (*DeploymentCH1Details, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -481,7 +481,7 @@ func (a *DefaultApiService) GetDeploymentCH1DetailsExecute(r DefaultApiGetDeploy
 		localVarReturnValue  *DeploymentCH1Details
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetDeploymentCH1Details")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetDeploymentCH1Details")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -516,8 +516,8 @@ func (a *DefaultApiService) GetDeploymentCH1DetailsExecute(r DefaultApiGetDeploy
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "")
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "simple", "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -555,12 +555,12 @@ func (a *DefaultApiService) GetDeploymentCH1DetailsExecute(r DefaultApiGetDeploy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetMuleVersionsRequest struct {
+type DefaultAPIGetMuleVersionsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 }
 
-func (r DefaultApiGetMuleVersionsRequest) Execute() (*RuntimeCollection, *http.Response, error) {
+func (r DefaultAPIGetMuleVersionsRequest) Execute() (*RuntimeCollection, *http.Response, error) {
 	return r.ApiService.GetMuleVersionsExecute(r)
 }
 
@@ -570,10 +570,10 @@ GetMuleVersions Read available mule versions
 Read available mule versions.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return DefaultApiGetMuleVersionsRequest
+ @return DefaultAPIGetMuleVersionsRequest
 */
-func (a *DefaultApiService) GetMuleVersions(ctx context.Context) DefaultApiGetMuleVersionsRequest {
-	return DefaultApiGetMuleVersionsRequest{
+func (a *DefaultAPIService) GetMuleVersions(ctx context.Context) DefaultAPIGetMuleVersionsRequest {
+	return DefaultAPIGetMuleVersionsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -581,7 +581,7 @@ func (a *DefaultApiService) GetMuleVersions(ctx context.Context) DefaultApiGetMu
 
 // Execute executes the request
 //  @return RuntimeCollection
-func (a *DefaultApiService) GetMuleVersionsExecute(r DefaultApiGetMuleVersionsRequest) (*RuntimeCollection, *http.Response, error) {
+func (a *DefaultAPIService) GetMuleVersionsExecute(r DefaultAPIGetMuleVersionsRequest) (*RuntimeCollection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -589,7 +589,7 @@ func (a *DefaultApiService) GetMuleVersionsExecute(r DefaultApiGetMuleVersionsRe
 		localVarReturnValue  *RuntimeCollection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetMuleVersions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetMuleVersions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -654,9 +654,9 @@ func (a *DefaultApiService) GetMuleVersionsExecute(r DefaultApiGetMuleVersionsRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPostDeploymentRequest struct {
+type DefaultAPIPostDeploymentRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	xAnypntEnvId *string
 	xAnypntOrgId *string
 	appInfoJson *string
@@ -665,36 +665,36 @@ type DefaultApiPostDeploymentRequest struct {
 }
 
 // The environment id where the application is deployed
-func (r DefaultApiPostDeploymentRequest) XAnypntEnvId(xAnypntEnvId string) DefaultApiPostDeploymentRequest {
+func (r DefaultAPIPostDeploymentRequest) XAnypntEnvId(xAnypntEnvId string) DefaultAPIPostDeploymentRequest {
 	r.xAnypntEnvId = &xAnypntEnvId
 	return r
 }
 
 // The org id where the application is deployed
-func (r DefaultApiPostDeploymentRequest) XAnypntOrgId(xAnypntOrgId string) DefaultApiPostDeploymentRequest {
+func (r DefaultAPIPostDeploymentRequest) XAnypntOrgId(xAnypntOrgId string) DefaultAPIPostDeploymentRequest {
 	r.xAnypntOrgId = &xAnypntOrgId
 	return r
 }
 
 // A JSON string representing the deployment configuration. Look at \\\&quot;NewDeploymentStruct\\\&quot; for structure. 
-func (r DefaultApiPostDeploymentRequest) AppInfoJson(appInfoJson string) DefaultApiPostDeploymentRequest {
+func (r DefaultAPIPostDeploymentRequest) AppInfoJson(appInfoJson string) DefaultAPIPostDeploymentRequest {
 	r.appInfoJson = &appInfoJson
 	return r
 }
 
 // The Mule application artifact to be deployed.
-func (r DefaultApiPostDeploymentRequest) File(file *os.File) DefaultApiPostDeploymentRequest {
+func (r DefaultAPIPostDeploymentRequest) File(file *os.File) DefaultAPIPostDeploymentRequest {
 	r.file = file
 	return r
 }
 
 // Indicates whether the application should be automatically started after deployment.
-func (r DefaultApiPostDeploymentRequest) AutoStart(autoStart bool) DefaultApiPostDeploymentRequest {
+func (r DefaultAPIPostDeploymentRequest) AutoStart(autoStart bool) DefaultAPIPostDeploymentRequest {
 	r.autoStart = &autoStart
 	return r
 }
 
-func (r DefaultApiPostDeploymentRequest) Execute() (*DeploymentCH1Details, *http.Response, error) {
+func (r DefaultAPIPostDeploymentRequest) Execute() (*DeploymentCH1Details, *http.Response, error) {
 	return r.ApiService.PostDeploymentExecute(r)
 }
 
@@ -704,10 +704,10 @@ PostDeployment Create a new deployment
 Deploys a new Mule Application to Cloudhub (CH1).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return DefaultApiPostDeploymentRequest
+ @return DefaultAPIPostDeploymentRequest
 */
-func (a *DefaultApiService) PostDeployment(ctx context.Context) DefaultApiPostDeploymentRequest {
-	return DefaultApiPostDeploymentRequest{
+func (a *DefaultAPIService) PostDeployment(ctx context.Context) DefaultAPIPostDeploymentRequest {
+	return DefaultAPIPostDeploymentRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -715,7 +715,7 @@ func (a *DefaultApiService) PostDeployment(ctx context.Context) DefaultApiPostDe
 
 // Execute executes the request
 //  @return DeploymentCH1Details
-func (a *DefaultApiService) PostDeploymentExecute(r DefaultApiPostDeploymentRequest) (*DeploymentCH1Details, *http.Response, error) {
+func (a *DefaultAPIService) PostDeploymentExecute(r DefaultAPIPostDeploymentRequest) (*DeploymentCH1Details, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -723,7 +723,7 @@ func (a *DefaultApiService) PostDeploymentExecute(r DefaultApiPostDeploymentRequ
 		localVarReturnValue  *DeploymentCH1Details
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PostDeployment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PostDeployment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -757,18 +757,16 @@ func (a *DefaultApiService) PostDeploymentExecute(r DefaultApiPostDeploymentRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "")
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "simple", "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "simple", "")
 	if r.appInfoJson != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "appInfoJson", r.appInfoJson, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "appInfoJson", r.appInfoJson, "", "")
 	}
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
@@ -780,7 +778,7 @@ func (a *DefaultApiService) PostDeploymentExecute(r DefaultApiPostDeploymentRequ
 		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
 	if r.autoStart != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "autoStart", r.autoStart, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "autoStart", r.autoStart, "", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -819,9 +817,9 @@ func (a *DefaultApiService) PostDeploymentExecute(r DefaultApiPostDeploymentRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPutDeploymentRequest struct {
+type DefaultAPIPutDeploymentRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	xAnypntEnvId *string
 	xAnypntOrgId *string
 	domain string
@@ -830,30 +828,30 @@ type DefaultApiPutDeploymentRequest struct {
 }
 
 // The environment id where the application is deployed
-func (r DefaultApiPutDeploymentRequest) XAnypntEnvId(xAnypntEnvId string) DefaultApiPutDeploymentRequest {
+func (r DefaultAPIPutDeploymentRequest) XAnypntEnvId(xAnypntEnvId string) DefaultAPIPutDeploymentRequest {
 	r.xAnypntEnvId = &xAnypntEnvId
 	return r
 }
 
 // The org id where the application is deployed
-func (r DefaultApiPutDeploymentRequest) XAnypntOrgId(xAnypntOrgId string) DefaultApiPutDeploymentRequest {
+func (r DefaultAPIPutDeploymentRequest) XAnypntOrgId(xAnypntOrgId string) DefaultAPIPutDeploymentRequest {
 	r.xAnypntOrgId = &xAnypntOrgId
 	return r
 }
 
 // A JSON string representing the deployment configuration. Look at \\\&quot;NewDeploymentStruct\\\&quot; for structure. 
-func (r DefaultApiPutDeploymentRequest) AppInfoJson(appInfoJson string) DefaultApiPutDeploymentRequest {
+func (r DefaultAPIPutDeploymentRequest) AppInfoJson(appInfoJson string) DefaultAPIPutDeploymentRequest {
 	r.appInfoJson = &appInfoJson
 	return r
 }
 
 // The Mule application artifact to be deployed.
-func (r DefaultApiPutDeploymentRequest) File(file *os.File) DefaultApiPutDeploymentRequest {
+func (r DefaultAPIPutDeploymentRequest) File(file *os.File) DefaultAPIPutDeploymentRequest {
 	r.file = file
 	return r
 }
 
-func (r DefaultApiPutDeploymentRequest) Execute() (*DeploymentCH1Details, *http.Response, error) {
+func (r DefaultAPIPutDeploymentRequest) Execute() (*DeploymentCH1Details, *http.Response, error) {
 	return r.ApiService.PutDeploymentExecute(r)
 }
 
@@ -864,10 +862,10 @@ Update a single application. Requires 'Manage Settings' role.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param domain The application domain in the path
- @return DefaultApiPutDeploymentRequest
+ @return DefaultAPIPutDeploymentRequest
 */
-func (a *DefaultApiService) PutDeployment(ctx context.Context, domain string) DefaultApiPutDeploymentRequest {
-	return DefaultApiPutDeploymentRequest{
+func (a *DefaultAPIService) PutDeployment(ctx context.Context, domain string) DefaultAPIPutDeploymentRequest {
+	return DefaultAPIPutDeploymentRequest{
 		ApiService: a,
 		ctx: ctx,
 		domain: domain,
@@ -876,7 +874,7 @@ func (a *DefaultApiService) PutDeployment(ctx context.Context, domain string) De
 
 // Execute executes the request
 //  @return DeploymentCH1Details
-func (a *DefaultApiService) PutDeploymentExecute(r DefaultApiPutDeploymentRequest) (*DeploymentCH1Details, *http.Response, error) {
+func (a *DefaultAPIService) PutDeploymentExecute(r DefaultAPIPutDeploymentRequest) (*DeploymentCH1Details, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -884,7 +882,7 @@ func (a *DefaultApiService) PutDeploymentExecute(r DefaultApiPutDeploymentReques
 		localVarReturnValue  *DeploymentCH1Details
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PutDeployment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PutDeployment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -919,18 +917,16 @@ func (a *DefaultApiService) PutDeploymentExecute(r DefaultApiPutDeploymentReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "")
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "simple", "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "simple", "")
 	if r.appInfoJson != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "appInfoJson", r.appInfoJson, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "appInfoJson", r.appInfoJson, "", "")
 	}
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
@@ -978,33 +974,33 @@ func (a *DefaultApiService) PutDeploymentExecute(r DefaultApiPutDeploymentReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPutDeploymentsRequest struct {
+type DefaultAPIPutDeploymentsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	xAnypntEnvId *string
 	xAnypntOrgId *string
 	updateDeploymentBulkBody *UpdateDeploymentBulkBody
 }
 
 // The environment id where the application is deployed
-func (r DefaultApiPutDeploymentsRequest) XAnypntEnvId(xAnypntEnvId string) DefaultApiPutDeploymentsRequest {
+func (r DefaultAPIPutDeploymentsRequest) XAnypntEnvId(xAnypntEnvId string) DefaultAPIPutDeploymentsRequest {
 	r.xAnypntEnvId = &xAnypntEnvId
 	return r
 }
 
 // The org id where the application is deployed
-func (r DefaultApiPutDeploymentsRequest) XAnypntOrgId(xAnypntOrgId string) DefaultApiPutDeploymentsRequest {
+func (r DefaultAPIPutDeploymentsRequest) XAnypntOrgId(xAnypntOrgId string) DefaultAPIPutDeploymentsRequest {
 	r.xAnypntOrgId = &xAnypntOrgId
 	return r
 }
 
 // Application deployment body containing configuration and artifact file.
-func (r DefaultApiPutDeploymentsRequest) UpdateDeploymentBulkBody(updateDeploymentBulkBody UpdateDeploymentBulkBody) DefaultApiPutDeploymentsRequest {
+func (r DefaultAPIPutDeploymentsRequest) UpdateDeploymentBulkBody(updateDeploymentBulkBody UpdateDeploymentBulkBody) DefaultAPIPutDeploymentsRequest {
 	r.updateDeploymentBulkBody = &updateDeploymentBulkBody
 	return r
 }
 
-func (r DefaultApiPutDeploymentsRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIPutDeploymentsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PutDeploymentsExecute(r)
 }
 
@@ -1015,24 +1011,24 @@ Bulk Action (UPDATE, START, STOP, RESTART, DELETE) for Applications. The thresho
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return DefaultApiPutDeploymentsRequest
+ @return DefaultAPIPutDeploymentsRequest
 */
-func (a *DefaultApiService) PutDeployments(ctx context.Context) DefaultApiPutDeploymentsRequest {
-	return DefaultApiPutDeploymentsRequest{
+func (a *DefaultAPIService) PutDeployments(ctx context.Context) DefaultAPIPutDeploymentsRequest {
+	return DefaultAPIPutDeploymentsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *DefaultApiService) PutDeploymentsExecute(r DefaultApiPutDeploymentsRequest) (*http.Response, error) {
+func (a *DefaultAPIService) PutDeploymentsExecute(r DefaultAPIPutDeploymentsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PutDeployments")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PutDeployments")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1069,8 +1065,8 @@ func (a *DefaultApiService) PutDeploymentsExecute(r DefaultApiPutDeploymentsRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "")
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-env-id", r.xAnypntEnvId, "simple", "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-anypnt-org-id", r.xAnypntOrgId, "simple", "")
 	// body params
 	localVarPostBody = r.updateDeploymentBulkBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

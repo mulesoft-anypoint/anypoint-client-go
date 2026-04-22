@@ -20,12 +20,12 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiGetTeamGroupMappingsRequest struct {
+type DefaultAPIGetTeamGroupMappingsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	limit *int32
@@ -33,18 +33,18 @@ type DefaultApiGetTeamGroupMappingsRequest struct {
 }
 
 // Maximum number of rolegroups to retrieve per request.
-func (r DefaultApiGetTeamGroupMappingsRequest) Limit(limit int32) DefaultApiGetTeamGroupMappingsRequest {
+func (r DefaultAPIGetTeamGroupMappingsRequest) Limit(limit int32) DefaultAPIGetTeamGroupMappingsRequest {
 	r.limit = &limit
 	return r
 }
 
 // The number of records to omit from the response.
-func (r DefaultApiGetTeamGroupMappingsRequest) Offset(offset int32) DefaultApiGetTeamGroupMappingsRequest {
+func (r DefaultAPIGetTeamGroupMappingsRequest) Offset(offset int32) DefaultAPIGetTeamGroupMappingsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r DefaultApiGetTeamGroupMappingsRequest) Execute() (*TeamGroupMappingsCollection, *http.Response, error) {
+func (r DefaultAPIGetTeamGroupMappingsRequest) Execute() (*TeamGroupMappingsCollection, *http.Response, error) {
 	return r.ApiService.GetTeamGroupMappingsExecute(r)
 }
 
@@ -56,10 +56,10 @@ retrieves team groupmappings
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiGetTeamGroupMappingsRequest
+ @return DefaultAPIGetTeamGroupMappingsRequest
 */
-func (a *DefaultApiService) GetTeamGroupMappings(ctx context.Context, orgId string, teamId string) DefaultApiGetTeamGroupMappingsRequest {
-	return DefaultApiGetTeamGroupMappingsRequest{
+func (a *DefaultAPIService) GetTeamGroupMappings(ctx context.Context, orgId string, teamId string) DefaultAPIGetTeamGroupMappingsRequest {
+	return DefaultAPIGetTeamGroupMappingsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -69,7 +69,7 @@ func (a *DefaultApiService) GetTeamGroupMappings(ctx context.Context, orgId stri
 
 // Execute executes the request
 //  @return TeamGroupMappingsCollection
-func (a *DefaultApiService) GetTeamGroupMappingsExecute(r DefaultApiGetTeamGroupMappingsRequest) (*TeamGroupMappingsCollection, *http.Response, error) {
+func (a *DefaultAPIService) GetTeamGroupMappingsExecute(r DefaultAPIGetTeamGroupMappingsRequest) (*TeamGroupMappingsCollection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -77,7 +77,7 @@ func (a *DefaultApiService) GetTeamGroupMappingsExecute(r DefaultApiGetTeamGroup
 		localVarReturnValue  *TeamGroupMappingsCollection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetTeamGroupMappings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetTeamGroupMappings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -91,10 +91,10 @@ func (a *DefaultApiService) GetTeamGroupMappingsExecute(r DefaultApiGetTeamGroup
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -161,20 +161,20 @@ func (a *DefaultApiService) GetTeamGroupMappingsExecute(r DefaultApiGetTeamGroup
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPutTeamGroupMappingsRequest struct {
+type DefaultAPIPutTeamGroupMappingsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	teamGroupMappingPutBody *[]TeamGroupMappingPutBody
 }
 
-func (r DefaultApiPutTeamGroupMappingsRequest) TeamGroupMappingPutBody(teamGroupMappingPutBody []TeamGroupMappingPutBody) DefaultApiPutTeamGroupMappingsRequest {
+func (r DefaultAPIPutTeamGroupMappingsRequest) TeamGroupMappingPutBody(teamGroupMappingPutBody []TeamGroupMappingPutBody) DefaultAPIPutTeamGroupMappingsRequest {
 	r.teamGroupMappingPutBody = &teamGroupMappingPutBody
 	return r
 }
 
-func (r DefaultApiPutTeamGroupMappingsRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIPutTeamGroupMappingsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PutTeamGroupMappingsExecute(r)
 }
 
@@ -186,10 +186,10 @@ adds the given group mappings to the given team
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiPutTeamGroupMappingsRequest
+ @return DefaultAPIPutTeamGroupMappingsRequest
 */
-func (a *DefaultApiService) PutTeamGroupMappings(ctx context.Context, orgId string, teamId string) DefaultApiPutTeamGroupMappingsRequest {
-	return DefaultApiPutTeamGroupMappingsRequest{
+func (a *DefaultAPIService) PutTeamGroupMappings(ctx context.Context, orgId string, teamId string) DefaultAPIPutTeamGroupMappingsRequest {
+	return DefaultAPIPutTeamGroupMappingsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -198,14 +198,14 @@ func (a *DefaultApiService) PutTeamGroupMappings(ctx context.Context, orgId stri
 }
 
 // Execute executes the request
-func (a *DefaultApiService) PutTeamGroupMappingsExecute(r DefaultApiPutTeamGroupMappingsRequest) (*http.Response, error) {
+func (a *DefaultAPIService) PutTeamGroupMappingsExecute(r DefaultAPIPutTeamGroupMappingsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PutTeamGroupMappings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PutTeamGroupMappings")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

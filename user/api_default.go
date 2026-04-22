@@ -20,22 +20,22 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiCreateUserRequest struct {
+type DefaultAPICreateUserRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	userPostBody *UserPostBody
 }
 
-func (r DefaultApiCreateUserRequest) UserPostBody(userPostBody UserPostBody) DefaultApiCreateUserRequest {
+func (r DefaultAPICreateUserRequest) UserPostBody(userPostBody UserPostBody) DefaultAPICreateUserRequest {
 	r.userPostBody = &userPostBody
 	return r
 }
 
-func (r DefaultApiCreateUserRequest) Execute() (*User, *http.Response, error) {
+func (r DefaultAPICreateUserRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.CreateUserExecute(r)
 }
 
@@ -46,10 +46,10 @@ Creates a User
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
- @return DefaultApiCreateUserRequest
+ @return DefaultAPICreateUserRequest
 */
-func (a *DefaultApiService) CreateUser(ctx context.Context, orgId string) DefaultApiCreateUserRequest {
-	return DefaultApiCreateUserRequest{
+func (a *DefaultAPIService) CreateUser(ctx context.Context, orgId string) DefaultAPICreateUserRequest {
+	return DefaultAPICreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -58,7 +58,7 @@ func (a *DefaultApiService) CreateUser(ctx context.Context, orgId string) Defaul
 
 // Execute executes the request
 //  @return User
-func (a *DefaultApiService) CreateUserExecute(r DefaultApiCreateUserRequest) (*User, *http.Response, error) {
+func (a *DefaultAPIService) CreateUserExecute(r DefaultAPICreateUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *DefaultApiService) CreateUserExecute(r DefaultApiCreateUserRequest) (*U
 		localVarReturnValue  *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.CreateUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.CreateUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -145,14 +145,14 @@ func (a *DefaultApiService) CreateUserExecute(r DefaultApiCreateUserRequest) (*U
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiDeleteUserRequest struct {
+type DefaultAPIDeleteUserRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	userId string
 }
 
-func (r DefaultApiDeleteUserRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteUserRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteUserExecute(r)
 }
 
@@ -164,10 +164,10 @@ Delete the user
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param userId the ID of the user
- @return DefaultApiDeleteUserRequest
+ @return DefaultAPIDeleteUserRequest
 */
-func (a *DefaultApiService) DeleteUser(ctx context.Context, orgId string, userId string) DefaultApiDeleteUserRequest {
-	return DefaultApiDeleteUserRequest{
+func (a *DefaultAPIService) DeleteUser(ctx context.Context, orgId string, userId string) DefaultAPIDeleteUserRequest {
+	return DefaultAPIDeleteUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -176,14 +176,14 @@ func (a *DefaultApiService) DeleteUser(ctx context.Context, orgId string, userId
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteUserExecute(r DefaultApiDeleteUserRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteUserExecute(r DefaultAPIDeleteUserRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteUser")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -241,14 +241,14 @@ func (a *DefaultApiService) DeleteUserExecute(r DefaultApiDeleteUserRequest) (*h
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetUserRequest struct {
+type DefaultAPIGetUserRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	userId string
 }
 
-func (r DefaultApiGetUserRequest) Execute() (*User, *http.Response, error) {
+func (r DefaultAPIGetUserRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.GetUserExecute(r)
 }
 
@@ -260,10 +260,10 @@ Returns a specific user that belong to the specified organization.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param userId the ID of the user
- @return DefaultApiGetUserRequest
+ @return DefaultAPIGetUserRequest
 */
-func (a *DefaultApiService) GetUser(ctx context.Context, orgId string, userId string) DefaultApiGetUserRequest {
-	return DefaultApiGetUserRequest{
+func (a *DefaultAPIService) GetUser(ctx context.Context, orgId string, userId string) DefaultAPIGetUserRequest {
+	return DefaultAPIGetUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -273,7 +273,7 @@ func (a *DefaultApiService) GetUser(ctx context.Context, orgId string, userId st
 
 // Execute executes the request
 //  @return User
-func (a *DefaultApiService) GetUserExecute(r DefaultApiGetUserRequest) (*User, *http.Response, error) {
+func (a *DefaultAPIService) GetUserExecute(r DefaultAPIGetUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -281,7 +281,7 @@ func (a *DefaultApiService) GetUserExecute(r DefaultApiGetUserRequest) (*User, *
 		localVarReturnValue  *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -348,9 +348,9 @@ func (a *DefaultApiService) GetUserExecute(r DefaultApiGetUserRequest) (*User, *
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiListUsersRequest struct {
+type DefaultAPIListUsersRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	type_ *string
 	limit *int32
@@ -358,24 +358,24 @@ type DefaultApiListUsersRequest struct {
 }
 
 // A search string to specify the type of user you want to retrieve.
-func (r DefaultApiListUsersRequest) Type_(type_ string) DefaultApiListUsersRequest {
+func (r DefaultAPIListUsersRequest) Type_(type_ string) DefaultAPIListUsersRequest {
 	r.type_ = &type_
 	return r
 }
 
 // Maximum number of users to retrieve per request.
-func (r DefaultApiListUsersRequest) Limit(limit int32) DefaultApiListUsersRequest {
+func (r DefaultAPIListUsersRequest) Limit(limit int32) DefaultAPIListUsersRequest {
 	r.limit = &limit
 	return r
 }
 
 // The number of records to omit from the response.
-func (r DefaultApiListUsersRequest) Offset(offset int32) DefaultApiListUsersRequest {
+func (r DefaultAPIListUsersRequest) Offset(offset int32) DefaultAPIListUsersRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r DefaultApiListUsersRequest) Execute() (*ListUsersResponse, *http.Response, error) {
+func (r DefaultAPIListUsersRequest) Execute() (*ListUsersResponse, *http.Response, error) {
 	return r.ApiService.ListUsersExecute(r)
 }
 
@@ -386,10 +386,10 @@ Returns the group of users that belong to the specified organization.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
- @return DefaultApiListUsersRequest
+ @return DefaultAPIListUsersRequest
 */
-func (a *DefaultApiService) ListUsers(ctx context.Context, orgId string) DefaultApiListUsersRequest {
-	return DefaultApiListUsersRequest{
+func (a *DefaultAPIService) ListUsers(ctx context.Context, orgId string) DefaultAPIListUsersRequest {
+	return DefaultAPIListUsersRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -398,7 +398,7 @@ func (a *DefaultApiService) ListUsers(ctx context.Context, orgId string) Default
 
 // Execute executes the request
 //  @return ListUsersResponse
-func (a *DefaultApiService) ListUsersExecute(r DefaultApiListUsersRequest) (*ListUsersResponse, *http.Response, error) {
+func (a *DefaultAPIService) ListUsersExecute(r DefaultAPIListUsersRequest) (*ListUsersResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -406,7 +406,7 @@ func (a *DefaultApiService) ListUsersExecute(r DefaultApiListUsersRequest) (*Lis
 		localVarReturnValue  *ListUsersResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ListUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.ListUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -419,13 +419,13 @@ func (a *DefaultApiService) ListUsersExecute(r DefaultApiListUsersRequest) (*Lis
 	localVarFormParams := url.Values{}
 
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -481,20 +481,20 @@ func (a *DefaultApiService) ListUsersExecute(r DefaultApiListUsersRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiUpdateUserRequest struct {
+type DefaultAPIUpdateUserRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	userId string
 	userPutBody *UserPutBody
 }
 
-func (r DefaultApiUpdateUserRequest) UserPutBody(userPutBody UserPutBody) DefaultApiUpdateUserRequest {
+func (r DefaultAPIUpdateUserRequest) UserPutBody(userPutBody UserPutBody) DefaultAPIUpdateUserRequest {
 	r.userPutBody = &userPutBody
 	return r
 }
 
-func (r DefaultApiUpdateUserRequest) Execute() (*User, *http.Response, error) {
+func (r DefaultAPIUpdateUserRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.UpdateUserExecute(r)
 }
 
@@ -506,10 +506,10 @@ Update a user
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param userId the ID of the user
- @return DefaultApiUpdateUserRequest
+ @return DefaultAPIUpdateUserRequest
 */
-func (a *DefaultApiService) UpdateUser(ctx context.Context, orgId string, userId string) DefaultApiUpdateUserRequest {
-	return DefaultApiUpdateUserRequest{
+func (a *DefaultAPIService) UpdateUser(ctx context.Context, orgId string, userId string) DefaultAPIUpdateUserRequest {
+	return DefaultAPIUpdateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -519,7 +519,7 @@ func (a *DefaultApiService) UpdateUser(ctx context.Context, orgId string, userId
 
 // Execute executes the request
 //  @return User
-func (a *DefaultApiService) UpdateUserExecute(r DefaultApiUpdateUserRequest) (*User, *http.Response, error) {
+func (a *DefaultAPIService) UpdateUserExecute(r DefaultAPIUpdateUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -527,7 +527,7 @@ func (a *DefaultApiService) UpdateUserExecute(r DefaultApiUpdateUserRequest) (*U
 		localVarReturnValue  *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.UpdateUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdateUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

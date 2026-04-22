@@ -246,9 +246,9 @@ components:
           vpcs:
             reassigned: 1
             assigned: 6
-        name: name
-        ownerId: ownerId
-        parentOrganizationId: parentOrganizationId
+        name: ""
+        ownerId: ""
+        parentOrganizationId: ""
       properties:
         entitlements:
           $ref: '#/components/schemas/EntitlementsCore'
@@ -301,9 +301,9 @@ components:
           vpcs:
             reassigned: 1
             assigned: 6
-        name: name
+        name: ""
         sessionTimeout: 0
-        ownerId: ownerId
+        ownerId: ""
       properties:
         entitlements:
           $ref: '#/components/schemas/EntitlementsCore'
@@ -505,57 +505,57 @@ components:
             mozart: true
         isAutomaticAdminPromotionExempt: false
         owner:
-          lastLogin: lastLogin
-          lastName: lastName
-          mfaVerifiersConfigured: mfaVerifiersConfigured
-          type: type
+          lastLogin: ""
+          lastName: ""
+          mfaVerifiersConfigured: ""
+          type: ""
           enabled: false
           mfaVerificationExcluded: false
-          organizationId: organizationId
-          createdAt: createdAt
-          firstName: firstName
+          organizationId: ""
+          createdAt: ""
+          firstName: ""
           deleted: false
-          phoneNumber: phoneNumber
-          id: id
-          idprovider_id: idprovider_id
-          email: email
-          updatedAt: updatedAt
-          username: username
+          phoneNumber: ""
+          id: ""
+          idprovider_id: ""
+          email: ""
+          updatedAt: ""
+          username: ""
         subOrganizationIds:
-        - subOrganizationIds
-        - subOrganizationIds
+        - ""
+        - ""
         clientId: "[\"1ab4bb7db66448be902379d1fcfb1a43\"]"
         isRoot: false
         environments:
-        - organizationId: organizationId
-          clientId: clientId
+        - organizationId: ""
+          clientId: ""
           isProduction: false
-          name: name
-          id: id
-          type: type
-        - organizationId: organizationId
-          clientId: clientId
+          name: ""
+          id: ""
+          type: ""
+        - organizationId: ""
+          clientId: ""
           isProduction: false
-          name: name
-          id: id
-          type: type
+          name: ""
+          id: ""
+          type: ""
         tenantOrganizationIds:
         - tenantOrganizationIds
         - tenantOrganizationIds
-        ownerId: ownerId
+        ownerId: ""
         isFederated: false
         createdAt: "[\"2021-03-05T14:06:52.976Z\"]"
         isMaster: false
         domain: "[\"ms-04\"]"
-        name: name
-        id: id
-        mfaRequired: mfaRequired
-        idprovider_id: idprovider_id
+        name: ""
+        id: ""
+        mfaRequired: ""
+        idprovider_id: ""
         properties: "{}"
         parentOrganizationIds:
         - parentOrganizationIds
         - parentOrganizationIds
-        updatedAt: updatedAt
+        updatedAt: ""
       properties:
         clientId:
           default: ""
@@ -667,17 +667,280 @@ components:
     MasterBGDetail:
       allOf:
       - $ref: '#/components/schemas/BGCore'
-      - $ref: '#/components/schemas/masterBGSpecificDetails'
+      - properties:
+          sessionTimeout:
+            default: 0
+            description: The session timeout in minutes.
+            title: sessionTimeout
+            type: integer
+          subscription:
+            $ref: '#/components/schemas/subscription'
+          gdotId:
+            default: ""
+            description: The gdot id of the organization
+            title: gdotId
+            type: string
+          deletedAt:
+            description: The deleted date of the organization
+            nullable: true
+            title: deletedAt
+            type: string
+          orgType:
+            default: ""
+            description: The type of the organization
+            title: orgType
+            type: string
+        title: masterBGSpecificDetails
+        type: object
+      example:
+        entitlements:
+          workerLoggingOverride:
+            enabled: false
+          globalDeployment: true
+          managedGatewaySmall:
+            reassigned: 3
+            assigned: 7
+          networkConnections:
+            reassigned: 3
+            assigned: 5
+          crowd:
+            environments: false
+            hideApiManagerDesigner: false
+            hideFormerApiPlatform: false
+          apiGovernance:
+            apisPerMonth: 6
+            enabled: true
+          telemetryExporter:
+            enabled: false
+          monitoringCenter:
+            preProductionUnits: 1.2315135367772556
+            productSKU: 3
+            storageAddOn: 4.145608029883936
+            storageBase: 2.027123023002322
+            productionUnits: 7.386281948385884
+            dataRegion: dataRegion
+          highAvailability:
+            clustering: true
+          usageBasedPricingLimits:
+            memory:
+              extra: 8
+              base: 4
+            cpu:
+              extra: 8
+              base: 4
+          apiManager:
+            usageBasedPricing:
+              api:
+                production:
+                  amount: 3
+                sandbox:
+                  amount: 3
+            governance:
+              enabled: false
+          objectStoreKeys:
+            addOn: 1
+            base: 1
+          workerClouds:
+            reassigned: 5
+            assigned: 6
+          vCoresDesign:
+            reassigned: 6.683562403749608
+            assigned: 9.369310271410669
+          vpcs:
+            reassigned: 1
+            assigned: 6
+          gateways:
+            assigned: 5
+          appViz: true
+          apiCommunityManager:
+            enabled: false
+          hybridInsight: true
+          apiQuery:
+            productSKU: 6
+            production: 5
+            sandbox: 1
+            enabled: false
+          objectStoreRequestUnits:
+            addOn: 1
+            base: 1
+          messaging:
+            assigned: 9
+          tradingPartnersProduction:
+            assigned: 5
+          muleDxEDA:
+            enabled: false
+          angGovernance:
+            level: -1
+          anypointSecurityTokenization:
+            enabled: false
+          hybrid:
+            enabled: false
+          cloudhub1:
+            enabled: false
+          apis:
+            enabled: false
+          staticIps:
+            reassigned: 4
+            assigned: 1
+          idp:
+            enabled: false
+          runtimeFabricCloud:
+            enabled: false
+          muleDxWebIde:
+            enabled: false
+          kpiDashboard:
+            enabled: false
+          autoscaling: true
+          partnersSandbox:
+            assigned: 7
+          externalIdentity: true
+          usageBasedPricing:
+            muleRuntimeIntegration:
+              flows: 7
+              messages: 6
+              throughput: 0
+              enabled: false
+          hybridAutoDiscoverProperties: true
+          vpns:
+            reassigned: 6
+            assigned: 2
+          muleDxGenAI:
+            enabled: false
+          runtimeFabric: true
+          serviceMesh:
+            enabled: false
+          cam:
+            enabled: false
+          anypointSecurityEdgePolicies:
+            enabled: false
+          pcf: true
+          armAlerts: true
+          createSubOrgs: true
+          loadBalancer:
+            reassigned: 7
+            assigned: 2
+          mqMessages:
+            addOn: 1
+            base: 1
+          vCoresSandbox:
+            reassigned: 3.5571952270680973
+            assigned: 6.438423552598547
+          createEnvironments: true
+          rpa:
+            active: true
+            composerVersion: composerVersion
+            enabled: true
+          apiMonitoring:
+            schedules: 0
+          composer:
+            unlimitedConnectors: true
+            tasksPerMonth: 7
+            maxConnectors: 0
+            isHyperAutomation: true
+            enabled: true
+          tradingPartnersSandbox:
+            assigned: 9
+          apiCatalog:
+            enabled: false
+          managedGatewayLarge:
+            reassigned: 7
+            assigned: 3
+          mqRequests:
+            addOn: 1
+            base: 1
+          apiQueryC360:
+            enabled: false
+          apiGovernanceDomain:
+            domain: domain
+          partnersProduction:
+            assigned: 6
+          exchange2:
+            enabled: true
+            assetUsageAndEngagement:
+              enabled: true
+          mqAdvancedFeatures:
+            enabled: false
+          vCoresProduction:
+            reassigned: 9.018348186070783
+            assigned: 8.762042012749001
+          crowdSelfServiceMigration:
+            enabled: false
+          designCenter:
+            apiVisual: true
+            api: true
+            apiExample: true
+            mozart: true
+        subOrganizationIds:
+        - ""
+        - ""
+        isRoot: false
+        environments:
+        - organizationId: ""
+          clientId: ""
+          isProduction: false
+          name: ""
+          id: ""
+          type: ""
+        - organizationId: ""
+          clientId: ""
+          isProduction: false
+          name: ""
+          id: ""
+          type: ""
+        gdotId: ""
+        subscription:
+          expiration: ""
+          category: ""
+          type: ""
+        ownerId: ""
+        createdAt: "[\"2021-03-05T14:06:52.976Z\"]"
+        orgType: ""
+        isMaster: false
+        id: ""
+        mfaRequired: ""
+        idprovider_id: ""
+        parentOrganizationIds:
+        - parentOrganizationIds
+        - parentOrganizationIds
+        updatedAt: ""
+        isAutomaticAdminPromotionExempt: false
+        owner:
+          lastLogin: ""
+          lastName: ""
+          mfaVerifiersConfigured: ""
+          type: ""
+          enabled: false
+          mfaVerificationExcluded: false
+          organizationId: ""
+          createdAt: ""
+          firstName: ""
+          deleted: false
+          phoneNumber: ""
+          id: ""
+          idprovider_id: ""
+          email: ""
+          updatedAt: ""
+          username: ""
+        clientId: "[\"1ab4bb7db66448be902379d1fcfb1a43\"]"
+        tenantOrganizationIds:
+        - tenantOrganizationIds
+        - tenantOrganizationIds
+        isFederated: false
+        deletedAt: deletedAt
+        domain: "[\"ms-04\"]"
+        name: ""
+        sessionTimeout: 0
+        properties: "{}"
       title: masterBGDetail
     Environment:
       description: an instance of an environment.
       example:
-        organizationId: organizationId
-        clientId: clientId
+        organizationId: ""
+        clientId: ""
         isProduction: false
-        name: name
-        id: id
-        type: type
+        name: ""
+        id: ""
+        type: ""
       properties:
         clientId:
           default: ""
@@ -713,22 +976,22 @@ components:
       type: object
     User:
       example:
-        lastLogin: lastLogin
-        lastName: lastName
-        mfaVerifiersConfigured: mfaVerifiersConfigured
-        type: type
+        lastLogin: ""
+        lastName: ""
+        mfaVerifiersConfigured: ""
+        type: ""
         enabled: false
         mfaVerificationExcluded: false
-        organizationId: organizationId
-        createdAt: createdAt
-        firstName: firstName
+        organizationId: ""
+        createdAt: ""
+        firstName: ""
         deleted: false
-        phoneNumber: phoneNumber
-        id: id
-        idprovider_id: idprovider_id
-        email: email
-        updatedAt: updatedAt
-        username: username
+        phoneNumber: ""
+        id: ""
+        idprovider_id: ""
+        email: ""
+        updatedAt: ""
+        username: ""
       properties:
         createdAt:
           default: ""
@@ -1841,6 +2104,10 @@ components:
       type: object
     subscription:
       description: The subscription details of the organization.
+      example:
+        expiration: ""
+        category: ""
+        type: ""
       properties:
         category:
           default: ""
@@ -1859,34 +2126,6 @@ components:
           type: string
       title: subscription
       type: object
-      example: null
-    masterBGSpecificDetails:
-      properties:
-        sessionTimeout:
-          default: 0
-          description: The session timeout in minutes.
-          title: sessionTimeout
-          type: integer
-        subscription:
-          $ref: '#/components/schemas/subscription'
-        gdotId:
-          default: ""
-          description: The gdot id of the organization
-          title: gdotId
-          type: string
-        deletedAt:
-          description: The deleted date of the organization
-          nullable: true
-          title: deletedAt
-          type: string
-        orgType:
-          default: ""
-          description: The type of the organization
-          title: orgType
-          type: string
-      title: masterBGSpecificDetails
-      type: object
-      example: null
     governance:
       example:
         enabled: false

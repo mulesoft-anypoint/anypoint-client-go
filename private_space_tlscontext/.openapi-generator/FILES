@@ -6,7 +6,7 @@ api_default.go
 client.go
 configuration.go
 docs/Ciphers.md
-docs/DefaultApi.md
+docs/DefaultAPI.md
 docs/KeyStore.md
 docs/TlsContext.md
 docs/TlsContextPostBody.md

@@ -20,23 +20,23 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiCreateTlsContextRequest struct {
+type DefaultAPICreateTlsContextRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 	tlsContextPostBody *TlsContextPostBody
 }
 
-func (r DefaultApiCreateTlsContextRequest) TlsContextPostBody(tlsContextPostBody TlsContextPostBody) DefaultApiCreateTlsContextRequest {
+func (r DefaultAPICreateTlsContextRequest) TlsContextPostBody(tlsContextPostBody TlsContextPostBody) DefaultAPICreateTlsContextRequest {
 	r.tlsContextPostBody = &tlsContextPostBody
 	return r
 }
 
-func (r DefaultApiCreateTlsContextRequest) Execute() (*TlsContext, *http.Response, error) {
+func (r DefaultAPICreateTlsContextRequest) Execute() (*TlsContext, *http.Response, error) {
 	return r.ApiService.CreateTlsContextExecute(r)
 }
 
@@ -48,10 +48,10 @@ Create a TLS Context
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId Organization ID
  @param privateSpaceId Private Space ID
- @return DefaultApiCreateTlsContextRequest
+ @return DefaultAPICreateTlsContextRequest
 */
-func (a *DefaultApiService) CreateTlsContext(ctx context.Context, orgId string, privateSpaceId string) DefaultApiCreateTlsContextRequest {
-	return DefaultApiCreateTlsContextRequest{
+func (a *DefaultAPIService) CreateTlsContext(ctx context.Context, orgId string, privateSpaceId string) DefaultAPICreateTlsContextRequest {
+	return DefaultAPICreateTlsContextRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -61,7 +61,7 @@ func (a *DefaultApiService) CreateTlsContext(ctx context.Context, orgId string, 
 
 // Execute executes the request
 //  @return TlsContext
-func (a *DefaultApiService) CreateTlsContextExecute(r DefaultApiCreateTlsContextRequest) (*TlsContext, *http.Response, error) {
+func (a *DefaultAPIService) CreateTlsContextExecute(r DefaultAPICreateTlsContextRequest) (*TlsContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -69,7 +69,7 @@ func (a *DefaultApiService) CreateTlsContextExecute(r DefaultApiCreateTlsContext
 		localVarReturnValue  *TlsContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.CreateTlsContext")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.CreateTlsContext")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -141,15 +141,15 @@ func (a *DefaultApiService) CreateTlsContextExecute(r DefaultApiCreateTlsContext
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiDeleteTlsContextRequest struct {
+type DefaultAPIDeleteTlsContextRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 	tlsContextId string
 }
 
-func (r DefaultApiDeleteTlsContextRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteTlsContextRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteTlsContextExecute(r)
 }
 
@@ -162,10 +162,10 @@ Delete TLS Context
  @param orgId Organization ID
  @param privateSpaceId Private Space ID
  @param tlsContextId TLS Context ID
- @return DefaultApiDeleteTlsContextRequest
+ @return DefaultAPIDeleteTlsContextRequest
 */
-func (a *DefaultApiService) DeleteTlsContext(ctx context.Context, orgId string, privateSpaceId string, tlsContextId string) DefaultApiDeleteTlsContextRequest {
-	return DefaultApiDeleteTlsContextRequest{
+func (a *DefaultAPIService) DeleteTlsContext(ctx context.Context, orgId string, privateSpaceId string, tlsContextId string) DefaultAPIDeleteTlsContextRequest {
+	return DefaultAPIDeleteTlsContextRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -175,14 +175,14 @@ func (a *DefaultApiService) DeleteTlsContext(ctx context.Context, orgId string, 
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteTlsContextExecute(r DefaultApiDeleteTlsContextRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteTlsContextExecute(r DefaultAPIDeleteTlsContextRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteTlsContext")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteTlsContext")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -241,15 +241,15 @@ func (a *DefaultApiService) DeleteTlsContextExecute(r DefaultApiDeleteTlsContext
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetTlsContextRequest struct {
+type DefaultAPIGetTlsContextRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 	tlsContextId string
 }
 
-func (r DefaultApiGetTlsContextRequest) Execute() (*TlsContext, *http.Response, error) {
+func (r DefaultAPIGetTlsContextRequest) Execute() (*TlsContext, *http.Response, error) {
 	return r.ApiService.GetTlsContextExecute(r)
 }
 
@@ -262,10 +262,10 @@ Get TLS Context
  @param orgId Organization ID
  @param privateSpaceId Private Space ID
  @param tlsContextId TLS Context ID
- @return DefaultApiGetTlsContextRequest
+ @return DefaultAPIGetTlsContextRequest
 */
-func (a *DefaultApiService) GetTlsContext(ctx context.Context, orgId string, privateSpaceId string, tlsContextId string) DefaultApiGetTlsContextRequest {
-	return DefaultApiGetTlsContextRequest{
+func (a *DefaultAPIService) GetTlsContext(ctx context.Context, orgId string, privateSpaceId string, tlsContextId string) DefaultAPIGetTlsContextRequest {
+	return DefaultAPIGetTlsContextRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -276,7 +276,7 @@ func (a *DefaultApiService) GetTlsContext(ctx context.Context, orgId string, pri
 
 // Execute executes the request
 //  @return TlsContext
-func (a *DefaultApiService) GetTlsContextExecute(r DefaultApiGetTlsContextRequest) (*TlsContext, *http.Response, error) {
+func (a *DefaultAPIService) GetTlsContextExecute(r DefaultAPIGetTlsContextRequest) (*TlsContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -284,7 +284,7 @@ func (a *DefaultApiService) GetTlsContextExecute(r DefaultApiGetTlsContextReques
 		localVarReturnValue  *TlsContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetTlsContext")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetTlsContext")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -352,14 +352,14 @@ func (a *DefaultApiService) GetTlsContextExecute(r DefaultApiGetTlsContextReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetTlsContextsRequest struct {
+type DefaultAPIGetTlsContextsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 }
 
-func (r DefaultApiGetTlsContextsRequest) Execute() ([]TlsContext, *http.Response, error) {
+func (r DefaultAPIGetTlsContextsRequest) Execute() ([]TlsContext, *http.Response, error) {
 	return r.ApiService.GetTlsContextsExecute(r)
 }
 
@@ -371,10 +371,10 @@ Get TLS Contexts
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId Organization ID
  @param privateSpaceId Private Space ID
- @return DefaultApiGetTlsContextsRequest
+ @return DefaultAPIGetTlsContextsRequest
 */
-func (a *DefaultApiService) GetTlsContexts(ctx context.Context, orgId string, privateSpaceId string) DefaultApiGetTlsContextsRequest {
-	return DefaultApiGetTlsContextsRequest{
+func (a *DefaultAPIService) GetTlsContexts(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIGetTlsContextsRequest {
+	return DefaultAPIGetTlsContextsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -384,7 +384,7 @@ func (a *DefaultApiService) GetTlsContexts(ctx context.Context, orgId string, pr
 
 // Execute executes the request
 //  @return []TlsContext
-func (a *DefaultApiService) GetTlsContextsExecute(r DefaultApiGetTlsContextsRequest) ([]TlsContext, *http.Response, error) {
+func (a *DefaultAPIService) GetTlsContextsExecute(r DefaultAPIGetTlsContextsRequest) ([]TlsContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -392,7 +392,7 @@ func (a *DefaultApiService) GetTlsContextsExecute(r DefaultApiGetTlsContextsRequ
 		localVarReturnValue  []TlsContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetTlsContexts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetTlsContexts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -459,21 +459,21 @@ func (a *DefaultApiService) GetTlsContextsExecute(r DefaultApiGetTlsContextsRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiUpdateTlsContextRequest struct {
+type DefaultAPIUpdateTlsContextRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 	tlsContextId string
 	body *TlsContextPostBody
 }
 
-func (r DefaultApiUpdateTlsContextRequest) Body(body TlsContextPostBody) DefaultApiUpdateTlsContextRequest {
+func (r DefaultAPIUpdateTlsContextRequest) Body(body TlsContextPostBody) DefaultAPIUpdateTlsContextRequest {
 	r.body = &body
 	return r
 }
 
-func (r DefaultApiUpdateTlsContextRequest) Execute() (*TlsContext, *http.Response, error) {
+func (r DefaultAPIUpdateTlsContextRequest) Execute() (*TlsContext, *http.Response, error) {
 	return r.ApiService.UpdateTlsContextExecute(r)
 }
 
@@ -486,10 +486,10 @@ Update TLS Context
  @param orgId Organization ID
  @param privateSpaceId Private Space ID
  @param tlsContextId TLS Context ID
- @return DefaultApiUpdateTlsContextRequest
+ @return DefaultAPIUpdateTlsContextRequest
 */
-func (a *DefaultApiService) UpdateTlsContext(ctx context.Context, orgId string, privateSpaceId string, tlsContextId string) DefaultApiUpdateTlsContextRequest {
-	return DefaultApiUpdateTlsContextRequest{
+func (a *DefaultAPIService) UpdateTlsContext(ctx context.Context, orgId string, privateSpaceId string, tlsContextId string) DefaultAPIUpdateTlsContextRequest {
+	return DefaultAPIUpdateTlsContextRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -500,7 +500,7 @@ func (a *DefaultApiService) UpdateTlsContext(ctx context.Context, orgId string, 
 
 // Execute executes the request
 //  @return TlsContext
-func (a *DefaultApiService) UpdateTlsContextExecute(r DefaultApiUpdateTlsContextRequest) (*TlsContext, *http.Response, error) {
+func (a *DefaultAPIService) UpdateTlsContextExecute(r DefaultAPIUpdateTlsContextRequest) (*TlsContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -508,7 +508,7 @@ func (a *DefaultApiService) UpdateTlsContextExecute(r DefaultApiUpdateTlsContext
 		localVarReturnValue  *TlsContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.UpdateTlsContext")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdateTlsContext")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

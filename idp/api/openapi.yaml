@@ -371,6 +371,35 @@ components:
       type: object
     samlProviderGet:
       additionalProperties: false
+      example:
+        login_disabled: true
+        org_id: org_id
+        name: name
+        saml:
+          public_key:
+          - public_key
+          - public_key
+          claims_mapping:
+            firstname_attribute: firstname_attribute
+            username_attribute: username_attribute
+            lastname_attribute: lastname_attribute
+            group_attribute: group_attribute
+            email_attribute: email_attribute
+          audience: audience
+          idp_initiated_sso_enabled: true
+          sp_initiated_sso_enabled: true
+          use_composer_acs_url: true
+          require_encrypted_saml_assertions: true
+          issuer: issuer
+        arc_namespace: arc_namespace
+        provider_id: provider_id
+        service_provider:
+          urls:
+            sign_on: sign_on
+            sign_out: sign_out
+        type:
+          name: saml
+          description: description
       properties:
         name:
           type: string
@@ -514,6 +543,11 @@ components:
           type: integer
       type: object
     _organizations__orgId__identityProviders__idpId__patch_400_response_errors_inner:
+      example:
+        schemas: schemas
+        type: type
+        keyword: keyword
+        message: A sample message here
       properties:
         type:
           type: string
@@ -526,6 +560,16 @@ components:
           title: the error message
           type: string
     _organizations__orgId__identityProviders__idpId__patch_400_response:
+      example:
+        errors:
+        - schemas: schemas
+          type: type
+          keyword: keyword
+          message: A sample message here
+        - schemas: schemas
+          type: type
+          keyword: keyword
+          message: A sample message here
       properties:
         errors:
           items:
@@ -534,6 +578,9 @@ components:
       type: object
     samlProviderPostBody_type:
       additionalProperties: false
+      example:
+        name: saml
+        description: description
       properties:
         description:
           type: string
@@ -546,6 +593,9 @@ components:
       type: object
     samlProviderPostBody_service_provider_urls:
       additionalProperties: false
+      example:
+        sign_on: sign_on
+        sign_out: sign_out
       properties:
         sign_on:
           type: string
@@ -557,6 +607,10 @@ components:
       type: object
     samlProviderPostBody_service_provider:
       additionalProperties: false
+      example:
+        urls:
+          sign_on: sign_on
+          sign_out: sign_out
       properties:
         urls:
           $ref: '#/components/schemas/samlProviderPostBody_service_provider_urls'
@@ -565,6 +619,12 @@ components:
       type: object
     samlProviderPostBody_saml_claims_mapping:
       additionalProperties: false
+      example:
+        firstname_attribute: firstname_attribute
+        username_attribute: username_attribute
+        lastname_attribute: lastname_attribute
+        group_attribute: group_attribute
+        email_attribute: email_attribute
       properties:
         username_attribute:
           type: string
@@ -579,6 +639,22 @@ components:
       type: object
     samlProviderPostBody_saml:
       additionalProperties: false
+      example:
+        public_key:
+        - public_key
+        - public_key
+        claims_mapping:
+          firstname_attribute: firstname_attribute
+          username_attribute: username_attribute
+          lastname_attribute: lastname_attribute
+          group_attribute: group_attribute
+          email_attribute: email_attribute
+        audience: audience
+        idp_initiated_sso_enabled: true
+        sp_initiated_sso_enabled: true
+        use_composer_acs_url: true
+        require_encrypted_saml_assertions: true
+        issuer: issuer
       properties:
         audience:
           type: string

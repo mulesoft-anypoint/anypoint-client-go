@@ -21,18 +21,18 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiDeleteTeamMemberRequest struct {
+type DefaultAPIDeleteTeamMemberRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	userId string
 }
 
-func (r DefaultApiDeleteTeamMemberRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteTeamMemberRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteTeamMemberExecute(r)
 }
 
@@ -45,10 +45,10 @@ delete the given user from the given team
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
  @param userId The ID of the user in GUID format
- @return DefaultApiDeleteTeamMemberRequest
+ @return DefaultAPIDeleteTeamMemberRequest
 */
-func (a *DefaultApiService) DeleteTeamMember(ctx context.Context, orgId string, teamId string, userId string) DefaultApiDeleteTeamMemberRequest {
-	return DefaultApiDeleteTeamMemberRequest{
+func (a *DefaultAPIService) DeleteTeamMember(ctx context.Context, orgId string, teamId string, userId string) DefaultAPIDeleteTeamMemberRequest {
+	return DefaultAPIDeleteTeamMemberRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -58,14 +58,14 @@ func (a *DefaultApiService) DeleteTeamMember(ctx context.Context, orgId string, 
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteTeamMemberExecute(r DefaultApiDeleteTeamMemberRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteTeamMemberExecute(r DefaultAPIDeleteTeamMemberRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteTeamMember")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteTeamMember")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -124,9 +124,9 @@ func (a *DefaultApiService) DeleteTeamMemberExecute(r DefaultApiDeleteTeamMember
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetTeamMembersRequest struct {
+type DefaultAPIGetTeamMembersRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	membershipType *string
@@ -140,54 +140,54 @@ type DefaultApiGetTeamMembersRequest struct {
 }
 
 // Include the group access mappings that grant the provided membership type By default, all group access mappings are returned
-func (r DefaultApiGetTeamMembersRequest) MembershipType(membershipType string) DefaultApiGetTeamMembersRequest {
+func (r DefaultAPIGetTeamMembersRequest) MembershipType(membershipType string) DefaultAPIGetTeamMembersRequest {
 	r.membershipType = &membershipType
 	return r
 }
 
 // A search string to use for case-insensitive partial matches on external group name
-func (r DefaultApiGetTeamMembersRequest) IdentityType(identityType string) DefaultApiGetTeamMembersRequest {
+func (r DefaultAPIGetTeamMembersRequest) IdentityType(identityType string) DefaultAPIGetTeamMembersRequest {
 	r.identityType = &identityType
 	return r
 }
 
 // Include the members of the team that have ids in this list
-func (r DefaultApiGetTeamMembersRequest) MemberIds(memberIds []string) DefaultApiGetTeamMembersRequest {
+func (r DefaultAPIGetTeamMembersRequest) MemberIds(memberIds []string) DefaultAPIGetTeamMembersRequest {
 	r.memberIds = &memberIds
 	return r
 }
 
 // A search string to use for case-insensitive partial matches on team name
-func (r DefaultApiGetTeamMembersRequest) Search(search string) DefaultApiGetTeamMembersRequest {
+func (r DefaultAPIGetTeamMembersRequest) Search(search string) DefaultAPIGetTeamMembersRequest {
 	r.search = &search
 	return r
 }
 
 // Maximum number of rolegroups to retrieve per request.
-func (r DefaultApiGetTeamMembersRequest) Limit(limit int32) DefaultApiGetTeamMembersRequest {
+func (r DefaultAPIGetTeamMembersRequest) Limit(limit int32) DefaultAPIGetTeamMembersRequest {
 	r.limit = &limit
 	return r
 }
 
 // The number of records to omit from the response.
-func (r DefaultApiGetTeamMembersRequest) Offset(offset int32) DefaultApiGetTeamMembersRequest {
+func (r DefaultAPIGetTeamMembersRequest) Offset(offset int32) DefaultAPIGetTeamMembersRequest {
 	r.offset = &offset
 	return r
 }
 
 // The field to sort on. default identity_type
-func (r DefaultApiGetTeamMembersRequest) Sort(sort string) DefaultApiGetTeamMembersRequest {
+func (r DefaultAPIGetTeamMembersRequest) Sort(sort string) DefaultAPIGetTeamMembersRequest {
 	r.sort = &sort
 	return r
 }
 
 // Whether to sort ascending or descending. Default true
-func (r DefaultApiGetTeamMembersRequest) Ascending(ascending bool) DefaultApiGetTeamMembersRequest {
+func (r DefaultAPIGetTeamMembersRequest) Ascending(ascending bool) DefaultAPIGetTeamMembersRequest {
 	r.ascending = &ascending
 	return r
 }
 
-func (r DefaultApiGetTeamMembersRequest) Execute() (*TeamMemberCollection, *http.Response, error) {
+func (r DefaultAPIGetTeamMembersRequest) Execute() (*TeamMemberCollection, *http.Response, error) {
 	return r.ApiService.GetTeamMembersExecute(r)
 }
 
@@ -199,10 +199,10 @@ retrieves team members
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiGetTeamMembersRequest
+ @return DefaultAPIGetTeamMembersRequest
 */
-func (a *DefaultApiService) GetTeamMembers(ctx context.Context, orgId string, teamId string) DefaultApiGetTeamMembersRequest {
-	return DefaultApiGetTeamMembersRequest{
+func (a *DefaultAPIService) GetTeamMembers(ctx context.Context, orgId string, teamId string) DefaultAPIGetTeamMembersRequest {
+	return DefaultAPIGetTeamMembersRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -212,7 +212,7 @@ func (a *DefaultApiService) GetTeamMembers(ctx context.Context, orgId string, te
 
 // Execute executes the request
 //  @return TeamMemberCollection
-func (a *DefaultApiService) GetTeamMembersExecute(r DefaultApiGetTeamMembersRequest) (*TeamMemberCollection, *http.Response, error) {
+func (a *DefaultAPIService) GetTeamMembersExecute(r DefaultAPIGetTeamMembersRequest) (*TeamMemberCollection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -220,7 +220,7 @@ func (a *DefaultApiService) GetTeamMembersExecute(r DefaultApiGetTeamMembersRequ
 		localVarReturnValue  *TeamMemberCollection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetTeamMembers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetTeamMembers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -234,36 +234,36 @@ func (a *DefaultApiService) GetTeamMembersExecute(r DefaultApiGetTeamMembersRequ
 	localVarFormParams := url.Values{}
 
 	if r.membershipType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "membership_type", r.membershipType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "membership_type", r.membershipType, "form", "")
 	}
 	if r.identityType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "identity_type", r.identityType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "identity_type", r.identityType, "form", "")
 	}
 	if r.memberIds != nil {
 		t := *r.memberIds
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "member_ids", s.Index(i), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "member_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "member_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "member_ids", t, "form", "multi")
 		}
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	}
 	if r.ascending != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ascending", r.ascending, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ascending", r.ascending, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -330,21 +330,21 @@ func (a *DefaultApiService) GetTeamMembersExecute(r DefaultApiGetTeamMembersRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPutTeamMemberRequest struct {
+type DefaultAPIPutTeamMemberRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	userId string
 	teamMemberPutBody *TeamMemberPutBody
 }
 
-func (r DefaultApiPutTeamMemberRequest) TeamMemberPutBody(teamMemberPutBody TeamMemberPutBody) DefaultApiPutTeamMemberRequest {
+func (r DefaultAPIPutTeamMemberRequest) TeamMemberPutBody(teamMemberPutBody TeamMemberPutBody) DefaultAPIPutTeamMemberRequest {
 	r.teamMemberPutBody = &teamMemberPutBody
 	return r
 }
 
-func (r DefaultApiPutTeamMemberRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIPutTeamMemberRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PutTeamMemberExecute(r)
 }
 
@@ -357,10 +357,10 @@ adds the given user to the given team
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
  @param userId The ID of the user in GUID format
- @return DefaultApiPutTeamMemberRequest
+ @return DefaultAPIPutTeamMemberRequest
 */
-func (a *DefaultApiService) PutTeamMember(ctx context.Context, orgId string, teamId string, userId string) DefaultApiPutTeamMemberRequest {
-	return DefaultApiPutTeamMemberRequest{
+func (a *DefaultAPIService) PutTeamMember(ctx context.Context, orgId string, teamId string, userId string) DefaultAPIPutTeamMemberRequest {
+	return DefaultAPIPutTeamMemberRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -370,14 +370,14 @@ func (a *DefaultApiService) PutTeamMember(ctx context.Context, orgId string, tea
 }
 
 // Execute executes the request
-func (a *DefaultApiService) PutTeamMemberExecute(r DefaultApiPutTeamMemberRequest) (*http.Response, error) {
+func (a *DefaultAPIService) PutTeamMemberExecute(r DefaultAPIPutTeamMemberRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PutTeamMember")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PutTeamMember")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

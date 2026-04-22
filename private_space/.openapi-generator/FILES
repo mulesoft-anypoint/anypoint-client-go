@@ -5,7 +5,7 @@ api/openapi.yaml
 api_default.go
 client.go
 configuration.go
-docs/DefaultApi.md
+docs/DefaultAPI.md
 docs/Filter.md
 docs/FirewallRule.md
 docs/GlobalSpaceStatus.md

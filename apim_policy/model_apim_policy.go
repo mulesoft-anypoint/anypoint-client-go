@@ -329,7 +329,7 @@ func (o *ApimPolicy) GetPointcutDataOk() ([]PointcutDataItem, bool) {
 
 // HasPointcutData returns a boolean if a field has been set.
 func (o *ApimPolicy) HasPointcutData() bool {
-	if o != nil && IsNil(o.PointcutData) {
+	if o != nil && !IsNil(o.PointcutData) {
 		return true
 	}
 

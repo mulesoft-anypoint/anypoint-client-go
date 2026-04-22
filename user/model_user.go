@@ -12,6 +12,8 @@ package user
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the User type satisfies the MappedNullable interface at compile time
@@ -19,8 +21,6 @@ var _ MappedNullable = &User{}
 
 // User struct for User
 type User struct {
-	// The user Id
-	Id string `json:"id"`
 	Username *string `json:"username,omitempty"`
 	FirstName *string `json:"firstName,omitempty"`
 	LastName *string `json:"lastName,omitempty"`
@@ -43,7 +43,11 @@ type User struct {
 	Properties *Properties `json:"properties,omitempty"`
 	OrganizationPreferences map[string]interface{} `json:"organizationPreferences,omitempty"`
 	PrimaryOrganization *PrimaryOrganization `json:"primaryOrganization,omitempty"`
+	// The user Id
+	Id string `json:"id"`
 }
+
+type _User User
 
 // NewUser instantiates a new User object
 // This constructor will assign default values to properties that have it defined,
@@ -51,9 +55,9 @@ type User struct {
 // will change when the set of required properties is changed
 func NewUser(id string) *User {
 	this := User{}
-	this.Id = id
 	var lastName string = "Mule"
 	this.LastName = &lastName
+	this.Id = id
 	return &this
 }
 
@@ -65,30 +69,6 @@ func NewUserWithDefaults() *User {
 	var lastName string = "Mule"
 	this.LastName = &lastName
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *User) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *User) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *User) SetId(v string) {
-	o.Id = v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
@@ -795,6 +775,30 @@ func (o *User) SetPrimaryOrganization(v PrimaryOrganization) {
 	o.PrimaryOrganization = &v
 }
 
+// GetId returns the Id field value
+func (o *User) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *User) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *User) SetId(v string) {
+	o.Id = v
+}
+
 func (o User) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -805,7 +809,6 @@ func (o User) MarshalJSON() ([]byte, error) {
 
 func (o User) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}
@@ -872,7 +875,45 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PrimaryOrganization) {
 		toSerialize["primaryOrganization"] = o.PrimaryOrganization
 	}
+	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *User) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUser := _User{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUser)
+
+	if err != nil {
+		return err
+	}
+
+	*o = User(varUser)
+
+	return err
 }
 
 type NullableUser struct {

@@ -326,6 +326,20 @@ components:
       description: Success response
   schemas:
     ErrorsResponse:
+      example:
+        errors:
+        - schema: schema
+          data: data
+          type: type
+          keyword: keyword
+          message: message
+          dataPath: dataPath
+        - schema: schema
+          data: data
+          type: type
+          keyword: keyword
+          message: message
+          dataPath: dataPath
       properties:
         errors:
           items:
@@ -336,7 +350,27 @@ components:
     PutTeamResponse:
       allOf:
       - $ref: '#/components/schemas/Team'
-      - $ref: '#/components/schemas/previousTeamState'
+      - properties:
+          previous_ancestor_team_ids:
+            items:
+              type: string
+            title: previousAncestorTeamIds
+            type: array
+        title: previousTeamState
+        type: object
+      example:
+        ancestor_team_ids:
+        - ancestor_team_ids
+        - ancestor_team_ids
+        updated_at: updated_at
+        org_id: org_id
+        created_at: created_at
+        team_type: team_type
+        team_id: team_id
+        team_name: team_name
+        previous_ancestor_team_ids:
+        - previous_ancestor_team_ids
+        - previous_ancestor_team_ids
     TeamPostBody:
       example:
         parent_team_id: parent_team_id
@@ -449,6 +483,13 @@ components:
       title: TeamCollection
       type: object
     ErrorsResponse_errors_inner:
+      example:
+        schema: schema
+        data: data
+        type: type
+        keyword: keyword
+        message: message
+        dataPath: dataPath
       properties:
         type:
           title: type
@@ -469,16 +510,6 @@ components:
           title: message
           type: string
       type: object
-    previousTeamState:
-      properties:
-        previous_ancestor_team_ids:
-          items:
-            type: string
-          title: previousAncestorTeamIds
-          type: array
-      title: previousTeamState
-      type: object
-      example: null
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

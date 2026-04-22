@@ -12,6 +12,7 @@ package idp
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -63,7 +64,11 @@ func (dst *IdpPostBody) UnmarshalJSON(data []byte) error {
 		if string(jsonLdapProviderPostBody) == "{}" { // empty struct
 			dst.LdapProviderPostBody = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.LdapProviderPostBody); err != nil {
+				dst.LdapProviderPostBody = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.LdapProviderPostBody = nil
@@ -76,7 +81,11 @@ func (dst *IdpPostBody) UnmarshalJSON(data []byte) error {
 		if string(jsonOpenIDProviderDynamicPostBody) == "{}" { // empty struct
 			dst.OpenIDProviderDynamicPostBody = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.OpenIDProviderDynamicPostBody); err != nil {
+				dst.OpenIDProviderDynamicPostBody = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.OpenIDProviderDynamicPostBody = nil
@@ -89,7 +98,11 @@ func (dst *IdpPostBody) UnmarshalJSON(data []byte) error {
 		if string(jsonOpenIDProviderManualPostBody) == "{}" { // empty struct
 			dst.OpenIDProviderManualPostBody = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.OpenIDProviderManualPostBody); err != nil {
+				dst.OpenIDProviderManualPostBody = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.OpenIDProviderManualPostBody = nil
@@ -102,7 +115,11 @@ func (dst *IdpPostBody) UnmarshalJSON(data []byte) error {
 		if string(jsonSamlProviderPostBody) == "{}" { // empty struct
 			dst.SamlProviderPostBody = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SamlProviderPostBody); err != nil {
+				dst.SamlProviderPostBody = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SamlProviderPostBody = nil
