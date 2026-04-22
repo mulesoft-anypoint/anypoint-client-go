@@ -6,7 +6,7 @@ api_default.go
 client.go
 configuration.go
 docs/CreateUser400Response.md
-docs/DefaultApi.md
+docs/DefaultAPI.md
 docs/ListUsersResponse.md
 docs/Organization.md
 docs/PrimaryOrganization.md
@@ -14,7 +14,6 @@ docs/Properties.md
 docs/Subscription.md
 docs/User.md
 docs/UserCore.md
-docs/UserId.md
 docs/UserPostBody.md
 docs/UserPutBody.md
 git_push.sh
@@ -28,7 +27,6 @@ model_properties.go
 model_subscription.go
 model_user.go
 model_user_core.go
-model_user_id.go
 model_user_post_body.go
 model_user_put_body.go
 response.go

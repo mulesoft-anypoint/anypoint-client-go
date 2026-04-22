@@ -365,7 +365,16 @@ components:
     exchangeBindingWithRules:
       allOf:
       - $ref: '#/components/schemas/exchangeBinding'
-      - $ref: '#/components/schemas/exchangeBindingWithRules_allOf'
+      - properties:
+          routingRules:
+            $ref: '#/components/schemas/routingRules'
+      example:
+        exchangeId: exchangeId
+        queueId: queueId
+        fifo: true
+        routingRules:
+        - "{}"
+        - "{}"
     exchangeBindingRules:
       example:
         exchangeId: exchangeId
@@ -408,15 +417,6 @@ components:
           type: array
       title: AMEBindingRuleBody
       type: object
-    exchangeBindingWithRules_allOf:
-      properties:
-        routingRules:
-          items:
-            title: routingRule
-            type: object
-          title: routingRules
-          type: array
-      example: null
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

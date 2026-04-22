@@ -12,6 +12,8 @@ package idp
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the LdapProviderPostBody type satisfies the MappedNullable interface at compile time
@@ -29,6 +31,8 @@ type LdapProviderPostBody struct {
 	UserMapping LdapProviderPostBodyUserMapping `json:"user_mapping"`
 	GroupMapping LdapProviderPostBodyGroupMapping `json:"group_mapping"`
 }
+
+type _LdapProviderPostBody LdapProviderPostBody
 
 // NewLdapProviderPostBody instantiates a new LdapProviderPostBody object
 // This constructor will assign default values to properties that have it defined,
@@ -301,6 +305,50 @@ func (o LdapProviderPostBody) ToMap() (map[string]interface{}, error) {
 	toSerialize["user_mapping"] = o.UserMapping
 	toSerialize["group_mapping"] = o.GroupMapping
 	return toSerialize, nil
+}
+
+func (o *LdapProviderPostBody) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"type",
+		"connection",
+		"search_bases",
+		"dns",
+		"filters",
+		"user_mapping",
+		"group_mapping",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLdapProviderPostBody := _LdapProviderPostBody{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLdapProviderPostBody)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LdapProviderPostBody(varLdapProviderPostBody)
+
+	return err
 }
 
 type NullableLdapProviderPostBody struct {

@@ -318,7 +318,7 @@ components:
         name: name
         description: description
         clientSecret: clientSecret
-        id: 0
+        id: 6
         url: url
         clientProvider:
           providerId: providerId
@@ -383,6 +383,9 @@ components:
         $ref: '#/components/schemas/clientAppContract'
       type: array
     GetExchangeClientApps_400_response:
+      example:
+        message: A sample message here
+        status: 0
       properties:
         status:
           default: 400
@@ -394,6 +397,9 @@ components:
           type: string
       type: object
     GetExchangeClientApp_404_response:
+      example:
+        message: message
+        status: 0
       properties:
         status:
           type: integer

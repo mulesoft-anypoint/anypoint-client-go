@@ -12,6 +12,7 @@ package private_space_tlscontext
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *TlsContextPostBodyTlsConfigKeyStore) UnmarshalJSON(data []byte) error
 		if string(jsonTlsContextPostBodyKeyStoreJKS) == "{}" { // empty struct
 			dst.TlsContextPostBodyKeyStoreJKS = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.TlsContextPostBodyKeyStoreJKS); err != nil {
+				dst.TlsContextPostBodyKeyStoreJKS = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.TlsContextPostBodyKeyStoreJKS = nil
@@ -60,7 +65,11 @@ func (dst *TlsContextPostBodyTlsConfigKeyStore) UnmarshalJSON(data []byte) error
 		if string(jsonTlsContextPostBodyKeyStorePEM) == "{}" { // empty struct
 			dst.TlsContextPostBodyKeyStorePEM = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.TlsContextPostBodyKeyStorePEM); err != nil {
+				dst.TlsContextPostBodyKeyStorePEM = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.TlsContextPostBodyKeyStorePEM = nil

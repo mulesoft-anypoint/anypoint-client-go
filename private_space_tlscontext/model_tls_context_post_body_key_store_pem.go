@@ -12,6 +12,8 @@ package private_space_tlscontext
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TlsContextPostBodyKeyStorePEM type satisfies the MappedNullable interface at compile time
@@ -28,6 +30,8 @@ type TlsContextPostBodyKeyStorePEM struct {
 	Capath *string `json:"capath,omitempty"`
 	CapathFileName *string `json:"capathFileName,omitempty"`
 }
+
+type _TlsContextPostBodyKeyStorePEM TlsContextPostBodyKeyStorePEM
 
 // NewTlsContextPostBodyKeyStorePEM instantiates a new TlsContextPostBodyKeyStorePEM object
 // This constructor will assign default values to properties that have it defined,
@@ -294,6 +298,47 @@ func (o TlsContextPostBodyKeyStorePEM) ToMap() (map[string]interface{}, error) {
 		toSerialize["capathFileName"] = o.CapathFileName
 	}
 	return toSerialize, nil
+}
+
+func (o *TlsContextPostBodyKeyStorePEM) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"source",
+		"certificate",
+		"key",
+		"keyFileName",
+		"certificateFileName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTlsContextPostBodyKeyStorePEM := _TlsContextPostBodyKeyStorePEM{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTlsContextPostBodyKeyStorePEM)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TlsContextPostBodyKeyStorePEM(varTlsContextPostBodyKeyStorePEM)
+
+	return err
 }
 
 type NullableTlsContextPostBodyKeyStorePEM struct {

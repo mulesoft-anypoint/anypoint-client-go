@@ -19,7 +19,7 @@ docs/BGUpdateReqBody.md
 docs/Client.md
 docs/ComposerEntitlement.md
 docs/CrowdEntitlement.md
-docs/DefaultApi.md
+docs/DefaultAPI.md
 docs/DesignCenterEntitlement.md
 docs/EnablementResourceEntitlement.md
 docs/Entitlements.md
@@ -34,7 +34,6 @@ docs/LoadBalancerEntitlement.md
 docs/ManagedGatewayLargeEntitlement.md
 docs/ManagedGatewaySmallEntitlement.md
 docs/MasterBGDetail.md
-docs/MasterBGSpecificDetails.md
 docs/MessagingEntitlement.md
 docs/MonitoringCenterEntitlement.md
 docs/MuleRuntimeIntegration.md
@@ -91,7 +90,6 @@ model_load_balancer_entitlement.go
 model_managed_gateway_large_entitlement.go
 model_managed_gateway_small_entitlement.go
 model_master_bg_detail.go
-model_master_bg_specific_details.go
 model_messaging_entitlement.go
 model_monitoring_center_entitlement.go
 model_mule_runtime_integration.go

@@ -119,6 +119,20 @@ components:
       description: Success response
   schemas:
     ErrorsResponse:
+      example:
+        errors:
+        - schema: schema
+          data: data
+          type: type
+          keyword: keyword
+          message: message
+          dataPath: dataPath
+        - schema: schema
+          data: data
+          type: type
+          keyword: keyword
+          message: message
+          dataPath: dataPath
       properties:
         errors:
           items:
@@ -170,6 +184,13 @@ components:
       title: TeamGroupMappingsCollection
       type: object
     ErrorsResponse_errors_inner:
+      example:
+        schema: schema
+        data: data
+        type: type
+        keyword: keyword
+        message: message
+        dataPath: dataPath
       properties:
         type:
           title: type

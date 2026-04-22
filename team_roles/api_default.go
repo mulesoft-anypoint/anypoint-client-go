@@ -20,23 +20,23 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiAssignTeamRolesRequest struct {
+type DefaultAPIAssignTeamRolesRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	teamRolePostBody *[]TeamRolePostBody
 }
 
-func (r DefaultApiAssignTeamRolesRequest) TeamRolePostBody(teamRolePostBody []TeamRolePostBody) DefaultApiAssignTeamRolesRequest {
+func (r DefaultAPIAssignTeamRolesRequest) TeamRolePostBody(teamRolePostBody []TeamRolePostBody) DefaultAPIAssignTeamRolesRequest {
 	r.teamRolePostBody = &teamRolePostBody
 	return r
 }
 
-func (r DefaultApiAssignTeamRolesRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIAssignTeamRolesRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AssignTeamRolesExecute(r)
 }
 
@@ -48,10 +48,10 @@ assignes a set of roles to the given team
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiAssignTeamRolesRequest
+ @return DefaultAPIAssignTeamRolesRequest
 */
-func (a *DefaultApiService) AssignTeamRoles(ctx context.Context, orgId string, teamId string) DefaultApiAssignTeamRolesRequest {
-	return DefaultApiAssignTeamRolesRequest{
+func (a *DefaultAPIService) AssignTeamRoles(ctx context.Context, orgId string, teamId string) DefaultAPIAssignTeamRolesRequest {
+	return DefaultAPIAssignTeamRolesRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -60,14 +60,14 @@ func (a *DefaultApiService) AssignTeamRoles(ctx context.Context, orgId string, t
 }
 
 // Execute executes the request
-func (a *DefaultApiService) AssignTeamRolesExecute(r DefaultApiAssignTeamRolesRequest) (*http.Response, error) {
+func (a *DefaultAPIService) AssignTeamRolesExecute(r DefaultAPIAssignTeamRolesRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.AssignTeamRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.AssignTeamRoles")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -127,20 +127,20 @@ func (a *DefaultApiService) AssignTeamRolesExecute(r DefaultApiAssignTeamRolesRe
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiDeleteTeamRolesRequest struct {
+type DefaultAPIDeleteTeamRolesRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	teamRoleDeleteBody *[]TeamRoleDeleteBody
 }
 
-func (r DefaultApiDeleteTeamRolesRequest) TeamRoleDeleteBody(teamRoleDeleteBody []TeamRoleDeleteBody) DefaultApiDeleteTeamRolesRequest {
+func (r DefaultAPIDeleteTeamRolesRequest) TeamRoleDeleteBody(teamRoleDeleteBody []TeamRoleDeleteBody) DefaultAPIDeleteTeamRolesRequest {
 	r.teamRoleDeleteBody = &teamRoleDeleteBody
 	return r
 }
 
-func (r DefaultApiDeleteTeamRolesRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteTeamRolesRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteTeamRolesExecute(r)
 }
 
@@ -152,10 +152,10 @@ deletes a set of roles from the given team
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiDeleteTeamRolesRequest
+ @return DefaultAPIDeleteTeamRolesRequest
 */
-func (a *DefaultApiService) DeleteTeamRoles(ctx context.Context, orgId string, teamId string) DefaultApiDeleteTeamRolesRequest {
-	return DefaultApiDeleteTeamRolesRequest{
+func (a *DefaultAPIService) DeleteTeamRoles(ctx context.Context, orgId string, teamId string) DefaultAPIDeleteTeamRolesRequest {
+	return DefaultAPIDeleteTeamRolesRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -164,14 +164,14 @@ func (a *DefaultApiService) DeleteTeamRoles(ctx context.Context, orgId string, t
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteTeamRolesExecute(r DefaultApiDeleteTeamRolesRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteTeamRolesExecute(r DefaultAPIDeleteTeamRolesRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteTeamRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteTeamRoles")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -231,9 +231,9 @@ func (a *DefaultApiService) DeleteTeamRolesExecute(r DefaultApiDeleteTeamRolesRe
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetTeamRolesRequest struct {
+type DefaultAPIGetTeamRolesRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	roleId *string
@@ -243,30 +243,30 @@ type DefaultApiGetTeamRolesRequest struct {
 }
 
 // return only role assignments containing one of the supplied role_ids
-func (r DefaultApiGetTeamRolesRequest) RoleId(roleId string) DefaultApiGetTeamRolesRequest {
+func (r DefaultAPIGetTeamRolesRequest) RoleId(roleId string) DefaultAPIGetTeamRolesRequest {
 	r.roleId = &roleId
 	return r
 }
 
 // A search string to use for case-insensitive partial matches on team name
-func (r DefaultApiGetTeamRolesRequest) Search(search string) DefaultApiGetTeamRolesRequest {
+func (r DefaultAPIGetTeamRolesRequest) Search(search string) DefaultAPIGetTeamRolesRequest {
 	r.search = &search
 	return r
 }
 
 // Maximum number of rolegroups to retrieve per request.
-func (r DefaultApiGetTeamRolesRequest) Limit(limit int32) DefaultApiGetTeamRolesRequest {
+func (r DefaultAPIGetTeamRolesRequest) Limit(limit int32) DefaultAPIGetTeamRolesRequest {
 	r.limit = &limit
 	return r
 }
 
 // The number of records to omit from the response.
-func (r DefaultApiGetTeamRolesRequest) Offset(offset int32) DefaultApiGetTeamRolesRequest {
+func (r DefaultAPIGetTeamRolesRequest) Offset(offset int32) DefaultAPIGetTeamRolesRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r DefaultApiGetTeamRolesRequest) Execute() (*TeamRoleCollection, *http.Response, error) {
+func (r DefaultAPIGetTeamRolesRequest) Execute() (*TeamRoleCollection, *http.Response, error) {
 	return r.ApiService.GetTeamRolesExecute(r)
 }
 
@@ -278,10 +278,10 @@ retrieves team assigned roles
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiGetTeamRolesRequest
+ @return DefaultAPIGetTeamRolesRequest
 */
-func (a *DefaultApiService) GetTeamRoles(ctx context.Context, orgId string, teamId string) DefaultApiGetTeamRolesRequest {
-	return DefaultApiGetTeamRolesRequest{
+func (a *DefaultAPIService) GetTeamRoles(ctx context.Context, orgId string, teamId string) DefaultAPIGetTeamRolesRequest {
+	return DefaultAPIGetTeamRolesRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -291,7 +291,7 @@ func (a *DefaultApiService) GetTeamRoles(ctx context.Context, orgId string, team
 
 // Execute executes the request
 //  @return TeamRoleCollection
-func (a *DefaultApiService) GetTeamRolesExecute(r DefaultApiGetTeamRolesRequest) (*TeamRoleCollection, *http.Response, error) {
+func (a *DefaultAPIService) GetTeamRolesExecute(r DefaultAPIGetTeamRolesRequest) (*TeamRoleCollection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -299,7 +299,7 @@ func (a *DefaultApiService) GetTeamRolesExecute(r DefaultApiGetTeamRolesRequest)
 		localVarReturnValue  *TeamRoleCollection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetTeamRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetTeamRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -313,16 +313,16 @@ func (a *DefaultApiService) GetTeamRolesExecute(r DefaultApiGetTeamRolesRequest)
 	localVarFormParams := url.Values{}
 
 	if r.roleId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "role_id", r.roleId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "role_id", r.roleId, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

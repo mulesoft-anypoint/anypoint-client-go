@@ -302,7 +302,15 @@ components:
           ecdheRsaAes256GcmSha384: true
           ecdheEcdsaAes256GcmSha384: true
         tlsConfig:
-          keyStore: null
+          keyStore:
+            certificateFileName: certificateFileName
+            capathFileName: capathFileName
+            certificate: certificate
+            capath: capath
+            source: PEM
+            keyPassphrase: keyPassphrase
+            key: key
+            keyFileName: keyFileName
           trustStore:
           - source: PEM
             trustStorePEM: trustStorePEM
@@ -317,6 +325,15 @@ components:
           $ref: '#/components/schemas/Ciphers'
       type: object
     TlsContextPostBodyKeyStorePEM:
+      example:
+        certificateFileName: certificateFileName
+        capathFileName: capathFileName
+        certificate: certificate
+        capath: capath
+        source: PEM
+        keyPassphrase: keyPassphrase
+        key: key
+        keyFileName: keyFileName
       properties:
         source:
           default: PEM
@@ -649,7 +666,15 @@ components:
       type: object
     TlsContextPostBody_tlsConfig:
       example:
-        keyStore: null
+        keyStore:
+          certificateFileName: certificateFileName
+          capathFileName: capathFileName
+          certificate: certificate
+          capath: capath
+          source: PEM
+          keyPassphrase: keyPassphrase
+          key: key
+          keyFileName: keyFileName
         trustStore:
         - source: PEM
           trustStorePEM: trustStorePEM

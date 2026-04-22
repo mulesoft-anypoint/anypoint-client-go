@@ -10,7 +10,7 @@ docs/ClientAppClientProvider.md
 docs/ClientAppContract.md
 docs/ClientAppContractRequestedTier.md
 docs/ClientAppContractRequestedTierLimitsInner.md
-docs/DefaultApi.md
+docs/DefaultAPI.md
 docs/GetExchangeClientApp404Response.md
 docs/GetExchangeClientApps400Response.md
 docs/PostExchangeAppsBody.md

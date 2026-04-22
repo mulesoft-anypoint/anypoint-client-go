@@ -20,22 +20,22 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiCreatePrivateSpaceRequest struct {
+type DefaultAPICreatePrivateSpaceRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpacePostBody *PrivateSpacePostBody
 }
 
-func (r DefaultApiCreatePrivateSpaceRequest) PrivateSpacePostBody(privateSpacePostBody PrivateSpacePostBody) DefaultApiCreatePrivateSpaceRequest {
+func (r DefaultAPICreatePrivateSpaceRequest) PrivateSpacePostBody(privateSpacePostBody PrivateSpacePostBody) DefaultAPICreatePrivateSpaceRequest {
 	r.privateSpacePostBody = &privateSpacePostBody
 	return r
 }
 
-func (r DefaultApiCreatePrivateSpaceRequest) Execute() (*PrivateSpace, *http.Response, error) {
+func (r DefaultAPICreatePrivateSpaceRequest) Execute() (*PrivateSpace, *http.Response, error) {
 	return r.ApiService.CreatePrivateSpaceExecute(r)
 }
 
@@ -46,10 +46,10 @@ creates a private space for the given organization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
- @return DefaultApiCreatePrivateSpaceRequest
+ @return DefaultAPICreatePrivateSpaceRequest
 */
-func (a *DefaultApiService) CreatePrivateSpace(ctx context.Context, orgId string) DefaultApiCreatePrivateSpaceRequest {
-	return DefaultApiCreatePrivateSpaceRequest{
+func (a *DefaultAPIService) CreatePrivateSpace(ctx context.Context, orgId string) DefaultAPICreatePrivateSpaceRequest {
+	return DefaultAPICreatePrivateSpaceRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -58,7 +58,7 @@ func (a *DefaultApiService) CreatePrivateSpace(ctx context.Context, orgId string
 
 // Execute executes the request
 //  @return PrivateSpace
-func (a *DefaultApiService) CreatePrivateSpaceExecute(r DefaultApiCreatePrivateSpaceRequest) (*PrivateSpace, *http.Response, error) {
+func (a *DefaultAPIService) CreatePrivateSpaceExecute(r DefaultAPICreatePrivateSpaceRequest) (*PrivateSpace, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *DefaultApiService) CreatePrivateSpaceExecute(r DefaultApiCreatePrivateS
 		localVarReturnValue  *PrivateSpace
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.CreatePrivateSpace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.CreatePrivateSpace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -134,14 +134,14 @@ func (a *DefaultApiService) CreatePrivateSpaceExecute(r DefaultApiCreatePrivateS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiDeletePrivateSpaceRequest struct {
+type DefaultAPIDeletePrivateSpaceRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 }
 
-func (r DefaultApiDeletePrivateSpaceRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeletePrivateSpaceRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeletePrivateSpaceExecute(r)
 }
 
@@ -153,10 +153,10 @@ deletes a private space for the given organization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param privateSpaceId The ID of the private space in GUID format
- @return DefaultApiDeletePrivateSpaceRequest
+ @return DefaultAPIDeletePrivateSpaceRequest
 */
-func (a *DefaultApiService) DeletePrivateSpace(ctx context.Context, orgId string, privateSpaceId string) DefaultApiDeletePrivateSpaceRequest {
-	return DefaultApiDeletePrivateSpaceRequest{
+func (a *DefaultAPIService) DeletePrivateSpace(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIDeletePrivateSpaceRequest {
+	return DefaultAPIDeletePrivateSpaceRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -165,14 +165,14 @@ func (a *DefaultApiService) DeletePrivateSpace(ctx context.Context, orgId string
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeletePrivateSpaceExecute(r DefaultApiDeletePrivateSpaceRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeletePrivateSpaceExecute(r DefaultAPIDeletePrivateSpaceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeletePrivateSpace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeletePrivateSpace")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -230,14 +230,14 @@ func (a *DefaultApiService) DeletePrivateSpaceExecute(r DefaultApiDeletePrivateS
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetPrivateSpaceRequest struct {
+type DefaultAPIGetPrivateSpaceRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 }
 
-func (r DefaultApiGetPrivateSpaceRequest) Execute() (*PrivateSpace, *http.Response, error) {
+func (r DefaultAPIGetPrivateSpaceRequest) Execute() (*PrivateSpace, *http.Response, error) {
 	return r.ApiService.GetPrivateSpaceExecute(r)
 }
 
@@ -249,10 +249,10 @@ retrieves a private space for the given organization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param privateSpaceId The ID of the private space in GUID format
- @return DefaultApiGetPrivateSpaceRequest
+ @return DefaultAPIGetPrivateSpaceRequest
 */
-func (a *DefaultApiService) GetPrivateSpace(ctx context.Context, orgId string, privateSpaceId string) DefaultApiGetPrivateSpaceRequest {
-	return DefaultApiGetPrivateSpaceRequest{
+func (a *DefaultAPIService) GetPrivateSpace(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIGetPrivateSpaceRequest {
+	return DefaultAPIGetPrivateSpaceRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -262,7 +262,7 @@ func (a *DefaultApiService) GetPrivateSpace(ctx context.Context, orgId string, p
 
 // Execute executes the request
 //  @return PrivateSpace
-func (a *DefaultApiService) GetPrivateSpaceExecute(r DefaultApiGetPrivateSpaceRequest) (*PrivateSpace, *http.Response, error) {
+func (a *DefaultAPIService) GetPrivateSpaceExecute(r DefaultAPIGetPrivateSpaceRequest) (*PrivateSpace, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -270,7 +270,7 @@ func (a *DefaultApiService) GetPrivateSpaceExecute(r DefaultApiGetPrivateSpaceRe
 		localVarReturnValue  *PrivateSpace
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetPrivateSpace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -337,14 +337,14 @@ func (a *DefaultApiService) GetPrivateSpaceExecute(r DefaultApiGetPrivateSpaceRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetPrivateSpaceIamRolesRequest struct {
+type DefaultAPIGetPrivateSpaceIamRolesRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 }
 
-func (r DefaultApiGetPrivateSpaceIamRolesRequest) Execute() (*PrivateSpaceIamRoles, *http.Response, error) {
+func (r DefaultAPIGetPrivateSpaceIamRolesRequest) Execute() (*PrivateSpaceIamRoles, *http.Response, error) {
 	return r.ApiService.GetPrivateSpaceIamRolesExecute(r)
 }
 
@@ -356,10 +356,10 @@ gets the IAM roles for the given private space
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param privateSpaceId The ID of the private space in GUID format
- @return DefaultApiGetPrivateSpaceIamRolesRequest
+ @return DefaultAPIGetPrivateSpaceIamRolesRequest
 */
-func (a *DefaultApiService) GetPrivateSpaceIamRoles(ctx context.Context, orgId string, privateSpaceId string) DefaultApiGetPrivateSpaceIamRolesRequest {
-	return DefaultApiGetPrivateSpaceIamRolesRequest{
+func (a *DefaultAPIService) GetPrivateSpaceIamRoles(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIGetPrivateSpaceIamRolesRequest {
+	return DefaultAPIGetPrivateSpaceIamRolesRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -369,7 +369,7 @@ func (a *DefaultApiService) GetPrivateSpaceIamRoles(ctx context.Context, orgId s
 
 // Execute executes the request
 //  @return PrivateSpaceIamRoles
-func (a *DefaultApiService) GetPrivateSpaceIamRolesExecute(r DefaultApiGetPrivateSpaceIamRolesRequest) (*PrivateSpaceIamRoles, *http.Response, error) {
+func (a *DefaultAPIService) GetPrivateSpaceIamRolesExecute(r DefaultAPIGetPrivateSpaceIamRolesRequest) (*PrivateSpaceIamRoles, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -377,7 +377,7 @@ func (a *DefaultApiService) GetPrivateSpaceIamRolesExecute(r DefaultApiGetPrivat
 		localVarReturnValue  *PrivateSpaceIamRoles
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetPrivateSpaceIamRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpaceIamRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -444,9 +444,9 @@ func (a *DefaultApiService) GetPrivateSpaceIamRolesExecute(r DefaultApiGetPrivat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetPrivateSpacesRequest struct {
+type DefaultAPIGetPrivateSpacesRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	offset *int32
 	limit *int32
@@ -455,30 +455,30 @@ type DefaultApiGetPrivateSpacesRequest struct {
 }
 
 // The offset specifies the offset of the first row to return
-func (r DefaultApiGetPrivateSpacesRequest) Offset(offset int32) DefaultApiGetPrivateSpacesRequest {
+func (r DefaultAPIGetPrivateSpacesRequest) Offset(offset int32) DefaultAPIGetPrivateSpacesRequest {
 	r.offset = &offset
 	return r
 }
 
 // Amount of objects retrieved in the response
-func (r DefaultApiGetPrivateSpacesRequest) Limit(limit int32) DefaultApiGetPrivateSpacesRequest {
+func (r DefaultAPIGetPrivateSpacesRequest) Limit(limit int32) DefaultAPIGetPrivateSpacesRequest {
 	r.limit = &limit
 	return r
 }
 
 // Property to sort by
-func (r DefaultApiGetPrivateSpacesRequest) Sort(sort string) DefaultApiGetPrivateSpacesRequest {
+func (r DefaultAPIGetPrivateSpacesRequest) Sort(sort string) DefaultAPIGetPrivateSpacesRequest {
 	r.sort = &sort
 	return r
 }
 
 // Order for sorting
-func (r DefaultApiGetPrivateSpacesRequest) Ascending(ascending string) DefaultApiGetPrivateSpacesRequest {
+func (r DefaultAPIGetPrivateSpacesRequest) Ascending(ascending string) DefaultAPIGetPrivateSpacesRequest {
 	r.ascending = &ascending
 	return r
 }
 
-func (r DefaultApiGetPrivateSpacesRequest) Execute() (*PrivateSpaceSummary, *http.Response, error) {
+func (r DefaultAPIGetPrivateSpacesRequest) Execute() (*PrivateSpaceSummary, *http.Response, error) {
 	return r.ApiService.GetPrivateSpacesExecute(r)
 }
 
@@ -489,10 +489,10 @@ retrieves private spaces for the given organization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
- @return DefaultApiGetPrivateSpacesRequest
+ @return DefaultAPIGetPrivateSpacesRequest
 */
-func (a *DefaultApiService) GetPrivateSpaces(ctx context.Context, orgId string) DefaultApiGetPrivateSpacesRequest {
-	return DefaultApiGetPrivateSpacesRequest{
+func (a *DefaultAPIService) GetPrivateSpaces(ctx context.Context, orgId string) DefaultAPIGetPrivateSpacesRequest {
+	return DefaultAPIGetPrivateSpacesRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -501,7 +501,7 @@ func (a *DefaultApiService) GetPrivateSpaces(ctx context.Context, orgId string) 
 
 // Execute executes the request
 //  @return PrivateSpaceSummary
-func (a *DefaultApiService) GetPrivateSpacesExecute(r DefaultApiGetPrivateSpacesRequest) (*PrivateSpaceSummary, *http.Response, error) {
+func (a *DefaultAPIService) GetPrivateSpacesExecute(r DefaultAPIGetPrivateSpacesRequest) (*PrivateSpaceSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -509,7 +509,7 @@ func (a *DefaultApiService) GetPrivateSpacesExecute(r DefaultApiGetPrivateSpaces
 		localVarReturnValue  *PrivateSpaceSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetPrivateSpaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -522,16 +522,16 @@ func (a *DefaultApiService) GetPrivateSpacesExecute(r DefaultApiGetPrivateSpaces
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	}
 	if r.ascending != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ascending", r.ascending, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ascending", r.ascending, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -587,20 +587,20 @@ func (a *DefaultApiService) GetPrivateSpacesExecute(r DefaultApiGetPrivateSpaces
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiUpdatePrivateSpaceRequest struct {
+type DefaultAPIUpdatePrivateSpaceRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	privateSpaceId string
 	privateSpacePatchBody *PrivateSpacePatchBody
 }
 
-func (r DefaultApiUpdatePrivateSpaceRequest) PrivateSpacePatchBody(privateSpacePatchBody PrivateSpacePatchBody) DefaultApiUpdatePrivateSpaceRequest {
+func (r DefaultAPIUpdatePrivateSpaceRequest) PrivateSpacePatchBody(privateSpacePatchBody PrivateSpacePatchBody) DefaultAPIUpdatePrivateSpaceRequest {
 	r.privateSpacePatchBody = &privateSpacePatchBody
 	return r
 }
 
-func (r DefaultApiUpdatePrivateSpaceRequest) Execute() (*PrivateSpace, *http.Response, error) {
+func (r DefaultAPIUpdatePrivateSpaceRequest) Execute() (*PrivateSpace, *http.Response, error) {
 	return r.ApiService.UpdatePrivateSpaceExecute(r)
 }
 
@@ -612,10 +612,10 @@ updates a private space for the given organization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param privateSpaceId The ID of the private space in GUID format
- @return DefaultApiUpdatePrivateSpaceRequest
+ @return DefaultAPIUpdatePrivateSpaceRequest
 */
-func (a *DefaultApiService) UpdatePrivateSpace(ctx context.Context, orgId string, privateSpaceId string) DefaultApiUpdatePrivateSpaceRequest {
-	return DefaultApiUpdatePrivateSpaceRequest{
+func (a *DefaultAPIService) UpdatePrivateSpace(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIUpdatePrivateSpaceRequest {
+	return DefaultAPIUpdatePrivateSpaceRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -625,7 +625,7 @@ func (a *DefaultApiService) UpdatePrivateSpace(ctx context.Context, orgId string
 
 // Execute executes the request
 //  @return PrivateSpace
-func (a *DefaultApiService) UpdatePrivateSpaceExecute(r DefaultApiUpdatePrivateSpaceRequest) (*PrivateSpace, *http.Response, error) {
+func (a *DefaultAPIService) UpdatePrivateSpaceExecute(r DefaultAPIUpdatePrivateSpaceRequest) (*PrivateSpace, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -633,7 +633,7 @@ func (a *DefaultApiService) UpdatePrivateSpaceExecute(r DefaultApiUpdatePrivateS
 		localVarReturnValue  *PrivateSpace
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.UpdatePrivateSpace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdatePrivateSpace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

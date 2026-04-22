@@ -21,22 +21,22 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiCreateTeamRequest struct {
+type DefaultAPICreateTeamRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamPostBody *TeamPostBody
 }
 
-func (r DefaultApiCreateTeamRequest) TeamPostBody(teamPostBody TeamPostBody) DefaultApiCreateTeamRequest {
+func (r DefaultAPICreateTeamRequest) TeamPostBody(teamPostBody TeamPostBody) DefaultAPICreateTeamRequest {
 	r.teamPostBody = &teamPostBody
 	return r
 }
 
-func (r DefaultApiCreateTeamRequest) Execute() (*Team, *http.Response, error) {
+func (r DefaultAPICreateTeamRequest) Execute() (*Team, *http.Response, error) {
 	return r.ApiService.CreateTeamExecute(r)
 }
 
@@ -47,10 +47,10 @@ Creates a new team
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
- @return DefaultApiCreateTeamRequest
+ @return DefaultAPICreateTeamRequest
 */
-func (a *DefaultApiService) CreateTeam(ctx context.Context, orgId string) DefaultApiCreateTeamRequest {
-	return DefaultApiCreateTeamRequest{
+func (a *DefaultAPIService) CreateTeam(ctx context.Context, orgId string) DefaultAPICreateTeamRequest {
+	return DefaultAPICreateTeamRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -59,7 +59,7 @@ func (a *DefaultApiService) CreateTeam(ctx context.Context, orgId string) Defaul
 
 // Execute executes the request
 //  @return Team
-func (a *DefaultApiService) CreateTeamExecute(r DefaultApiCreateTeamRequest) (*Team, *http.Response, error) {
+func (a *DefaultAPIService) CreateTeamExecute(r DefaultAPICreateTeamRequest) (*Team, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -67,7 +67,7 @@ func (a *DefaultApiService) CreateTeamExecute(r DefaultApiCreateTeamRequest) (*T
 		localVarReturnValue  *Team
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.CreateTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.CreateTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -135,14 +135,14 @@ func (a *DefaultApiService) CreateTeamExecute(r DefaultApiCreateTeamRequest) (*T
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiDeleteTeamRequest struct {
+type DefaultAPIDeleteTeamRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 }
 
-func (r DefaultApiDeleteTeamRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteTeamRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteTeamExecute(r)
 }
 
@@ -154,10 +154,10 @@ Deletes a team by id
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiDeleteTeamRequest
+ @return DefaultAPIDeleteTeamRequest
 */
-func (a *DefaultApiService) DeleteTeam(ctx context.Context, orgId string, teamId string) DefaultApiDeleteTeamRequest {
-	return DefaultApiDeleteTeamRequest{
+func (a *DefaultAPIService) DeleteTeam(ctx context.Context, orgId string, teamId string) DefaultAPIDeleteTeamRequest {
+	return DefaultAPIDeleteTeamRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -166,14 +166,14 @@ func (a *DefaultApiService) DeleteTeam(ctx context.Context, orgId string, teamId
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteTeamExecute(r DefaultApiDeleteTeamRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteTeamExecute(r DefaultAPIDeleteTeamRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteTeam")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -231,14 +231,14 @@ func (a *DefaultApiService) DeleteTeamExecute(r DefaultApiDeleteTeamRequest) (*h
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetTeamRequest struct {
+type DefaultAPIGetTeamRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 }
 
-func (r DefaultApiGetTeamRequest) Execute() (*Team, *http.Response, error) {
+func (r DefaultAPIGetTeamRequest) Execute() (*Team, *http.Response, error) {
 	return r.ApiService.GetTeamExecute(r)
 }
 
@@ -250,10 +250,10 @@ Retrieves a team by id
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiGetTeamRequest
+ @return DefaultAPIGetTeamRequest
 */
-func (a *DefaultApiService) GetTeam(ctx context.Context, orgId string, teamId string) DefaultApiGetTeamRequest {
-	return DefaultApiGetTeamRequest{
+func (a *DefaultAPIService) GetTeam(ctx context.Context, orgId string, teamId string) DefaultAPIGetTeamRequest {
+	return DefaultAPIGetTeamRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -263,7 +263,7 @@ func (a *DefaultApiService) GetTeam(ctx context.Context, orgId string, teamId st
 
 // Execute executes the request
 //  @return Team
-func (a *DefaultApiService) GetTeamExecute(r DefaultApiGetTeamRequest) (*Team, *http.Response, error) {
+func (a *DefaultAPIService) GetTeamExecute(r DefaultAPIGetTeamRequest) (*Team, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -271,7 +271,7 @@ func (a *DefaultApiService) GetTeamExecute(r DefaultApiGetTeamRequest) (*Team, *
 		localVarReturnValue  *Team
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -338,9 +338,9 @@ func (a *DefaultApiService) GetTeamExecute(r DefaultApiGetTeamRequest) (*Team, *
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetTeamsRequest struct {
+type DefaultAPIGetTeamsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	ancestorTeamId *[]string
 	parentTeamId *[]string
@@ -354,60 +354,60 @@ type DefaultApiGetTeamsRequest struct {
 }
 
 // team_id that must appear in the team&#39;s ancestor_team_ids.
-func (r DefaultApiGetTeamsRequest) AncestorTeamId(ancestorTeamId []string) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) AncestorTeamId(ancestorTeamId []string) DefaultAPIGetTeamsRequest {
 	r.ancestorTeamId = &ancestorTeamId
 	return r
 }
 
 // team_id of the immediate parent of the team to return.
-func (r DefaultApiGetTeamsRequest) ParentTeamId(parentTeamId []string) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) ParentTeamId(parentTeamId []string) DefaultAPIGetTeamsRequest {
 	r.parentTeamId = &parentTeamId
 	return r
 }
 
 // id of the team to return.
-func (r DefaultApiGetTeamsRequest) TeamId(teamId string) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) TeamId(teamId string) DefaultAPIGetTeamsRequest {
 	r.teamId = &teamId
 	return r
 }
 
 // return only teams that are of the given type. Enum are internal, shared, private, external
-func (r DefaultApiGetTeamsRequest) TeamType(teamType string) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) TeamType(teamType string) DefaultAPIGetTeamsRequest {
 	r.teamType = &teamType
 	return r
 }
 
 // A search string to use for case-insensitive partial matches on team name
-func (r DefaultApiGetTeamsRequest) Search(search string) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) Search(search string) DefaultAPIGetTeamsRequest {
 	r.search = &search
 	return r
 }
 
 // Maximum number of rolegroups to retrieve per request.
-func (r DefaultApiGetTeamsRequest) Limit(limit int32) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) Limit(limit int32) DefaultAPIGetTeamsRequest {
 	r.limit = &limit
 	return r
 }
 
 // The number of records to omit from the response.
-func (r DefaultApiGetTeamsRequest) Offset(offset int32) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) Offset(offset int32) DefaultAPIGetTeamsRequest {
 	r.offset = &offset
 	return r
 }
 
 // The field to sort on. default team_name
-func (r DefaultApiGetTeamsRequest) Sort(sort string) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) Sort(sort string) DefaultAPIGetTeamsRequest {
 	r.sort = &sort
 	return r
 }
 
 // Whether to sort ascending or descending. Default true
-func (r DefaultApiGetTeamsRequest) Ascending(ascending bool) DefaultApiGetTeamsRequest {
+func (r DefaultAPIGetTeamsRequest) Ascending(ascending bool) DefaultAPIGetTeamsRequest {
 	r.ascending = &ascending
 	return r
 }
 
-func (r DefaultApiGetTeamsRequest) Execute() (*TeamCollection, *http.Response, error) {
+func (r DefaultAPIGetTeamsRequest) Execute() (*TeamCollection, *http.Response, error) {
 	return r.ApiService.GetTeamsExecute(r)
 }
 
@@ -418,10 +418,10 @@ Returns all teams for a given org
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
- @return DefaultApiGetTeamsRequest
+ @return DefaultAPIGetTeamsRequest
 */
-func (a *DefaultApiService) GetTeams(ctx context.Context, orgId string) DefaultApiGetTeamsRequest {
-	return DefaultApiGetTeamsRequest{
+func (a *DefaultAPIService) GetTeams(ctx context.Context, orgId string) DefaultAPIGetTeamsRequest {
+	return DefaultAPIGetTeamsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -430,7 +430,7 @@ func (a *DefaultApiService) GetTeams(ctx context.Context, orgId string) DefaultA
 
 // Execute executes the request
 //  @return TeamCollection
-func (a *DefaultApiService) GetTeamsExecute(r DefaultApiGetTeamsRequest) (*TeamCollection, *http.Response, error) {
+func (a *DefaultAPIService) GetTeamsExecute(r DefaultAPIGetTeamsRequest) (*TeamCollection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -438,7 +438,7 @@ func (a *DefaultApiService) GetTeamsExecute(r DefaultApiGetTeamsRequest) (*TeamC
 		localVarReturnValue  *TeamCollection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetTeams")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetTeams")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -455,10 +455,10 @@ func (a *DefaultApiService) GetTeamsExecute(r DefaultApiGetTeamsRequest) (*TeamC
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ancestor_team_id", s.Index(i), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ancestor_team_id", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ancestor_team_id", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ancestor_team_id", t, "form", "multi")
 		}
 	}
 	if r.parentTeamId != nil {
@@ -466,32 +466,32 @@ func (a *DefaultApiService) GetTeamsExecute(r DefaultApiGetTeamsRequest) (*TeamC
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "parent_team_id", s.Index(i), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "parent_team_id", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "parent_team_id", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "parent_team_id", t, "form", "multi")
 		}
 	}
 	if r.teamId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "team_id", r.teamId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "team_id", r.teamId, "form", "")
 	}
 	if r.teamType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "team_type", r.teamType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "team_type", r.teamType, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	}
 	if r.ascending != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ascending", r.ascending, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ascending", r.ascending, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -558,20 +558,20 @@ func (a *DefaultApiService) GetTeamsExecute(r DefaultApiGetTeamsRequest) (*TeamC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiMoveTeamRequest struct {
+type DefaultAPIMoveTeamRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	teamPutBody *TeamPutBody
 }
 
-func (r DefaultApiMoveTeamRequest) TeamPutBody(teamPutBody TeamPutBody) DefaultApiMoveTeamRequest {
+func (r DefaultAPIMoveTeamRequest) TeamPutBody(teamPutBody TeamPutBody) DefaultAPIMoveTeamRequest {
 	r.teamPutBody = &teamPutBody
 	return r
 }
 
-func (r DefaultApiMoveTeamRequest) Execute() (*PutTeamResponse, *http.Response, error) {
+func (r DefaultAPIMoveTeamRequest) Execute() (*PutTeamResponse, *http.Response, error) {
 	return r.ApiService.MoveTeamExecute(r)
 }
 
@@ -583,10 +583,10 @@ Moves a team (along with its nested teams) from one parent team to another
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiMoveTeamRequest
+ @return DefaultAPIMoveTeamRequest
 */
-func (a *DefaultApiService) MoveTeam(ctx context.Context, orgId string, teamId string) DefaultApiMoveTeamRequest {
-	return DefaultApiMoveTeamRequest{
+func (a *DefaultAPIService) MoveTeam(ctx context.Context, orgId string, teamId string) DefaultAPIMoveTeamRequest {
+	return DefaultAPIMoveTeamRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -596,7 +596,7 @@ func (a *DefaultApiService) MoveTeam(ctx context.Context, orgId string, teamId s
 
 // Execute executes the request
 //  @return PutTeamResponse
-func (a *DefaultApiService) MoveTeamExecute(r DefaultApiMoveTeamRequest) (*PutTeamResponse, *http.Response, error) {
+func (a *DefaultAPIService) MoveTeamExecute(r DefaultAPIMoveTeamRequest) (*PutTeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -604,7 +604,7 @@ func (a *DefaultApiService) MoveTeamExecute(r DefaultApiMoveTeamRequest) (*PutTe
 		localVarReturnValue  *PutTeamResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.MoveTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.MoveTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -673,20 +673,20 @@ func (a *DefaultApiService) MoveTeamExecute(r DefaultApiMoveTeamRequest) (*PutTe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiUpdateTeamRequest struct {
+type DefaultAPIUpdateTeamRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	teamId string
 	teamPatchBody *TeamPatchBody
 }
 
-func (r DefaultApiUpdateTeamRequest) TeamPatchBody(teamPatchBody TeamPatchBody) DefaultApiUpdateTeamRequest {
+func (r DefaultAPIUpdateTeamRequest) TeamPatchBody(teamPatchBody TeamPatchBody) DefaultAPIUpdateTeamRequest {
 	r.teamPatchBody = &teamPatchBody
 	return r
 }
 
-func (r DefaultApiUpdateTeamRequest) Execute() (*Team, *http.Response, error) {
+func (r DefaultAPIUpdateTeamRequest) Execute() (*Team, *http.Response, error) {
 	return r.ApiService.UpdateTeamExecute(r)
 }
 
@@ -698,10 +698,10 @@ Updates a team by id
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param teamId The ID of the team in GUID format
- @return DefaultApiUpdateTeamRequest
+ @return DefaultAPIUpdateTeamRequest
 */
-func (a *DefaultApiService) UpdateTeam(ctx context.Context, orgId string, teamId string) DefaultApiUpdateTeamRequest {
-	return DefaultApiUpdateTeamRequest{
+func (a *DefaultAPIService) UpdateTeam(ctx context.Context, orgId string, teamId string) DefaultAPIUpdateTeamRequest {
+	return DefaultAPIUpdateTeamRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -711,7 +711,7 @@ func (a *DefaultApiService) UpdateTeam(ctx context.Context, orgId string, teamId
 
 // Execute executes the request
 //  @return Team
-func (a *DefaultApiService) UpdateTeamExecute(r DefaultApiUpdateTeamRequest) (*Team, *http.Response, error) {
+func (a *DefaultAPIService) UpdateTeamExecute(r DefaultAPIUpdateTeamRequest) (*Team, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -719,7 +719,7 @@ func (a *DefaultApiService) UpdateTeamExecute(r DefaultApiUpdateTeamRequest) (*T
 		localVarReturnValue  *Team
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.UpdateTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdateTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

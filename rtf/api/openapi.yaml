@@ -370,6 +370,20 @@ components:
       description: get Fabrics Health
   schemas:
     errorsResponse:
+      example:
+        errors:
+        - schema: schema
+          data: data
+          type: type
+          keyword: keyword
+          message: message
+          dataPath: dataPath
+        - schema: schema
+          data: data
+          type: type
+          keyword: keyword
+          message: message
+          dataPath: dataPath
       properties:
         errors:
           items:
@@ -780,6 +794,9 @@ components:
           type: array
       type: object
     PostFabrics_404_response:
+      example:
+        name: name
+        message: message
       properties:
         name:
           type: string
@@ -787,6 +804,13 @@ components:
           type: string
       type: object
     errorsResponse_errors_inner:
+      example:
+        schema: schema
+        data: data
+        type: type
+        keyword: keyword
+        message: message
+        dataPath: dataPath
       properties:
         type:
           title: type

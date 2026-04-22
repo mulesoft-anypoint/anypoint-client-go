@@ -12,6 +12,7 @@ package apim_policy
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *ApimPolicyCollection) UnmarshalJSON(data []byte) error {
 		if string(jsonApimPolicyFullData) == "{}" { // empty struct
 			dst.ApimPolicyFullData = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ApimPolicyFullData); err != nil {
+				dst.ApimPolicyFullData = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ApimPolicyFullData = nil
@@ -60,7 +65,11 @@ func (dst *ApimPolicyCollection) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfApimPolicy) == "{}" { // empty struct
 			dst.ArrayOfApimPolicy = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ArrayOfApimPolicy); err != nil {
+				dst.ArrayOfApimPolicy = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ArrayOfApimPolicy = nil

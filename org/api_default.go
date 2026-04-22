@@ -20,22 +20,22 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiCreateBGRequest struct {
+type DefaultAPICreateBGRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	bGPostReqBody *BGPostReqBody
 }
 
 // Business Group Request Body Object
-func (r DefaultApiCreateBGRequest) BGPostReqBody(bGPostReqBody BGPostReqBody) DefaultApiCreateBGRequest {
+func (r DefaultAPICreateBGRequest) BGPostReqBody(bGPostReqBody BGPostReqBody) DefaultAPICreateBGRequest {
 	r.bGPostReqBody = &bGPostReqBody
 	return r
 }
 
-func (r DefaultApiCreateBGRequest) Execute() (*BGCore, *http.Response, error) {
+func (r DefaultAPICreateBGRequest) Execute() (*BGCore, *http.Response, error) {
 	return r.ApiService.CreateBGExecute(r)
 }
 
@@ -45,10 +45,10 @@ CreateBG Creates a new Business Group.
 Creates a new Business Group. This action can only be performed with an access token generated from user/pwd.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return DefaultApiCreateBGRequest
+ @return DefaultAPICreateBGRequest
 */
-func (a *DefaultApiService) CreateBG(ctx context.Context) DefaultApiCreateBGRequest {
-	return DefaultApiCreateBGRequest{
+func (a *DefaultAPIService) CreateBG(ctx context.Context) DefaultAPICreateBGRequest {
+	return DefaultAPICreateBGRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -56,7 +56,7 @@ func (a *DefaultApiService) CreateBG(ctx context.Context) DefaultApiCreateBGRequ
 
 // Execute executes the request
 //  @return BGCore
-func (a *DefaultApiService) CreateBGExecute(r DefaultApiCreateBGRequest) (*BGCore, *http.Response, error) {
+func (a *DefaultAPIService) CreateBGExecute(r DefaultAPICreateBGRequest) (*BGCore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +64,7 @@ func (a *DefaultApiService) CreateBGExecute(r DefaultApiCreateBGRequest) (*BGCor
 		localVarReturnValue  *BGCore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.CreateBG")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.CreateBG")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -145,13 +145,13 @@ func (a *DefaultApiService) CreateBGExecute(r DefaultApiCreateBGRequest) (*BGCor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiDeleteBGRequest struct {
+type DefaultAPIDeleteBGRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 }
 
-func (r DefaultApiDeleteBGRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DefaultAPIDeleteBGRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.DeleteBGExecute(r)
 }
 
@@ -162,10 +162,10 @@ Delete a Business Group by its given id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
- @return DefaultApiDeleteBGRequest
+ @return DefaultAPIDeleteBGRequest
 */
-func (a *DefaultApiService) DeleteBG(ctx context.Context, orgId string) DefaultApiDeleteBGRequest {
-	return DefaultApiDeleteBGRequest{
+func (a *DefaultAPIService) DeleteBG(ctx context.Context, orgId string) DefaultAPIDeleteBGRequest {
+	return DefaultAPIDeleteBGRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -174,7 +174,7 @@ func (a *DefaultApiService) DeleteBG(ctx context.Context, orgId string) DefaultA
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *DefaultApiService) DeleteBGExecute(r DefaultApiDeleteBGRequest) (map[string]interface{}, *http.Response, error) {
+func (a *DefaultAPIService) DeleteBGExecute(r DefaultAPIDeleteBGRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -182,7 +182,7 @@ func (a *DefaultApiService) DeleteBGExecute(r DefaultApiDeleteBGRequest) (map[st
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteBG")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteBG")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -248,13 +248,13 @@ func (a *DefaultApiService) DeleteBGExecute(r DefaultApiDeleteBGRequest) (map[st
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetBGRequest struct {
+type DefaultAPIGetBGRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 }
 
-func (r DefaultApiGetBGRequest) Execute() (*MasterBGDetail, *http.Response, error) {
+func (r DefaultAPIGetBGRequest) Execute() (*MasterBGDetail, *http.Response, error) {
 	return r.ApiService.GetBGExecute(r)
 }
 
@@ -265,10 +265,10 @@ Returns the Business Group with the given id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
- @return DefaultApiGetBGRequest
+ @return DefaultAPIGetBGRequest
 */
-func (a *DefaultApiService) GetBG(ctx context.Context, orgId string) DefaultApiGetBGRequest {
-	return DefaultApiGetBGRequest{
+func (a *DefaultAPIService) GetBG(ctx context.Context, orgId string) DefaultAPIGetBGRequest {
+	return DefaultAPIGetBGRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -277,7 +277,7 @@ func (a *DefaultApiService) GetBG(ctx context.Context, orgId string) DefaultApiG
 
 // Execute executes the request
 //  @return MasterBGDetail
-func (a *DefaultApiService) GetBGExecute(r DefaultApiGetBGRequest) (*MasterBGDetail, *http.Response, error) {
+func (a *DefaultAPIService) GetBGExecute(r DefaultAPIGetBGRequest) (*MasterBGDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -285,7 +285,7 @@ func (a *DefaultApiService) GetBGExecute(r DefaultApiGetBGRequest) (*MasterBGDet
 		localVarReturnValue  *MasterBGDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetBG")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetBG")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -351,13 +351,13 @@ func (a *DefaultApiService) GetBGExecute(r DefaultApiGetBGRequest) (*MasterBGDet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetBGUsageRequest struct {
+type DefaultAPIGetBGUsageRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 }
 
-func (r DefaultApiGetBGUsageRequest) Execute() (*Usage, *http.Response, error) {
+func (r DefaultAPIGetBGUsageRequest) Execute() (*Usage, *http.Response, error) {
 	return r.ApiService.GetBGUsageExecute(r)
 }
 
@@ -368,10 +368,10 @@ Returns the usage for a given Business Group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
- @return DefaultApiGetBGUsageRequest
+ @return DefaultAPIGetBGUsageRequest
 */
-func (a *DefaultApiService) GetBGUsage(ctx context.Context, orgId string) DefaultApiGetBGUsageRequest {
-	return DefaultApiGetBGUsageRequest{
+func (a *DefaultAPIService) GetBGUsage(ctx context.Context, orgId string) DefaultAPIGetBGUsageRequest {
+	return DefaultAPIGetBGUsageRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -380,7 +380,7 @@ func (a *DefaultApiService) GetBGUsage(ctx context.Context, orgId string) Defaul
 
 // Execute executes the request
 //  @return Usage
-func (a *DefaultApiService) GetBGUsageExecute(r DefaultApiGetBGUsageRequest) (*Usage, *http.Response, error) {
+func (a *DefaultAPIService) GetBGUsageExecute(r DefaultAPIGetBGUsageRequest) (*Usage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -388,7 +388,7 @@ func (a *DefaultApiService) GetBGUsageExecute(r DefaultApiGetBGUsageRequest) (*U
 		localVarReturnValue  *Usage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetBGUsage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetBGUsage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -454,14 +454,14 @@ func (a *DefaultApiService) GetBGUsageExecute(r DefaultApiGetBGUsageRequest) (*U
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetClientCredentialsRequest struct {
+type DefaultAPIGetClientCredentialsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	clientId string
 }
 
-func (r DefaultApiGetClientCredentialsRequest) Execute() (*Client, *http.Response, error) {
+func (r DefaultAPIGetClientCredentialsRequest) Execute() (*Client, *http.Response, error) {
 	return r.ApiService.GetClientCredentialsExecute(r)
 }
 
@@ -473,10 +473,10 @@ Get client ID and client secret
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param clientId The client ID of the client
- @return DefaultApiGetClientCredentialsRequest
+ @return DefaultAPIGetClientCredentialsRequest
 */
-func (a *DefaultApiService) GetClientCredentials(ctx context.Context, orgId string, clientId string) DefaultApiGetClientCredentialsRequest {
-	return DefaultApiGetClientCredentialsRequest{
+func (a *DefaultAPIService) GetClientCredentials(ctx context.Context, orgId string, clientId string) DefaultAPIGetClientCredentialsRequest {
+	return DefaultAPIGetClientCredentialsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -486,7 +486,7 @@ func (a *DefaultApiService) GetClientCredentials(ctx context.Context, orgId stri
 
 // Execute executes the request
 //  @return Client
-func (a *DefaultApiService) GetClientCredentialsExecute(r DefaultApiGetClientCredentialsRequest) (*Client, *http.Response, error) {
+func (a *DefaultAPIService) GetClientCredentialsExecute(r DefaultAPIGetClientCredentialsRequest) (*Client, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -494,7 +494,7 @@ func (a *DefaultApiService) GetClientCredentialsExecute(r DefaultApiGetClientCre
 		localVarReturnValue  *Client
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetClientCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetClientCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -561,20 +561,20 @@ func (a *DefaultApiService) GetClientCredentialsExecute(r DefaultApiGetClientCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiUpdateBGRequest struct {
+type DefaultAPIUpdateBGRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	bGUpdateReqBody *BGUpdateReqBody
 }
 
 // Business Group Request Body Object
-func (r DefaultApiUpdateBGRequest) BGUpdateReqBody(bGUpdateReqBody BGUpdateReqBody) DefaultApiUpdateBGRequest {
+func (r DefaultAPIUpdateBGRequest) BGUpdateReqBody(bGUpdateReqBody BGUpdateReqBody) DefaultAPIUpdateBGRequest {
 	r.bGUpdateReqBody = &bGUpdateReqBody
 	return r
 }
 
-func (r DefaultApiUpdateBGRequest) Execute() (*BGCore, *http.Response, error) {
+func (r DefaultAPIUpdateBGRequest) Execute() (*BGCore, *http.Response, error) {
 	return r.ApiService.UpdateBGExecute(r)
 }
 
@@ -585,10 +585,10 @@ Update a Business Group by its given id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
- @return DefaultApiUpdateBGRequest
+ @return DefaultAPIUpdateBGRequest
 */
-func (a *DefaultApiService) UpdateBG(ctx context.Context, orgId string) DefaultApiUpdateBGRequest {
-	return DefaultApiUpdateBGRequest{
+func (a *DefaultAPIService) UpdateBG(ctx context.Context, orgId string) DefaultAPIUpdateBGRequest {
+	return DefaultAPIUpdateBGRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -597,7 +597,7 @@ func (a *DefaultApiService) UpdateBG(ctx context.Context, orgId string) DefaultA
 
 // Execute executes the request
 //  @return BGCore
-func (a *DefaultApiService) UpdateBGExecute(r DefaultApiUpdateBGRequest) (*BGCore, *http.Response, error) {
+func (a *DefaultAPIService) UpdateBGExecute(r DefaultAPIUpdateBGRequest) (*BGCore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -605,7 +605,7 @@ func (a *DefaultApiService) UpdateBGExecute(r DefaultApiUpdateBGRequest) (*BGCor
 		localVarReturnValue  *BGCore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.UpdateBG")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdateBG")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

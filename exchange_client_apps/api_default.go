@@ -20,17 +20,17 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiDeleteExchangeClientAppRequest struct {
+type DefaultAPIDeleteExchangeClientAppRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	appId int32
 }
 
-func (r DefaultApiDeleteExchangeClientAppRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteExchangeClientAppRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteExchangeClientAppExecute(r)
 }
 
@@ -42,10 +42,10 @@ Delete Exchange Client Apps
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param appId The ID of the Exchange App
- @return DefaultApiDeleteExchangeClientAppRequest
+ @return DefaultAPIDeleteExchangeClientAppRequest
 */
-func (a *DefaultApiService) DeleteExchangeClientApp(ctx context.Context, orgId string, appId int32) DefaultApiDeleteExchangeClientAppRequest {
-	return DefaultApiDeleteExchangeClientAppRequest{
+func (a *DefaultAPIService) DeleteExchangeClientApp(ctx context.Context, orgId string, appId int32) DefaultAPIDeleteExchangeClientAppRequest {
+	return DefaultAPIDeleteExchangeClientAppRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -54,14 +54,14 @@ func (a *DefaultApiService) DeleteExchangeClientApp(ctx context.Context, orgId s
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteExchangeClientAppExecute(r DefaultApiDeleteExchangeClientAppRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteExchangeClientAppExecute(r DefaultAPIDeleteExchangeClientAppRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteExchangeClientApp")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteExchangeClientApp")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -141,14 +141,14 @@ func (a *DefaultApiService) DeleteExchangeClientAppExecute(r DefaultApiDeleteExc
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetExchangeClientAppRequest struct {
+type DefaultAPIGetExchangeClientAppRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	appId int32
 }
 
-func (r DefaultApiGetExchangeClientAppRequest) Execute() (*ClientApp, *http.Response, error) {
+func (r DefaultAPIGetExchangeClientAppRequest) Execute() (*ClientApp, *http.Response, error) {
 	return r.ApiService.GetExchangeClientAppExecute(r)
 }
 
@@ -160,10 +160,10 @@ Read a specific Exchange Client App by ID.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param appId The ID of the Exchange App
- @return DefaultApiGetExchangeClientAppRequest
+ @return DefaultAPIGetExchangeClientAppRequest
 */
-func (a *DefaultApiService) GetExchangeClientApp(ctx context.Context, orgId string, appId int32) DefaultApiGetExchangeClientAppRequest {
-	return DefaultApiGetExchangeClientAppRequest{
+func (a *DefaultAPIService) GetExchangeClientApp(ctx context.Context, orgId string, appId int32) DefaultAPIGetExchangeClientAppRequest {
+	return DefaultAPIGetExchangeClientAppRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -173,7 +173,7 @@ func (a *DefaultApiService) GetExchangeClientApp(ctx context.Context, orgId stri
 
 // Execute executes the request
 //  @return ClientApp
-func (a *DefaultApiService) GetExchangeClientAppExecute(r DefaultApiGetExchangeClientAppRequest) (*ClientApp, *http.Response, error) {
+func (a *DefaultAPIService) GetExchangeClientAppExecute(r DefaultAPIGetExchangeClientAppRequest) (*ClientApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -181,7 +181,7 @@ func (a *DefaultApiService) GetExchangeClientAppExecute(r DefaultApiGetExchangeC
 		localVarReturnValue  *ClientApp
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetExchangeClientApp")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetExchangeClientApp")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -270,21 +270,21 @@ func (a *DefaultApiService) GetExchangeClientAppExecute(r DefaultApiGetExchangeC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetExchangeClientAppContractsRequest struct {
+type DefaultAPIGetExchangeClientAppContractsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	appId int32
 	includeContractsForApiVersion *int32
 }
 
 // This field is used to filter by API version
-func (r DefaultApiGetExchangeClientAppContractsRequest) IncludeContractsForApiVersion(includeContractsForApiVersion int32) DefaultApiGetExchangeClientAppContractsRequest {
+func (r DefaultAPIGetExchangeClientAppContractsRequest) IncludeContractsForApiVersion(includeContractsForApiVersion int32) DefaultAPIGetExchangeClientAppContractsRequest {
 	r.includeContractsForApiVersion = &includeContractsForApiVersion
 	return r
 }
 
-func (r DefaultApiGetExchangeClientAppContractsRequest) Execute() ([]ClientAppContract, *http.Response, error) {
+func (r DefaultAPIGetExchangeClientAppContractsRequest) Execute() ([]ClientAppContract, *http.Response, error) {
 	return r.ApiService.GetExchangeClientAppContractsExecute(r)
 }
 
@@ -296,10 +296,10 @@ Get Exchange Client Application Contracts
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
  @param appId The ID of the Exchange App
- @return DefaultApiGetExchangeClientAppContractsRequest
+ @return DefaultAPIGetExchangeClientAppContractsRequest
 */
-func (a *DefaultApiService) GetExchangeClientAppContracts(ctx context.Context, orgId string, appId int32) DefaultApiGetExchangeClientAppContractsRequest {
-	return DefaultApiGetExchangeClientAppContractsRequest{
+func (a *DefaultAPIService) GetExchangeClientAppContracts(ctx context.Context, orgId string, appId int32) DefaultAPIGetExchangeClientAppContractsRequest {
+	return DefaultAPIGetExchangeClientAppContractsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -309,7 +309,7 @@ func (a *DefaultApiService) GetExchangeClientAppContracts(ctx context.Context, o
 
 // Execute executes the request
 //  @return []ClientAppContract
-func (a *DefaultApiService) GetExchangeClientAppContractsExecute(r DefaultApiGetExchangeClientAppContractsRequest) ([]ClientAppContract, *http.Response, error) {
+func (a *DefaultAPIService) GetExchangeClientAppContractsExecute(r DefaultAPIGetExchangeClientAppContractsRequest) ([]ClientAppContract, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -317,7 +317,7 @@ func (a *DefaultApiService) GetExchangeClientAppContractsExecute(r DefaultApiGet
 		localVarReturnValue  []ClientAppContract
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetExchangeClientAppContracts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetExchangeClientAppContracts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -331,7 +331,7 @@ func (a *DefaultApiService) GetExchangeClientAppContractsExecute(r DefaultApiGet
 	localVarFormParams := url.Values{}
 
 	if r.includeContractsForApiVersion != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeContractsForApiVersion", r.includeContractsForApiVersion, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeContractsForApiVersion", r.includeContractsForApiVersion, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -398,9 +398,9 @@ func (a *DefaultApiService) GetExchangeClientAppContractsExecute(r DefaultApiGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetExchangeClientAppsRequest struct {
+type DefaultAPIGetExchangeClientAppsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	targetAdminSite *bool
 	query *string
@@ -409,30 +409,30 @@ type DefaultApiGetExchangeClientAppsRequest struct {
 }
 
 // MUST be set to true in order to get the Client ID and Secret. Without this query parameter, the same call will return all the Client Applications but not the Client ID and Secret (and other info).
-func (r DefaultApiGetExchangeClientAppsRequest) TargetAdminSite(targetAdminSite bool) DefaultApiGetExchangeClientAppsRequest {
+func (r DefaultAPIGetExchangeClientAppsRequest) TargetAdminSite(targetAdminSite bool) DefaultAPIGetExchangeClientAppsRequest {
 	r.targetAdminSite = &targetAdminSite
 	return r
 }
 
 // Filter results that matches the input
-func (r DefaultApiGetExchangeClientAppsRequest) Query(query string) DefaultApiGetExchangeClientAppsRequest {
+func (r DefaultAPIGetExchangeClientAppsRequest) Query(query string) DefaultAPIGetExchangeClientAppsRequest {
 	r.query = &query
 	return r
 }
 
 // The offset specifies the offset of the first row to return
-func (r DefaultApiGetExchangeClientAppsRequest) Offset(offset int32) DefaultApiGetExchangeClientAppsRequest {
+func (r DefaultAPIGetExchangeClientAppsRequest) Offset(offset int32) DefaultAPIGetExchangeClientAppsRequest {
 	r.offset = &offset
 	return r
 }
 
 // Amount of objects retrieved in the response
-func (r DefaultApiGetExchangeClientAppsRequest) Limit(limit int32) DefaultApiGetExchangeClientAppsRequest {
+func (r DefaultAPIGetExchangeClientAppsRequest) Limit(limit int32) DefaultAPIGetExchangeClientAppsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r DefaultApiGetExchangeClientAppsRequest) Execute() ([]ClientApp, *http.Response, error) {
+func (r DefaultAPIGetExchangeClientAppsRequest) Execute() ([]ClientApp, *http.Response, error) {
 	return r.ApiService.GetExchangeClientAppsExecute(r)
 }
 
@@ -444,10 +444,10 @@ Read All or partial Exchange Client Apps. If you need to get all the available e
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
- @return DefaultApiGetExchangeClientAppsRequest
+ @return DefaultAPIGetExchangeClientAppsRequest
 */
-func (a *DefaultApiService) GetExchangeClientApps(ctx context.Context, orgId string) DefaultApiGetExchangeClientAppsRequest {
-	return DefaultApiGetExchangeClientAppsRequest{
+func (a *DefaultAPIService) GetExchangeClientApps(ctx context.Context, orgId string) DefaultAPIGetExchangeClientAppsRequest {
+	return DefaultAPIGetExchangeClientAppsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -456,7 +456,7 @@ func (a *DefaultApiService) GetExchangeClientApps(ctx context.Context, orgId str
 
 // Execute executes the request
 //  @return []ClientApp
-func (a *DefaultApiService) GetExchangeClientAppsExecute(r DefaultApiGetExchangeClientAppsRequest) ([]ClientApp, *http.Response, error) {
+func (a *DefaultAPIService) GetExchangeClientAppsExecute(r DefaultAPIGetExchangeClientAppsRequest) ([]ClientApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -464,7 +464,7 @@ func (a *DefaultApiService) GetExchangeClientAppsExecute(r DefaultApiGetExchange
 		localVarReturnValue  []ClientApp
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetExchangeClientApps")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetExchangeClientApps")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -477,16 +477,16 @@ func (a *DefaultApiService) GetExchangeClientAppsExecute(r DefaultApiGetExchange
 	localVarFormParams := url.Values{}
 
 	if r.targetAdminSite != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "targetAdminSite", r.targetAdminSite, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "targetAdminSite", r.targetAdminSite, "form", "")
 	}
 	if r.query != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -553,26 +553,26 @@ func (a *DefaultApiService) GetExchangeClientAppsExecute(r DefaultApiGetExchange
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPostExchangeClientAppRequest struct {
+type DefaultAPIPostExchangeClientAppRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	apiInstanceId *string
 	postExchangeAppsBody *PostExchangeAppsBody
 }
 
 // The API Manager Instance Id
-func (r DefaultApiPostExchangeClientAppRequest) ApiInstanceId(apiInstanceId string) DefaultApiPostExchangeClientAppRequest {
+func (r DefaultAPIPostExchangeClientAppRequest) ApiInstanceId(apiInstanceId string) DefaultAPIPostExchangeClientAppRequest {
 	r.apiInstanceId = &apiInstanceId
 	return r
 }
 
-func (r DefaultApiPostExchangeClientAppRequest) PostExchangeAppsBody(postExchangeAppsBody PostExchangeAppsBody) DefaultApiPostExchangeClientAppRequest {
+func (r DefaultAPIPostExchangeClientAppRequest) PostExchangeAppsBody(postExchangeAppsBody PostExchangeAppsBody) DefaultAPIPostExchangeClientAppRequest {
 	r.postExchangeAppsBody = &postExchangeAppsBody
 	return r
 }
 
-func (r DefaultApiPostExchangeClientAppRequest) Execute() (*ClientApp, *http.Response, error) {
+func (r DefaultAPIPostExchangeClientAppRequest) Execute() (*ClientApp, *http.Response, error) {
 	return r.ApiService.PostExchangeClientAppExecute(r)
 }
 
@@ -583,10 +583,10 @@ Create a new Exchange Client App
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The ID of the organization in GUID format
- @return DefaultApiPostExchangeClientAppRequest
+ @return DefaultAPIPostExchangeClientAppRequest
 */
-func (a *DefaultApiService) PostExchangeClientApp(ctx context.Context, orgId string) DefaultApiPostExchangeClientAppRequest {
-	return DefaultApiPostExchangeClientAppRequest{
+func (a *DefaultAPIService) PostExchangeClientApp(ctx context.Context, orgId string) DefaultAPIPostExchangeClientAppRequest {
+	return DefaultAPIPostExchangeClientAppRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -595,7 +595,7 @@ func (a *DefaultApiService) PostExchangeClientApp(ctx context.Context, orgId str
 
 // Execute executes the request
 //  @return ClientApp
-func (a *DefaultApiService) PostExchangeClientAppExecute(r DefaultApiPostExchangeClientAppRequest) (*ClientApp, *http.Response, error) {
+func (a *DefaultAPIService) PostExchangeClientAppExecute(r DefaultAPIPostExchangeClientAppRequest) (*ClientApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -603,7 +603,7 @@ func (a *DefaultApiService) PostExchangeClientAppExecute(r DefaultApiPostExchang
 		localVarReturnValue  *ClientApp
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PostExchangeClientApp")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PostExchangeClientApp")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -616,7 +616,7 @@ func (a *DefaultApiService) PostExchangeClientAppExecute(r DefaultApiPostExchang
 	localVarFormParams := url.Values{}
 
 	if r.apiInstanceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "apiInstanceId", r.apiInstanceId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "apiInstanceId", r.apiInstanceId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

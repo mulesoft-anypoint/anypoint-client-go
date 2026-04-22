@@ -20,17 +20,17 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiDeleteFabricsRequest struct {
+type DefaultAPIDeleteFabricsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	fabricsId string
 }
 
-func (r DefaultApiDeleteFabricsRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteFabricsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteFabricsExecute(r)
 }
 
@@ -42,10 +42,10 @@ Delete a specific Runtime Fabrics Instance by id.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
  @param fabricsId The Runtime Fabrics Instance id
- @return DefaultApiDeleteFabricsRequest
+ @return DefaultAPIDeleteFabricsRequest
 */
-func (a *DefaultApiService) DeleteFabrics(ctx context.Context, orgId string, fabricsId string) DefaultApiDeleteFabricsRequest {
-	return DefaultApiDeleteFabricsRequest{
+func (a *DefaultAPIService) DeleteFabrics(ctx context.Context, orgId string, fabricsId string) DefaultAPIDeleteFabricsRequest {
+	return DefaultAPIDeleteFabricsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -54,14 +54,14 @@ func (a *DefaultApiService) DeleteFabrics(ctx context.Context, orgId string, fab
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteFabricsExecute(r DefaultApiDeleteFabricsRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteFabricsExecute(r DefaultAPIDeleteFabricsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteFabrics")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteFabrics")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -130,13 +130,13 @@ func (a *DefaultApiService) DeleteFabricsExecute(r DefaultApiDeleteFabricsReques
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetAllFabricsRequest struct {
+type DefaultAPIGetAllFabricsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 }
 
-func (r DefaultApiGetAllFabricsRequest) Execute() ([]Fabrics, *http.Response, error) {
+func (r DefaultAPIGetAllFabricsRequest) Execute() ([]Fabrics, *http.Response, error) {
 	return r.ApiService.GetAllFabricsExecute(r)
 }
 
@@ -147,10 +147,10 @@ Retrieves a list of all available Runtime Fabrics in the given organization.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
- @return DefaultApiGetAllFabricsRequest
+ @return DefaultAPIGetAllFabricsRequest
 */
-func (a *DefaultApiService) GetAllFabrics(ctx context.Context, orgId string) DefaultApiGetAllFabricsRequest {
-	return DefaultApiGetAllFabricsRequest{
+func (a *DefaultAPIService) GetAllFabrics(ctx context.Context, orgId string) DefaultAPIGetAllFabricsRequest {
+	return DefaultAPIGetAllFabricsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -159,7 +159,7 @@ func (a *DefaultApiService) GetAllFabrics(ctx context.Context, orgId string) Def
 
 // Execute executes the request
 //  @return []Fabrics
-func (a *DefaultApiService) GetAllFabricsExecute(r DefaultApiGetAllFabricsRequest) ([]Fabrics, *http.Response, error) {
+func (a *DefaultAPIService) GetAllFabricsExecute(r DefaultAPIGetAllFabricsRequest) ([]Fabrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -167,7 +167,7 @@ func (a *DefaultApiService) GetAllFabricsExecute(r DefaultApiGetAllFabricsReques
 		localVarReturnValue  []Fabrics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetAllFabrics")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetAllFabrics")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -244,14 +244,14 @@ func (a *DefaultApiService) GetAllFabricsExecute(r DefaultApiGetAllFabricsReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetFabricsRequest struct {
+type DefaultAPIGetFabricsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	fabricsId string
 }
 
-func (r DefaultApiGetFabricsRequest) Execute() (*Fabrics, *http.Response, error) {
+func (r DefaultAPIGetFabricsRequest) Execute() (*Fabrics, *http.Response, error) {
 	return r.ApiService.GetFabricsExecute(r)
 }
 
@@ -263,10 +263,10 @@ Retrieves a specific Runtime Fabrics Instance by id.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
  @param fabricsId The Runtime Fabrics Instance id
- @return DefaultApiGetFabricsRequest
+ @return DefaultAPIGetFabricsRequest
 */
-func (a *DefaultApiService) GetFabrics(ctx context.Context, orgId string, fabricsId string) DefaultApiGetFabricsRequest {
-	return DefaultApiGetFabricsRequest{
+func (a *DefaultAPIService) GetFabrics(ctx context.Context, orgId string, fabricsId string) DefaultAPIGetFabricsRequest {
+	return DefaultAPIGetFabricsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -276,7 +276,7 @@ func (a *DefaultApiService) GetFabrics(ctx context.Context, orgId string, fabric
 
 // Execute executes the request
 //  @return Fabrics
-func (a *DefaultApiService) GetFabricsExecute(r DefaultApiGetFabricsRequest) (*Fabrics, *http.Response, error) {
+func (a *DefaultAPIService) GetFabricsExecute(r DefaultAPIGetFabricsRequest) (*Fabrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -284,7 +284,7 @@ func (a *DefaultApiService) GetFabricsExecute(r DefaultApiGetFabricsRequest) (*F
 		localVarReturnValue  *Fabrics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetFabrics")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetFabrics")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -362,14 +362,14 @@ func (a *DefaultApiService) GetFabricsExecute(r DefaultApiGetFabricsRequest) (*F
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetFabricsAssociationsRequest struct {
+type DefaultAPIGetFabricsAssociationsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	fabricsId string
 }
 
-func (r DefaultApiGetFabricsAssociationsRequest) Execute() ([]FabricsAssociationsInner, *http.Response, error) {
+func (r DefaultAPIGetFabricsAssociationsRequest) Execute() ([]FabricsAssociationsInner, *http.Response, error) {
 	return r.ApiService.GetFabricsAssociationsExecute(r)
 }
 
@@ -381,10 +381,10 @@ Get Runtime Fabrics instance Environment Associations.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
  @param fabricsId The Runtime Fabrics Instance id
- @return DefaultApiGetFabricsAssociationsRequest
+ @return DefaultAPIGetFabricsAssociationsRequest
 */
-func (a *DefaultApiService) GetFabricsAssociations(ctx context.Context, orgId string, fabricsId string) DefaultApiGetFabricsAssociationsRequest {
-	return DefaultApiGetFabricsAssociationsRequest{
+func (a *DefaultAPIService) GetFabricsAssociations(ctx context.Context, orgId string, fabricsId string) DefaultAPIGetFabricsAssociationsRequest {
+	return DefaultAPIGetFabricsAssociationsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -394,7 +394,7 @@ func (a *DefaultApiService) GetFabricsAssociations(ctx context.Context, orgId st
 
 // Execute executes the request
 //  @return []FabricsAssociationsInner
-func (a *DefaultApiService) GetFabricsAssociationsExecute(r DefaultApiGetFabricsAssociationsRequest) ([]FabricsAssociationsInner, *http.Response, error) {
+func (a *DefaultAPIService) GetFabricsAssociationsExecute(r DefaultAPIGetFabricsAssociationsRequest) ([]FabricsAssociationsInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -402,7 +402,7 @@ func (a *DefaultApiService) GetFabricsAssociationsExecute(r DefaultApiGetFabrics
 		localVarReturnValue  []FabricsAssociationsInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetFabricsAssociations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetFabricsAssociations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -491,14 +491,14 @@ func (a *DefaultApiService) GetFabricsAssociationsExecute(r DefaultApiGetFabrics
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetFabricsHealthRequest struct {
+type DefaultAPIGetFabricsHealthRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	fabricsId string
 }
 
-func (r DefaultApiGetFabricsHealthRequest) Execute() (*FabricsHealth, *http.Response, error) {
+func (r DefaultAPIGetFabricsHealthRequest) Execute() (*FabricsHealth, *http.Response, error) {
 	return r.ApiService.GetFabricsHealthExecute(r)
 }
 
@@ -510,10 +510,10 @@ Retrieves health for a specific Runtime Fabrics Instance by id.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
  @param fabricsId The Runtime Fabrics Instance id
- @return DefaultApiGetFabricsHealthRequest
+ @return DefaultAPIGetFabricsHealthRequest
 */
-func (a *DefaultApiService) GetFabricsHealth(ctx context.Context, orgId string, fabricsId string) DefaultApiGetFabricsHealthRequest {
-	return DefaultApiGetFabricsHealthRequest{
+func (a *DefaultAPIService) GetFabricsHealth(ctx context.Context, orgId string, fabricsId string) DefaultAPIGetFabricsHealthRequest {
+	return DefaultAPIGetFabricsHealthRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -523,7 +523,7 @@ func (a *DefaultApiService) GetFabricsHealth(ctx context.Context, orgId string, 
 
 // Execute executes the request
 //  @return FabricsHealth
-func (a *DefaultApiService) GetFabricsHealthExecute(r DefaultApiGetFabricsHealthRequest) (*FabricsHealth, *http.Response, error) {
+func (a *DefaultAPIService) GetFabricsHealthExecute(r DefaultAPIGetFabricsHealthRequest) (*FabricsHealth, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -531,7 +531,7 @@ func (a *DefaultApiService) GetFabricsHealthExecute(r DefaultApiGetFabricsHealth
 		localVarReturnValue  *FabricsHealth
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetFabricsHealth")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetFabricsHealth")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -609,13 +609,13 @@ func (a *DefaultApiService) GetFabricsHealthExecute(r DefaultApiGetFabricsHealth
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetFabricsHelmRepoPropsRequest struct {
+type DefaultAPIGetFabricsHelmRepoPropsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 }
 
-func (r DefaultApiGetFabricsHelmRepoPropsRequest) Execute() (*FabricsHelmRepoProps, *http.Response, error) {
+func (r DefaultAPIGetFabricsHelmRepoPropsRequest) Execute() (*FabricsHelmRepoProps, *http.Response, error) {
 	return r.ApiService.GetFabricsHelmRepoPropsExecute(r)
 }
 
@@ -626,10 +626,10 @@ Retrieves Helm repo properties for a specific Runtime Fabrics Instance by id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
- @return DefaultApiGetFabricsHelmRepoPropsRequest
+ @return DefaultAPIGetFabricsHelmRepoPropsRequest
 */
-func (a *DefaultApiService) GetFabricsHelmRepoProps(ctx context.Context, orgId string) DefaultApiGetFabricsHelmRepoPropsRequest {
-	return DefaultApiGetFabricsHelmRepoPropsRequest{
+func (a *DefaultAPIService) GetFabricsHelmRepoProps(ctx context.Context, orgId string) DefaultAPIGetFabricsHelmRepoPropsRequest {
+	return DefaultAPIGetFabricsHelmRepoPropsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -638,7 +638,7 @@ func (a *DefaultApiService) GetFabricsHelmRepoProps(ctx context.Context, orgId s
 
 // Execute executes the request
 //  @return FabricsHelmRepoProps
-func (a *DefaultApiService) GetFabricsHelmRepoPropsExecute(r DefaultApiGetFabricsHelmRepoPropsRequest) (*FabricsHelmRepoProps, *http.Response, error) {
+func (a *DefaultAPIService) GetFabricsHelmRepoPropsExecute(r DefaultAPIGetFabricsHelmRepoPropsRequest) (*FabricsHelmRepoProps, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -646,7 +646,7 @@ func (a *DefaultApiService) GetFabricsHelmRepoPropsExecute(r DefaultApiGetFabric
 		localVarReturnValue  *FabricsHelmRepoProps
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetFabricsHelmRepoProps")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetFabricsHelmRepoProps")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -723,19 +723,19 @@ func (a *DefaultApiService) GetFabricsHelmRepoPropsExecute(r DefaultApiGetFabric
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPostFabricsRequest struct {
+type DefaultAPIPostFabricsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	fabricsPostBody *FabricsPostBody
 }
 
-func (r DefaultApiPostFabricsRequest) FabricsPostBody(fabricsPostBody FabricsPostBody) DefaultApiPostFabricsRequest {
+func (r DefaultAPIPostFabricsRequest) FabricsPostBody(fabricsPostBody FabricsPostBody) DefaultAPIPostFabricsRequest {
 	r.fabricsPostBody = &fabricsPostBody
 	return r
 }
 
-func (r DefaultApiPostFabricsRequest) Execute() (*Fabrics, *http.Response, error) {
+func (r DefaultAPIPostFabricsRequest) Execute() (*Fabrics, *http.Response, error) {
 	return r.ApiService.PostFabricsExecute(r)
 }
 
@@ -746,10 +746,10 @@ Creates a Runtime Fabrics instance.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
- @return DefaultApiPostFabricsRequest
+ @return DefaultAPIPostFabricsRequest
 */
-func (a *DefaultApiService) PostFabrics(ctx context.Context, orgId string) DefaultApiPostFabricsRequest {
-	return DefaultApiPostFabricsRequest{
+func (a *DefaultAPIService) PostFabrics(ctx context.Context, orgId string) DefaultAPIPostFabricsRequest {
+	return DefaultAPIPostFabricsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -758,7 +758,7 @@ func (a *DefaultApiService) PostFabrics(ctx context.Context, orgId string) Defau
 
 // Execute executes the request
 //  @return Fabrics
-func (a *DefaultApiService) PostFabricsExecute(r DefaultApiPostFabricsRequest) (*Fabrics, *http.Response, error) {
+func (a *DefaultAPIService) PostFabricsExecute(r DefaultAPIPostFabricsRequest) (*Fabrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -766,7 +766,7 @@ func (a *DefaultApiService) PostFabricsExecute(r DefaultApiPostFabricsRequest) (
 		localVarReturnValue  *Fabrics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PostFabrics")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PostFabrics")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -856,20 +856,20 @@ func (a *DefaultApiService) PostFabricsExecute(r DefaultApiPostFabricsRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiPostFabricsAssociationsRequest struct {
+type DefaultAPIPostFabricsAssociationsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	fabricsId string
 	fabricsAssociationsPostBody *FabricsAssociationsPostBody
 }
 
-func (r DefaultApiPostFabricsAssociationsRequest) FabricsAssociationsPostBody(fabricsAssociationsPostBody FabricsAssociationsPostBody) DefaultApiPostFabricsAssociationsRequest {
+func (r DefaultAPIPostFabricsAssociationsRequest) FabricsAssociationsPostBody(fabricsAssociationsPostBody FabricsAssociationsPostBody) DefaultAPIPostFabricsAssociationsRequest {
 	r.fabricsAssociationsPostBody = &fabricsAssociationsPostBody
 	return r
 }
 
-func (r DefaultApiPostFabricsAssociationsRequest) Execute() ([]FabricsAssociationsInner, *http.Response, error) {
+func (r DefaultAPIPostFabricsAssociationsRequest) Execute() ([]FabricsAssociationsInner, *http.Response, error) {
 	return r.ApiService.PostFabricsAssociationsExecute(r)
 }
 
@@ -881,10 +881,10 @@ Creates Runtime Fabrics instance Environment Associations.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId The organization Id
  @param fabricsId The Runtime Fabrics Instance id
- @return DefaultApiPostFabricsAssociationsRequest
+ @return DefaultAPIPostFabricsAssociationsRequest
 */
-func (a *DefaultApiService) PostFabricsAssociations(ctx context.Context, orgId string, fabricsId string) DefaultApiPostFabricsAssociationsRequest {
-	return DefaultApiPostFabricsAssociationsRequest{
+func (a *DefaultAPIService) PostFabricsAssociations(ctx context.Context, orgId string, fabricsId string) DefaultAPIPostFabricsAssociationsRequest {
+	return DefaultAPIPostFabricsAssociationsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -894,7 +894,7 @@ func (a *DefaultApiService) PostFabricsAssociations(ctx context.Context, orgId s
 
 // Execute executes the request
 //  @return []FabricsAssociationsInner
-func (a *DefaultApiService) PostFabricsAssociationsExecute(r DefaultApiPostFabricsAssociationsRequest) ([]FabricsAssociationsInner, *http.Response, error) {
+func (a *DefaultAPIService) PostFabricsAssociationsExecute(r DefaultAPIPostFabricsAssociationsRequest) ([]FabricsAssociationsInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -902,7 +902,7 @@ func (a *DefaultApiService) PostFabricsAssociationsExecute(r DefaultApiPostFabri
 		localVarReturnValue  []FabricsAssociationsInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PostFabricsAssociations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.PostFabricsAssociations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

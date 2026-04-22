@@ -20,24 +20,24 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
-type DefaultApiCreateApiContractRequest struct {
+type DefaultAPICreateApiContractRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	apiId string
 	postApiContract *PostApiContract
 }
 
-func (r DefaultApiCreateApiContractRequest) PostApiContract(postApiContract PostApiContract) DefaultApiCreateApiContractRequest {
+func (r DefaultAPICreateApiContractRequest) PostApiContract(postApiContract PostApiContract) DefaultAPICreateApiContractRequest {
 	r.postApiContract = &postApiContract
 	return r
 }
 
-func (r DefaultApiCreateApiContractRequest) Execute() (*ContractDetails, *http.Response, error) {
+func (r DefaultAPICreateApiContractRequest) Execute() (*ContractDetails, *http.Response, error) {
 	return r.ApiService.CreateApiContractExecute(r)
 }
 
@@ -51,10 +51,10 @@ Creates a new contract for a given API in a given organization and environment C
  @param orgId The organization Id
  @param envId The environment id
  @param apiId The api manager instance id for a given environment
- @return DefaultApiCreateApiContractRequest
+ @return DefaultAPICreateApiContractRequest
 */
-func (a *DefaultApiService) CreateApiContract(ctx context.Context, orgId string, envId string, apiId string) DefaultApiCreateApiContractRequest {
-	return DefaultApiCreateApiContractRequest{
+func (a *DefaultAPIService) CreateApiContract(ctx context.Context, orgId string, envId string, apiId string) DefaultAPICreateApiContractRequest {
+	return DefaultAPICreateApiContractRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -65,7 +65,7 @@ func (a *DefaultApiService) CreateApiContract(ctx context.Context, orgId string,
 
 // Execute executes the request
 //  @return ContractDetails
-func (a *DefaultApiService) CreateApiContractExecute(r DefaultApiCreateApiContractRequest) (*ContractDetails, *http.Response, error) {
+func (a *DefaultAPIService) CreateApiContractExecute(r DefaultAPICreateApiContractRequest) (*ContractDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -73,7 +73,7 @@ func (a *DefaultApiService) CreateApiContractExecute(r DefaultApiCreateApiContra
 		localVarReturnValue  *ContractDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.CreateApiContract")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.CreateApiContract")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -146,16 +146,16 @@ func (a *DefaultApiService) CreateApiContractExecute(r DefaultApiCreateApiContra
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiDeleteApiContractRequest struct {
+type DefaultAPIDeleteApiContractRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	apiId string
 	contractId string
 }
 
-func (r DefaultApiDeleteApiContractRequest) Execute() (*http.Response, error) {
+func (r DefaultAPIDeleteApiContractRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteApiContractExecute(r)
 }
 
@@ -170,10 +170,10 @@ Deletes a contract for a given API in a given organization and environment Conne
  @param envId The environment id
  @param apiId The api manager instance id for a given environment
  @param contractId The contract id
- @return DefaultApiDeleteApiContractRequest
+ @return DefaultAPIDeleteApiContractRequest
 */
-func (a *DefaultApiService) DeleteApiContract(ctx context.Context, orgId string, envId string, apiId string, contractId string) DefaultApiDeleteApiContractRequest {
-	return DefaultApiDeleteApiContractRequest{
+func (a *DefaultAPIService) DeleteApiContract(ctx context.Context, orgId string, envId string, apiId string, contractId string) DefaultAPIDeleteApiContractRequest {
+	return DefaultAPIDeleteApiContractRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -184,14 +184,14 @@ func (a *DefaultApiService) DeleteApiContract(ctx context.Context, orgId string,
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteApiContractExecute(r DefaultApiDeleteApiContractRequest) (*http.Response, error) {
+func (a *DefaultAPIService) DeleteApiContractExecute(r DefaultAPIDeleteApiContractRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteApiContract")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeleteApiContract")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -251,16 +251,16 @@ func (a *DefaultApiService) DeleteApiContractExecute(r DefaultApiDeleteApiContra
 	return localVarHTTPResponse, nil
 }
 
-type DefaultApiGetApiContractRequest struct {
+type DefaultAPIGetApiContractRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	apiId string
 	contractId string
 }
 
-func (r DefaultApiGetApiContractRequest) Execute() (*ContractDetails, *http.Response, error) {
+func (r DefaultAPIGetApiContractRequest) Execute() (*ContractDetails, *http.Response, error) {
 	return r.ApiService.GetApiContractExecute(r)
 }
 
@@ -275,10 +275,10 @@ Retrieves a contract for a given API in a given organization and environment Con
  @param envId The environment id
  @param apiId The api manager instance id for a given environment
  @param contractId The contract id
- @return DefaultApiGetApiContractRequest
+ @return DefaultAPIGetApiContractRequest
 */
-func (a *DefaultApiService) GetApiContract(ctx context.Context, orgId string, envId string, apiId string, contractId string) DefaultApiGetApiContractRequest {
-	return DefaultApiGetApiContractRequest{
+func (a *DefaultAPIService) GetApiContract(ctx context.Context, orgId string, envId string, apiId string, contractId string) DefaultAPIGetApiContractRequest {
+	return DefaultAPIGetApiContractRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -290,7 +290,7 @@ func (a *DefaultApiService) GetApiContract(ctx context.Context, orgId string, en
 
 // Execute executes the request
 //  @return ContractDetails
-func (a *DefaultApiService) GetApiContractExecute(r DefaultApiGetApiContractRequest) (*ContractDetails, *http.Response, error) {
+func (a *DefaultAPIService) GetApiContractExecute(r DefaultAPIGetApiContractRequest) (*ContractDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -298,7 +298,7 @@ func (a *DefaultApiService) GetApiContractExecute(r DefaultApiGetApiContractRequ
 		localVarReturnValue  *ContractDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetApiContract")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetApiContract")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -367,9 +367,9 @@ func (a *DefaultApiService) GetApiContractExecute(r DefaultApiGetApiContractRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiGetApiContractsRequest struct {
+type DefaultAPIGetApiContractsRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	apiId string
@@ -384,54 +384,54 @@ type DefaultApiGetApiContractsRequest struct {
 }
 
 // The maximum number of contracts to return
-func (r DefaultApiGetApiContractsRequest) Limit(limit int32) DefaultApiGetApiContractsRequest {
+func (r DefaultAPIGetApiContractsRequest) Limit(limit int32) DefaultAPIGetApiContractsRequest {
 	r.limit = &limit
 	return r
 }
 
 // The offset of the first contract to return
-func (r DefaultApiGetApiContractsRequest) Offset(offset int32) DefaultApiGetApiContractsRequest {
+func (r DefaultAPIGetApiContractsRequest) Offset(offset int32) DefaultAPIGetApiContractsRequest {
 	r.offset = &offset
 	return r
 }
 
 // The field to sort by
-func (r DefaultApiGetApiContractsRequest) Sort(sort string) DefaultApiGetApiContractsRequest {
+func (r DefaultAPIGetApiContractsRequest) Sort(sort string) DefaultAPIGetApiContractsRequest {
 	r.sort = &sort
 	return r
 }
 
 // The order to sort by
-func (r DefaultApiGetApiContractsRequest) Order(order string) DefaultApiGetApiContractsRequest {
+func (r DefaultAPIGetApiContractsRequest) Order(order string) DefaultAPIGetApiContractsRequest {
 	r.order = &order
 	return r
 }
 
 // The order to sort by
-func (r DefaultApiGetApiContractsRequest) Ascending(ascending bool) DefaultApiGetApiContractsRequest {
+func (r DefaultAPIGetApiContractsRequest) Ascending(ascending bool) DefaultAPIGetApiContractsRequest {
 	r.ascending = &ascending
 	return r
 }
 
 // The status of the contract
-func (r DefaultApiGetApiContractsRequest) Status(status string) DefaultApiGetApiContractsRequest {
+func (r DefaultAPIGetApiContractsRequest) Status(status string) DefaultAPIGetApiContractsRequest {
 	r.status = &status
 	return r
 }
 
 // A string that will be checked for a partial or similar matches of the name, description, label and tags
-func (r DefaultApiGetApiContractsRequest) Query(query string) DefaultApiGetApiContractsRequest {
+func (r DefaultAPIGetApiContractsRequest) Query(query string) DefaultAPIGetApiContractsRequest {
 	r.query = &query
 	return r
 }
 
 // Whether to include extra application data
-func (r DefaultApiGetApiContractsRequest) IncludeExtraApplicationData(includeExtraApplicationData bool) DefaultApiGetApiContractsRequest {
+func (r DefaultAPIGetApiContractsRequest) IncludeExtraApplicationData(includeExtraApplicationData bool) DefaultAPIGetApiContractsRequest {
 	r.includeExtraApplicationData = &includeExtraApplicationData
 	return r
 }
 
-func (r DefaultApiGetApiContractsRequest) Execute() (*GetContractsResponse, *http.Response, error) {
+func (r DefaultAPIGetApiContractsRequest) Execute() (*GetContractsResponse, *http.Response, error) {
 	return r.ApiService.GetApiContractsExecute(r)
 }
 
@@ -445,10 +445,10 @@ Retrieves all contracts for a given API in a given organization and environment 
  @param orgId The organization Id
  @param envId The environment id
  @param apiId The api manager instance id for a given environment
- @return DefaultApiGetApiContractsRequest
+ @return DefaultAPIGetApiContractsRequest
 */
-func (a *DefaultApiService) GetApiContracts(ctx context.Context, orgId string, envId string, apiId string) DefaultApiGetApiContractsRequest {
-	return DefaultApiGetApiContractsRequest{
+func (a *DefaultAPIService) GetApiContracts(ctx context.Context, orgId string, envId string, apiId string) DefaultAPIGetApiContractsRequest {
+	return DefaultAPIGetApiContractsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -459,7 +459,7 @@ func (a *DefaultApiService) GetApiContracts(ctx context.Context, orgId string, e
 
 // Execute executes the request
 //  @return GetContractsResponse
-func (a *DefaultApiService) GetApiContractsExecute(r DefaultApiGetApiContractsRequest) (*GetContractsResponse, *http.Response, error) {
+func (a *DefaultAPIService) GetApiContractsExecute(r DefaultAPIGetApiContractsRequest) (*GetContractsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -467,7 +467,7 @@ func (a *DefaultApiService) GetApiContractsExecute(r DefaultApiGetApiContractsRe
 		localVarReturnValue  *GetContractsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetApiContracts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetApiContracts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -482,28 +482,28 @@ func (a *DefaultApiService) GetApiContractsExecute(r DefaultApiGetApiContractsRe
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.ascending != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ascending", r.ascending, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ascending", r.ascending, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.query != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")
 	}
 	if r.includeExtraApplicationData != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeExtraApplicationData", r.includeExtraApplicationData, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeExtraApplicationData", r.includeExtraApplicationData, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -559,9 +559,9 @@ func (a *DefaultApiService) GetApiContractsExecute(r DefaultApiGetApiContractsRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiUpdateApiContractRequest struct {
+type DefaultAPIUpdateApiContractRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	apiId string
@@ -569,12 +569,12 @@ type DefaultApiUpdateApiContractRequest struct {
 	patchApiContract *PatchApiContract
 }
 
-func (r DefaultApiUpdateApiContractRequest) PatchApiContract(patchApiContract PatchApiContract) DefaultApiUpdateApiContractRequest {
+func (r DefaultAPIUpdateApiContractRequest) PatchApiContract(patchApiContract PatchApiContract) DefaultAPIUpdateApiContractRequest {
 	r.patchApiContract = &patchApiContract
 	return r
 }
 
-func (r DefaultApiUpdateApiContractRequest) Execute() (*ContractDetails, *http.Response, error) {
+func (r DefaultAPIUpdateApiContractRequest) Execute() (*ContractDetails, *http.Response, error) {
 	return r.ApiService.UpdateApiContractExecute(r)
 }
 
@@ -589,10 +589,10 @@ Updates a contract for a given API in a given organization and environment Conne
  @param envId The environment id
  @param apiId The api manager instance id for a given environment
  @param contractId The contract id
- @return DefaultApiUpdateApiContractRequest
+ @return DefaultAPIUpdateApiContractRequest
 */
-func (a *DefaultApiService) UpdateApiContract(ctx context.Context, orgId string, envId string, apiId string, contractId string) DefaultApiUpdateApiContractRequest {
-	return DefaultApiUpdateApiContractRequest{
+func (a *DefaultAPIService) UpdateApiContract(ctx context.Context, orgId string, envId string, apiId string, contractId string) DefaultAPIUpdateApiContractRequest {
+	return DefaultAPIUpdateApiContractRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -604,7 +604,7 @@ func (a *DefaultApiService) UpdateApiContract(ctx context.Context, orgId string,
 
 // Execute executes the request
 //  @return ContractDetails
-func (a *DefaultApiService) UpdateApiContractExecute(r DefaultApiUpdateApiContractRequest) (*ContractDetails, *http.Response, error) {
+func (a *DefaultAPIService) UpdateApiContractExecute(r DefaultAPIUpdateApiContractRequest) (*ContractDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -612,7 +612,7 @@ func (a *DefaultApiService) UpdateApiContractExecute(r DefaultApiUpdateApiContra
 		localVarReturnValue  *ContractDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.UpdateApiContract")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdateApiContract")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -686,9 +686,9 @@ func (a *DefaultApiService) UpdateApiContractExecute(r DefaultApiUpdateApiContra
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DefaultApiUpdateApiContractStatusRequest struct {
+type DefaultAPIUpdateApiContractStatusRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	orgId string
 	envId string
 	apiId string
@@ -696,7 +696,7 @@ type DefaultApiUpdateApiContractStatusRequest struct {
 	action string
 }
 
-func (r DefaultApiUpdateApiContractStatusRequest) Execute() (*ContractDetails, *http.Response, error) {
+func (r DefaultAPIUpdateApiContractStatusRequest) Execute() (*ContractDetails, *http.Response, error) {
 	return r.ApiService.UpdateApiContractStatusExecute(r)
 }
 
@@ -712,10 +712,10 @@ Performs an action on a contract for a given API in a given organization and env
  @param apiId The api manager instance id for a given environment
  @param contractId The contract id
  @param action The action to be performed on the contract
- @return DefaultApiUpdateApiContractStatusRequest
+ @return DefaultAPIUpdateApiContractStatusRequest
 */
-func (a *DefaultApiService) UpdateApiContractStatus(ctx context.Context, orgId string, envId string, apiId string, contractId string, action string) DefaultApiUpdateApiContractStatusRequest {
-	return DefaultApiUpdateApiContractStatusRequest{
+func (a *DefaultAPIService) UpdateApiContractStatus(ctx context.Context, orgId string, envId string, apiId string, contractId string, action string) DefaultAPIUpdateApiContractStatusRequest {
+	return DefaultAPIUpdateApiContractStatusRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -728,7 +728,7 @@ func (a *DefaultApiService) UpdateApiContractStatus(ctx context.Context, orgId s
 
 // Execute executes the request
 //  @return ContractDetails
-func (a *DefaultApiService) UpdateApiContractStatusExecute(r DefaultApiUpdateApiContractStatusRequest) (*ContractDetails, *http.Response, error) {
+func (a *DefaultAPIService) UpdateApiContractStatusExecute(r DefaultAPIUpdateApiContractStatusRequest) (*ContractDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -736,7 +736,7 @@ func (a *DefaultApiService) UpdateApiContractStatusExecute(r DefaultApiUpdateApi
 		localVarReturnValue  *ContractDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.UpdateApiContractStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdateApiContractStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

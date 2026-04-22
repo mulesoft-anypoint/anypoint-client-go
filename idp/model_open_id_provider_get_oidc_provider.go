@@ -12,6 +12,8 @@ package idp
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OpenIDProviderGetOidcProvider type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type OpenIDProviderGetOidcProvider struct {
 	GroupScope *string `json:"group_scope,omitempty"`
 	ClaimsMapping *OpenIDProviderManualPostBodyOidcProviderClaimsMapping `json:"claims_mapping,omitempty"`
 }
+
+type _OpenIDProviderGetOidcProvider OpenIDProviderGetOidcProvider
 
 // NewOpenIDProviderGetOidcProvider instantiates a new OpenIDProviderGetOidcProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -202,6 +206,45 @@ func (o OpenIDProviderGetOidcProvider) ToMap() (map[string]interface{}, error) {
 		toSerialize["claims_mapping"] = o.ClaimsMapping
 	}
 	return toSerialize, nil
+}
+
+func (o *OpenIDProviderGetOidcProvider) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"client",
+		"issuer",
+		"urls",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOpenIDProviderGetOidcProvider := _OpenIDProviderGetOidcProvider{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOpenIDProviderGetOidcProvider)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenIDProviderGetOidcProvider(varOpenIDProviderGetOidcProvider)
+
+	return err
 }
 
 type NullableOpenIDProviderGetOidcProvider struct {

@@ -12,6 +12,7 @@ package idp
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -55,7 +56,11 @@ func (dst *IdpPatchBody) UnmarshalJSON(data []byte) error {
 		if string(jsonLdapProviderPatch) == "{}" { // empty struct
 			dst.LdapProviderPatch = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.LdapProviderPatch); err != nil {
+				dst.LdapProviderPatch = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.LdapProviderPatch = nil
@@ -68,7 +73,11 @@ func (dst *IdpPatchBody) UnmarshalJSON(data []byte) error {
 		if string(jsonOpenIDProviderPatch) == "{}" { // empty struct
 			dst.OpenIDProviderPatch = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.OpenIDProviderPatch); err != nil {
+				dst.OpenIDProviderPatch = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.OpenIDProviderPatch = nil
@@ -81,7 +90,11 @@ func (dst *IdpPatchBody) UnmarshalJSON(data []byte) error {
 		if string(jsonSamlProviderPatch) == "{}" { // empty struct
 			dst.SamlProviderPatch = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SamlProviderPatch); err != nil {
+				dst.SamlProviderPatch = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SamlProviderPatch = nil
