@@ -79,11 +79,19 @@ All URIs are relative to *https://anypoint.mulesoft.com/runtimefabric/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultAPI* | [**CreatePrivateSpace**](docs/DefaultAPI.md#createprivatespace) | **Post** /organizations/{orgId}/privatespaces | 
+*DefaultAPI* | [**CreatePrivateSpaceTransitGateway**](docs/DefaultAPI.md#createprivatespacetransitgateway) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
 *DefaultAPI* | [**DeletePrivateSpace**](docs/DefaultAPI.md#deleteprivatespace) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
+*DefaultAPI* | [**DeletePrivateSpaceTransitGateway**](docs/DefaultAPI.md#deleteprivatespacetransitgateway) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
+*DefaultAPI* | [**GetOrgTransitGateways**](docs/DefaultAPI.md#getorgtransitgateways) | **Get** /organizations/{orgId}/transitgateways | 
 *DefaultAPI* | [**GetPrivateSpace**](docs/DefaultAPI.md#getprivatespace) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 *DefaultAPI* | [**GetPrivateSpaceIamRoles**](docs/DefaultAPI.md#getprivatespaceiamroles) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/iamroles | 
+*DefaultAPI* | [**GetPrivateSpaceMulesoftAccount**](docs/DefaultAPI.md#getprivatespacemulesoftaccount) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/accounts | 
+*DefaultAPI* | [**GetPrivateSpaceRoutes**](docs/DefaultAPI.md#getprivatespaceroutes) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/routes | 
+*DefaultAPI* | [**GetPrivateSpaceTransitGateways**](docs/DefaultAPI.md#getprivatespacetransitgateways) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
 *DefaultAPI* | [**GetPrivateSpaces**](docs/DefaultAPI.md#getprivatespaces) | **Get** /organizations/{orgId}/privatespaces | 
+*DefaultAPI* | [**UpdateOrgTransitGatewayName**](docs/DefaultAPI.md#updateorgtransitgatewayname) | **Patch** /organizations/{orgId}/transitgateways/{transitGatewayId} | 
 *DefaultAPI* | [**UpdatePrivateSpace**](docs/DefaultAPI.md#updateprivatespace) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
+*DefaultAPI* | [**UpdatePrivateSpaceTransitGatewayRoutes**](docs/DefaultAPI.md#updateprivatespacetransitgatewayroutes) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
 
 
 ## Documentation For Models
@@ -107,10 +115,19 @@ Class | Method | HTTP request | Description
  - [PrivateSpacePatchBodyLogForwarding](docs/PrivateSpacePatchBodyLogForwarding.md)
  - [PrivateSpacePostBody](docs/PrivateSpacePostBody.md)
  - [PrivateSpaceProvisioning](docs/PrivateSpaceProvisioning.md)
+ - [PrivateSpaceRoute](docs/PrivateSpaceRoute.md)
  - [PrivateSpaceSummary](docs/PrivateSpaceSummary.md)
  - [PrivateSpaceSummaryContentItem](docs/PrivateSpaceSummaryContentItem.md)
  - [PrivateSpaceSummaryPageable](docs/PrivateSpaceSummaryPageable.md)
  - [PrivateSpaceSummaryPageableSort](docs/PrivateSpaceSummaryPageableSort.md)
+ - [TransitGateway](docs/TransitGateway.md)
+ - [TransitGatewayPatchNameBody](docs/TransitGatewayPatchNameBody.md)
+ - [TransitGatewayPatchRoutesBody](docs/TransitGatewayPatchRoutesBody.md)
+ - [TransitGatewayPatchRoutesResult](docs/TransitGatewayPatchRoutesResult.md)
+ - [TransitGatewayPostBody](docs/TransitGatewayPostBody.md)
+ - [TransitGatewaySpec](docs/TransitGatewaySpec.md)
+ - [TransitGatewaySpecResourceShare](docs/TransitGatewaySpecResourceShare.md)
+ - [TransitGatewayStatus](docs/TransitGatewayStatus.md)
 
 
 ## Documentation For Authorization

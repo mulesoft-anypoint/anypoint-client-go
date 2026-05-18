@@ -246,6 +246,327 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrivateSpaceIamRoles'
           description: IAM roles for the given private space
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways:
+    get:
+      description: lists transit gateway attachments for the given private space
+      operationId: getPrivateSpaceTransitGateways
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TransitGateway'
+                type: array
+          description: List of transit gateways
+    post:
+      description: creates a transit gateway attachment on the given private space
+      operationId: createPrivateSpaceTransitGateway
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransitGatewayPostBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransitGateway'
+          description: Transit gateway attachment created
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId}:
+    delete:
+      description: deletes a transit gateway attachment from the given private space
+      operationId: deletePrivateSpaceTransitGateway
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The transit gateway id (AWS tgw-...).
+        explode: false
+        in: path
+        name: transitGatewayId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "204":
+          description: Transit gateway attachment deleted
+    patch:
+      description: updates the static routes of a transit gateway attachment
+      operationId: updatePrivateSpaceTransitGatewayRoutes
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The transit gateway id (AWS tgw-...).
+        explode: false
+        in: path
+        name: transitGatewayId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransitGatewayPatchRoutesBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TransitGatewayPatchRoutesResult'
+                type: array
+          description: Transit gateway routes updated (truncated array wrap)
+  /organizations/{orgId}/transitgateways:
+    get:
+      description: "lists transit gateways across the organization, optionally filtered\
+        \ by region and private space id"
+      operationId: getOrgTransitGateways
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: AWS region filter.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Private space id filter (GUID).
+        explode: true
+        in: query
+        name: privateSpaceId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TransitGateway'
+                type: array
+          description: List of transit gateways
+  /organizations/{orgId}/transitgateways/{transitGatewayId}:
+    patch:
+      description: updates the name of a transit gateway
+      operationId: updateOrgTransitGatewayName
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The transit gateway id (AWS tgw-...).
+        explode: false
+        in: path
+        name: transitGatewayId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransitGatewayPatchNameBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TransitGateway'
+                type: array
+          description: Transit gateway name updated (full array wrap)
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/accounts:
+    get:
+      description: returns the MuleSoft AWS account id (region-bound to the private
+        space) to whitelist as RAM share principal
+      operationId: getPrivateSpaceMulesoftAccount
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: "MuleSoft AWS account id, region-bound (raw string body)"
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/routes:
+    get:
+      description: lists static routes for the private space network
+      operationId: getPrivateSpaceRoutes
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PrivateSpaceRoute'
+                type: array
+          description: Private space route table
 components:
   responses:
     UnauthorizedError:
@@ -294,6 +615,50 @@ components:
           schema:
             $ref: '#/components/schemas/PrivateSpaceIamRoles'
       description: IAM roles for the given private space
+    SuccessListTransitGateways:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/TransitGateway'
+            type: array
+      description: List of transit gateways
+    SuccessCreateTransitGateway:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TransitGateway'
+      description: Transit gateway attachment created
+    SuccessUpdateTransitGatewayRoutes:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/TransitGatewayPatchRoutesResult'
+            type: array
+      description: Transit gateway routes updated (truncated array wrap)
+    SuccessUpdateTransitGatewayName:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/TransitGateway'
+            type: array
+      description: Transit gateway name updated (full array wrap)
+    SuccessGetPrivateSpaceMulesoftAccount:
+      content:
+        application/json:
+          schema:
+            type: string
+      description: "MuleSoft AWS account id, region-bound (raw string body)"
+    SuccessListPrivateSpaceRoutes:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/PrivateSpaceRoute'
+            type: array
+      description: Private space route table
   schemas:
     PrivateSpaceSummary:
       example:
@@ -919,6 +1284,142 @@ components:
           type: integer
       title: PrivateSpaceComponentStatus
       type: object
+    TransitGateway:
+      example:
+        accountId: accountId
+        name: name
+        id: id
+        spec:
+          spaceName: spaceName
+          resourceShare:
+            id: id
+            account: account
+          region: region
+        status:
+          tgwResource: tgwResource
+          routes:
+          - routes
+          - routes
+          attachment: attachment
+          gateway: gateway
+      properties:
+        id:
+          description: AWS transit gateway id (e.g. tgw-017e20b9ce00c865c).
+          type: string
+        name:
+          description: User-chosen display name for the attachment.
+          type: string
+        accountId:
+          description: MuleSoft AWS account id (region-bound to the private space).
+          type: string
+        spec:
+          $ref: '#/components/schemas/TransitGateway_spec'
+        status:
+          $ref: '#/components/schemas/TransitGateway_status'
+      title: TransitGateway
+      type: object
+    TransitGatewayPostBody:
+      example:
+        routes:
+        - routes
+        - routes
+        resourceShareId: resourceShareId
+        name: name
+        resourceShareAccount: resourceShareAccount
+      properties:
+        name:
+          description: Display name for the transit gateway attachment.
+          type: string
+        resourceShareId:
+          description: "RAM resource share UUID (trailing GUID of the ARN, NOT the\
+            \ full ARN)."
+          type: string
+        resourceShareAccount:
+          description: "AWS account id that owns the RAM share (your AWS account,\
+            \ NOT MuleSoft's account)."
+          type: string
+        routes:
+          description: Static routes (CIDR strings) to push into the private space
+            route table. Must not equal or be more specific than the private space
+            CIDR.
+          items:
+            type: string
+          type: array
+      required:
+      - name
+      - resourceShareAccount
+      - resourceShareId
+      - routes
+      title: TransitGatewayPostBody
+      type: object
+    TransitGatewayPatchRoutesBody:
+      example:
+        routes:
+        - routes
+        - routes
+      properties:
+        routes:
+          description: Replacement set of static routes (CIDR strings).
+          items:
+            type: string
+          type: array
+      required:
+      - routes
+      title: TransitGatewayPatchRoutesBody
+      type: object
+    TransitGatewayPatchNameBody:
+      example:
+        name: name
+      properties:
+        name:
+          description: New display name.
+          type: string
+      required:
+      - name
+      title: TransitGatewayPatchNameBody
+      type: object
+    TransitGatewayPatchRoutesResult:
+      description: Truncated transit gateway shape returned by the routes PATCH endpoint.
+      example:
+        routes:
+        - routes
+        - routes
+        resourceShareId: resourceShareId
+        deploymentId: deploymentId
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        deploymentId:
+          type: string
+        resourceShareId:
+          type: string
+        routes:
+          items:
+            type: string
+          type: array
+      title: TransitGatewayPatchRoutesResult
+      type: object
+    PrivateSpaceRoute:
+      example:
+        destination: destination
+        status: status
+        target: target
+      properties:
+        destination:
+          description: Destination CIDR.
+          type: string
+        status:
+          description: Route status.
+          type: string
+        target:
+          description: "Route target (transit gateway id, VPN id, etc.)."
+          type: string
+      title: PrivateSpaceRoute
+      type: object
     PrivateSpaceSummaryContentItem:
       example:
         organizationId: organizationId
@@ -1090,6 +1591,59 @@ components:
           $ref: '#/components/schemas/PrivateSpaceComponentStatus'
         ingress:
           $ref: '#/components/schemas/PrivateSpaceComponentStatus'
+      type: object
+    TransitGateway_spec_resourceShare:
+      example:
+        id: id
+        account: account
+      properties:
+        id:
+          description: RAM resource share UUID (trailing GUID of the ARN).
+          type: string
+        account:
+          description: AWS account id that owns the RAM share.
+          type: string
+      type: object
+    TransitGateway_spec:
+      example:
+        spaceName: spaceName
+        resourceShare:
+          id: id
+          account: account
+        region: region
+      properties:
+        resourceShare:
+          $ref: '#/components/schemas/TransitGateway_spec_resourceShare'
+        region:
+          description: AWS region (inherits the private space region).
+          type: string
+        spaceName:
+          description: Private space display name.
+          type: string
+      type: object
+    TransitGateway_status:
+      example:
+        tgwResource: tgwResource
+        routes:
+        - routes
+        - routes
+        attachment: attachment
+        gateway: gateway
+      properties:
+        gateway:
+          description: "Gateway status (e.g. refreshing, available)."
+          type: string
+        attachment:
+          description: "Attachment status (e.g. refreshing, available)."
+          type: string
+        tgwResource:
+          description: AWS console URL pointing at the transit gateway resource.
+          type: string
+        routes:
+          description: Static routes pushed into the private space route table.
+          items:
+            type: string
+          type: array
       type: object
   securitySchemes:
     bearerAuth:
