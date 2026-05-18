@@ -108,7 +108,7 @@ paths:
           description: Bad request response
         "404":
           description: resource not found
-        "201":
+        "200":
           content:
             application/json:
               schema:

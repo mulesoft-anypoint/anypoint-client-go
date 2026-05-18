@@ -5,11 +5,19 @@ All URIs are relative to *https://anypoint.mulesoft.com/runtimefabric/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreatePrivateSpace**](DefaultAPI.md#CreatePrivateSpace) | **Post** /organizations/{orgId}/privatespaces | 
+[**CreatePrivateSpaceTransitGateway**](DefaultAPI.md#CreatePrivateSpaceTransitGateway) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
 [**DeletePrivateSpace**](DefaultAPI.md#DeletePrivateSpace) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
+[**DeletePrivateSpaceTransitGateway**](DefaultAPI.md#DeletePrivateSpaceTransitGateway) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
+[**GetOrgTransitGateways**](DefaultAPI.md#GetOrgTransitGateways) | **Get** /organizations/{orgId}/transitgateways | 
 [**GetPrivateSpace**](DefaultAPI.md#GetPrivateSpace) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 [**GetPrivateSpaceIamRoles**](DefaultAPI.md#GetPrivateSpaceIamRoles) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/iamroles | 
+[**GetPrivateSpaceMulesoftAccount**](DefaultAPI.md#GetPrivateSpaceMulesoftAccount) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/accounts | 
+[**GetPrivateSpaceRoutes**](DefaultAPI.md#GetPrivateSpaceRoutes) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/routes | 
+[**GetPrivateSpaceTransitGateways**](DefaultAPI.md#GetPrivateSpaceTransitGateways) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
 [**GetPrivateSpaces**](DefaultAPI.md#GetPrivateSpaces) | **Get** /organizations/{orgId}/privatespaces | 
+[**UpdateOrgTransitGatewayName**](DefaultAPI.md#UpdateOrgTransitGatewayName) | **Patch** /organizations/{orgId}/transitgateways/{transitGatewayId} | 
 [**UpdatePrivateSpace**](DefaultAPI.md#UpdatePrivateSpace) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
+[**UpdatePrivateSpaceTransitGatewayRoutes**](DefaultAPI.md#UpdatePrivateSpaceTransitGatewayRoutes) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
 
 
 
@@ -70,6 +78,81 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PrivateSpace**](PrivateSpace.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreatePrivateSpaceTransitGateway
+
+> TransitGateway CreatePrivateSpaceTransitGateway(ctx, orgId, privateSpaceId).TransitGatewayPostBody(transitGatewayPostBody).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	transitGatewayPostBody := *openapiclient.NewTransitGatewayPostBody("Name_example", "ResourceShareId_example", "ResourceShareAccount_example", []string{"Routes_example"}) // TransitGatewayPostBody |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.CreatePrivateSpaceTransitGateway(context.Background(), orgId, privateSpaceId).TransitGatewayPostBody(transitGatewayPostBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.CreatePrivateSpaceTransitGateway``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreatePrivateSpaceTransitGateway`: TransitGateway
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.CreatePrivateSpaceTransitGateway`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePrivateSpaceTransitGatewayRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **transitGatewayPostBody** | [**TransitGatewayPostBody**](TransitGatewayPostBody.md) |  | 
+
+### Return type
+
+[**TransitGateway**](TransitGateway.md)
 
 ### Authorization
 
@@ -150,6 +233,154 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeletePrivateSpaceTransitGateway
+
+> DeletePrivateSpaceTransitGateway(ctx, orgId, privateSpaceId, transitGatewayId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	transitGatewayId := "transitGatewayId_example" // string | The transit gateway id (AWS tgw-...).
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.DeletePrivateSpaceTransitGateway(context.Background(), orgId, privateSpaceId, transitGatewayId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.DeletePrivateSpaceTransitGateway``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**transitGatewayId** | **string** | The transit gateway id (AWS tgw-...). | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePrivateSpaceTransitGatewayRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrgTransitGateways
+
+> []TransitGateway GetOrgTransitGateways(ctx, orgId).Region(region).PrivateSpaceId(privateSpaceId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	region := "region_example" // string | AWS region filter. (optional)
+	privateSpaceId := "privateSpaceId_example" // string | Private space id filter (GUID). (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.GetOrgTransitGateways(context.Background(), orgId).Region(region).PrivateSpaceId(privateSpaceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetOrgTransitGateways``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrgTransitGateways`: []TransitGateway
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetOrgTransitGateways`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgTransitGatewaysRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **region** | **string** | AWS region filter. | 
+ **privateSpaceId** | **string** | Private space id filter (GUID). | 
+
+### Return type
+
+[**[]TransitGateway**](TransitGateway.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -302,6 +533,225 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetPrivateSpaceMulesoftAccount
+
+> string GetPrivateSpaceMulesoftAccount(ctx, orgId, privateSpaceId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.GetPrivateSpaceMulesoftAccount(context.Background(), orgId, privateSpaceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetPrivateSpaceMulesoftAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPrivateSpaceMulesoftAccount`: string
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetPrivateSpaceMulesoftAccount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPrivateSpaceMulesoftAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPrivateSpaceRoutes
+
+> []PrivateSpaceRoute GetPrivateSpaceRoutes(ctx, orgId, privateSpaceId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.GetPrivateSpaceRoutes(context.Background(), orgId, privateSpaceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetPrivateSpaceRoutes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPrivateSpaceRoutes`: []PrivateSpaceRoute
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetPrivateSpaceRoutes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPrivateSpaceRoutesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]PrivateSpaceRoute**](PrivateSpaceRoute.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPrivateSpaceTransitGateways
+
+> []TransitGateway GetPrivateSpaceTransitGateways(ctx, orgId, privateSpaceId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.GetPrivateSpaceTransitGateways(context.Background(), orgId, privateSpaceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetPrivateSpaceTransitGateways``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPrivateSpaceTransitGateways`: []TransitGateway
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetPrivateSpaceTransitGateways`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPrivateSpaceTransitGatewaysRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]TransitGateway**](TransitGateway.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetPrivateSpaces
 
 > PrivateSpaceSummary GetPrivateSpaces(ctx, orgId).Offset(offset).Limit(limit).Sort(sort).Ascending(ascending).Execute()
@@ -380,6 +830,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateOrgTransitGatewayName
+
+> []TransitGateway UpdateOrgTransitGatewayName(ctx, orgId, transitGatewayId).TransitGatewayPatchNameBody(transitGatewayPatchNameBody).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	transitGatewayId := "transitGatewayId_example" // string | The transit gateway id (AWS tgw-...).
+	transitGatewayPatchNameBody := *openapiclient.NewTransitGatewayPatchNameBody("Name_example") // TransitGatewayPatchNameBody |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.UpdateOrgTransitGatewayName(context.Background(), orgId, transitGatewayId).TransitGatewayPatchNameBody(transitGatewayPatchNameBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UpdateOrgTransitGatewayName``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateOrgTransitGatewayName`: []TransitGateway
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.UpdateOrgTransitGatewayName`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**transitGatewayId** | **string** | The transit gateway id (AWS tgw-...). | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrgTransitGatewayNameRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **transitGatewayPatchNameBody** | [**TransitGatewayPatchNameBody**](TransitGatewayPatchNameBody.md) |  | 
+
+### Return type
+
+[**[]TransitGateway**](TransitGateway.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdatePrivateSpace
 
 > PrivateSpace UpdatePrivateSpace(ctx, orgId, privateSpaceId).PrivateSpacePatchBody(privateSpacePatchBody).Execute()
@@ -440,6 +965,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PrivateSpace**](PrivateSpace.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePrivateSpaceTransitGatewayRoutes
+
+> []TransitGatewayPatchRoutesResult UpdatePrivateSpaceTransitGatewayRoutes(ctx, orgId, privateSpaceId, transitGatewayId).TransitGatewayPatchRoutesBody(transitGatewayPatchRoutesBody).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	transitGatewayId := "transitGatewayId_example" // string | The transit gateway id (AWS tgw-...).
+	transitGatewayPatchRoutesBody := *openapiclient.NewTransitGatewayPatchRoutesBody([]string{"Routes_example"}) // TransitGatewayPatchRoutesBody |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.UpdatePrivateSpaceTransitGatewayRoutes(context.Background(), orgId, privateSpaceId, transitGatewayId).TransitGatewayPatchRoutesBody(transitGatewayPatchRoutesBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UpdatePrivateSpaceTransitGatewayRoutes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatePrivateSpaceTransitGatewayRoutes`: []TransitGatewayPatchRoutesResult
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.UpdatePrivateSpaceTransitGatewayRoutes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**transitGatewayId** | **string** | The transit gateway id (AWS tgw-...). | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePrivateSpaceTransitGatewayRoutesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **transitGatewayPatchRoutesBody** | [**TransitGatewayPatchRoutesBody**](TransitGatewayPatchRoutesBody.md) |  | 
+
+### Return type
+
+[**[]TransitGatewayPatchRoutesResult**](TransitGatewayPatchRoutesResult.md)
 
 ### Authorization
 

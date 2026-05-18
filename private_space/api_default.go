@@ -134,6 +134,121 @@ func (a *DefaultAPIService) CreatePrivateSpaceExecute(r DefaultAPICreatePrivateS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type DefaultAPICreatePrivateSpaceTransitGatewayRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	transitGatewayPostBody *TransitGatewayPostBody
+}
+
+func (r DefaultAPICreatePrivateSpaceTransitGatewayRequest) TransitGatewayPostBody(transitGatewayPostBody TransitGatewayPostBody) DefaultAPICreatePrivateSpaceTransitGatewayRequest {
+	r.transitGatewayPostBody = &transitGatewayPostBody
+	return r
+}
+
+func (r DefaultAPICreatePrivateSpaceTransitGatewayRequest) Execute() (*TransitGateway, *http.Response, error) {
+	return r.ApiService.CreatePrivateSpaceTransitGatewayExecute(r)
+}
+
+/*
+CreatePrivateSpaceTransitGateway Method for CreatePrivateSpaceTransitGateway
+
+creates a transit gateway attachment on the given private space
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @return DefaultAPICreatePrivateSpaceTransitGatewayRequest
+*/
+func (a *DefaultAPIService) CreatePrivateSpaceTransitGateway(ctx context.Context, orgId string, privateSpaceId string) DefaultAPICreatePrivateSpaceTransitGatewayRequest {
+	return DefaultAPICreatePrivateSpaceTransitGatewayRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+	}
+}
+
+// Execute executes the request
+//  @return TransitGateway
+func (a *DefaultAPIService) CreatePrivateSpaceTransitGatewayExecute(r DefaultAPICreatePrivateSpaceTransitGatewayRequest) (*TransitGateway, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TransitGateway
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.CreatePrivateSpaceTransitGateway")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.transitGatewayPostBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DefaultAPIDeletePrivateSpaceRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -228,6 +343,229 @@ func (a *DefaultAPIService) DeletePrivateSpaceExecute(r DefaultAPIDeletePrivateS
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type DefaultAPIDeletePrivateSpaceTransitGatewayRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	transitGatewayId string
+}
+
+func (r DefaultAPIDeletePrivateSpaceTransitGatewayRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeletePrivateSpaceTransitGatewayExecute(r)
+}
+
+/*
+DeletePrivateSpaceTransitGateway Method for DeletePrivateSpaceTransitGateway
+
+deletes a transit gateway attachment from the given private space
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @param transitGatewayId The transit gateway id (AWS tgw-...).
+ @return DefaultAPIDeletePrivateSpaceTransitGatewayRequest
+*/
+func (a *DefaultAPIService) DeletePrivateSpaceTransitGateway(ctx context.Context, orgId string, privateSpaceId string, transitGatewayId string) DefaultAPIDeletePrivateSpaceTransitGatewayRequest {
+	return DefaultAPIDeletePrivateSpaceTransitGatewayRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+		transitGatewayId: transitGatewayId,
+	}
+}
+
+// Execute executes the request
+func (a *DefaultAPIService) DeletePrivateSpaceTransitGatewayExecute(r DefaultAPIDeletePrivateSpaceTransitGatewayRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeletePrivateSpaceTransitGateway")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transitGatewayId"+"}", url.PathEscape(parameterValueToString(r.transitGatewayId, "transitGatewayId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DefaultAPIGetOrgTransitGatewaysRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	region *string
+	privateSpaceId *string
+}
+
+// AWS region filter.
+func (r DefaultAPIGetOrgTransitGatewaysRequest) Region(region string) DefaultAPIGetOrgTransitGatewaysRequest {
+	r.region = &region
+	return r
+}
+
+// Private space id filter (GUID).
+func (r DefaultAPIGetOrgTransitGatewaysRequest) PrivateSpaceId(privateSpaceId string) DefaultAPIGetOrgTransitGatewaysRequest {
+	r.privateSpaceId = &privateSpaceId
+	return r
+}
+
+func (r DefaultAPIGetOrgTransitGatewaysRequest) Execute() ([]TransitGateway, *http.Response, error) {
+	return r.ApiService.GetOrgTransitGatewaysExecute(r)
+}
+
+/*
+GetOrgTransitGateways Method for GetOrgTransitGateways
+
+lists transit gateways across the organization, optionally filtered by region and private space id
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @return DefaultAPIGetOrgTransitGatewaysRequest
+*/
+func (a *DefaultAPIService) GetOrgTransitGateways(ctx context.Context, orgId string) DefaultAPIGetOrgTransitGatewaysRequest {
+	return DefaultAPIGetOrgTransitGatewaysRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+	}
+}
+
+// Execute executes the request
+//  @return []TransitGateway
+func (a *DefaultAPIService) GetOrgTransitGatewaysExecute(r DefaultAPIGetOrgTransitGatewaysRequest) ([]TransitGateway, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TransitGateway
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetOrgTransitGateways")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/transitgateways"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.region != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "region", r.region, "form", "")
+	}
+	if r.privateSpaceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "privateSpaceId", r.privateSpaceId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type DefaultAPIGetPrivateSpaceRequest struct {
@@ -444,6 +782,327 @@ func (a *DefaultAPIService) GetPrivateSpaceIamRolesExecute(r DefaultAPIGetPrivat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type DefaultAPIGetPrivateSpaceMulesoftAccountRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+}
+
+func (r DefaultAPIGetPrivateSpaceMulesoftAccountRequest) Execute() (string, *http.Response, error) {
+	return r.ApiService.GetPrivateSpaceMulesoftAccountExecute(r)
+}
+
+/*
+GetPrivateSpaceMulesoftAccount Method for GetPrivateSpaceMulesoftAccount
+
+returns the MuleSoft AWS account id (region-bound to the private space) to whitelist as RAM share principal
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @return DefaultAPIGetPrivateSpaceMulesoftAccountRequest
+*/
+func (a *DefaultAPIService) GetPrivateSpaceMulesoftAccount(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIGetPrivateSpaceMulesoftAccountRequest {
+	return DefaultAPIGetPrivateSpaceMulesoftAccountRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+	}
+}
+
+// Execute executes the request
+//  @return string
+func (a *DefaultAPIService) GetPrivateSpaceMulesoftAccountExecute(r DefaultAPIGetPrivateSpaceMulesoftAccountRequest) (string, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpaceMulesoftAccount")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DefaultAPIGetPrivateSpaceRoutesRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+}
+
+func (r DefaultAPIGetPrivateSpaceRoutesRequest) Execute() ([]PrivateSpaceRoute, *http.Response, error) {
+	return r.ApiService.GetPrivateSpaceRoutesExecute(r)
+}
+
+/*
+GetPrivateSpaceRoutes Method for GetPrivateSpaceRoutes
+
+lists static routes for the private space network
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @return DefaultAPIGetPrivateSpaceRoutesRequest
+*/
+func (a *DefaultAPIService) GetPrivateSpaceRoutes(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIGetPrivateSpaceRoutesRequest {
+	return DefaultAPIGetPrivateSpaceRoutesRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+	}
+}
+
+// Execute executes the request
+//  @return []PrivateSpaceRoute
+func (a *DefaultAPIService) GetPrivateSpaceRoutesExecute(r DefaultAPIGetPrivateSpaceRoutesRequest) ([]PrivateSpaceRoute, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []PrivateSpaceRoute
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpaceRoutes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/routes"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DefaultAPIGetPrivateSpaceTransitGatewaysRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+}
+
+func (r DefaultAPIGetPrivateSpaceTransitGatewaysRequest) Execute() ([]TransitGateway, *http.Response, error) {
+	return r.ApiService.GetPrivateSpaceTransitGatewaysExecute(r)
+}
+
+/*
+GetPrivateSpaceTransitGateways Method for GetPrivateSpaceTransitGateways
+
+lists transit gateway attachments for the given private space
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @return DefaultAPIGetPrivateSpaceTransitGatewaysRequest
+*/
+func (a *DefaultAPIService) GetPrivateSpaceTransitGateways(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIGetPrivateSpaceTransitGatewaysRequest {
+	return DefaultAPIGetPrivateSpaceTransitGatewaysRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+	}
+}
+
+// Execute executes the request
+//  @return []TransitGateway
+func (a *DefaultAPIService) GetPrivateSpaceTransitGatewaysExecute(r DefaultAPIGetPrivateSpaceTransitGatewaysRequest) ([]TransitGateway, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TransitGateway
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpaceTransitGateways")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DefaultAPIGetPrivateSpacesRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -587,6 +1246,121 @@ func (a *DefaultAPIService) GetPrivateSpacesExecute(r DefaultAPIGetPrivateSpaces
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type DefaultAPIUpdateOrgTransitGatewayNameRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	transitGatewayId string
+	transitGatewayPatchNameBody *TransitGatewayPatchNameBody
+}
+
+func (r DefaultAPIUpdateOrgTransitGatewayNameRequest) TransitGatewayPatchNameBody(transitGatewayPatchNameBody TransitGatewayPatchNameBody) DefaultAPIUpdateOrgTransitGatewayNameRequest {
+	r.transitGatewayPatchNameBody = &transitGatewayPatchNameBody
+	return r
+}
+
+func (r DefaultAPIUpdateOrgTransitGatewayNameRequest) Execute() ([]TransitGateway, *http.Response, error) {
+	return r.ApiService.UpdateOrgTransitGatewayNameExecute(r)
+}
+
+/*
+UpdateOrgTransitGatewayName Method for UpdateOrgTransitGatewayName
+
+updates the name of a transit gateway
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param transitGatewayId The transit gateway id (AWS tgw-...).
+ @return DefaultAPIUpdateOrgTransitGatewayNameRequest
+*/
+func (a *DefaultAPIService) UpdateOrgTransitGatewayName(ctx context.Context, orgId string, transitGatewayId string) DefaultAPIUpdateOrgTransitGatewayNameRequest {
+	return DefaultAPIUpdateOrgTransitGatewayNameRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		transitGatewayId: transitGatewayId,
+	}
+}
+
+// Execute executes the request
+//  @return []TransitGateway
+func (a *DefaultAPIService) UpdateOrgTransitGatewayNameExecute(r DefaultAPIUpdateOrgTransitGatewayNameRequest) ([]TransitGateway, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TransitGateway
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdateOrgTransitGatewayName")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/transitgateways/{transitGatewayId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transitGatewayId"+"}", url.PathEscape(parameterValueToString(r.transitGatewayId, "transitGatewayId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.transitGatewayPatchNameBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DefaultAPIUpdatePrivateSpaceRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -665,6 +1439,125 @@ func (a *DefaultAPIService) UpdatePrivateSpaceExecute(r DefaultAPIUpdatePrivateS
 	}
 	// body params
 	localVarPostBody = r.privateSpacePatchBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DefaultAPIUpdatePrivateSpaceTransitGatewayRoutesRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	transitGatewayId string
+	transitGatewayPatchRoutesBody *TransitGatewayPatchRoutesBody
+}
+
+func (r DefaultAPIUpdatePrivateSpaceTransitGatewayRoutesRequest) TransitGatewayPatchRoutesBody(transitGatewayPatchRoutesBody TransitGatewayPatchRoutesBody) DefaultAPIUpdatePrivateSpaceTransitGatewayRoutesRequest {
+	r.transitGatewayPatchRoutesBody = &transitGatewayPatchRoutesBody
+	return r
+}
+
+func (r DefaultAPIUpdatePrivateSpaceTransitGatewayRoutesRequest) Execute() ([]TransitGatewayPatchRoutesResult, *http.Response, error) {
+	return r.ApiService.UpdatePrivateSpaceTransitGatewayRoutesExecute(r)
+}
+
+/*
+UpdatePrivateSpaceTransitGatewayRoutes Method for UpdatePrivateSpaceTransitGatewayRoutes
+
+updates the static routes of a transit gateway attachment
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @param transitGatewayId The transit gateway id (AWS tgw-...).
+ @return DefaultAPIUpdatePrivateSpaceTransitGatewayRoutesRequest
+*/
+func (a *DefaultAPIService) UpdatePrivateSpaceTransitGatewayRoutes(ctx context.Context, orgId string, privateSpaceId string, transitGatewayId string) DefaultAPIUpdatePrivateSpaceTransitGatewayRoutesRequest {
+	return DefaultAPIUpdatePrivateSpaceTransitGatewayRoutesRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+		transitGatewayId: transitGatewayId,
+	}
+}
+
+// Execute executes the request
+//  @return []TransitGatewayPatchRoutesResult
+func (a *DefaultAPIService) UpdatePrivateSpaceTransitGatewayRoutesExecute(r DefaultAPIUpdatePrivateSpaceTransitGatewayRoutesRequest) ([]TransitGatewayPatchRoutesResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TransitGatewayPatchRoutesResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdatePrivateSpaceTransitGatewayRoutes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transitGatewayId"+"}", url.PathEscape(parameterValueToString(r.transitGatewayId, "transitGatewayId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.transitGatewayPatchRoutesBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
