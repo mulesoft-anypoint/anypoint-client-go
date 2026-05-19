@@ -4,21 +4,108 @@ All URIs are relative to *https://anypoint.mulesoft.com/runtimefabric/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddPrivateSpaceVpnConnectionMember**](DefaultAPI.md#AddPrivateSpaceVpnConnectionMember) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns | 
 [**CreatePrivateSpace**](DefaultAPI.md#CreatePrivateSpace) | **Post** /organizations/{orgId}/privatespaces | 
 [**CreatePrivateSpaceTransitGateway**](DefaultAPI.md#CreatePrivateSpaceTransitGateway) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
+[**CreatePrivateSpaceVpnConnection**](DefaultAPI.md#CreatePrivateSpaceVpnConnection) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections | 
 [**DeletePrivateSpace**](DefaultAPI.md#DeletePrivateSpace) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 [**DeletePrivateSpaceTransitGateway**](DefaultAPI.md#DeletePrivateSpaceTransitGateway) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
+[**DeletePrivateSpaceVpnConnection**](DefaultAPI.md#DeletePrivateSpaceVpnConnection) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId} | 
+[**DeletePrivateSpaceVpnConnectionMember**](DefaultAPI.md#DeletePrivateSpaceVpnConnectionMember) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns/{vpnId} | 
 [**GetOrgTransitGateways**](DefaultAPI.md#GetOrgTransitGateways) | **Get** /organizations/{orgId}/transitgateways | 
 [**GetPrivateSpace**](DefaultAPI.md#GetPrivateSpace) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 [**GetPrivateSpaceIamRoles**](DefaultAPI.md#GetPrivateSpaceIamRoles) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/iamroles | 
 [**GetPrivateSpaceMulesoftAccount**](DefaultAPI.md#GetPrivateSpaceMulesoftAccount) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/accounts | 
 [**GetPrivateSpaceRoutes**](DefaultAPI.md#GetPrivateSpaceRoutes) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/routes | 
+[**GetPrivateSpaceSupportedVpnConfigs**](DefaultAPI.md#GetPrivateSpaceSupportedVpnConfigs) | **Get** /organizations/{orgId}/privatespaces/supportedVpnConfigs | 
 [**GetPrivateSpaceTransitGateways**](DefaultAPI.md#GetPrivateSpaceTransitGateways) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
+[**GetPrivateSpaceVpnConnection**](DefaultAPI.md#GetPrivateSpaceVpnConnection) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId} | 
+[**GetPrivateSpaceVpnConnections**](DefaultAPI.md#GetPrivateSpaceVpnConnections) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections | 
 [**GetPrivateSpaces**](DefaultAPI.md#GetPrivateSpaces) | **Get** /organizations/{orgId}/privatespaces | 
 [**UpdateOrgTransitGatewayName**](DefaultAPI.md#UpdateOrgTransitGatewayName) | **Patch** /organizations/{orgId}/transitgateways/{transitGatewayId} | 
 [**UpdatePrivateSpace**](DefaultAPI.md#UpdatePrivateSpace) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 [**UpdatePrivateSpaceTransitGatewayRoutes**](DefaultAPI.md#UpdatePrivateSpaceTransitGatewayRoutes) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
+[**UpdatePrivateSpaceVpnConnection**](DefaultAPI.md#UpdatePrivateSpaceVpnConnection) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId} | 
+[**UpdatePrivateSpaceVpnConnectionMember**](DefaultAPI.md#UpdatePrivateSpaceVpnConnectionMember) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns/{vpnId} | 
 
+
+
+## AddPrivateSpaceVpnConnectionMember
+
+> PrivateSpaceVpnConnection AddPrivateSpaceVpnConnectionMember(ctx, orgId, privateSpaceId, connectionId).PrivateSpaceVpnPostBody(privateSpaceVpnPostBody).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	connectionId := "connectionId_example" // string | The ID of the VPN connection in GUID format
+	privateSpaceVpnPostBody := *openapiclient.NewPrivateSpaceVpnPostBody("LocalAsn_example", "RemoteIpAddress_example", []openapiclient.PrivateSpaceVpnTunnelPostBody{*openapiclient.NewPrivateSpaceVpnTunnelPostBody("Psk_example", "StartupAction_example")}) // PrivateSpaceVpnPostBody |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.AddPrivateSpaceVpnConnectionMember(context.Background(), orgId, privateSpaceId, connectionId).PrivateSpaceVpnPostBody(privateSpaceVpnPostBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.AddPrivateSpaceVpnConnectionMember``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddPrivateSpaceVpnConnectionMember`: PrivateSpaceVpnConnection
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.AddPrivateSpaceVpnConnectionMember`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**connectionId** | **string** | The ID of the VPN connection in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddPrivateSpaceVpnConnectionMemberRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **privateSpaceVpnPostBody** | [**PrivateSpaceVpnPostBody**](PrivateSpaceVpnPostBody.md) |  | 
+
+### Return type
+
+[**PrivateSpaceVpnConnection**](PrivateSpaceVpnConnection.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreatePrivateSpace
@@ -168,6 +255,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreatePrivateSpaceVpnConnection
+
+> PrivateSpaceVpnConnection CreatePrivateSpaceVpnConnection(ctx, orgId, privateSpaceId).PrivateSpaceVpnConnectionPostBody(privateSpaceVpnConnectionPostBody).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	privateSpaceVpnConnectionPostBody := *openapiclient.NewPrivateSpaceVpnConnectionPostBody("Name_example", []openapiclient.PrivateSpaceVpnPostBody{*openapiclient.NewPrivateSpaceVpnPostBody("LocalAsn_example", "RemoteIpAddress_example", []openapiclient.PrivateSpaceVpnTunnelPostBody{*openapiclient.NewPrivateSpaceVpnTunnelPostBody("Psk_example", "StartupAction_example")})}) // PrivateSpaceVpnConnectionPostBody |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.CreatePrivateSpaceVpnConnection(context.Background(), orgId, privateSpaceId).PrivateSpaceVpnConnectionPostBody(privateSpaceVpnConnectionPostBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.CreatePrivateSpaceVpnConnection``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreatePrivateSpaceVpnConnection`: PrivateSpaceVpnConnection
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.CreatePrivateSpaceVpnConnection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePrivateSpaceVpnConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **privateSpaceVpnConnectionPostBody** | [**PrivateSpaceVpnConnectionPostBody**](PrivateSpaceVpnConnectionPostBody.md) |  | 
+
+### Return type
+
+[**PrivateSpaceVpnConnection**](PrivateSpaceVpnConnection.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeletePrivateSpace
 
 > DeletePrivateSpace(ctx, orgId, privateSpaceId).Execute()
@@ -291,6 +453,157 @@ Other parameters are passed through a pointer to a apiDeletePrivateSpaceTransitG
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeletePrivateSpaceVpnConnection
+
+> DeletePrivateSpaceVpnConnection(ctx, orgId, privateSpaceId, connectionId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	connectionId := "connectionId_example" // string | The ID of the VPN connection in GUID format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.DeletePrivateSpaceVpnConnection(context.Background(), orgId, privateSpaceId, connectionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.DeletePrivateSpaceVpnConnection``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**connectionId** | **string** | The ID of the VPN connection in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePrivateSpaceVpnConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeletePrivateSpaceVpnConnectionMember
+
+> DeletePrivateSpaceVpnConnectionMember(ctx, orgId, privateSpaceId, connectionId, vpnId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	connectionId := "connectionId_example" // string | The ID of the VPN connection in GUID format
+	vpnId := "vpnId_example" // string | The ID of the VPN member in GUID format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.DeletePrivateSpaceVpnConnectionMember(context.Background(), orgId, privateSpaceId, connectionId, vpnId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.DeletePrivateSpaceVpnConnectionMember``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**connectionId** | **string** | The ID of the VPN connection in GUID format | 
+**vpnId** | **string** | The ID of the VPN member in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePrivateSpaceVpnConnectionMemberRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 
 
@@ -679,6 +992,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetPrivateSpaceSupportedVpnConfigs
+
+> map[string]map[string][]string GetPrivateSpaceSupportedVpnConfigs(ctx, orgId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.GetPrivateSpaceSupportedVpnConfigs(context.Background(), orgId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetPrivateSpaceSupportedVpnConfigs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPrivateSpaceSupportedVpnConfigs`: map[string]map[string][]string
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetPrivateSpaceSupportedVpnConfigs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPrivateSpaceSupportedVpnConfigsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**map[string]map[string][]string**](map.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetPrivateSpaceTransitGateways
 
 > []TransitGateway GetPrivateSpaceTransitGateways(ctx, orgId, privateSpaceId).Execute()
@@ -737,6 +1120,155 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]TransitGateway**](TransitGateway.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPrivateSpaceVpnConnection
+
+> PrivateSpaceVpnConnection GetPrivateSpaceVpnConnection(ctx, orgId, privateSpaceId, connectionId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	connectionId := "connectionId_example" // string | The ID of the VPN connection in GUID format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.GetPrivateSpaceVpnConnection(context.Background(), orgId, privateSpaceId, connectionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetPrivateSpaceVpnConnection``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPrivateSpaceVpnConnection`: PrivateSpaceVpnConnection
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetPrivateSpaceVpnConnection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**connectionId** | **string** | The ID of the VPN connection in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPrivateSpaceVpnConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**PrivateSpaceVpnConnection**](PrivateSpaceVpnConnection.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPrivateSpaceVpnConnections
+
+> []PrivateSpaceVpnConnection GetPrivateSpaceVpnConnections(ctx, orgId, privateSpaceId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.GetPrivateSpaceVpnConnections(context.Background(), orgId, privateSpaceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetPrivateSpaceVpnConnections``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPrivateSpaceVpnConnections`: []PrivateSpaceVpnConnection
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetPrivateSpaceVpnConnections`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPrivateSpaceVpnConnectionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]PrivateSpaceVpnConnection**](PrivateSpaceVpnConnection.md)
 
 ### Authorization
 
@@ -1043,6 +1575,165 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]TransitGatewayPatchRoutesResult**](TransitGatewayPatchRoutesResult.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePrivateSpaceVpnConnection
+
+> PrivateSpaceVpnConnection UpdatePrivateSpaceVpnConnection(ctx, orgId, privateSpaceId, connectionId).PrivateSpaceVpnConnectionPatchBody(privateSpaceVpnConnectionPatchBody).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	connectionId := "connectionId_example" // string | The ID of the VPN connection in GUID format
+	privateSpaceVpnConnectionPatchBody := *openapiclient.NewPrivateSpaceVpnConnectionPatchBody() // PrivateSpaceVpnConnectionPatchBody |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.UpdatePrivateSpaceVpnConnection(context.Background(), orgId, privateSpaceId, connectionId).PrivateSpaceVpnConnectionPatchBody(privateSpaceVpnConnectionPatchBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UpdatePrivateSpaceVpnConnection``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatePrivateSpaceVpnConnection`: PrivateSpaceVpnConnection
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.UpdatePrivateSpaceVpnConnection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**connectionId** | **string** | The ID of the VPN connection in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePrivateSpaceVpnConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **privateSpaceVpnConnectionPatchBody** | [**PrivateSpaceVpnConnectionPatchBody**](PrivateSpaceVpnConnectionPatchBody.md) |  | 
+
+### Return type
+
+[**PrivateSpaceVpnConnection**](PrivateSpaceVpnConnection.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePrivateSpaceVpnConnectionMember
+
+> PrivateSpaceVpnConnection UpdatePrivateSpaceVpnConnectionMember(ctx, orgId, privateSpaceId, connectionId, vpnId).PrivateSpaceVpnPatchBody(privateSpaceVpnPatchBody).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	connectionId := "connectionId_example" // string | The ID of the VPN connection in GUID format
+	vpnId := "vpnId_example" // string | The ID of the VPN member in GUID format
+	privateSpaceVpnPatchBody := *openapiclient.NewPrivateSpaceVpnPatchBody() // PrivateSpaceVpnPatchBody |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.UpdatePrivateSpaceVpnConnectionMember(context.Background(), orgId, privateSpaceId, connectionId, vpnId).PrivateSpaceVpnPatchBody(privateSpaceVpnPatchBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UpdatePrivateSpaceVpnConnectionMember``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatePrivateSpaceVpnConnectionMember`: PrivateSpaceVpnConnection
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.UpdatePrivateSpaceVpnConnectionMember`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**connectionId** | **string** | The ID of the VPN connection in GUID format | 
+**vpnId** | **string** | The ID of the VPN member in GUID format | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePrivateSpaceVpnConnectionMemberRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+ **privateSpaceVpnPatchBody** | [**PrivateSpaceVpnPatchBody**](PrivateSpaceVpnPatchBody.md) |  | 
+
+### Return type
+
+[**PrivateSpaceVpnConnection**](PrivateSpaceVpnConnection.md)
 
 ### Authorization
 
