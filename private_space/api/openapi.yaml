@@ -496,6 +496,403 @@ paths:
                   $ref: '#/components/schemas/TransitGateway'
                 type: array
           description: Transit gateway name updated (full array wrap)
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/connections:
+    get:
+      description: lists VPN connections for the given private space
+      operationId: getPrivateSpaceVpnConnections
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+                type: array
+          description: List of VPN connections on the private space
+    post:
+      description: creates a VPN connection on the given private space
+      operationId: createPrivateSpaceVpnConnection
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivateSpaceVpnConnectionPostBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+        "409":
+          description: Conflict
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+          description: VPN connection created
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+          description: VPN connection created
+  /organizations/{orgId}/privatespaces/supportedVpnConfigs:
+    get:
+      description: returns the matrix of vendors / models / firmware versions supported
+        by Anypoint VPN connections
+      operationId: getPrivateSpaceSupportedVpnConfigs
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceSupportedVpnConfigs'
+          description: Matrix of supported VPN vendor / model / firmware combinations
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}:
+    delete:
+      description: deletes a VPN connection from the given private space
+      operationId: deletePrivateSpaceVpnConnection
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the VPN connection in GUID format
+        explode: false
+        in: path
+        name: connectionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "204":
+          description: VPN connection deleted
+    get:
+      description: retrieves a VPN connection for the given private space
+      operationId: getPrivateSpaceVpnConnection
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the VPN connection in GUID format
+        explode: false
+        in: path
+        name: connectionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+          description: VPN connection details
+    patch:
+      description: updates the VPN connection. Currently only the connection display
+        name is mutable.
+      operationId: updatePrivateSpaceVpnConnection
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the VPN connection in GUID format
+        explode: false
+        in: path
+        name: connectionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivateSpaceVpnConnectionPatchBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+          description: VPN connection updated
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns:
+    post:
+      description: adds a new VPN member to an existing VPN connection
+      operationId: addPrivateSpaceVpnConnectionMember
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the VPN connection in GUID format
+        explode: false
+        in: path
+        name: connectionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivateSpaceVpnPostBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+          description: VPN member added to the connection (returns the updated full
+            connection)
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+          description: VPN member added to the connection (returns the updated full
+            connection)
+  /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns/{vpnId}:
+    delete:
+      description: deletes a single VPN member from a VPN connection
+      operationId: deletePrivateSpaceVpnConnectionMember
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the VPN connection in GUID format
+        explode: false
+        in: path
+        name: connectionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the VPN member in GUID format
+        explode: false
+        in: path
+        name: vpnId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+        "204":
+          description: VPN member deleted
+    patch:
+      description: updates a single VPN member. Currently only the VPN display name
+        and per-tunnel startupAction are mutable.
+      operationId: updatePrivateSpaceVpnConnectionMember
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the VPN connection in GUID format
+        explode: false
+        in: path
+        name: connectionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the VPN member in GUID format
+        explode: false
+        in: path
+        name: vpnId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivateSpaceVpnPatchBody'
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+          description: VPN member updated (returns the updated full connection)
   /organizations/{orgId}/privatespaces/{privateSpaceId}/accounts:
     get:
       description: returns the MuleSoft AWS account id (region-bound to the private
@@ -659,6 +1056,50 @@ components:
               $ref: '#/components/schemas/PrivateSpaceRoute'
             type: array
       description: Private space route table
+    SuccessCreatePrivateSpaceVpnConnection:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+      description: VPN connection created
+    SuccessGetPrivateSpaceVpnConnection:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+      description: VPN connection details
+    SuccessListPrivateSpaceVpnConnections:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+            type: array
+      description: List of VPN connections on the private space
+    SuccessUpdatePrivateSpaceVpnConnection:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+      description: VPN connection updated
+    SuccessAddPrivateSpaceVpnConnectionMember:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+      description: VPN member added to the connection (returns the updated full connection)
+    SuccessUpdatePrivateSpaceVpnConnectionMember:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpaceVpnConnection'
+      description: VPN member updated (returns the updated full connection)
+    SuccessGetPrivateSpaceSupportedVpnConfigs:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateSpaceSupportedVpnConfigs'
+      description: Matrix of supported VPN vendor / model / firmware combinations
   schemas:
     PrivateSpaceSummary:
       example:
@@ -1419,6 +1860,324 @@ components:
           description: "Route target (transit gateway id, VPN id, etc.)."
           type: string
       title: PrivateSpaceRoute
+      type: object
+    PrivateSpaceVpnConnection:
+      description: A VPN connection attached to a private space. A connection groups
+        one or more VPN tunnels under a single display name.
+      example:
+        name: name
+        vpns:
+        - vpnConnectionStatus: vpnConnectionStatus
+          staticRoutes:
+          - staticRoutes
+          - staticRoutes
+          remoteAsn: 6
+          vpnTunnels:
+          - startupAction: startupAction
+            ptpCidr: ptpCidr
+            isLogsEnabled: true
+            psk: psk
+          - startupAction: startupAction
+            ptpCidr: ptpCidr
+            isLogsEnabled: true
+            psk: psk
+          name: name
+          connectionId: connectionId
+          localAsn: 0
+          connectionName: connectionName
+          vpnId: vpnId
+          remoteIpAddress: remoteIpAddress
+        - vpnConnectionStatus: vpnConnectionStatus
+          staticRoutes:
+          - staticRoutes
+          - staticRoutes
+          remoteAsn: 6
+          vpnTunnels:
+          - startupAction: startupAction
+            ptpCidr: ptpCidr
+            isLogsEnabled: true
+            psk: psk
+          - startupAction: startupAction
+            ptpCidr: ptpCidr
+            isLogsEnabled: true
+            psk: psk
+          name: name
+          connectionId: connectionId
+          localAsn: 0
+          connectionName: connectionName
+          vpnId: vpnId
+          remoteIpAddress: remoteIpAddress
+        id: id
+      properties:
+        id:
+          description: Connection id (GUID).
+          type: string
+        name:
+          description: User-chosen display name for the VPN connection.
+          type: string
+        vpns:
+          description: VPN members composing the connection.
+          items:
+            $ref: '#/components/schemas/PrivateSpaceVpn'
+          type: array
+      title: PrivateSpaceVpnConnection
+      type: object
+    PrivateSpaceVpn:
+      description: A single VPN member inside a VPN connection.
+      example:
+        vpnConnectionStatus: vpnConnectionStatus
+        staticRoutes:
+        - staticRoutes
+        - staticRoutes
+        remoteAsn: 6
+        vpnTunnels:
+        - startupAction: startupAction
+          ptpCidr: ptpCidr
+          isLogsEnabled: true
+          psk: psk
+        - startupAction: startupAction
+          ptpCidr: ptpCidr
+          isLogsEnabled: true
+          psk: psk
+        name: name
+        connectionId: connectionId
+        localAsn: 0
+        connectionName: connectionName
+        vpnId: vpnId
+        remoteIpAddress: remoteIpAddress
+      properties:
+        name:
+          description: User-chosen display name for the VPN member.
+          type: string
+        vpnId:
+          description: VPN member id (GUID).
+          type: string
+        connectionId:
+          description: Parent connection id (GUID).
+          type: string
+        connectionName:
+          description: Parent connection display name.
+          type: string
+        vpnConnectionStatus:
+          description: Current status of this VPN member.
+          type: string
+        localAsn:
+          description: Local BGP ASN announced by Anypoint.
+          type: integer
+        remoteAsn:
+          description: Remote BGP ASN announced by the customer endpoint.
+          type: integer
+        remoteIpAddress:
+          description: Public IP address of the customer VPN endpoint.
+          type: string
+        staticRoutes:
+          description: Static routes carried over the tunnel (CIDR strings). Empty
+            when BGP is used.
+          items:
+            type: string
+          type: array
+        vpnTunnels:
+          description: IPsec tunnels composing the VPN member (typically two for high
+            availability).
+          items:
+            $ref: '#/components/schemas/PrivateSpaceVpnTunnel'
+          type: array
+      title: PrivateSpaceVpn
+      type: object
+    PrivateSpaceVpnTunnel:
+      description: A single IPsec tunnel inside a VPN member.
+      example:
+        startupAction: startupAction
+        ptpCidr: ptpCidr
+        isLogsEnabled: true
+        psk: psk
+      properties:
+        psk:
+          description: Pre-shared key used to authenticate the IPsec tunnel.
+          type: string
+        ptpCidr:
+          description: Point-to-point /30 CIDR used for the inside-tunnel addresses.
+          type: string
+        startupAction:
+          description: Tunnel startup action. Allowed values are 'start' or 'add'.
+          type: string
+        isLogsEnabled:
+          description: True when tunnel logs are enabled.
+          type: boolean
+      title: PrivateSpaceVpnTunnel
+      type: object
+    PrivateSpaceVpnConnectionPostBody:
+      example:
+        name: name
+        vpns:
+        - staticRoutes:
+          - staticRoutes
+          - staticRoutes
+          remoteAsn: remoteAsn
+          vpnTunnels:
+          - startupAction: startupAction
+            ptpCidr: ptpCidr
+            psk: psk
+          - startupAction: startupAction
+            ptpCidr: ptpCidr
+            psk: psk
+          name: name
+          localAsn: localAsn
+          remoteIpAddress: remoteIpAddress
+        - staticRoutes:
+          - staticRoutes
+          - staticRoutes
+          remoteAsn: remoteAsn
+          vpnTunnels:
+          - startupAction: startupAction
+            ptpCidr: ptpCidr
+            psk: psk
+          - startupAction: startupAction
+            ptpCidr: ptpCidr
+            psk: psk
+          name: name
+          localAsn: localAsn
+          remoteIpAddress: remoteIpAddress
+      properties:
+        name:
+          description: Display name for the VPN connection.
+          type: string
+        vpns:
+          description: VPN members to create under this connection.
+          items:
+            $ref: '#/components/schemas/PrivateSpaceVpnPostBody'
+          type: array
+      required:
+      - name
+      - vpns
+      title: PrivateSpaceVpnConnectionPostBody
+      type: object
+    PrivateSpaceVpnPostBody:
+      example:
+        staticRoutes:
+        - staticRoutes
+        - staticRoutes
+        remoteAsn: remoteAsn
+        vpnTunnels:
+        - startupAction: startupAction
+          ptpCidr: ptpCidr
+          psk: psk
+        - startupAction: startupAction
+          ptpCidr: ptpCidr
+          psk: psk
+        name: name
+        localAsn: localAsn
+        remoteIpAddress: remoteIpAddress
+      properties:
+        name:
+          description: Optional display name for the VPN member.
+          type: string
+        localAsn:
+          description: Local BGP ASN announced by Anypoint (string-encoded integer).
+          type: string
+        remoteAsn:
+          description: Remote BGP ASN announced by the customer endpoint (string-encoded
+            integer). Omit when using static routes.
+          type: string
+        remoteIpAddress:
+          description: Public IP address of the customer VPN endpoint.
+          type: string
+        staticRoutes:
+          description: Static routes carried over the tunnel (CIDR strings). Mutually
+            exclusive with BGP.
+          items:
+            type: string
+          type: array
+        vpnTunnels:
+          description: IPsec tunnels composing the VPN member.
+          items:
+            $ref: '#/components/schemas/PrivateSpaceVpnTunnelPostBody'
+          type: array
+      required:
+      - localAsn
+      - remoteIpAddress
+      - vpnTunnels
+      title: PrivateSpaceVpnPostBody
+      type: object
+    PrivateSpaceVpnTunnelPostBody:
+      example:
+        startupAction: startupAction
+        ptpCidr: ptpCidr
+        psk: psk
+      properties:
+        psk:
+          description: Pre-shared key used to authenticate the IPsec tunnel.
+          type: string
+        ptpCidr:
+          description: Point-to-point /30 CIDR used for the inside-tunnel addresses.
+          type: string
+        startupAction:
+          description: Tunnel startup action. Allowed values are 'start' or 'add'.
+          type: string
+      required:
+      - psk
+      - startupAction
+      title: PrivateSpaceVpnTunnelPostBody
+      type: object
+    PrivateSpaceVpnConnectionPatchBody:
+      description: Patch body for renaming an existing VPN connection.
+      example:
+        name: name
+      properties:
+        name:
+          description: New display name for the VPN connection.
+          type: string
+      title: PrivateSpaceVpnConnectionPatchBody
+      type: object
+    PrivateSpaceVpnPatchBody:
+      description: "Patch body for an existing VPN member. Supports renaming, replacing\
+        \ the static routes, and replacing per-tunnel startupAction."
+      example:
+        staticRoutes:
+        - staticRoutes
+        - staticRoutes
+        vpnTunnels:
+        - startupAction: startupAction
+        - startupAction: startupAction
+        name: name
+      properties:
+        name:
+          description: New display name for the VPN member.
+          type: string
+        staticRoutes:
+          description: Replacement set of static routes (CIDR strings).
+          items:
+            type: string
+          type: array
+        vpnTunnels:
+          description: Replacement startupAction for each tunnel position. Order must
+            match the existing tunnel order.
+          items:
+            $ref: '#/components/schemas/PrivateSpaceVpnTunnelPatchBody'
+          type: array
+      title: PrivateSpaceVpnPatchBody
+      type: object
+    PrivateSpaceVpnTunnelPatchBody:
+      description: Patch body fragment for a single tunnel. Only startupAction is
+        mutable.
+      example:
+        startupAction: startupAction
+      properties:
+        startupAction:
+          description: Tunnel startup action. Allowed values are 'start' or 'add'.
+          type: string
+      title: PrivateSpaceVpnTunnelPatchBody
+      type: object
+    PrivateSpaceSupportedVpnConfigs:
+      additionalProperties:
+        additionalProperties:
+          items:
+            type: string
+          type: array
+        type: object
+      description: |
+        Matrix of supported VPN configurations keyed by vendor name. Each vendor maps to a map of model names, which in turn maps to a list of supported firmware version strings.
+      title: PrivateSpaceSupportedVpnConfigs
       type: object
     PrivateSpaceSummaryContentItem:
       example:

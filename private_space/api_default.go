@@ -23,6 +23,125 @@ import (
 // DefaultAPIService DefaultAPI service
 type DefaultAPIService service
 
+type DefaultAPIAddPrivateSpaceVpnConnectionMemberRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	connectionId string
+	privateSpaceVpnPostBody *PrivateSpaceVpnPostBody
+}
+
+func (r DefaultAPIAddPrivateSpaceVpnConnectionMemberRequest) PrivateSpaceVpnPostBody(privateSpaceVpnPostBody PrivateSpaceVpnPostBody) DefaultAPIAddPrivateSpaceVpnConnectionMemberRequest {
+	r.privateSpaceVpnPostBody = &privateSpaceVpnPostBody
+	return r
+}
+
+func (r DefaultAPIAddPrivateSpaceVpnConnectionMemberRequest) Execute() (*PrivateSpaceVpnConnection, *http.Response, error) {
+	return r.ApiService.AddPrivateSpaceVpnConnectionMemberExecute(r)
+}
+
+/*
+AddPrivateSpaceVpnConnectionMember Method for AddPrivateSpaceVpnConnectionMember
+
+adds a new VPN member to an existing VPN connection
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @param connectionId The ID of the VPN connection in GUID format
+ @return DefaultAPIAddPrivateSpaceVpnConnectionMemberRequest
+*/
+func (a *DefaultAPIService) AddPrivateSpaceVpnConnectionMember(ctx context.Context, orgId string, privateSpaceId string, connectionId string) DefaultAPIAddPrivateSpaceVpnConnectionMemberRequest {
+	return DefaultAPIAddPrivateSpaceVpnConnectionMemberRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+		connectionId: connectionId,
+	}
+}
+
+// Execute executes the request
+//  @return PrivateSpaceVpnConnection
+func (a *DefaultAPIService) AddPrivateSpaceVpnConnectionMemberExecute(r DefaultAPIAddPrivateSpaceVpnConnectionMemberRequest) (*PrivateSpaceVpnConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PrivateSpaceVpnConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.AddPrivateSpaceVpnConnectionMember")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(parameterValueToString(r.connectionId, "connectionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.privateSpaceVpnPostBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DefaultAPICreatePrivateSpaceRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -249,6 +368,121 @@ func (a *DefaultAPIService) CreatePrivateSpaceTransitGatewayExecute(r DefaultAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type DefaultAPICreatePrivateSpaceVpnConnectionRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	privateSpaceVpnConnectionPostBody *PrivateSpaceVpnConnectionPostBody
+}
+
+func (r DefaultAPICreatePrivateSpaceVpnConnectionRequest) PrivateSpaceVpnConnectionPostBody(privateSpaceVpnConnectionPostBody PrivateSpaceVpnConnectionPostBody) DefaultAPICreatePrivateSpaceVpnConnectionRequest {
+	r.privateSpaceVpnConnectionPostBody = &privateSpaceVpnConnectionPostBody
+	return r
+}
+
+func (r DefaultAPICreatePrivateSpaceVpnConnectionRequest) Execute() (*PrivateSpaceVpnConnection, *http.Response, error) {
+	return r.ApiService.CreatePrivateSpaceVpnConnectionExecute(r)
+}
+
+/*
+CreatePrivateSpaceVpnConnection Method for CreatePrivateSpaceVpnConnection
+
+creates a VPN connection on the given private space
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @return DefaultAPICreatePrivateSpaceVpnConnectionRequest
+*/
+func (a *DefaultAPIService) CreatePrivateSpaceVpnConnection(ctx context.Context, orgId string, privateSpaceId string) DefaultAPICreatePrivateSpaceVpnConnectionRequest {
+	return DefaultAPICreatePrivateSpaceVpnConnectionRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+	}
+}
+
+// Execute executes the request
+//  @return PrivateSpaceVpnConnection
+func (a *DefaultAPIService) CreatePrivateSpaceVpnConnectionExecute(r DefaultAPICreatePrivateSpaceVpnConnectionRequest) (*PrivateSpaceVpnConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PrivateSpaceVpnConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.CreatePrivateSpaceVpnConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/connections"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.privateSpaceVpnConnectionPostBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DefaultAPIDeletePrivateSpaceRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -395,6 +629,210 @@ func (a *DefaultAPIService) DeletePrivateSpaceTransitGatewayExecute(r DefaultAPI
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transitGatewayId"+"}", url.PathEscape(parameterValueToString(r.transitGatewayId, "transitGatewayId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DefaultAPIDeletePrivateSpaceVpnConnectionRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	connectionId string
+}
+
+func (r DefaultAPIDeletePrivateSpaceVpnConnectionRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeletePrivateSpaceVpnConnectionExecute(r)
+}
+
+/*
+DeletePrivateSpaceVpnConnection Method for DeletePrivateSpaceVpnConnection
+
+deletes a VPN connection from the given private space
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @param connectionId The ID of the VPN connection in GUID format
+ @return DefaultAPIDeletePrivateSpaceVpnConnectionRequest
+*/
+func (a *DefaultAPIService) DeletePrivateSpaceVpnConnection(ctx context.Context, orgId string, privateSpaceId string, connectionId string) DefaultAPIDeletePrivateSpaceVpnConnectionRequest {
+	return DefaultAPIDeletePrivateSpaceVpnConnectionRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+		connectionId: connectionId,
+	}
+}
+
+// Execute executes the request
+func (a *DefaultAPIService) DeletePrivateSpaceVpnConnectionExecute(r DefaultAPIDeletePrivateSpaceVpnConnectionRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeletePrivateSpaceVpnConnection")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(parameterValueToString(r.connectionId, "connectionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DefaultAPIDeletePrivateSpaceVpnConnectionMemberRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	connectionId string
+	vpnId string
+}
+
+func (r DefaultAPIDeletePrivateSpaceVpnConnectionMemberRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeletePrivateSpaceVpnConnectionMemberExecute(r)
+}
+
+/*
+DeletePrivateSpaceVpnConnectionMember Method for DeletePrivateSpaceVpnConnectionMember
+
+deletes a single VPN member from a VPN connection
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @param connectionId The ID of the VPN connection in GUID format
+ @param vpnId The ID of the VPN member in GUID format
+ @return DefaultAPIDeletePrivateSpaceVpnConnectionMemberRequest
+*/
+func (a *DefaultAPIService) DeletePrivateSpaceVpnConnectionMember(ctx context.Context, orgId string, privateSpaceId string, connectionId string, vpnId string) DefaultAPIDeletePrivateSpaceVpnConnectionMemberRequest {
+	return DefaultAPIDeletePrivateSpaceVpnConnectionMemberRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+		connectionId: connectionId,
+		vpnId: vpnId,
+	}
+}
+
+// Execute executes the request
+func (a *DefaultAPIService) DeletePrivateSpaceVpnConnectionMemberExecute(r DefaultAPIDeletePrivateSpaceVpnConnectionMemberRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.DeletePrivateSpaceVpnConnectionMember")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns/{vpnId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(parameterValueToString(r.connectionId, "connectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"vpnId"+"}", url.PathEscape(parameterValueToString(r.vpnId, "vpnId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -996,6 +1434,109 @@ func (a *DefaultAPIService) GetPrivateSpaceRoutesExecute(r DefaultAPIGetPrivateS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type DefaultAPIGetPrivateSpaceSupportedVpnConfigsRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+}
+
+func (r DefaultAPIGetPrivateSpaceSupportedVpnConfigsRequest) Execute() (*map[string]map[string][]string, *http.Response, error) {
+	return r.ApiService.GetPrivateSpaceSupportedVpnConfigsExecute(r)
+}
+
+/*
+GetPrivateSpaceSupportedVpnConfigs Method for GetPrivateSpaceSupportedVpnConfigs
+
+returns the matrix of vendors / models / firmware versions supported by Anypoint VPN connections
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @return DefaultAPIGetPrivateSpaceSupportedVpnConfigsRequest
+*/
+func (a *DefaultAPIService) GetPrivateSpaceSupportedVpnConfigs(ctx context.Context, orgId string) DefaultAPIGetPrivateSpaceSupportedVpnConfigsRequest {
+	return DefaultAPIGetPrivateSpaceSupportedVpnConfigsRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]map[string][]string
+func (a *DefaultAPIService) GetPrivateSpaceSupportedVpnConfigsExecute(r DefaultAPIGetPrivateSpaceSupportedVpnConfigsRequest) (*map[string]map[string][]string, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *map[string]map[string][]string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpaceSupportedVpnConfigs")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/supportedVpnConfigs"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DefaultAPIGetPrivateSpaceTransitGatewaysRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
@@ -1042,6 +1583,224 @@ func (a *DefaultAPIService) GetPrivateSpaceTransitGatewaysExecute(r DefaultAPIGe
 	}
 
 	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DefaultAPIGetPrivateSpaceVpnConnectionRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	connectionId string
+}
+
+func (r DefaultAPIGetPrivateSpaceVpnConnectionRequest) Execute() (*PrivateSpaceVpnConnection, *http.Response, error) {
+	return r.ApiService.GetPrivateSpaceVpnConnectionExecute(r)
+}
+
+/*
+GetPrivateSpaceVpnConnection Method for GetPrivateSpaceVpnConnection
+
+retrieves a VPN connection for the given private space
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @param connectionId The ID of the VPN connection in GUID format
+ @return DefaultAPIGetPrivateSpaceVpnConnectionRequest
+*/
+func (a *DefaultAPIService) GetPrivateSpaceVpnConnection(ctx context.Context, orgId string, privateSpaceId string, connectionId string) DefaultAPIGetPrivateSpaceVpnConnectionRequest {
+	return DefaultAPIGetPrivateSpaceVpnConnectionRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+		connectionId: connectionId,
+	}
+}
+
+// Execute executes the request
+//  @return PrivateSpaceVpnConnection
+func (a *DefaultAPIService) GetPrivateSpaceVpnConnectionExecute(r DefaultAPIGetPrivateSpaceVpnConnectionRequest) (*PrivateSpaceVpnConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PrivateSpaceVpnConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpaceVpnConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(parameterValueToString(r.connectionId, "connectionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DefaultAPIGetPrivateSpaceVpnConnectionsRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+}
+
+func (r DefaultAPIGetPrivateSpaceVpnConnectionsRequest) Execute() ([]PrivateSpaceVpnConnection, *http.Response, error) {
+	return r.ApiService.GetPrivateSpaceVpnConnectionsExecute(r)
+}
+
+/*
+GetPrivateSpaceVpnConnections Method for GetPrivateSpaceVpnConnections
+
+lists VPN connections for the given private space
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @return DefaultAPIGetPrivateSpaceVpnConnectionsRequest
+*/
+func (a *DefaultAPIService) GetPrivateSpaceVpnConnections(ctx context.Context, orgId string, privateSpaceId string) DefaultAPIGetPrivateSpaceVpnConnectionsRequest {
+	return DefaultAPIGetPrivateSpaceVpnConnectionsRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+	}
+}
+
+// Execute executes the request
+//  @return []PrivateSpaceVpnConnection
+func (a *DefaultAPIService) GetPrivateSpaceVpnConnectionsExecute(r DefaultAPIGetPrivateSpaceVpnConnectionsRequest) ([]PrivateSpaceVpnConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []PrivateSpaceVpnConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetPrivateSpaceVpnConnections")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/connections"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
 
@@ -1558,6 +2317,248 @@ func (a *DefaultAPIService) UpdatePrivateSpaceTransitGatewayRoutesExecute(r Defa
 	}
 	// body params
 	localVarPostBody = r.transitGatewayPatchRoutesBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DefaultAPIUpdatePrivateSpaceVpnConnectionRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	connectionId string
+	privateSpaceVpnConnectionPatchBody *PrivateSpaceVpnConnectionPatchBody
+}
+
+func (r DefaultAPIUpdatePrivateSpaceVpnConnectionRequest) PrivateSpaceVpnConnectionPatchBody(privateSpaceVpnConnectionPatchBody PrivateSpaceVpnConnectionPatchBody) DefaultAPIUpdatePrivateSpaceVpnConnectionRequest {
+	r.privateSpaceVpnConnectionPatchBody = &privateSpaceVpnConnectionPatchBody
+	return r
+}
+
+func (r DefaultAPIUpdatePrivateSpaceVpnConnectionRequest) Execute() (*PrivateSpaceVpnConnection, *http.Response, error) {
+	return r.ApiService.UpdatePrivateSpaceVpnConnectionExecute(r)
+}
+
+/*
+UpdatePrivateSpaceVpnConnection Method for UpdatePrivateSpaceVpnConnection
+
+updates the VPN connection. Currently only the connection display name is mutable.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @param connectionId The ID of the VPN connection in GUID format
+ @return DefaultAPIUpdatePrivateSpaceVpnConnectionRequest
+*/
+func (a *DefaultAPIService) UpdatePrivateSpaceVpnConnection(ctx context.Context, orgId string, privateSpaceId string, connectionId string) DefaultAPIUpdatePrivateSpaceVpnConnectionRequest {
+	return DefaultAPIUpdatePrivateSpaceVpnConnectionRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+		connectionId: connectionId,
+	}
+}
+
+// Execute executes the request
+//  @return PrivateSpaceVpnConnection
+func (a *DefaultAPIService) UpdatePrivateSpaceVpnConnectionExecute(r DefaultAPIUpdatePrivateSpaceVpnConnectionRequest) (*PrivateSpaceVpnConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PrivateSpaceVpnConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdatePrivateSpaceVpnConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(parameterValueToString(r.connectionId, "connectionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.privateSpaceVpnConnectionPatchBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DefaultAPIUpdatePrivateSpaceVpnConnectionMemberRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	orgId string
+	privateSpaceId string
+	connectionId string
+	vpnId string
+	privateSpaceVpnPatchBody *PrivateSpaceVpnPatchBody
+}
+
+func (r DefaultAPIUpdatePrivateSpaceVpnConnectionMemberRequest) PrivateSpaceVpnPatchBody(privateSpaceVpnPatchBody PrivateSpaceVpnPatchBody) DefaultAPIUpdatePrivateSpaceVpnConnectionMemberRequest {
+	r.privateSpaceVpnPatchBody = &privateSpaceVpnPatchBody
+	return r
+}
+
+func (r DefaultAPIUpdatePrivateSpaceVpnConnectionMemberRequest) Execute() (*PrivateSpaceVpnConnection, *http.Response, error) {
+	return r.ApiService.UpdatePrivateSpaceVpnConnectionMemberExecute(r)
+}
+
+/*
+UpdatePrivateSpaceVpnConnectionMember Method for UpdatePrivateSpaceVpnConnectionMember
+
+updates a single VPN member. Currently only the VPN display name and per-tunnel startupAction are mutable.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId The ID of the organization in GUID format
+ @param privateSpaceId The ID of the private space in GUID format
+ @param connectionId The ID of the VPN connection in GUID format
+ @param vpnId The ID of the VPN member in GUID format
+ @return DefaultAPIUpdatePrivateSpaceVpnConnectionMemberRequest
+*/
+func (a *DefaultAPIService) UpdatePrivateSpaceVpnConnectionMember(ctx context.Context, orgId string, privateSpaceId string, connectionId string, vpnId string) DefaultAPIUpdatePrivateSpaceVpnConnectionMemberRequest {
+	return DefaultAPIUpdatePrivateSpaceVpnConnectionMemberRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		privateSpaceId: privateSpaceId,
+		connectionId: connectionId,
+		vpnId: vpnId,
+	}
+}
+
+// Execute executes the request
+//  @return PrivateSpaceVpnConnection
+func (a *DefaultAPIService) UpdatePrivateSpaceVpnConnectionMemberExecute(r DefaultAPIUpdatePrivateSpaceVpnConnectionMemberRequest) (*PrivateSpaceVpnConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PrivateSpaceVpnConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UpdatePrivateSpaceVpnConnectionMember")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns/{vpnId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"privateSpaceId"+"}", url.PathEscape(parameterValueToString(r.privateSpaceId, "privateSpaceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(parameterValueToString(r.connectionId, "connectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"vpnId"+"}", url.PathEscape(parameterValueToString(r.vpnId, "vpnId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.privateSpaceVpnPatchBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

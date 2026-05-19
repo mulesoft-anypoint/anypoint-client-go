@@ -78,20 +78,29 @@ All URIs are relative to *https://anypoint.mulesoft.com/runtimefabric/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultAPI* | [**AddPrivateSpaceVpnConnectionMember**](docs/DefaultAPI.md#addprivatespacevpnconnectionmember) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns | 
 *DefaultAPI* | [**CreatePrivateSpace**](docs/DefaultAPI.md#createprivatespace) | **Post** /organizations/{orgId}/privatespaces | 
 *DefaultAPI* | [**CreatePrivateSpaceTransitGateway**](docs/DefaultAPI.md#createprivatespacetransitgateway) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
+*DefaultAPI* | [**CreatePrivateSpaceVpnConnection**](docs/DefaultAPI.md#createprivatespacevpnconnection) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections | 
 *DefaultAPI* | [**DeletePrivateSpace**](docs/DefaultAPI.md#deleteprivatespace) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 *DefaultAPI* | [**DeletePrivateSpaceTransitGateway**](docs/DefaultAPI.md#deleteprivatespacetransitgateway) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
+*DefaultAPI* | [**DeletePrivateSpaceVpnConnection**](docs/DefaultAPI.md#deleteprivatespacevpnconnection) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId} | 
+*DefaultAPI* | [**DeletePrivateSpaceVpnConnectionMember**](docs/DefaultAPI.md#deleteprivatespacevpnconnectionmember) | **Delete** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns/{vpnId} | 
 *DefaultAPI* | [**GetOrgTransitGateways**](docs/DefaultAPI.md#getorgtransitgateways) | **Get** /organizations/{orgId}/transitgateways | 
 *DefaultAPI* | [**GetPrivateSpace**](docs/DefaultAPI.md#getprivatespace) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 *DefaultAPI* | [**GetPrivateSpaceIamRoles**](docs/DefaultAPI.md#getprivatespaceiamroles) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/iamroles | 
 *DefaultAPI* | [**GetPrivateSpaceMulesoftAccount**](docs/DefaultAPI.md#getprivatespacemulesoftaccount) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/accounts | 
 *DefaultAPI* | [**GetPrivateSpaceRoutes**](docs/DefaultAPI.md#getprivatespaceroutes) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/routes | 
+*DefaultAPI* | [**GetPrivateSpaceSupportedVpnConfigs**](docs/DefaultAPI.md#getprivatespacesupportedvpnconfigs) | **Get** /organizations/{orgId}/privatespaces/supportedVpnConfigs | 
 *DefaultAPI* | [**GetPrivateSpaceTransitGateways**](docs/DefaultAPI.md#getprivatespacetransitgateways) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
+*DefaultAPI* | [**GetPrivateSpaceVpnConnection**](docs/DefaultAPI.md#getprivatespacevpnconnection) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId} | 
+*DefaultAPI* | [**GetPrivateSpaceVpnConnections**](docs/DefaultAPI.md#getprivatespacevpnconnections) | **Get** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections | 
 *DefaultAPI* | [**GetPrivateSpaces**](docs/DefaultAPI.md#getprivatespaces) | **Get** /organizations/{orgId}/privatespaces | 
 *DefaultAPI* | [**UpdateOrgTransitGatewayName**](docs/DefaultAPI.md#updateorgtransitgatewayname) | **Patch** /organizations/{orgId}/transitgateways/{transitGatewayId} | 
 *DefaultAPI* | [**UpdatePrivateSpace**](docs/DefaultAPI.md#updateprivatespace) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId} | 
 *DefaultAPI* | [**UpdatePrivateSpaceTransitGatewayRoutes**](docs/DefaultAPI.md#updateprivatespacetransitgatewayroutes) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
+*DefaultAPI* | [**UpdatePrivateSpaceVpnConnection**](docs/DefaultAPI.md#updateprivatespacevpnconnection) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId} | 
+*DefaultAPI* | [**UpdatePrivateSpaceVpnConnectionMember**](docs/DefaultAPI.md#updateprivatespacevpnconnectionmember) | **Patch** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns/{vpnId} | 
 
 
 ## Documentation For Models
@@ -120,6 +129,15 @@ Class | Method | HTTP request | Description
  - [PrivateSpaceSummaryContentItem](docs/PrivateSpaceSummaryContentItem.md)
  - [PrivateSpaceSummaryPageable](docs/PrivateSpaceSummaryPageable.md)
  - [PrivateSpaceSummaryPageableSort](docs/PrivateSpaceSummaryPageableSort.md)
+ - [PrivateSpaceVpn](docs/PrivateSpaceVpn.md)
+ - [PrivateSpaceVpnConnection](docs/PrivateSpaceVpnConnection.md)
+ - [PrivateSpaceVpnConnectionPatchBody](docs/PrivateSpaceVpnConnectionPatchBody.md)
+ - [PrivateSpaceVpnConnectionPostBody](docs/PrivateSpaceVpnConnectionPostBody.md)
+ - [PrivateSpaceVpnPatchBody](docs/PrivateSpaceVpnPatchBody.md)
+ - [PrivateSpaceVpnPostBody](docs/PrivateSpaceVpnPostBody.md)
+ - [PrivateSpaceVpnTunnel](docs/PrivateSpaceVpnTunnel.md)
+ - [PrivateSpaceVpnTunnelPatchBody](docs/PrivateSpaceVpnTunnelPatchBody.md)
+ - [PrivateSpaceVpnTunnelPostBody](docs/PrivateSpaceVpnTunnelPostBody.md)
  - [TransitGateway](docs/TransitGateway.md)
  - [TransitGatewayPatchNameBody](docs/TransitGatewayPatchNameBody.md)
  - [TransitGatewayPatchRoutesBody](docs/TransitGatewayPatchRoutesBody.md)
