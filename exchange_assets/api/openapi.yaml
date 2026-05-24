@@ -854,7 +854,6 @@ components:
           title: assetLink
           type: string
       required:
-      - asset
       - assetId
       - classifier
       - groupId
