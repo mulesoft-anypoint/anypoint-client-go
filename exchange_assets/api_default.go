@@ -510,10 +510,10 @@ type DefaultAPIAssetsPostRequest struct {
 	name *string
 	classifier *string
 	groupId *string
-	asset *os.File
 	xAllowedApiSpecFormats *string
 	apiVersion *string
 	main *string
+	asset *os.File
 	dependencies *string
 	originalFormatVersion *string
 	metadata *string
@@ -563,12 +563,6 @@ func (r DefaultAPIAssetsPostRequest) GroupId(groupId string) DefaultAPIAssetsPos
 	return r
 }
 
-// The asset file. Required for \\\&quot;raml\\\&quot;, \\\&quot;raml-fragment\\\&quot;, \\\&quot;oas\\\&quot; and \\\&quot;wsdl\\\&quot;. Maximum size of 5 MB. This field must be the last field of the multipart.
-func (r DefaultAPIAssetsPostRequest) Asset(asset *os.File) DefaultAPIAssetsPostRequest {
-	r.asset = asset
-	return r
-}
-
 // Specify API Spec formats that assets are allowed to use
 func (r DefaultAPIAssetsPostRequest) XAllowedApiSpecFormats(xAllowedApiSpecFormats string) DefaultAPIAssetsPostRequest {
 	r.xAllowedApiSpecFormats = &xAllowedApiSpecFormats
@@ -584,6 +578,12 @@ func (r DefaultAPIAssetsPostRequest) ApiVersion(apiVersion string) DefaultAPIAss
 // The main file of the asset. Required for \\\&quot;raml\\\&quot;, \\\&quot;raml-fragment\\\&quot;, \\\&quot;oas\\\&quot; and \\\&quot;wsdl\\\&quot;.
 func (r DefaultAPIAssetsPostRequest) Main(main string) DefaultAPIAssetsPostRequest {
 	r.main = &main
+	return r
+}
+
+// The asset file. Required for \\\&quot;raml\\\&quot;, \\\&quot;raml-fragment\\\&quot;, \\\&quot;oas\\\&quot; and \\\&quot;wsdl\\\&quot;. Maximum size of 5 MB. This field must be the last field of the multipart.
+func (r DefaultAPIAssetsPostRequest) Asset(asset *os.File) DefaultAPIAssetsPostRequest {
+	r.asset = asset
 	return r
 }
 
@@ -676,9 +676,6 @@ func (a *DefaultAPIService) AssetsPostExecute(r DefaultAPIAssetsPostRequest) (*P
 	}
 	if r.groupId == nil {
 		return localVarReturnValue, nil, reportError("groupId is required and must be specified")
-	}
-	if r.asset == nil {
-		return localVarReturnValue, nil, reportError("asset is required and must be specified")
 	}
 
 	// to determine the Content-Type header

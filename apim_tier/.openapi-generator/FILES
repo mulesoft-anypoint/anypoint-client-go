@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -29,5 +28,4 @@ model_sla_tier_audit_date.go
 model_sla_tier_post_body.go
 model_sla_tier_put_body.go
 response.go
-test/api_default_test.go
 utils.go
