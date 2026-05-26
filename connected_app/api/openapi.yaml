@@ -498,6 +498,11 @@ components:
             example: true
             title: enabled
             type: boolean
+          owner_user_id:
+            description: User id of the connected app owner. Set to transfer ownership.
+            example: 9exb9686-4e35-81e0-45ac-8c83662480c0
+            title: ownerUserId
+            type: string
         type: object
       title: connectedAppPatchExt
     scopeCore:
