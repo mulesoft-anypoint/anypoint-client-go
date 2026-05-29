@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 
 ## GetOrgExchangePolicyTemplateDetails
 
-> ExchangePolicyTemplate GetOrgExchangePolicyTemplateDetails(ctx, orgId, groupId, assetId, assetVersion).IncludeAllVersions(includeAllVersions).SplitModel(splitModel).Execute()
+> ExchangePolicyTemplate GetOrgExchangePolicyTemplateDetails(ctx, orgId, groupId, assetId, assetVersion).IncludeAllVersions(includeAllVersions).SplitModel(splitModel).ApiInstanceId(apiInstanceId).Execute()
 
 Retrieve details of exchange policy template of a given organization
 
@@ -587,10 +587,11 @@ func main() {
 	assetVersion := "assetVersion_example" // string | The asset version
 	includeAllVersions := true // bool | Whether to include all versions of the asset. (optional)
 	splitModel := true // bool | Whether to include asset split model. (optional)
+	apiInstanceId := "apiInstanceId_example" // string | Filter applicability against a specific api instance id. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.GetOrgExchangePolicyTemplateDetails(context.Background(), orgId, groupId, assetId, assetVersion).IncludeAllVersions(includeAllVersions).SplitModel(splitModel).Execute()
+	resp, r, err := apiClient.DefaultAPI.GetOrgExchangePolicyTemplateDetails(context.Background(), orgId, groupId, assetId, assetVersion).IncludeAllVersions(includeAllVersions).SplitModel(splitModel).ApiInstanceId(apiInstanceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetOrgExchangePolicyTemplateDetails``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -624,6 +625,7 @@ Name | Type | Description  | Notes
 
  **includeAllVersions** | **bool** | Whether to include all versions of the asset. | 
  **splitModel** | **bool** | Whether to include asset split model. | 
+ **apiInstanceId** | **string** | Filter applicability against a specific api instance id. | 
 
 ### Return type
 
@@ -645,7 +647,7 @@ Name | Type | Description  | Notes
 
 ## GetOrgExchangePolicyTemplates
 
-> []ExchangePolicyTemplate GetOrgExchangePolicyTemplates(ctx, orgId).EnvironmentId(environmentId).SplitModel(splitModel).Latest(latest).ApiInstanceId(apiInstanceId).IncludeConfiguration(includeConfiguration).AutomatedOnly(automatedOnly).Execute()
+> []ExchangePolicyTemplate GetOrgExchangePolicyTemplates(ctx, orgId).EnvironmentId(environmentId).SplitModel(splitModel).Latest(latest).ApiInstanceId(apiInstanceId).IncludeConfiguration(includeConfiguration).AutomatedOnly(automatedOnly).InjectionPoint(injectionPoint).Execute()
 
 Retrieve all or part of exchange policy templates of a given organization
 
@@ -671,10 +673,11 @@ func main() {
 	apiInstanceId := "apiInstanceId_example" // string | include only templates used for api instance id. (optional)
 	includeConfiguration := true // bool | whether to include configuration. (optional)
 	automatedOnly := true // bool | whether to include automated policies only. (optional)
+	injectionPoint := "injectionPoint_example" // string | Filter by policy injection point. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.GetOrgExchangePolicyTemplates(context.Background(), orgId).EnvironmentId(environmentId).SplitModel(splitModel).Latest(latest).ApiInstanceId(apiInstanceId).IncludeConfiguration(includeConfiguration).AutomatedOnly(automatedOnly).Execute()
+	resp, r, err := apiClient.DefaultAPI.GetOrgExchangePolicyTemplates(context.Background(), orgId).EnvironmentId(environmentId).SplitModel(splitModel).Latest(latest).ApiInstanceId(apiInstanceId).IncludeConfiguration(includeConfiguration).AutomatedOnly(automatedOnly).InjectionPoint(injectionPoint).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetOrgExchangePolicyTemplates``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -706,6 +709,7 @@ Name | Type | Description  | Notes
  **apiInstanceId** | **string** | include only templates used for api instance id. | 
  **includeConfiguration** | **bool** | whether to include configuration. | 
  **automatedOnly** | **bool** | whether to include automated policies only. | 
+ **injectionPoint** | **string** | Filter by policy injection point. | 
 
 ### Return type
 

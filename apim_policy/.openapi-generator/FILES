@@ -25,6 +25,7 @@ docs/ErrorsResponseErrorsInner.md
 docs/ExchangePolicyTemplate.md
 docs/ExchangePolicyTemplateAllVersionsInner.md
 docs/ExchangePolicyTemplateIdentityManagement.md
+docs/ExchangePolicyTemplateInterfaceTransformationInner.md
 docs/GetOrgAutomatedPolicies404Response.md
 docs/ImplementationAsset.md
 docs/PointcutDataItem.md
@@ -52,6 +53,7 @@ model_errors_response_errors_inner.go
 model_exchange_policy_template.go
 model_exchange_policy_template_all_versions_inner.go
 model_exchange_policy_template_identity_management.go
+model_exchange_policy_template_interface_transformation_inner.go
 model_get_org_automated_policies_404_response.go
 model_implementation_asset.go
 model_pointcut_data_item.go

@@ -936,6 +936,7 @@ type DefaultAPIGetOrgExchangePolicyTemplateDetailsRequest struct {
 	assetVersion string
 	includeAllVersions *bool
 	splitModel *bool
+	apiInstanceId *string
 }
 
 // Whether to include all versions of the asset.
@@ -947,6 +948,12 @@ func (r DefaultAPIGetOrgExchangePolicyTemplateDetailsRequest) IncludeAllVersions
 // Whether to include asset split model.
 func (r DefaultAPIGetOrgExchangePolicyTemplateDetailsRequest) SplitModel(splitModel bool) DefaultAPIGetOrgExchangePolicyTemplateDetailsRequest {
 	r.splitModel = &splitModel
+	return r
+}
+
+// Filter applicability against a specific api instance id.
+func (r DefaultAPIGetOrgExchangePolicyTemplateDetailsRequest) ApiInstanceId(apiInstanceId string) DefaultAPIGetOrgExchangePolicyTemplateDetailsRequest {
+	r.apiInstanceId = &apiInstanceId
 	return r
 }
 
@@ -1007,6 +1014,9 @@ func (a *DefaultAPIService) GetOrgExchangePolicyTemplateDetailsExecute(r Default
 	}
 	if r.splitModel != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "splitModel", r.splitModel, "form", "")
+	}
+	if r.apiInstanceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "apiInstanceId", r.apiInstanceId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1083,6 +1093,7 @@ type DefaultAPIGetOrgExchangePolicyTemplatesRequest struct {
 	apiInstanceId *string
 	includeConfiguration *bool
 	automatedOnly *bool
+	injectionPoint *string
 }
 
 // The environment id.
@@ -1118,6 +1129,12 @@ func (r DefaultAPIGetOrgExchangePolicyTemplatesRequest) IncludeConfiguration(inc
 // whether to include automated policies only.
 func (r DefaultAPIGetOrgExchangePolicyTemplatesRequest) AutomatedOnly(automatedOnly bool) DefaultAPIGetOrgExchangePolicyTemplatesRequest {
 	r.automatedOnly = &automatedOnly
+	return r
+}
+
+// Filter by policy injection point.
+func (r DefaultAPIGetOrgExchangePolicyTemplatesRequest) InjectionPoint(injectionPoint string) DefaultAPIGetOrgExchangePolicyTemplatesRequest {
+	r.injectionPoint = &injectionPoint
 	return r
 }
 
@@ -1181,6 +1198,9 @@ func (a *DefaultAPIService) GetOrgExchangePolicyTemplatesExecute(r DefaultAPIGet
 	}
 	if r.automatedOnly != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "automatedOnly", r.automatedOnly, "form", "")
+	}
+	if r.injectionPoint != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "injectionPoint", r.injectionPoint, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
