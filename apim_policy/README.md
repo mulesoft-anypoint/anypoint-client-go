@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
  - [ExchangePolicyTemplate](docs/ExchangePolicyTemplate.md)
  - [ExchangePolicyTemplateAllVersionsInner](docs/ExchangePolicyTemplateAllVersionsInner.md)
  - [ExchangePolicyTemplateIdentityManagement](docs/ExchangePolicyTemplateIdentityManagement.md)
+ - [ExchangePolicyTemplateInterfaceTransformationInner](docs/ExchangePolicyTemplateInterfaceTransformationInner.md)
  - [GetOrgAutomatedPolicies404Response](docs/GetOrgAutomatedPolicies404Response.md)
  - [ImplementationAsset](docs/ImplementationAsset.md)
  - [PointcutDataItem](docs/PointcutDataItem.md)

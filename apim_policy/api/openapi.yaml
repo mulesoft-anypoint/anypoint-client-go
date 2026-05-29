@@ -178,6 +178,17 @@ paths:
         schema:
           type: boolean
         style: form
+      - description: Filter by policy injection point.
+        explode: true
+        in: query
+        name: injectionPoint
+        required: false
+        schema:
+          enum:
+          - inbound
+          - outbound
+          type: string
+        style: form
       responses:
         "401":
           description: Access token is missing or invalid
@@ -246,6 +257,14 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - description: Filter applicability against a specific api instance id.
+        explode: true
+        in: query
+        name: apiInstanceId
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "401":
@@ -888,37 +907,7 @@ components:
         identityManagement:
           type: type
         ramlV1Snippet: ramlV1Snippet
-        configuration:
-        - allowMultiple: true
-          propertyName: propertyName
-          configuration:
-          - propertyName: propertyName
-            type: type
-          - propertyName: propertyName
-            type: type
-          name: name
-          options:
-          - "{}"
-          - "{}"
-          description: description
-          optional: true
-          sensitive: true
-          type: type
-        - allowMultiple: true
-          propertyName: propertyName
-          configuration:
-          - propertyName: propertyName
-            type: type
-          - propertyName: propertyName
-            type: type
-          name: name
-          options:
-          - "{}"
-          - "{}"
-          description: description
-          optional: true
-          sensitive: true
-          type: type
+        configuration: ""
         groupId: groupId
         description: description
         ramlSnippet: ramlSnippet
@@ -936,11 +925,18 @@ components:
         - assetId: assetId
           groupId: groupId
           version: version
+          status: status
         - assetId: assetId
           groupId: groupId
           version: version
+          status: status
         oasV2Snippet: oasV2Snippet
         id: 0
+        interfaceTransformation:
+        - language: language
+          transformation: transformation
+        - language: language
+          transformation: transformation
         yamlMd5: yamlMd5
         isOOTB: true
         violationCategory: violationCategory
@@ -952,12 +948,21 @@ components:
         encryptionSupported: true
         applicable: true
         version: version
+        interfaceScope:
+        - interfaceScope
+        - interfaceScope
+        splitAssetModel: true
         stage: stage
+        schemaId: schemaId
         name: name
+        ootbUpgradeableImpl: true
         minMuleVersion: minMuleVersion
         category: category
         status: status
         supportedPoliciesVersions: supportedPoliciesVersions
+        supportedJavaVersions:
+        - supportedJavaVersions
+        - supportedJavaVersions
       properties:
         audit:
           $ref: '#/components/schemas/Audit'
@@ -1022,8 +1027,42 @@ components:
         applicable:
           type: boolean
         configuration:
+          description: |
+            Policy configuration. Legacy policies (mule3/older mule4) return an array
+            of PolicyConfiguration items describing each configurable property. Modern
+            policies (AI/MCP/A2A and newer mule4) return a JSON Schema object
+            (draft-2019-09) describing the same structure with richer validation
+            (if/then/else, oneOf, etc.). Consumer code must check the runtime type
+            and parse accordingly.
+        schemaId:
+          description: Identifier of the underlying JSON schema for modern policies.
+          type: string
+        splitAssetModel:
+          description: Whether the policy uses the split asset model.
+          type: boolean
+        ootbUpgradeableImpl:
+          description: Whether the OOTB implementation supports in-place upgrades.
+          type: boolean
+        supportedJavaVersions:
+          description: Java runtime versions this policy implementation is compatible
+            with.
           items:
-            $ref: '#/components/schemas/PolicyConfiguration'
+            nullable: true
+            type: string
+          type: array
+        interfaceScope:
+          description: "Scopes at which the policy can be applied (e.g. \"api\", \"\
+            resource\")."
+          items:
+            type: string
+          type: array
+        interfaceTransformation:
+          description: |
+            Modern replacement for the flat ramlSnippet/oasV2Snippet/oasV3Snippet
+            fields. Each entry pairs a language identifier with a transformation
+            snippet to apply to the API definition.
+          items:
+            $ref: '#/components/schemas/ExchangePolicyTemplate_interfaceTransformation_inner'
           type: array
         allVersions:
           items:
@@ -1169,22 +1208,6 @@ components:
       title: PointcutDataArray
       type: array
     PolicyConfiguration:
-      example:
-        allowMultiple: true
-        propertyName: propertyName
-        configuration:
-        - propertyName: propertyName
-          type: type
-        - propertyName: propertyName
-          type: type
-        name: name
-        options:
-        - "{}"
-        - "{}"
-        description: description
-        optional: true
-        sensitive: true
-        type: type
       properties:
         propertyName:
           type: string
@@ -1297,17 +1320,35 @@ components:
         type:
           type: string
       type: object
+    ExchangePolicyTemplate_interfaceTransformation_inner:
+      example:
+        language: language
+        transformation: transformation
+      properties:
+        language:
+          description: "Snippet language (e.g. ramlSnippet, ramlV1Snippet, oasV2Snippet,\
+            \ oasV3Snippet)."
+          type: string
+        transformation:
+          description: The snippet body to merge into the API definition.
+          type: string
+      type: object
     ExchangePolicyTemplate_allVersions_inner:
       example:
         assetId: assetId
         groupId: groupId
         version: version
+        status: status
       properties:
         groupId:
           type: string
         assetId:
           type: string
         version:
+          type: string
+        status:
+          description: "Lifecycle status of the version (e.g. published, deprecated,\
+            \ development)."
           type: string
       type: object
     ApimPolicyFullData_tiers_values_inner_limits_inner:
@@ -1360,9 +1401,6 @@ components:
       title: PointcutDataItem
       type: object
     PolicyConfiguration_configuration_inner:
-      example:
-        propertyName: propertyName
-        type: type
       properties:
         propertyName:
           type: string
