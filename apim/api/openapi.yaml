@@ -910,6 +910,8 @@ components:
           uri: uri
           proxyRegistrationUri: proxyRegistrationUri
           responseTimeout: responseTimeout
+        providerId: providerId
+        description: description
         technology: flexGateway
         instanceLabel: instanceLabel
         spec:
@@ -945,6 +947,12 @@ components:
         deployment:
           $ref: '#/components/schemas/DeploymentPostBody'
         instanceLabel:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        providerId:
           nullable: true
           type: string
       title: ApimInstancePostBody

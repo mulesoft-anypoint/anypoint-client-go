@@ -25,6 +25,8 @@ type ApimInstancePostBody struct {
 	Routing []RoutingPostBodyInner `json:"routing,omitempty"`
 	Deployment NullableDeploymentPostBody `json:"deployment,omitempty"`
 	InstanceLabel NullableString `json:"instanceLabel,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	ProviderId NullableString `json:"providerId,omitempty"`
 }
 
 // NewApimInstancePostBody instantiates a new ApimInstancePostBody object
@@ -267,6 +269,90 @@ func (o *ApimInstancePostBody) UnsetInstanceLabel() {
 	o.InstanceLabel.Unset()
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApimInstancePostBody) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApimInstancePostBody) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ApimInstancePostBody) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *ApimInstancePostBody) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *ApimInstancePostBody) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *ApimInstancePostBody) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetProviderId returns the ProviderId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApimInstancePostBody) GetProviderId() string {
+	if o == nil || IsNil(o.ProviderId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ProviderId.Get()
+}
+
+// GetProviderIdOk returns a tuple with the ProviderId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApimInstancePostBody) GetProviderIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProviderId.Get(), o.ProviderId.IsSet()
+}
+
+// HasProviderId returns a boolean if a field has been set.
+func (o *ApimInstancePostBody) HasProviderId() bool {
+	if o != nil && o.ProviderId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderId gets a reference to the given NullableString and assigns it to the ProviderId field.
+func (o *ApimInstancePostBody) SetProviderId(v string) {
+	o.ProviderId.Set(&v)
+}
+// SetProviderIdNil sets the value for ProviderId to be an explicit nil
+func (o *ApimInstancePostBody) SetProviderIdNil() {
+	o.ProviderId.Set(nil)
+}
+
+// UnsetProviderId ensures that no value is present for ProviderId, not even an explicit nil
+func (o *ApimInstancePostBody) UnsetProviderId() {
+	o.ProviderId.Unset()
+}
+
 func (o ApimInstancePostBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -294,6 +380,12 @@ func (o ApimInstancePostBody) ToMap() (map[string]interface{}, error) {
 	}
 	if o.InstanceLabel.IsSet() {
 		toSerialize["instanceLabel"] = o.InstanceLabel.Get()
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
+	if o.ProviderId.IsSet() {
+		toSerialize["providerId"] = o.ProviderId.Get()
 	}
 	return toSerialize, nil
 }

@@ -1430,9 +1430,6 @@ components:
             lastSeenTimestamp: 5
             status: status
         network:
-          reservedCidrs:
-          - 192.168.0.0/16
-          - 172.16.0.0/12
           internalDns:
             specialDomains:
             - specialDomains
@@ -1523,9 +1520,6 @@ components:
       type: object
     PrivateSpaceNetworkEditable:
       example:
-        reservedCidrs:
-        - 192.168.0.0/16
-        - 172.16.0.0/12
         internalDns:
           specialDomains:
           - specialDomains
@@ -1536,16 +1530,6 @@ components:
       properties:
         internalDns:
           $ref: '#/components/schemas/PrivateSpaceNetworkCreate_internalDns'
-        reservedCidrs:
-          description: |
-            The list of reserved CIDR blocks for your private space to prevent IP address overlap. Required when you want to connect your private space to your corporate network (either on-premises or in the cloud). Use CIDR notation and commas.
-          example:
-          - 192.168.0.0/16
-          - 172.16.0.0/12
-          items:
-            description: The reserved CIDR of the Private Space network.
-            type: string
-          type: array
       type: object
     PrivateSpaceNetwork:
       description: Private space network configuration
