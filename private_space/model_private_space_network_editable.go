@@ -20,8 +20,6 @@ var _ MappedNullable = &PrivateSpaceNetworkEditable{}
 // PrivateSpaceNetworkEditable struct for PrivateSpaceNetworkEditable
 type PrivateSpaceNetworkEditable struct {
 	InternalDns *PrivateSpaceNetworkCreateInternalDns `json:"internalDns,omitempty"`
-	// The list of reserved CIDR blocks for your private space to prevent IP address overlap. Required when you want to connect your private space to your corporate network (either on-premises or in the cloud). Use CIDR notation and commas. 
-	ReservedCidrs []string `json:"reservedCidrs,omitempty"`
 }
 
 // NewPrivateSpaceNetworkEditable instantiates a new PrivateSpaceNetworkEditable object
@@ -73,38 +71,6 @@ func (o *PrivateSpaceNetworkEditable) SetInternalDns(v PrivateSpaceNetworkCreate
 	o.InternalDns = &v
 }
 
-// GetReservedCidrs returns the ReservedCidrs field value if set, zero value otherwise.
-func (o *PrivateSpaceNetworkEditable) GetReservedCidrs() []string {
-	if o == nil || IsNil(o.ReservedCidrs) {
-		var ret []string
-		return ret
-	}
-	return o.ReservedCidrs
-}
-
-// GetReservedCidrsOk returns a tuple with the ReservedCidrs field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateSpaceNetworkEditable) GetReservedCidrsOk() ([]string, bool) {
-	if o == nil || IsNil(o.ReservedCidrs) {
-		return nil, false
-	}
-	return o.ReservedCidrs, true
-}
-
-// HasReservedCidrs returns a boolean if a field has been set.
-func (o *PrivateSpaceNetworkEditable) HasReservedCidrs() bool {
-	if o != nil && !IsNil(o.ReservedCidrs) {
-		return true
-	}
-
-	return false
-}
-
-// SetReservedCidrs gets a reference to the given []string and assigns it to the ReservedCidrs field.
-func (o *PrivateSpaceNetworkEditable) SetReservedCidrs(v []string) {
-	o.ReservedCidrs = v
-}
-
 func (o PrivateSpaceNetworkEditable) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,9 +83,6 @@ func (o PrivateSpaceNetworkEditable) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.InternalDns) {
 		toSerialize["internalDns"] = o.InternalDns
-	}
-	if !IsNil(o.ReservedCidrs) {
-		toSerialize["reservedCidrs"] = o.ReservedCidrs
 	}
 	return toSerialize, nil
 }

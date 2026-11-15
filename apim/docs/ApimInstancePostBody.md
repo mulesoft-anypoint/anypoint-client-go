@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Routing** | Pointer to [**[]RoutingPostBodyInner**](RoutingPostBodyInner.md) |  | [optional] 
 **Deployment** | Pointer to [**NullableDeploymentPostBody**](DeploymentPostBody.md) |  | [optional] 
 **InstanceLabel** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**ProviderId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -220,6 +222,76 @@ HasInstanceLabel returns a boolean if a field has been set.
 `func (o *ApimInstancePostBody) UnsetInstanceLabel()`
 
 UnsetInstanceLabel ensures that no value is present for InstanceLabel, not even an explicit nil
+### GetDescription
+
+`func (o *ApimInstancePostBody) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *ApimInstancePostBody) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *ApimInstancePostBody) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *ApimInstancePostBody) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *ApimInstancePostBody) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ApimInstancePostBody) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetProviderId
+
+`func (o *ApimInstancePostBody) GetProviderId() string`
+
+GetProviderId returns the ProviderId field if non-nil, zero value otherwise.
+
+### GetProviderIdOk
+
+`func (o *ApimInstancePostBody) GetProviderIdOk() (*string, bool)`
+
+GetProviderIdOk returns a tuple with the ProviderId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderId
+
+`func (o *ApimInstancePostBody) SetProviderId(v string)`
+
+SetProviderId sets ProviderId field to given value.
+
+### HasProviderId
+
+`func (o *ApimInstancePostBody) HasProviderId() bool`
+
+HasProviderId returns a boolean if a field has been set.
+
+### SetProviderIdNil
+
+`func (o *ApimInstancePostBody) SetProviderIdNil(b bool)`
+
+ SetProviderIdNil sets the value for ProviderId to be an explicit nil
+
+### UnsetProviderId
+`func (o *ApimInstancePostBody) UnsetProviderId()`
+
+UnsetProviderId ensures that no value is present for ProviderId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
