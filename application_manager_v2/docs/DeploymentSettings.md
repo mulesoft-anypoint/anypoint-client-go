@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Clustered** | Pointer to **bool** |  | [optional] 
 **EnforceDeployingReplicasAcrossNodes** | Pointer to **bool** |  | [optional] 
+**InstanceType** | Pointer to **string** | Replica size for CloudHub 2.0 deployments on usage-based pricing (e.g. mule.nano, mule.micro). Omit for Runtime Fabric and vCore-priced targets. | [optional] 
 **Http** | Pointer to [**Http**](Http.md) |  | [optional] 
 **Jvm** | Pointer to [**Jvm**](Jvm.md) |  | [optional] 
 **Runtime** | Pointer to [**Runtime**](Runtime.md) |  | [optional] 
@@ -90,6 +91,31 @@ SetEnforceDeployingReplicasAcrossNodes sets EnforceDeployingReplicasAcrossNodes 
 `func (o *DeploymentSettings) HasEnforceDeployingReplicasAcrossNodes() bool`
 
 HasEnforceDeployingReplicasAcrossNodes returns a boolean if a field has been set.
+
+### GetInstanceType
+
+`func (o *DeploymentSettings) GetInstanceType() string`
+
+GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
+
+### GetInstanceTypeOk
+
+`func (o *DeploymentSettings) GetInstanceTypeOk() (*string, bool)`
+
+GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceType
+
+`func (o *DeploymentSettings) SetInstanceType(v string)`
+
+SetInstanceType sets InstanceType field to given value.
+
+### HasInstanceType
+
+`func (o *DeploymentSettings) HasInstanceType() bool`
+
+HasInstanceType returns a boolean if a field has been set.
 
 ### GetHttp
 

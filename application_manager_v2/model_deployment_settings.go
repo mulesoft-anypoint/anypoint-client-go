@@ -21,6 +21,8 @@ var _ MappedNullable = &DeploymentSettings{}
 type DeploymentSettings struct {
 	Clustered *bool `json:"clustered,omitempty"`
 	EnforceDeployingReplicasAcrossNodes *bool `json:"enforceDeployingReplicasAcrossNodes,omitempty"`
+	// Replica size for CloudHub 2.0 deployments on usage-based pricing (e.g. mule.nano, mule.micro). Omit for Runtime Fabric and vCore-priced targets.
+	InstanceType *string `json:"instanceType,omitempty"`
 	Http *Http `json:"http,omitempty"`
 	Jvm *Jvm `json:"jvm,omitempty"`
 	Runtime *Runtime `json:"runtime,omitempty"`
@@ -118,6 +120,38 @@ func (o *DeploymentSettings) HasEnforceDeployingReplicasAcrossNodes() bool {
 // SetEnforceDeployingReplicasAcrossNodes gets a reference to the given bool and assigns it to the EnforceDeployingReplicasAcrossNodes field.
 func (o *DeploymentSettings) SetEnforceDeployingReplicasAcrossNodes(v bool) {
 	o.EnforceDeployingReplicasAcrossNodes = &v
+}
+
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *DeploymentSettings) GetInstanceType() string {
+	if o == nil || IsNil(o.InstanceType) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentSettings) GetInstanceTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.InstanceType) {
+		return nil, false
+	}
+	return o.InstanceType, true
+}
+
+// HasInstanceType returns a boolean if a field has been set.
+func (o *DeploymentSettings) HasInstanceType() bool {
+	if o != nil && !IsNil(o.InstanceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
+func (o *DeploymentSettings) SetInstanceType(v string) {
+	o.InstanceType = &v
 }
 
 // GetHttp returns the Http field value if set, zero value otherwise.
@@ -615,6 +649,9 @@ func (o DeploymentSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnforceDeployingReplicasAcrossNodes) {
 		toSerialize["enforceDeployingReplicasAcrossNodes"] = o.EnforceDeployingReplicasAcrossNodes
+	}
+	if !IsNil(o.InstanceType) {
+		toSerialize["instanceType"] = o.InstanceType
 	}
 	if !IsNil(o.Http) {
 		toSerialize["http"] = o.Http

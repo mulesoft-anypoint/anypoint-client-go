@@ -368,6 +368,7 @@ components:
                     limit: limit
             disableAmLogForwarding: true
             clustered: true
+            instanceType: instanceType
             forwardSslSession: true
             runtime:
               releaseChannel: releaseChannel
@@ -458,6 +459,7 @@ components:
                   limit: limit
           disableAmLogForwarding: true
           clustered: true
+          instanceType: instanceType
           forwardSslSession: true
           runtime:
             releaseChannel: releaseChannel
@@ -526,6 +528,7 @@ components:
                 limit: limit
         disableAmLogForwarding: true
         clustered: true
+        instanceType: instanceType
         forwardSslSession: true
         runtime:
           releaseChannel: releaseChannel
@@ -568,6 +571,12 @@ components:
         enforceDeployingReplicasAcrossNodes:
           title: EnforceDeployingReplicasAcrossNodes
           type: boolean
+        instanceType:
+          description: "Replica size for CloudHub 2.0 deployments on usage-based pricing\
+            \ (e.g. mule.nano, mule.micro). Omit for Runtime Fabric and vCore-priced\
+            \ targets."
+          title: InstanceType
+          type: string
         http:
           $ref: '#/components/schemas/Http'
         jvm:
@@ -934,6 +943,7 @@ components:
                     limit: limit
             disableAmLogForwarding: true
             clustered: true
+            instanceType: instanceType
             forwardSslSession: true
             runtime:
               releaseChannel: releaseChannel
