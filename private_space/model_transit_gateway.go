@@ -26,6 +26,10 @@ type TransitGateway struct {
 	// MuleSoft AWS account id (region-bound to the private space).
 	AccountId *string `json:"accountId,omitempty"`
 	Spec *TransitGatewaySpec `json:"spec,omitempty"`
+	// AWS console URL pointing at the transit gateway resource (organization list only).
+	TgwResource *string `json:"tgwResource,omitempty"`
+	// Per-private-space attachments of this transit gateway (organization list only).
+	Attachments []TransitGateway `json:"attachments,omitempty"`
 	Status *TransitGatewayStatus `json:"status,omitempty"`
 }
 
@@ -174,6 +178,70 @@ func (o *TransitGateway) SetSpec(v TransitGatewaySpec) {
 	o.Spec = &v
 }
 
+// GetTgwResource returns the TgwResource field value if set, zero value otherwise.
+func (o *TransitGateway) GetTgwResource() string {
+	if o == nil || IsNil(o.TgwResource) {
+		var ret string
+		return ret
+	}
+	return *o.TgwResource
+}
+
+// GetTgwResourceOk returns a tuple with the TgwResource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransitGateway) GetTgwResourceOk() (*string, bool) {
+	if o == nil || IsNil(o.TgwResource) {
+		return nil, false
+	}
+	return o.TgwResource, true
+}
+
+// HasTgwResource returns a boolean if a field has been set.
+func (o *TransitGateway) HasTgwResource() bool {
+	if o != nil && !IsNil(o.TgwResource) {
+		return true
+	}
+
+	return false
+}
+
+// SetTgwResource gets a reference to the given string and assigns it to the TgwResource field.
+func (o *TransitGateway) SetTgwResource(v string) {
+	o.TgwResource = &v
+}
+
+// GetAttachments returns the Attachments field value if set, zero value otherwise.
+func (o *TransitGateway) GetAttachments() []TransitGateway {
+	if o == nil || IsNil(o.Attachments) {
+		var ret []TransitGateway
+		return ret
+	}
+	return o.Attachments
+}
+
+// GetAttachmentsOk returns a tuple with the Attachments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransitGateway) GetAttachmentsOk() ([]TransitGateway, bool) {
+	if o == nil || IsNil(o.Attachments) {
+		return nil, false
+	}
+	return o.Attachments, true
+}
+
+// HasAttachments returns a boolean if a field has been set.
+func (o *TransitGateway) HasAttachments() bool {
+	if o != nil && !IsNil(o.Attachments) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttachments gets a reference to the given []TransitGateway and assigns it to the Attachments field.
+func (o *TransitGateway) SetAttachments(v []TransitGateway) {
+	o.Attachments = v
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *TransitGateway) GetStatus() TransitGatewayStatus {
 	if o == nil || IsNil(o.Status) {
@@ -227,6 +295,12 @@ func (o TransitGateway) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Spec) {
 		toSerialize["spec"] = o.Spec
+	}
+	if !IsNil(o.TgwResource) {
+		toSerialize["tgwResource"] = o.TgwResource
+	}
+	if !IsNil(o.Attachments) {
+		toSerialize["attachments"] = o.Attachments
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status

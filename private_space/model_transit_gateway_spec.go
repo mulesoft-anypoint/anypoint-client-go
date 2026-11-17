@@ -24,6 +24,8 @@ type TransitGatewaySpec struct {
 	Region *string `json:"region,omitempty"`
 	// Private space display name.
 	SpaceName *string `json:"spaceName,omitempty"`
+	// CloudHub 2.0 AWS account id of the transit gateway (organization list only).
+	Ch2AwsAccountId *string `json:"ch2AwsAccountId,omitempty"`
 }
 
 // NewTransitGatewaySpec instantiates a new TransitGatewaySpec object
@@ -139,6 +141,38 @@ func (o *TransitGatewaySpec) SetSpaceName(v string) {
 	o.SpaceName = &v
 }
 
+// GetCh2AwsAccountId returns the Ch2AwsAccountId field value if set, zero value otherwise.
+func (o *TransitGatewaySpec) GetCh2AwsAccountId() string {
+	if o == nil || IsNil(o.Ch2AwsAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.Ch2AwsAccountId
+}
+
+// GetCh2AwsAccountIdOk returns a tuple with the Ch2AwsAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransitGatewaySpec) GetCh2AwsAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Ch2AwsAccountId) {
+		return nil, false
+	}
+	return o.Ch2AwsAccountId, true
+}
+
+// HasCh2AwsAccountId returns a boolean if a field has been set.
+func (o *TransitGatewaySpec) HasCh2AwsAccountId() bool {
+	if o != nil && !IsNil(o.Ch2AwsAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCh2AwsAccountId gets a reference to the given string and assigns it to the Ch2AwsAccountId field.
+func (o *TransitGatewaySpec) SetCh2AwsAccountId(v string) {
+	o.Ch2AwsAccountId = &v
+}
+
 func (o TransitGatewaySpec) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -157,6 +191,9 @@ func (o TransitGatewaySpec) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SpaceName) {
 		toSerialize["spaceName"] = o.SpaceName
+	}
+	if !IsNil(o.Ch2AwsAccountId) {
+		toSerialize["ch2AwsAccountId"] = o.Ch2AwsAccountId
 	}
 	return toSerialize, nil
 }

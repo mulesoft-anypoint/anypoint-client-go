@@ -79,6 +79,7 @@ All URIs are relative to *https://anypoint.mulesoft.com/runtimefabric/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultAPI* | [**AddPrivateSpaceVpnConnectionMember**](docs/DefaultAPI.md#addprivatespacevpnconnectionmember) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns | 
+*DefaultAPI* | [**AttachPrivateSpaceTransitGateway**](docs/DefaultAPI.md#attachprivatespacetransitgateway) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
 *DefaultAPI* | [**CreatePrivateSpace**](docs/DefaultAPI.md#createprivatespace) | **Post** /organizations/{orgId}/privatespaces | 
 *DefaultAPI* | [**CreatePrivateSpaceTransitGateway**](docs/DefaultAPI.md#createprivatespacetransitgateway) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
 *DefaultAPI* | [**CreatePrivateSpaceVpnConnection**](docs/DefaultAPI.md#createprivatespacevpnconnection) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections | 

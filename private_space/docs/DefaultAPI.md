@@ -5,6 +5,7 @@ All URIs are relative to *https://anypoint.mulesoft.com/runtimefabric/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddPrivateSpaceVpnConnectionMember**](DefaultAPI.md#AddPrivateSpaceVpnConnectionMember) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections/{connectionId}/vpns | 
+[**AttachPrivateSpaceTransitGateway**](DefaultAPI.md#AttachPrivateSpaceTransitGateway) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways/{transitGatewayId} | 
 [**CreatePrivateSpace**](DefaultAPI.md#CreatePrivateSpace) | **Post** /organizations/{orgId}/privatespaces | 
 [**CreatePrivateSpaceTransitGateway**](DefaultAPI.md#CreatePrivateSpaceTransitGateway) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/transitgateways | 
 [**CreatePrivateSpaceVpnConnection**](DefaultAPI.md#CreatePrivateSpaceVpnConnection) | **Post** /organizations/{orgId}/privatespaces/{privateSpaceId}/connections | 
@@ -93,6 +94,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PrivateSpaceVpnConnection**](PrivateSpaceVpnConnection.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AttachPrivateSpaceTransitGateway
+
+> []TransitGateway AttachPrivateSpaceTransitGateway(ctx, orgId, privateSpaceId, transitGatewayId).RequestBody(requestBody).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mulesoft-anypoint/anypoint-client-go/private_space"
+)
+
+func main() {
+	orgId := "orgId_example" // string | The ID of the organization in GUID format
+	privateSpaceId := "privateSpaceId_example" // string | The ID of the private space in GUID format
+	transitGatewayId := "transitGatewayId_example" // string | The transit gateway id (AWS tgw-...).
+	requestBody := []string{"Property_example"} // []string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.AttachPrivateSpaceTransitGateway(context.Background(), orgId, privateSpaceId, transitGatewayId).RequestBody(requestBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.AttachPrivateSpaceTransitGateway``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AttachPrivateSpaceTransitGateway`: []TransitGateway
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.AttachPrivateSpaceTransitGateway`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | The ID of the organization in GUID format | 
+**privateSpaceId** | **string** | The ID of the private space in GUID format | 
+**transitGatewayId** | **string** | The transit gateway id (AWS tgw-...). | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAttachPrivateSpaceTransitGatewayRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **requestBody** | **[]string** |  | 
+
+### Return type
+
+[**[]TransitGateway**](TransitGateway.md)
 
 ### Authorization
 
