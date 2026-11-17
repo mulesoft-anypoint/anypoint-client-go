@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | User-chosen display name for the attachment. | [optional] 
 **AccountId** | Pointer to **string** | MuleSoft AWS account id (region-bound to the private space). | [optional] 
 **Spec** | Pointer to [**TransitGatewaySpec**](TransitGatewaySpec.md) |  | [optional] 
+**TgwResource** | Pointer to **string** | AWS console URL pointing at the transit gateway resource (organization list only). | [optional] 
+**Attachments** | Pointer to [**[]TransitGateway**](TransitGateway.md) | Per-private-space attachments of this transit gateway (organization list only). | [optional] 
 **Status** | Pointer to [**TransitGatewayStatus**](TransitGatewayStatus.md) |  | [optional] 
 
 ## Methods
@@ -128,6 +130,56 @@ SetSpec sets Spec field to given value.
 `func (o *TransitGateway) HasSpec() bool`
 
 HasSpec returns a boolean if a field has been set.
+
+### GetTgwResource
+
+`func (o *TransitGateway) GetTgwResource() string`
+
+GetTgwResource returns the TgwResource field if non-nil, zero value otherwise.
+
+### GetTgwResourceOk
+
+`func (o *TransitGateway) GetTgwResourceOk() (*string, bool)`
+
+GetTgwResourceOk returns a tuple with the TgwResource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTgwResource
+
+`func (o *TransitGateway) SetTgwResource(v string)`
+
+SetTgwResource sets TgwResource field to given value.
+
+### HasTgwResource
+
+`func (o *TransitGateway) HasTgwResource() bool`
+
+HasTgwResource returns a boolean if a field has been set.
+
+### GetAttachments
+
+`func (o *TransitGateway) GetAttachments() []TransitGateway`
+
+GetAttachments returns the Attachments field if non-nil, zero value otherwise.
+
+### GetAttachmentsOk
+
+`func (o *TransitGateway) GetAttachmentsOk() (*[]TransitGateway, bool)`
+
+GetAttachmentsOk returns a tuple with the Attachments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttachments
+
+`func (o *TransitGateway) SetAttachments(v []TransitGateway)`
+
+SetAttachments sets Attachments field to given value.
+
+### HasAttachments
+
+`func (o *TransitGateway) HasAttachments() bool`
+
+HasAttachments returns a boolean if a field has been set.
 
 ### GetStatus
 

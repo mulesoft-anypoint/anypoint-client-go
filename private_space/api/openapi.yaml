@@ -410,6 +410,62 @@ paths:
                   $ref: '#/components/schemas/TransitGatewayPatchRoutesResult'
                 type: array
           description: Transit gateway routes updated (truncated array wrap)
+    post:
+      description: attaches an existing organization transit gateway to the given
+        private space with the given static routes
+      operationId: attachPrivateSpaceTransitGateway
+      parameters:
+      - description: The ID of the organization in GUID format
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ID of the private space in GUID format
+        explode: false
+        in: path
+        name: privateSpaceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The transit gateway id (AWS tgw-...).
+        explode: false
+        in: path
+        name: transitGatewayId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Static routes (CIDR strings) to push into the private space
+                route table.
+              items:
+                type: string
+              type: array
+        required: true
+      responses:
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Forbidden
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TransitGateway'
+                type: array
+          description: List of transit gateways
   /organizations/{orgId}/transitgateways:
     get:
       description: "lists transit gateways across the organization, optionally filtered\
@@ -1712,6 +1768,10 @@ components:
     TransitGateway:
       example:
         accountId: accountId
+        tgwResource: tgwResource
+        attachments:
+        - null
+        - null
         name: name
         id: id
         spec:
@@ -1719,6 +1779,7 @@ components:
           resourceShare:
             id: id
             account: account
+          ch2AwsAccountId: ch2AwsAccountId
           region: region
         status:
           tgwResource: tgwResource
@@ -1739,6 +1800,16 @@ components:
           type: string
         spec:
           $ref: '#/components/schemas/TransitGateway_spec'
+        tgwResource:
+          description: AWS console URL pointing at the transit gateway resource (organization
+            list only).
+          type: string
+        attachments:
+          description: Per-private-space attachments of this transit gateway (organization
+            list only).
+          items:
+            $ref: '#/components/schemas/TransitGateway'
+          type: array
         status:
           $ref: '#/components/schemas/TransitGateway_status'
       title: TransitGateway
@@ -2353,6 +2424,7 @@ components:
         resourceShare:
           id: id
           account: account
+        ch2AwsAccountId: ch2AwsAccountId
         region: region
       properties:
         resourceShare:
@@ -2362,6 +2434,10 @@ components:
           type: string
         spaceName:
           description: Private space display name.
+          type: string
+        ch2AwsAccountId:
+          description: CloudHub 2.0 AWS account id of the transit gateway (organization
+            list only).
           type: string
       type: object
     TransitGateway_status:

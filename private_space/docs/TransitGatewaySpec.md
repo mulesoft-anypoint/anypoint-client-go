@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ResourceShare** | Pointer to [**TransitGatewaySpecResourceShare**](TransitGatewaySpecResourceShare.md) |  | [optional] 
 **Region** | Pointer to **string** | AWS region (inherits the private space region). | [optional] 
 **SpaceName** | Pointer to **string** | Private space display name. | [optional] 
+**Ch2AwsAccountId** | Pointer to **string** | CloudHub 2.0 AWS account id of the transit gateway (organization list only). | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetSpaceName sets SpaceName field to given value.
 `func (o *TransitGatewaySpec) HasSpaceName() bool`
 
 HasSpaceName returns a boolean if a field has been set.
+
+### GetCh2AwsAccountId
+
+`func (o *TransitGatewaySpec) GetCh2AwsAccountId() string`
+
+GetCh2AwsAccountId returns the Ch2AwsAccountId field if non-nil, zero value otherwise.
+
+### GetCh2AwsAccountIdOk
+
+`func (o *TransitGatewaySpec) GetCh2AwsAccountIdOk() (*string, bool)`
+
+GetCh2AwsAccountIdOk returns a tuple with the Ch2AwsAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCh2AwsAccountId
+
+`func (o *TransitGatewaySpec) SetCh2AwsAccountId(v string)`
+
+SetCh2AwsAccountId sets Ch2AwsAccountId field to given value.
+
+### HasCh2AwsAccountId
+
+`func (o *TransitGatewaySpec) HasCh2AwsAccountId() bool`
+
+HasCh2AwsAccountId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
